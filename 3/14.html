@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 14 — İş ve Çalışma Hayatı · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .vocab-item { padding: 6px 9px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .vocab-en { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); }
+  .vocab-tr { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.formal   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.informal { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.meeting  { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.deadline { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-item.career   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.present  { background: var(--warn-bg); border-color: #f5c896; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.formal   .use-title { color: var(--accent); }
+  .use-item.informal .use-title { color: var(--teal); }
+  .use-item.meeting  .use-title { color: var(--purple); }
+  .use-item.deadline .use-title { color: var(--rose); }
+  .use-item.career   .use-title { color: var(--ok); }
+  .use-item.present  .use-title { color: var(--warn); }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.form-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.info-head { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.cat-head  { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .form-cell { background: #f7faff; }
+  .cmp-table .info-cell { background: #ecfeff; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-work  { color: var(--accent); font-weight: 600; }
+  .hl-form  { color: var(--purple); font-weight: 600; }
+  .hl-ok    { color: var(--ok); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 14 · Ünite 3</span>
+      <h1>İş ve Çalışma Hayatı</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Kelime + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Toplantı için <strong>make</strong> değil <strong>have</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ make a meeting</span><br>
+        <span class="right">✓ have a meeting</span>
+      </span><br>
+      Şirkette çalışmak: <strong>work at</strong> (şirket) · <strong>work in</strong> (sektör)
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders (13)</span>
+    <span class="recall-item"><strong>prepositions</strong> = next to, across from, between</span>
+    <span class="recall-item"><strong>directions</strong> = go straight, turn left</span>
+    <span class="recall-item"><strong>transportation</strong> = take the bus, get off at</span>
+    <span class="recall-item">How do I get to…? · Is it far from here?</span>
+  </div>
+
+  <!-- Kelime + Collocations -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🏢</span><h2>İş Yeri Kelimeleri — Jobs & Workplace</h2></div>
+      <div class="card-body">
+        <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-en">office</div><div class="vocab-tr">ofis</div></div>
+          <div class="vocab-item"><div class="vocab-en">colleague</div><div class="vocab-tr">iş arkadaşı</div></div>
+          <div class="vocab-item"><div class="vocab-en">boss / manager</div><div class="vocab-tr">patron / yönetici</div></div>
+          <div class="vocab-item"><div class="vocab-en">meeting</div><div class="vocab-tr">toplantı</div></div>
+          <div class="vocab-item"><div class="vocab-en">deadline</div><div class="vocab-tr">son teslim tarihi</div></div>
+          <div class="vocab-item"><div class="vocab-en">salary</div><div class="vocab-tr">maaş</div></div>
+          <div class="vocab-item"><div class="vocab-en">employee</div><div class="vocab-tr">çalışan</div></div>
+          <div class="vocab-item"><div class="vocab-en">employer</div><div class="vocab-tr">işveren</div></div>
+          <div class="vocab-item"><div class="vocab-en">CV / résumé</div><div class="vocab-tr">özgeçmiş</div></div>
+          <div class="vocab-item"><div class="vocab-en">interview</div><div class="vocab-tr">mülakat</div></div>
+          <div class="vocab-item"><div class="vocab-en">promotion</div><div class="vocab-tr">terfi</div></div>
+          <div class="vocab-item"><div class="vocab-en">overtime</div><div class="vocab-tr">fazla mesai</div></div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:10px">
+          <strong>What do you do?</strong> = Mesleğin ne? (genel soru) &nbsp;|&nbsp; <strong>Where do you work?</strong> = Nerede çalışıyorsun? &nbsp;|&nbsp; <strong>What do you do for a living?</strong> = Geçimini neyden sağlıyorsun?
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔗</span><h2>İş Kolokasyonları — Work Collocations</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item meeting">
+            <div class="use-title">📅 Toplantı & zaman</div>
+            <div class="use-ex"><span class="verb-hl">have</span> a meeting · attend a meeting<br>schedule a meeting · cancel a meeting</div>
+            <div class="use-tr">toplantı yapmak · katılmak · planlamak · iptal etmek</div>
+          </div>
+          <div class="use-item deadline">
+            <div class="use-title">⏰ Teslim & baskı</div>
+            <div class="use-ex"><span class="verb-hl">meet</span> a deadline · miss a deadline<br>work under pressure · be on time</div>
+            <div class="use-tr">son tarihe yetişmek · kaçırmak · baskı altında çalışmak</div>
+          </div>
+          <div class="use-item career">
+            <div class="use-title">💼 Kariyer hareketleri</div>
+            <div class="use-ex"><span class="verb-hl">apply for</span> a job · get a job<br><span class="verb-hl">get promoted</span> · resign / quit</div>
+            <div class="use-tr">işe başvurmak · iş bulmak · terfi etmek · istifa etmek</div>
+          </div>
+          <div class="use-item career">
+            <div class="use-title">📋 Günlük iş</div>
+            <div class="use-ex">do overtime · take a day off<br>hand in a report · work from home</div>
+            <div class="use-tr">fazla mesai · izin almak · rapor teslim · evden çalışmak</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:4px">
+          <strong>Altın kural:</strong> İngilizce'de fiil + isim eşleşmesi sabittir. Türkçe'den çeviri yapma — <span style="font-family:var(--mono)">do a meeting ✗</span> · <span style="font-family:var(--mono)">have a meeting ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email + Interview -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>✉️</span><h2>Resmi vs Gayri Resmi — Email & Chat</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head">Durum</th>
+              <th class="form-head">Formal (email / patron)</th>
+              <th class="info-head">Informal (chat / arkadaş)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Selamlama</td>
+              <td class="form-cell"><div class="cmp-ex">Dear Mr. Smith, / Dear Team,</div><div class="cmp-tr">Sayın Bay Smith, / Sayın Ekip,</div></td>
+              <td class="info-cell"><div class="cmp-ex">Hi John! / Hey!</div><div class="cmp-tr">Selam John! / Hey!</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Amaç</td>
+              <td class="form-cell"><div class="cmp-ex">I am writing to… / I would like to…</div><div class="cmp-tr">…hakkında yazıyorum.</div></td>
+              <td class="info-cell"><div class="cmp-ex">Just wanted to say… / Quick question:</div><div class="cmp-tr">Sadece şunu söylemek istedim…</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Rica</td>
+              <td class="form-cell"><div class="cmp-ex">Could you please…? / I would appreciate…</div><div class="cmp-tr">Lütfen … yapar mısınız?</div></td>
+              <td class="info-cell"><div class="cmp-ex">Can you…? / Could you…?</div><div class="cmp-tr">…yapar mısın?</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Kapanış</td>
+              <td class="form-cell"><div class="cmp-ex">Kind regards, / Best regards,</div><div class="cmp-tr">Saygılarımla,</div></td>
+              <td class="info-cell"><div class="cmp-ex">Thanks! / See you! / Cheers!</div><div class="cmp-tr">Teşekkürler! / Görüşürüz!</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Geç kalma</td>
+              <td class="form-cell"><div class="cmp-ex">I apologise for the delay.</div><div class="cmp-tr">Gecikme için özür dilerim.</div></td>
+              <td class="info-cell"><div class="cmp-ex">Sorry I'm late!</div><div class="cmp-tr">Geç kaldığım için özür!</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🎤</span><h2>Mülakat Soruları & Cevaplar</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Soru</th>
+              <th>Anlam</th>
+              <th>Örnek cevap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-q">What do you do?</td>
+              <td class="col-tr">Ne iş yapıyorsun?</td>
+              <td class="col-pos">I'm a software developer.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Why do you want this job?</td>
+              <td class="col-tr">Bu işi neden istiyorsun?</td>
+              <td class="col-pos">I want to grow my skills in marketing.</td>
+            </tr>
+            <tr>
+              <td class="col-q">What are your strengths?</td>
+              <td class="col-tr">Güçlü yönlerin?</td>
+              <td class="col-pos">I'm organised and I work well in a team.</td>
+            </tr>
+            <tr>
+              <td class="col-q">What's your weakness?</td>
+              <td class="col-tr">Zayıf yönün?</td>
+              <td class="col-pos">I sometimes take on too much work.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Where do you see yourself in 5 years?</td>
+              <td class="col-tr">5 yıl sonra nerede görüyorsun kendini?</td>
+              <td class="col-pos">I'd like to be a team leader.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Do you have any questions?</td>
+              <td class="col-tr">Sorunuz var mı?</td>
+              <td class="col-pos">What does a typical day look like?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:7px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          <strong style="color:var(--accent)">İpucu:</strong> Cevaplarda <strong>I'm good at…</strong> (yetenek) · <strong>I'm interested in…</strong> (ilgi) · <strong>I have experience in…</strong> (deneyim) kullan.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sunum + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📊</span><h2>Sunum Temelleri — Presentation Basics</h2></div>
+      <div class="card-body">
+        <div class="struct-row">
+          <div class="struct-label">Açılış</div>
+          <span class="slot slot-rest">I'd like to talk about…</span>
+          <span class="slot slot-rest">Today I'm going to present…</span>
+          <div class="struct-ex">Bugün … hakkında konuşmak istiyorum.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Yapı — sıralama</div>
+          <span class="slot slot-verb">First</span>
+          <span class="slot-sep">→</span>
+          <span class="slot slot-verb">Next / Then</span>
+          <span class="slot-sep">→</span>
+          <span class="slot slot-verb">Finally</span>
+          <div class="struct-ex">First, I'll explain the problem. Next, I'll show the solution. Finally, I'll summarise.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Geçiş & vurgu</div>
+          <span class="slot slot-rest">Let me move on to…</span>
+          <span class="slot slot-rest">As you can see…</span>
+          <span class="slot slot-rest">To sum up…</span>
+          <div class="struct-ex">Şimdi … konusuna geçeyim. · Gördüğünüz gibi… · Özetlemek gerekirse…</div>
+        </div>
+
+        <div class="uses-grid" style="margin-top:8px">
+          <div class="use-item present">
+            <div class="use-title">🎯 Amaç belirt</div>
+            <div class="use-ex">The aim of this presentation is to…<br>My main point is that…</div>
+            <div class="use-tr">Bu sunumun amacı… · Ana fikrim şu ki…</div>
+          </div>
+          <div class="use-item present">
+            <div class="use-title">❓ Soru al</div>
+            <div class="use-ex">Are there any questions?<br>Thank you for your attention.</div>
+            <div class="use-tr">Sorularınız var mı? · İlginiz için teşekkürler.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 make a meeting vs have a meeting</div>
+            <div class="trap-desc">Türkçe "toplantı yapmak" → İngilizce'de <strong>have</strong> kullanılır. Make = üretmek/oluşturmak anlamında değil burada.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ We need to make a meeting tomorrow.</span><br>
+              <span class="right">✓ We need to <strong>have</strong> a meeting tomorrow. / <strong>schedule</strong> a meeting</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">work in vs work at</div>
+            <div class="trap-desc"><strong>work at</strong> = belirli şirket/yer. <strong>work in</strong> = sektör/alan.</div>
+            <div class="trap-ex">
+              <span class="right">✓ I work <strong>at</strong> Google. (şirket)</span><br>
+              <span class="right">✓ I work <strong>in</strong> IT / in marketing. (sektör)</span><br>
+              <span class="wrong">✗ I work in Google.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">do a job — yanlış kullanım</div>
+            <div class="trap-desc"><strong>do a job</strong> = belirli bir görevi yapmak (tek seferlik). Meslek için <strong>have a job</strong> veya <strong>work as</strong> kullan.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I do a job as a teacher. (meslek için)</span><br>
+              <span class="right">✓ I <strong>work as</strong> a teacher. · I <strong>have a job</strong> at a school.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">make vs do (genel)</div>
+            <div class="trap-desc">İş bağlamında: <strong>make</strong> a decision, make a call · <strong>do</strong> your best, do research, do overtime</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ do a decision · make overtime</span><br>
+              <span class="right">✓ make a decision · do overtime</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ apply TO vs apply FOR</div>
+            <div class="trap-desc"><strong>apply for</strong> a job/position · <strong>apply to</strong> a company/university</div>
+            <div class="trap-ex"><span class="right">I applied <strong>for</strong> the manager role. · I applied <strong>to</strong> three companies.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — İş Mülakatı</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>iş kelimeleri</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>resmi ifadeler</strong> &nbsp;·&nbsp; 🟢 Yeşil = <strong>olumlu cevaplar</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good morning. Thank you for coming to the <span class="hl-work">interview</span>. Please, have a seat.</div>
+              <div class="bubble-tr">Günaydın. Mülakata geldiğiniz için teşekkürler. Lütfen oturun.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thank you. <span class="hl-form">I'm pleased to be here.</span></div>
+              <div class="bubble-tr">Teşekkür ederim. Burada olmaktan memnunum.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">So, <span class="hl-work">what do you do</span> at the moment?</div>
+              <div class="bubble-tr">Peki, şu anda ne iş yapıyorsunuz?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-work">work as</span> a project assistant at a tech company. I <span class="hl-work">work in</span> the marketing department.</div>
+              <div class="bubble-tr">Bir teknoloji şirketinde proje asistanı olarak çalışıyorum. Pazarlama departmanında çalışıyorum.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-work">Why do you want this job?</span></div>
+              <div class="bubble-tr">Bu işi neden istiyorsunuz?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-ok">I'm interested in</span> your company's culture. I want to <span class="hl-ok">develop my skills</span> and <span class="hl-work">work with</span> an experienced team.</div>
+              <div class="bubble-tr">Şirketinizin kültürüyle ilgileniyorum. Becerilerimi geliştirmek ve deneyimli bir ekiple çalışmak istiyorum.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Can you <span class="hl-work">meet deadlines</span> under pressure?</div>
+              <div class="bubble-tr">Baskı altında son teslim tarihlerine yetişebilir misiniz?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes. In my current role I often <span class="hl-work">have meetings</span> with clients and I always <span class="hl-ok">hand in reports on time</span>.</div>
+              <div class="bubble-tr">Evet. Mevcut rolümde sık sık müşterilerle toplantı yapıyorum ve raporları her zaman zamanında teslim ediyorum.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-form">Do you have any questions for us?</span></div>
+              <div class="bubble-tr">Bizim için sorularınız var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes. <span class="hl-form">What does a typical day look like</span> in this position? And what are the opportunities for <span class="hl-work">promotion</span>?</div>
+              <div class="bubble-tr">Evet. Bu pozisyonda tipik bir gün nasıl geçiyor? Ve terfi fırsatları neler?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Great questions. We'll be in touch within a week. <span class="hl-form">Thank you for your time.</span></div>
+              <div class="bubble-tr">Harika sorular. Bir hafta içinde sizinle iletişime geçeceğiz. Zaman ayırdığınız için teşekkürler.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Doğru kolokasyonu seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> We need to <span class="blank"></span> a meeting at 3 pm.<br>
+                <span class="pr-num">2.</span> I hope I can <span class="blank"></span> the deadline.<br>
+                <span class="pr-num">3.</span> She wants to <span class="blank"></span> for a new job.<br>
+                <span class="pr-num">4.</span> He got <span class="blank"></span> last year.<br>
+                <span class="pr-num">5.</span> I often <span class="blank"></span> overtime on Fridays.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> have / schedule &nbsp; <span class="a-num">2.</span> meet &nbsp; <span class="a-num">3.</span> apply &nbsp; <span class="a-num">4.</span> promoted &nbsp; <span class="a-num">5.</span> do
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) work in mi, work at mi?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I work <span class="blank"></span> a bank. (şirket)<br>
+                <span class="pr-num">2.</span> I work <span class="blank"></span> finance. (sektör)<br>
+                <span class="pr-num">3.</span> She works <span class="blank"></span> Microsoft.<br>
+                <span class="pr-num">4.</span> They work <span class="blank"></span> the healthcare sector.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> at &nbsp; <span class="a-num">2.</span> in &nbsp; <span class="a-num">3.</span> at / for &nbsp; <span class="a-num">4.</span> in
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Formal mı, informal mı?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Dear Sir, → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Hey, what's up? → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I would appreciate your reply. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Cheers! → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> formal &nbsp; <span class="a-num">2.</span> informal &nbsp; <span class="a-num">3.</span> formal &nbsp; <span class="a-num">4.</span> informal
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Mülakat cevabı tamamla</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> What do you do? → I'm <span class="blank"></span>.<br>
+                <span class="pr-num">2.</span> Why do you want this job? → Because I <span class="blank"></span>.<br>
+                <span class="pr-num">3.</span> Hatayı düzelt: We made a meeting. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Sunum: First…, <span class="blank"></span>…, Finally…
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> a nurse / an engineer / a teacher (örnek) &nbsp; <span class="a-num">2.</span> want to learn / am passionate about this field (örnek) &nbsp; <span class="a-num">3.</span> We had a meeting. &nbsp; <span class="a-num">4.</span> Next / Then
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🏢</span><span class="take-text"><strong>office, colleague, boss, meeting, deadline, salary</strong> — temel iş kelimeleri.</span></div>
+          <div class="take-item"><span class="take-ico">🔗</span><span class="take-text"><strong>have</strong> a meeting · <strong>meet</strong> a deadline · <strong>apply for</strong> a job · <strong>get promoted</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">✉️</span><span class="take-text">Email: <strong>Dear… / Kind regards</strong> (formal) vs <strong>Hi / Cheers</strong> (informal).</span></div>
+          <div class="take-item"><span class="take-ico">🎤</span><span class="take-text">Mülakat: <strong>What do you do?</strong> · <strong>Why do you want this job?</strong></span></div>
+          <div class="take-item"><span class="take-ico">📊</span><span class="take-text">Sunum: <strong>I'd like to talk about…</strong> · <strong>First / Next / Finally</strong></span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text"><strong>work at</strong> (şirket) · <strong>work in</strong> (sektör) · <strong>have</strong> a meeting (make değil!).</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">İdeal İşin & Mülakat Pratiği</span>
+            İdeal işin hakkında <strong>5 cümle</strong> yaz. En az 3 kolokasyon kullan (<em>work as, apply for, meet deadlines…</em>).<br><br>
+            Ardından <strong>3 mülakat sorusu + cevabı</strong> yaz:<br>
+            <strong>1.</strong> What do you do? → …<br>
+            <strong>2.</strong> Why do you want this job? → …<br>
+            <strong>3.</strong> What are your strengths? → …<br>
+            <span style="color:var(--ink-3)">Bonus: 30 saniyelik mini sunum — First…, Next…, Finally… ile bitir.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 14 / 25 &nbsp;·&nbsp; Ünite 3: Kelimeler Dünyası</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="13.html">‹ Önceki: Ders 13</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="15.html">Sonraki: Ders 15 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

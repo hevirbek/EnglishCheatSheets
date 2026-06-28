@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 17 — Cümle Bağlama (Linking Words) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-clause { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus   { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-link   { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-clause2 { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-link { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+  .col-pos  { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .col-tr   { color: var(--ink-3); font-size: 11px; }
+  .col-pos  .pos-tag { font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; padding: 1px 5px; border-radius: 8px; margin-right: 4px; vertical-align: middle; }
+  .tag-add { background: var(--ok-bg); color: var(--ok); }
+  .tag-con { background: var(--rose-bg); color: var(--rose); }
+  .tag-cau { background: var(--warn-bg); color: var(--warn); }
+  .tag-seq { background: var(--teal-bg); color: var(--teal); }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.addition { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.contrast { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-item.cause    { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.sequence { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.addition .use-title { color: var(--ok); }
+  .use-item.contrast .use-title { color: var(--rose); }
+  .use-item.cause    .use-title { color: var(--warn); }
+  .use-item.sequence .use-title { color: var(--teal); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-clause { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-link   { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-noun   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-ing    { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-sep    { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; line-height: 1.7; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .para-box { padding: 10px 12px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); font-size: 13px; line-height: 1.75; color: var(--ink); }
+  .para-tr { font-size: 11px; color: var(--ink-3); margin-top: 8px; padding-top: 8px; border-top: 0.5px dashed var(--rule); line-height: 1.65; }
+
+  .hl-add { color: var(--ok); font-weight: 600; }
+  .hl-con { color: var(--rose); font-weight: 600; }
+  .hl-cau { color: var(--warn); font-weight: 600; }
+  .hl-seq { color: var(--teal); font-weight: 600; }
+
+  .rewrite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rewrite-col { padding: 10px 12px; border-radius: 8px; border: 0.5px solid var(--rule); }
+  .rewrite-col.before { background: var(--rose-bg); border-color: #fecdd3; }
+  .rewrite-col.after  { background: var(--ok-bg); border-color: #a8d4bc; }
+  .rewrite-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .rewrite-col.before .rewrite-label { color: var(--rose); }
+  .rewrite-col.after  .rewrite-label { color: var(--ok); }
+  .rewrite-text { font-size: 12px; line-height: 1.75; color: var(--ink); }
+  .rewrite-tr { font-size: 11px; color: var(--ink-3); margin-top: 6px; line-height: 1.6; }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  .legend { display:flex; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-3); margin-bottom:10px; padding:5px 10px; background:var(--bg-2); border-radius:6px; border:0.5px solid var(--rule); }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .rewrite-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .rewrite-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 17 · Ünite 4</span>
+      <h1>Cümle Bağlama (Linking Words)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Yazma + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Bağlaçlar cümleleri birbirine <strong>mantıksal</strong> olarak bağlar.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ Although it rained, but we went out.</span><br>
+        <span class="right">✓ Although it rained, we went out.</span>
+      </span><br>
+      <strong>Although</strong> ve <strong>but</strong> aynı cümlede kullanılmaz!
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders</span>
+    <span class="recall-item"><strong>Pasif yapı</strong> = be + past participle</span>
+    <span class="recall-item">The report <strong>was written</strong> by the team.</span>
+    <span class="recall-item">The meeting <strong>is held</strong> every Monday.</span>
+    <span class="recall-item">Odak: eylem / nesne (özne değil)</span>
+  </div>
+
+  <!-- Yapı + 4 kategori özeti -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Linking Words Nedir? — Cümleleri Bağla</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-clause">Clause A<small>ilk fikir</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-link">linker<small>and / but / because…</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-clause2">Clause B<small>ikinci fikir</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>4 ana grup:</strong> ① <strong>Ekleme</strong> (and, moreover) &nbsp; ② <strong>Karşıtlık</strong> (but, however) &nbsp; ③ <strong>Sebep-sonuç</strong> (because, therefore) &nbsp; ④ <strong>Sıra/zaman</strong> (first, then, finally)
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">İki bağımsız cümle (virgül + linker)</div>
+          <span class="slot slot-clause">Cümle 1</span>
+          <span class="slot-sep">,</span>
+          <span class="slot slot-link">and / but / so</span>
+          <span class="slot slot-clause">cümle 2</span>
+          <div class="struct-ex">I was tired, <strong>so</strong> I went home early.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Bağımlı cümle (although / because / since)</div>
+          <span class="slot slot-link">Although / Because</span>
+          <span class="slot slot-clause">clause</span>
+          <span class="slot-sep">,</span>
+          <span class="slot slot-clause">main clause</span>
+          <div class="struct-ex"><strong>Although</strong> it was late, we continued working.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Despite / in spite of (+ isim veya -ing)</div>
+          <span class="slot slot-link">Despite</span>
+          <span class="slot slot-noun">the rain / being tired</span>
+          <span class="slot-sep">,</span>
+          <span class="slot slot-clause">main clause</span>
+          <div class="struct-ex"><strong>Despite the rain</strong>, we went out. · <strong>Despite being tired</strong>, she stayed.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🗺️</span><h2>4 Kategori — Hızlı Harita</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item addition">
+            <div class="use-title">➕ Ekleme (addition)</div>
+            <div class="use-kw">and · also · moreover · in addition · furthermore</div>
+            <div class="use-ex">I speak English. <strong>Also</strong>, I speak German.</div>
+            <div class="use-tr">İngilizce konuşurum. Ayrıca Almanca da konuşurum.</div>
+          </div>
+          <div class="use-item contrast">
+            <div class="use-title">↔️ Karşıtlık (contrast)</div>
+            <div class="use-kw">but · however · although · though · despite / in spite of</div>
+            <div class="use-ex">It was expensive. <strong>However</strong>, the quality was excellent.</div>
+            <div class="use-tr">Pahalıydı. Ancak kalite mükemmeldi.</div>
+          </div>
+          <div class="use-item cause">
+            <div class="use-title">⚡ Sebep &amp; Sonuç (cause &amp; effect)</div>
+            <div class="use-kw">because · since · so · therefore · as a result · consequently</div>
+            <div class="use-ex">The flight was delayed <strong>because</strong> of bad weather.</div>
+            <div class="use-tr">Uçuş kötü hava yüzünden gecikti.</div>
+          </div>
+          <div class="use-item sequence">
+            <div class="use-title">🔢 Sıra &amp; Zaman (sequence / time)</div>
+            <div class="use-kw">first · then · next · finally · meanwhile · after that</div>
+            <div class="use-ex"><strong>First</strong>, we checked in. <strong>Then</strong>, we went to the gate.</div>
+            <div class="use-tr">Önce check-in yaptık. Sonra kapıya gittik.</div>
+          </div>
+        </div>
+
+        <div class="legend">
+          <span><span class="hl-add">Yeşil</span> = ekleme</span>
+          <span><span class="hl-con">Kırmızı</span> = karşıtlık</span>
+          <span><span class="hl-cau">Turuncu</span> = sebep-sonuç</span>
+          <span><span class="hl-seq">Mavi</span> = sıra/zaman</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ekleme + Karşıtlık -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>➕</span><h2>1. Ekleme — Addition</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Bağlaç</th>
+              <th>Kullanım</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-link hl-add">and</td>
+              <td class="col-tr">Basit ekleme · iki eşit fikir</td>
+              <td class="col-pos">She works hard <strong>and</strong> she learns fast.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-add">also</td>
+              <td class="col-tr">Cümle başı/ortası · "ayrıca"</td>
+              <td class="col-pos">I <strong>also</strong> need a visa. · <strong>Also</strong>, bring your passport.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-add">moreover</td>
+              <td class="col-tr">Resmi yazı · güçlü ekleme</td>
+              <td class="col-pos">The hotel is cheap. <strong>Moreover</strong>, it's near the beach.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-add">in addition</td>
+              <td class="col-tr">Resmi · "buna ek olarak"</td>
+              <td class="col-pos"><strong>In addition</strong>, the company offers free training.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-add">furthermore</td>
+              <td class="col-tr">Akademik / iş yazısı</td>
+              <td class="col-pos">Sales rose 10%. <strong>Furthermore</strong>, costs fell.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Resmiyet sırası:</strong> and &lt; also &lt; in addition &lt; moreover / furthermore. İş e-postasında <strong>moreover</strong> kullanmak daha profesyonel görünür.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>↔️</span><h2>2. Karşıtlık — Contrast</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Bağlaç</th>
+              <th>Yapı</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-link hl-con">but</td>
+              <td class="col-tr">Cümle ortası · virgülden sonra</td>
+              <td class="col-pos">I wanted to go, <strong>but</strong> I was too tired.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-con">however</td>
+              <td class="col-tr">Cümle başı · virgül · resmi</td>
+              <td class="col-pos">The job is stressful. <strong>However</strong>, the salary is good.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-con">although</td>
+              <td class="col-tr">+ tam cümle (özne + fiil)</td>
+              <td class="col-pos"><strong>Although</strong> he is young, he is very experienced.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-con">though</td>
+              <td class="col-tr">although ile aynı · daha konuşma dili</td>
+              <td class="col-pos"><strong>Though</strong> it was raining, we played football.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-con">despite / in spite of</td>
+              <td class="col-tr">+ isim / -ing (fiil değil!)</td>
+              <td class="col-pos"><strong>Despite the traffic</strong>, we arrived on time.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule-box" style="margin-top:8px">
+          <strong>Although vs Despite:</strong> <span style="font-family:var(--mono)">Although it rained</span> (cümle) &nbsp;|&nbsp; <span style="font-family:var(--mono)">Despite the rain</span> (isim). İkisi de "rağmen" anlamı verir — yapı farklı!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sebep-sonuç + Sıra -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚡</span><h2>3. Sebep &amp; Sonuç — Cause &amp; Effect</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Bağlaç</th>
+              <th>Rol</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-link hl-cau">because</td>
+              <td class="col-tr">Sebep (en yaygın)</td>
+              <td class="col-pos">We cancelled the trip <strong>because</strong> the weather was bad.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-cau">since</td>
+              <td class="col-tr">Sebep · "madem / -dığı için"</td>
+              <td class="col-pos"><strong>Since</strong> you're here, let's start the meeting.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-cau">so</td>
+              <td class="col-tr">Sonuç · konuşma dili</td>
+              <td class="col-pos">I missed the bus, <strong>so</strong> I was late for work.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-cau">therefore</td>
+              <td class="col-tr">Sonuç · resmi yazı</td>
+              <td class="col-pos">The data was incomplete. <strong>Therefore</strong>, we postponed the report.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-cau">as a result</td>
+              <td class="col-tr">Sonuç ifadesi</td>
+              <td class="col-pos">He didn't study. <strong>As a result</strong>, he failed the exam.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-cau">consequently</td>
+              <td class="col-tr">Sonuç · akademik</td>
+              <td class="col-pos">Costs increased. <strong>Consequently</strong>, prices went up.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Because vs So:</strong> <span style="font-family:var(--mono)">because</span> = sebep önce gelir &nbsp;|&nbsp; <span style="font-family:var(--mono)">so</span> = sonuç önce gelir.<br>
+          ✓ I stayed home <strong>because</strong> I was sick. &nbsp;·&nbsp; ✓ I was sick, <strong>so</strong> I stayed home.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔢</span><h2>4. Sıra &amp; Zaman — Sequence / Time</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Bağlaç</th>
+              <th>Anlam</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-link hl-seq">first</td>
+              <td class="col-tr">İlk adım</td>
+              <td class="col-pos"><strong>First</strong>, open the app and log in.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-seq">then</td>
+              <td class="col-tr">Sonra · ardından</td>
+              <td class="col-pos"><strong>Then</strong>, select your destination.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-seq">next</td>
+              <td class="col-tr">Bir sonraki adım</td>
+              <td class="col-pos"><strong>Next</strong>, confirm your booking.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-seq">after that</td>
+              <td class="col-tr">Ondan sonra</td>
+              <td class="col-pos">We had lunch. <strong>After that</strong>, we visited the museum.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-seq">meanwhile</td>
+              <td class="col-tr">Bu sırada · aynı anda</td>
+              <td class="col-pos">I cooked dinner. <strong>Meanwhile</strong>, my partner set the table.</td>
+            </tr>
+            <tr>
+              <td class="col-link hl-seq">finally</td>
+              <td class="col-tr">Son olarak · nihayet</td>
+              <td class="col-pos"><strong>Finally</strong>, we arrived at the hotel at midnight.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>İpucu:</strong> Adım adım anlatırken <strong>First → Then → Next → Finally</strong> sırası okuyucuya net bir yol haritası verir. E-posta ve sunumlarda çok etkilidir.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Örnek paragraf -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📄</span><h2>Örnek Paragraf — İş Seyahati (Linking Words Bağlamında)</h2></div>
+      <div class="card-body">
+        <div class="legend">
+          <span><span class="hl-add">➕</span> ekleme</span>
+          <span><span class="hl-con">↔️</span> karşıtlık</span>
+          <span><span class="hl-cau">⚡</span> sebep-sonuç</span>
+          <span><span class="hl-seq">🔢</span> sıra/zaman</span>
+        </div>
+        <div class="para-box">
+          Last month I travelled to London for a business conference.
+          <span class="hl-seq">First</span>, I booked my flight online.
+          <span class="hl-seq">Then</span>, I reserved a hotel near the venue.
+          The ticket was expensive;
+          <span class="hl-con">however</span>, my company paid for everything.
+          <span class="hl-add">Moreover</span>, they gave me a daily allowance for meals.
+          <span class="hl-seq">On the first day</span>, I attended three workshops.
+          <span class="hl-seq">Meanwhile</span>, my colleague handled client calls back in Istanbul.
+          <span class="hl-con">Although</span> the schedule was tight, I learned a lot from the sessions.
+          <span class="hl-con">Despite the jet lag</span>, I stayed active throughout the trip.
+          The presentations were clear,
+          <span class="hl-add">and</span> the networking events were very useful.
+          <span class="hl-cau">Because</span> I prepared well in advance, I felt confident during my own talk.
+          <span class="hl-cau">As a result</span>, I made two new business contacts.
+          <span class="hl-seq">Finally</span>, I returned home tired but satisfied.
+        </div>
+        <div class="para-tr">
+          Geçen ay bir iş konferansı için Londra'ya gittim. Önce uçuşumu online ayırttım. Sonra mekan yakınında otel rezervasyonu yaptım. Bilet pahalıydı; ancak şirketim her şeyi ödedi. Üstelik yemekler için günlük harcırah verdi. İlk gün üç atölyeye katıldım. Bu sırada meslektaşım İstanbul'da müşteri aramalarını yönetti. Program yoğun olmasına rağmen oturumlardan çok şey öğrendim. Jet lag'e rağmen seyahat boyunca aktif kaldım. Sunumlar netti ve networking etkinlikleri çok faydalıydı. Önceden iyi hazırlandığım için kendi konuşmamda kendime güvendim. Sonuç olarak iki yeni iş bağlantısı kurdum. Nihayet yorgun ama memnun eve döndüm.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuzaklar + Before/After -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Although + but birlikte kullanılamaz</div>
+            <div class="trap-desc">Türkçe'de "rağmen ama" diyebilirsin; İngilizce'de although VE but aynı cümlede olmaz — biri yeterli.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Although it was cold, but we went swimming.</span><br>
+              <span class="right">✓ Although it was cold, we went swimming.</span><br>
+              <span class="right">✓ It was cold, but we went swimming.</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Despite + fiil (yanlış yapı)</div>
+            <div class="trap-desc">Despite / in spite of'tan sonra doğrudan fiil gelmez. İsim, isim tamlaması veya -ing kullan.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Despite he was tired, he worked.</span><br>
+              <span class="right">✓ Despite <strong>being</strong> tired, he worked.</span><br>
+              <span class="right">✓ Despite <strong>his tiredness</strong>, he worked.</span><br>
+              <span class="right">✓ <strong>Although</strong> he was tired, he worked.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">So vs Because — kelime sırası</div>
+            <div class="trap-desc">Because sebebi açıklar (sonuç sonra). So sonucu açıklar (sebep önce). Türkçe "-dığı için" her iki yönde de kullanılır — İngilizce'de yön önemli.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ So I was tired, I went to bed. (so sonuç için)</span><br>
+              <span class="right">✓ I was tired, <strong>so</strong> I went to bed.</span><br>
+              <span class="right">✓ I went to bed <strong>because</strong> I was tired.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">However virgül kuralı</div>
+            <div class="trap-desc">However cümle başında veya ortasında kullanıldığında genellikle virgülle ayrılır. But'tan daha resmidir.</div>
+            <div class="trap-ex">
+              <span class="right">✓ The plan failed. <strong>However,</strong> we learned from it.</span><br>
+              <span class="wrong">✗ The plan failed however we learned from it.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Although = Though (aynı anlam, farklı ton)</div>
+            <div class="trap-desc">Although daha resmi; though konuşmada daha doğal. Yapı aynı: although/though + clause, main clause.</div>
+            <div class="trap-ex"><span class="right">✓ <strong>Though</strong> I was busy, I helped her. = <strong>Although</strong> I was busy, I helped her.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>✏️</span><h2>Önce / Sonra — Paragraf Yeniden Yazımı</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px">Bağlaçsız kısa cümleler → linking words ile akıcı paragraf</div>
+        <div class="rewrite-grid">
+          <div class="rewrite-col before">
+            <div class="rewrite-label">✗ Önce — Bağlaçsız</div>
+            <div class="rewrite-text">
+              I applied for the job. I updated my CV. I had little experience. I got an interview. The interview went well. The manager liked my attitude. I received an offer. I accepted it. I started last Monday.
+            </div>
+            <div class="rewrite-tr">Robot gibi duruyor — cümleler birbirinden kopuk.</div>
+          </div>
+          <div class="rewrite-col after">
+            <div class="rewrite-label">✓ Sonra — Linking words ile</div>
+            <div class="rewrite-text">
+              <span class="hl-seq">First</span>, I updated my CV and applied for the job.
+              <span class="hl-con">Although</span> I had little experience, I got an interview.
+              The interview went well, <span class="hl-add">and</span> the manager liked my attitude.
+              <span class="hl-cau">As a result</span>, I received an offer, <span class="hl-cau">so</span> I accepted it.
+              <span class="hl-seq">Finally</span>, I started last Monday.
+            </div>
+            <div class="rewrite-tr">Akıcı, profesyonel — okuyucu hikâyeyi kolayca takip eder.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Seyahat Planı</h2></div>
+      <div class="card-body">
+        <div class="legend">
+          <span><span class="hl-add">➕</span> ekleme</span>
+          <span><span class="hl-con">↔️</span> karşıtlık</span>
+          <span><span class="hl-cau">⚡</span> sebep-sonuç</span>
+          <span><span class="hl-seq">🔢</span> sıra</span>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-seq">First</span>, we need to decide on dates. <span class="hl-add">Also</span>, have you checked flight prices?</div>
+              <div class="bubble-tr">Önce tarihlere karar vermemiz lazım. Ayrıca uçak fiyatlarına baktın mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, I checked yesterday. They're quite high <span class="hl-cau">because</span> it's peak season.</div>
+              <div class="bubble-tr">Evet, dün baktım. Yoğun sezon olduğu için oldukça yüksek.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-con">However</span>, if we book early, we might get a discount. <span class="hl-add">Moreover</span>, the hotel has free cancellation.</div>
+              <div class="bubble-tr">Ancak erken rezervasyon yaparsak indirim alabiliriz. Üstelik otelin ücretsiz iptali var.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-con">Although</span> Rome is expensive, I really want to go. <span class="hl-con">Despite the cost</span>, it's worth it.</div>
+              <div class="bubble-tr">Roma pahalı olmasına rağmen gerçekten gitmek istiyorum. Maliyete rağmen buna değer.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">OK. <span class="hl-seq">Then</span> let's book the flights today. <span class="hl-seq">After that</span>, we can choose a hotel near the centre.</div>
+              <div class="bubble-tr">Tamam. O zaman bugün uçuşları ayıralım. Ondan sonra merkeze yakın bir otel seçeriz.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sounds good. I'll do it now, <span class="hl-cau">so</span> we don't miss the cheap seats.</div>
+              <div class="bubble-tr">Kulağa iyi geliyor. Ucuz koltukları kaçırmamak için hemen yapayım.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Doğru bağlacı seç — addition / contrast / cause / sequence</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I wanted to buy the jacket. <span class="blank"></span>, it was too expensive. (karşıtlık)<br>
+                <span class="pr-num">2.</span> <span class="blank"></span>, mix the flour and eggs. <span class="blank"></span>, add the milk. (sıra)<br>
+                <span class="pr-num">3.</span> She didn't come to work <span class="blank"></span> she was ill. (sebep)<br>
+                <span class="pr-num">4.</span> The report is ready. <span class="blank"></span>, I've attached the charts. (ekleme · resmi)<br>
+                <span class="pr-num">5.</span> He passed the exam <span class="blank"></span> he studied every day. (sebep)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> However / But &nbsp;
+                  <span class="a-num">2.</span> First, Then (veya Next) &nbsp;
+                  <span class="a-num">3.</span> because / since &nbsp;
+                  <span class="a-num">4.</span> Moreover / In addition / Furthermore &nbsp;
+                  <span class="a-num">5.</span> because / since
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Although / Despite / But — doğru yapıyı kur</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> <span class="blank"></span> the heavy traffic, we arrived on time.<br>
+                <span class="pr-num">2.</span> <span class="blank"></span> she is new, she learns very quickly.<br>
+                <span class="pr-num">3.</span> The food was good, <span class="blank"></span> the service was slow.<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> having no experience, he got the job.<br>
+                <span class="pr-num">5.</span> Rewrite: Although it rained, but we stayed outside. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Despite / In spite of &nbsp;
+                  <span class="a-num">2.</span> Although / Though &nbsp;
+                  <span class="a-num">3.</span> but / however &nbsp;
+                  <span class="a-num">4.</span> Despite / In spite of &nbsp;
+                  <span class="a-num">5.</span> Although it rained, we stayed outside. / It rained, but we stayed outside.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Despite he was late, the meeting started. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I was hungry so because I skipped lunch. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Although it was late, but we kept talking. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> First we arrived. Finally we checked in. Then we rested. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Despite being late / Despite his lateness / Although he was late &nbsp;
+                  <span class="a-num">2.</span> I was hungry because I skipped lunch. / I skipped lunch, so I was hungry. &nbsp;
+                  <span class="a-num">3.</span> Although it was late, we kept talking. / It was late, but we kept talking. &nbsp;
+                  <span class="a-num">4.</span> First we arrived. Then we checked in. Finally we rested.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Bağlaçsız cümleleri birleştir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> The project failed. We learned important lessons. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I love my job. The commute is very long. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Pack your bags. Go to the airport. Board the plane. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Sales dropped. The company cut costs. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> The project failed; however, we learned important lessons. / Although the project failed, we learned important lessons. &nbsp;
+                  <span class="a-num">2.</span> I love my job, but the commute is very long. / Although I love my job, the commute is very long. &nbsp;
+                  <span class="a-num">3.</span> First, pack your bags. Then, go to the airport. Finally, board the plane. &nbsp;
+                  <span class="a-num">4.</span> Sales dropped. As a result, the company cut costs. / Sales dropped, so the company cut costs.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">➕</span><span class="take-text"><strong>Ekleme:</strong> and, also, moreover, in addition, furthermore.</span></div>
+          <div class="take-item"><span class="take-ico">↔️</span><span class="take-text"><strong>Karşıtlık:</strong> but, however, although, though, despite/in spite of.</span></div>
+          <div class="take-item"><span class="take-ico">⚡</span><span class="take-text"><strong>Sebep:</strong> because, since. <strong>Sonuç:</strong> so, therefore, as a result.</span></div>
+          <div class="take-item"><span class="take-ico">🔢</span><span class="take-text"><strong>Sıra:</strong> first → then → next → finally; meanwhile = bu sırada.</span></div>
+          <div class="take-item"><span class="take-ico">🚨</span><span class="take-text"><strong>Although + but</strong> birlikte kullanılmaz. <strong>Despite + fiil</strong> yanlış.</span></div>
+          <div class="take-item"><span class="take-ico">✍️</span><span class="take-text">Linking words paragrafları <strong>akıcı ve profesyonel</strong> yapar.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">8 Cümlelik Paragraf — 6 Farklı Linker</span>
+            İş veya seyahat konusunda <strong>8 cümlelik</strong> bir paragraf yaz. En az <strong>6 farklı</strong> linking word kullan:<br>
+            <strong>1 ekleme</strong> (and / also / moreover) ·
+            <strong>1 karşıtlık</strong> (but / however / although / despite) ·
+            <strong>1 sebep</strong> (because / since) ·
+            <strong>1 sonuç</strong> (so / therefore / as a result) ·
+            <strong>2 sıra</strong> (first / then / finally / meanwhile)<br>
+            <span style="color:var(--ink-3)">Bonus: Paragrafını bir arkadaşına oku — bağlaçsız haliyle karşılaştır. Farkı duyuyor musun?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 17 / 25 &nbsp;·&nbsp; Ünite 4: İnce Ayrımlar</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="16.html">‹ Önceki: Ders 16</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="18.html">Sonraki: Ders 18 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

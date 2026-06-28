@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 19 — Dolaylı Anlatım (Reported Speech) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-verb  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-clause { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-dir  { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-rep  { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-tr   { color: var(--ink-3); font-size: 12px; }
+  .col-arrow { color: var(--ink-4); font-size: 14px; text-align: center; width: 28px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.say   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.tell  { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.ques  { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.cmd   { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.say  .use-title { color: var(--accent); }
+  .use-item.tell .use-title { color: var(--ok); }
+  .use-item.ques .use-title { color: var(--purple); }
+  .use-item.cmd  .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.say-head  { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.tell-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head  { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .say-cell  { background: #f7faff; }
+  .cmp-table .tell-cell { background: #f4fbf7; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-verb  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-clause { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-dir  { color: var(--accent); font-weight: 600; }
+  .hl-rep  { color: var(--ok); font-weight: 600; }
+  .hl-shift { color: var(--purple); font-weight: 600; }
+  .hl-time { color: var(--warn); font-weight: 600; }
+
+  .convert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .convert-col { padding: 8px 10px; border-radius: 8px; border: 0.5px solid var(--rule); }
+  .convert-col.direct { background: var(--accent-bg); border-color: #b3c9ef; }
+  .convert-col.reported { background: var(--ok-bg); border-color: #a8d4bc; }
+  .convert-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .convert-col.direct .convert-label { color: var(--accent); }
+  .convert-col.reported .convert-label { color: var(--ok); }
+  .convert-line { font-size: 12px; margin-bottom: 5px; line-height: 1.55; }
+  .convert-line:last-child { margin-bottom: 0; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .convert-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .convert-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 19 · Ünite 4</span>
+      <h1>Dolaylı Anlatım (Reported Speech)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> <span style="font-family:var(--mono)">tell</span> mutlaka <strong>nesne</strong> alır.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ He said me…</span><br>
+        <span class="right">✓ He told me… / He said that…</span>
+      </span><br>
+      Dolaylı anlatımda genelde <strong>zaman kayması</strong> (backshift) olur.
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 18</span>
+    <span class="recall-item"><strong>If clauses</strong> — koşul cümleleri</span>
+    <span class="recall-item"><strong>First conditional</strong> — If + present, will + V</span>
+    <span class="recall-item"><strong>Second conditional</strong> — If + past, would + V</span>
+    <span class="recall-item">If I <strong>have</strong> time, I <strong>will</strong> call you.</span>
+  </div>
+
+  <!-- Say vs Tell + Temel Yapı -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🗣️</span><h2>SAY vs TELL — Kural ve Örnekler</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="say-head">SAY</th>
+              <th class="tell-head">TELL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Yapı</td>
+              <td class="say-cell"><div class="cmp-ex">say (that) + cümle</div><div class="cmp-tr">that opsiyonel</div></td>
+              <td class="tell-cell"><div class="cmp-ex">tell + kişi + (that) + cümle</div><div class="cmp-tr">kişi zorunlu!</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Olumlu</td>
+              <td class="say-cell"><div class="cmp-ex">She <strong>said</strong> (that) she was tired.</div><div class="cmp-tr">Yorgun olduğunu söyledi.</div></td>
+              <td class="tell-cell"><div class="cmp-ex">She <strong>told me</strong> (that) she was tired.</div><div class="cmp-tr">Bana yorgun olduğunu söyledi.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Olumsuz</td>
+              <td class="say-cell"><div class="cmp-ex">He <strong>didn't say</strong> anything.</div></td>
+              <td class="tell-cell"><div class="cmp-ex">He <strong>didn't tell me</strong> the truth.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Soru</td>
+              <td class="say-cell"><div class="cmp-ex">What did she <strong>say</strong>?</div></td>
+              <td class="tell-cell"><div class="cmp-ex">What did she <strong>tell you</strong>?</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">YANLIŞ</td>
+              <td class="say-cell"><div class="cmp-ex" style="color:#c0392b">✗ said me · ✗ said you</div></td>
+              <td class="tell-cell"><div class="cmp-ex" style="color:var(--ok)">✓ told me · ✓ told her</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Hızlı kural:</strong> <span style="font-family:var(--mono)">say</span> = söylemek (genel) &nbsp;|&nbsp; <span style="font-family:var(--mono)">tell</span> = birine söylemek (hedef kişi şart). Ayrıca: <span style="font-family:var(--mono)">tell the truth / tell a story / tell a lie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Temel Yapı — Dolaylı Anlatım</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">Subject<small>He / She / They…</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-verb">said / told<small>geçmiş zaman</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-clause">(that) + cümle<small>zaman kayması</small></div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Düz cümle (statement)</div>
+          <span class="slot slot-subj">Özne</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-verb">said / told + kişi</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-clause">(that) + cümle</span>
+          <div class="struct-ex">She said (that) she was busy. · He told me (that) he would come.</div>
+        </div>
+
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item say">
+            <div class="use-title">Direct → Reported örneği</div>
+            <div class="use-ex"><span class="hl-dir">"I'm tired,"</span> she said.<br>→ She said <span class="hl-rep">(that) she was tired</span>.</div>
+            <div class="use-tr">"Yorgunum," dedi. → Yorgun olduğunu söyledi.</div>
+          </div>
+        </div>
+
+        <div class="rule-box">
+          <strong>Reporting verb</strong> genelde geçmişte: said, told, asked, explained, warned… Cümle içindeki zaman <strong>bir adım geriye</strong> kayar (backshift).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zaman Kayması + Zamir/Zaman -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⏪</span><h2>Zaman Kayması (Tense Backshift)</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Direct (doğrudan)</th>
+              <th></th>
+              <th>Reported (dolaylı)</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-dir">present simple</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">past simple</td>
+              <td class="col-tr">"I <strong>work</strong> here." → He said he <strong>worked</strong> there.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">present continuous</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">past continuous</td>
+              <td class="col-tr">"I <strong>am studying</strong>." → She said she <strong>was studying</strong>.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">present perfect</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">past perfect</td>
+              <td class="col-tr">"I <strong>have finished</strong>." → He said he <strong>had finished</strong>.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">past simple</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">past perfect</td>
+              <td class="col-tr">"I <strong>saw</strong> her." → He said he <strong>had seen</strong> her.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">will</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">would</td>
+              <td class="col-tr">"I <strong>will</strong> help." → She said she <strong>would</strong> help.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">can</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">could</td>
+              <td class="col-tr">"I <strong>can</strong> swim." → He said he <strong>could</strong> swim.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">may / might</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">might</td>
+              <td class="col-tr">"It <strong>may</strong> rain." → She said it <strong>might</strong> rain.</td>
+            </tr>
+            <tr>
+              <td class="col-dir">must</td>
+              <td class="col-arrow">→</td>
+              <td class="col-rep">had to</td>
+              <td class="col-tr">"I <strong>must</strong> go." → He said he <strong>had to</strong> go.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Backshift yok mu?</strong> Durum hâlâ geçerliyse kayma olmayabilir: "The Earth is round." → Scientists say (that) the Earth <strong>is</strong> round. (hâlâ doğru)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔄</span><h2>Zamir ve Zaman İfadeleri Değişimi</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Direct</th>
+              <th></th>
+              <th>Reported</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="col-dir">I / we</td><td class="col-arrow">→</td><td class="col-rep">he/she / they</td></tr>
+            <tr><td class="col-dir">my / our</td><td class="col-arrow">→</td><td class="col-rep">his/her / their</td></tr>
+            <tr><td class="col-dir">me / us</td><td class="col-arrow">→</td><td class="col-rep">him/her / them</td></tr>
+            <tr><td class="col-dir">you</td><td class="col-arrow">→</td><td class="col-rep">I / we / he/she (bağlama göre)</td></tr>
+            <tr><td class="col-dir">this / these</td><td class="col-arrow">→</td><td class="col-rep">that / those</td></tr>
+            <tr><td class="col-dir">here</td><td class="col-arrow">→</td><td class="col-rep">there</td></tr>
+            <tr><td class="col-dir">now</td><td class="col-arrow">→</td><td class="col-rep">then / at that moment</td></tr>
+            <tr><td class="col-dir">today</td><td class="col-arrow">→</td><td class="col-rep">that day</td></tr>
+            <tr><td class="col-dir">yesterday</td><td class="col-arrow">→</td><td class="col-rep">the day before / the previous day</td></tr>
+            <tr><td class="col-dir">tomorrow</td><td class="col-arrow">→</td><td class="col-rep">the next day / the following day</td></tr>
+            <tr><td class="col-dir">last week</td><td class="col-arrow">→</td><td class="col-rep">the week before</td></tr>
+            <tr><td class="col-dir">next week</td><td class="col-arrow">→</td><td class="col-rep">the following week</td></tr>
+            <tr><td class="col-dir">ago</td><td class="col-arrow">→</td><td class="col-rep">before / earlier</td></tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:8px;padding:8px 10px;background:var(--teal-bg);border-radius:7px;border:0.5px solid #a5f3fc;font-size:12px">
+          <strong style="color:var(--teal)">Örnek:</strong> "I'll see you <span class="hl-time">tomorrow</span> <span class="hl-time">here</span>."<br>
+          → She said she <span class="hl-shift">would</span> see me <span class="hl-time">the next day</span> <span class="hl-time">there</span>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sorular + Emirler -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>❓</span><h2>Dolaylı Sorular (Reported Questions)</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item ques">
+            <div class="use-title">Yes/No soruları</div>
+            <div class="use-kw">ask + if / whether + cümle</div>
+            <div class="use-ex">"Are you ready?" → He asked <strong>if I was ready</strong>.<br>"Do you like coffee?" → She asked <strong>whether I liked coffee</strong>.</div>
+            <div class="use-tr">Hazır mısın? → Hazır olup olmadığımı sordu.</div>
+          </div>
+          <div class="use-item ques">
+            <div class="use-title">Wh- soruları</div>
+            <div class="use-kw">ask + wh-word + özne + fiil</div>
+            <div class="use-ex">"Where do you live?" → He asked <strong>where I lived</strong>.<br>"What are you doing?" → She asked <strong>what I was doing</strong>.</div>
+            <div class="use-tr">Nerede yaşıyorsun? → Nerede yaşadığımı sordu.</div>
+          </div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Wh- soru — düz cümle sırası!</div>
+          <span class="slot slot-verb">asked</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-clause">where / what / when…</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-subj">özne</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-rest">fiil</span>
+          <div class="struct-ex">✓ where she lived &nbsp; ✗ where did she live &nbsp; ✗ where she did live</div>
+        </div>
+
+        <div class="rule-box">
+          <strong>3 kural:</strong> ① Soru işareti yok &nbsp; ② do/does/did kullanılmaz &nbsp; ③ Wh- soruda <strong>düz cümle kelime sırası</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📢</span><h2>Dolaylı Emir ve İstekler</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item cmd">
+            <div class="use-title">Emir (command)</div>
+            <div class="use-kw">tell + kişi + to + fiil</div>
+            <div class="use-ex">"Close the door!" → He told me <strong>to close the door</strong>.<br>"Don't be late!" → She told him <strong>not to be late</strong>.</div>
+            <div class="use-tr">Kapıyı kapat! → Bana kapıyı kapatmamı söyledi.</div>
+          </div>
+          <div class="use-item cmd">
+            <div class="use-title">Kibar istek (request)</div>
+            <div class="use-kw">ask + kişi + to + fiil</div>
+            <div class="use-ex">"Please help me." → She asked me <strong>to help her</strong>.<br>"Could you wait?" → He asked me <strong>to wait</strong>.</div>
+            <div class="use-tr">Lütfen bana yardım et. → Benden yardım etmemi istedi.</div>
+          </div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Olumsuz emir/istek</div>
+          <span class="slot slot-verb">told / asked</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-subj">kişi</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-rest">not to + fiil</span>
+          <div class="struct-ex">She told me not to worry. · He asked her not to tell anyone.</div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Özet:</strong> Emir → <span style="font-family:var(--mono)">tell + to</span> &nbsp;|&nbsp; İstek → <span style="font-family:var(--mono)">ask + to</span> &nbsp;|&nbsp; Olumsuz → <span style="font-family:var(--mono)">not to + V</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuzaklar -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 He said me — EN KRİTİK TUZAK</div>
+            <div class="trap-desc">Türkçe "bana dedi" kalıbından gelir. İngilizce'de <strong>say</strong> nesne almaz; <strong>tell</strong> alır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ He said me that he was tired.</span><br>
+              <span class="right">✓ He <strong>told me</strong> (that) he was tired. · He <strong>said</strong> (that) he was tired.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Backshift her zaman zorunlu değil</div>
+            <div class="trap-desc">Durum hâlâ geçerliyse veya genel gerçekse zaman kayması yapılmayabilir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She said the sun was a star. (genel gerçek — gereksiz kayma)</span><br>
+              <span class="right">✓ She said (that) the sun <strong>is</strong> a star. · She said she <strong>lives</strong> in Ankara. (hâlâ yaşıyor)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Dolaylı soruda soru kelime sırası</div>
+            <div class="trap-desc">Türkçe'de soru sırası yok; İngilizce dolaylı soruda <strong>düz cümle</strong> sırası kullanılır — do/does/did gelmez.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ He asked where did I live. · He asked where do I live.</span><br>
+              <span class="right">✓ He asked where I <strong>lived</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">that unutmak / tell without object</div>
+            <div class="trap-desc"><span style="font-family:var(--mono)">tell</span> mutlaka kişi ister. <span style="font-family:var(--mono)">that</span> opsiyonel ama cümle yapısını netleştirir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She told that she was leaving. · He told was tired.</span><br>
+              <span class="right">✓ She told <strong>us</strong> (that) she was leaving. · He said (that) he was tired.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Doğru karşılaştırma</div>
+            <div class="trap-desc">Direct: "I will call you tomorrow." → Reported:</div>
+            <div class="trap-ex"><span class="right">She said (that) she <strong>would call</strong> me <strong>the next day</strong>.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog Dönüşüm -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Diyalog Dönüşümü — Direct → Reported</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>doğrudan konuşma</strong> &nbsp;·&nbsp; 🟢 Yeşil = <strong>dolaylı anlatım</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>zaman kayması</strong>
+        </div>
+
+        <div class="dialogue" style="margin-bottom:14px">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">"<span class="hl-dir">I'm going to the party tonight</span>," said Anna.</div>
+              <div class="bubble-tr">"Bu gece partiye gidiyorum," dedi Anna.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">"<span class="hl-dir">Are you coming with me?</span>" she asked Tom.</div>
+              <div class="bubble-tr">"Benimle geliyor musun?" diye Tom'a sordu.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">"<span class="hl-dir">I can't — I have to work</span>," Tom replied.</div>
+              <div class="bubble-tr">"Gelemem — çalışmak zorundayım," diye cevap verdi Tom.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">"<span class="hl-dir">Please call me tomorrow</span>," Anna said.</div>
+              <div class="bubble-tr">"Lütfen yarın beni ara," dedi Anna.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="convert-grid">
+          <div class="convert-col direct">
+            <div class="convert-label">Direct (orijinal)</div>
+            <div class="convert-line">Anna: "I'm going to the party tonight."</div>
+            <div class="convert-line">Anna: "Are you coming with me?"</div>
+            <div class="convert-line">Tom: "I can't — I have to work."</div>
+            <div class="convert-line">Anna: "Please call me tomorrow."</div>
+          </div>
+          <div class="convert-col reported">
+            <div class="convert-label">Reported (dönüştürülmüş)</div>
+            <div class="convert-line">Anna said (that) she <span class="hl-shift">was going</span> to the party <span class="hl-time">that night</span>.</div>
+            <div class="convert-line">She asked Tom <span class="hl-rep">if he was coming</span> with her.</div>
+            <div class="convert-line">Tom said (that) he <span class="hl-shift">couldn't</span> — he <span class="hl-shift">had to</span> work.</div>
+            <div class="convert-line">Anna asked Tom <span class="hl-rep">to call her</span> <span class="hl-time">the next day</span>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) say mi, tell mi?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She <span class="blank"></span> me the news yesterday.<br>
+                <span class="pr-num">2.</span> He <span class="blank"></span> (that) he was sorry.<br>
+                <span class="pr-num">3.</span> What did she <span class="blank"></span> to you?<br>
+                <span class="pr-num">4.</span> Don't <span class="blank"></span> anyone our secret.<br>
+                <span class="pr-num">5.</span> The teacher <span class="blank"></span> (that) the exam was easy.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> told &nbsp; <span class="a-num">2.</span> said &nbsp; <span class="a-num">3.</span> say &nbsp; <span class="a-num">4.</span> tell &nbsp; <span class="a-num">5.</span> said
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Zaman kayması — dönüştür</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> "I <strong>work</strong> in a bank." → He said he <span class="blank"></span> in a bank.<br>
+                <span class="pr-num">2.</span> "I <strong>will</strong> call you." → She said she <span class="blank"></span> call me.<br>
+                <span class="pr-num">3.</span> "I <strong>can</strong> help." → He said he <span class="blank"></span> help.<br>
+                <span class="pr-num">4.</span> "I <strong>saw</strong> her yesterday." → He said he <span class="blank"></span> her the day before.<br>
+                <span class="pr-num">5.</span> "I <strong>am</strong> tired." → She said she <span class="blank"></span> tired.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> worked &nbsp; <span class="a-num">2.</span> would &nbsp; <span class="a-num">3.</span> could &nbsp; <span class="a-num">4.</span> had seen &nbsp; <span class="a-num">5.</span> was
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Dolaylı soru ve emir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> "Where do you live?" → He asked where I <span class="blank"></span>.<br>
+                <span class="pr-num">2.</span> "Are you OK?" → She asked if I <span class="blank"></span> OK.<br>
+                <span class="pr-num">3.</span> "Close the window!" → He told me <span class="blank"></span> the window.<br>
+                <span class="pr-num">4.</span> "Don't smoke here!" → She told him <span class="blank"></span> smoke there.<br>
+                <span class="pr-num">5.</span> "Please wait." → He asked me <span class="blank"></span>.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> lived &nbsp; <span class="a-num">2.</span> was &nbsp; <span class="a-num">3.</span> to close &nbsp; <span class="a-num">4.</span> not to &nbsp; <span class="a-num">5.</span> to wait
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She said me she was busy. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> He asked where did I live. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> She told that she was leaving. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> "I will come tomorrow." → He said he will come tomorrow. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> She told me she was busy. / She said (that) she was busy. &nbsp;
+                  <span class="a-num">2.</span> He asked where I lived. &nbsp;
+                  <span class="a-num">3.</span> She told us/me (that) she was leaving. &nbsp;
+                  <span class="a-num">4.</span> He said he would come the next day.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🗣️</span><span class="take-text"><strong>say</strong> = genel söylemek. <strong>tell</strong> = birine söylemek (kişi şart).</span></div>
+          <div class="take-item"><span class="take-ico">⏪</span><span class="take-text">Backshift: present→past, past→past perfect, <strong>will→would</strong>, <strong>can→could</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🔄</span><span class="take-text">Zamir ve zaman: today→that day, tomorrow→the next day, here→there.</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Soru: <strong>ask + if/whether</strong> veya <strong>ask + wh + düz sıra</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">📢</span><span class="take-text">Emir/istek: <strong>tell/ask + kişi + to + fiil</strong> (not to = olumsuz).</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Asla <strong>said me</strong> deme — <strong>told me</strong> veya <strong>said that</strong>.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">6 Satırlık Diyalog — Dolaylı Anlatıma Çevir</span>
+            İki arkadaş arasında kısa bir konuşma yaz (6 satır). Sonra tüm konuşmayı <strong>reported speech</strong> ile anlat:<br>
+            <strong>1.</strong> Bir düz cümle (said that…)<br>
+            <strong>2.</strong> Bir yes/no sorusu (asked if…)<br>
+            <strong>3.</strong> Bir wh- sorusu (asked where/when…)<br>
+            <strong>4.</strong> Bir emir (told … to…)<br>
+            <strong>5.</strong> Bir istek (asked … to…)<br>
+            <strong>6.</strong> Zaman ifadesi içeren cümle (tomorrow → the next day)<br>
+            <span style="color:var(--ink-3)">Bonus: Backshift yapmadan da yazabileceğin bir cümle ekle ve nedenini açıkla.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 19 / 25 &nbsp;·&nbsp; Ünite 4: İnce Ayrımlar</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="18.html">‹ Önceki: Ders 18</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="20.html">Sonraki: Ders 20 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 13 — Seyahat ve Yön Tarifi · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--purple); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .vocab-item { display: flex; align-items: baseline; gap: 6px; padding: 5px 8px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .vocab-en { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .vocab-tr { font-size: 11px; color: var(--ink-3); }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  .prep-hl { color: var(--purple); font-weight: 700; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.place   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.move    { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.trans   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.dir     { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.phrase  { background: var(--warn-bg); border-color: #f5c896; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.place  .use-title { color: var(--accent); }
+  .use-item.move   .use-title { color: var(--teal); }
+  .use-item.trans  .use-title { color: var(--ok); }
+  .use-item.dir    .use-title { color: var(--purple); }
+  .use-item.phrase .use-title { color: var(--warn); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.prep-head { background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.cat-head  { background: var(--bg-3); color: var(--ink-3); width: 90px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-prep  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .av-c { background: var(--warn-bg); color: var(--warn); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-dir  { color: var(--purple); font-weight: 600; }
+  .hl-prep { color: var(--teal); font-weight: 600; }
+  .hl-trav { color: var(--accent); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  .trans-chips { display:flex; flex-wrap:wrap; gap:5px; }
+  .trans-chip { padding:5px 10px; border-radius:16px; font-size:11px; font-family:var(--mono); font-weight:500; background:var(--ok-bg); color:var(--ok); border:0.5px solid #a8d4bc; }
+  .trans-chip .chip-tr { font-family:var(--sans); font-weight:400; color:var(--ink-3); margin-left:4px; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 13 · Ünite 3</span>
+      <h1>Seyahat ve Yön Tarifi</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">Ünite 3</span>
+        <span class="badge badge-level">A2–B1</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Araçlarda <strong>on</strong>, yürürken <strong>on foot</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ in the bus · arrive to</span><br>
+        <span class="right">✓ on the bus · arrive at</span>
+      </span><br>
+      Yön: <strong>turn left/right</strong> · <strong>go straight</strong>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders</span>
+    <span class="recall-item"><strong>countable / uncountable</strong> = sayılabilen / sayılamayan</span>
+    <span class="recall-item"><strong>some</strong> = olumlu · <strong>any</strong> = soru/olumsuz</span>
+    <span class="recall-item">Restoran: <strong>I'd like…</strong> · <strong>Can I have…?</strong></span>
+    <span class="recall-item">Can I have <strong>some</strong> water? · Do you have <strong>any</strong> sugar?</span>
+  </div>
+
+  <!-- Seyahat Kelimeleri + Ulaşım -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>✈️</span><h2>Seyahat Kelimeleri — Travel Vocabulary</h2></div>
+      <div class="card-body">
+        <div class="vocab-grid">
+          <div class="vocab-item"><span class="vocab-en">airport</span><span class="vocab-tr">havalimanı</span></div>
+          <div class="vocab-item"><span class="vocab-en">ticket</span><span class="vocab-tr">bilet</span></div>
+          <div class="vocab-item"><span class="vocab-en">passport</span><span class="vocab-tr">pasaport</span></div>
+          <div class="vocab-item"><span class="vocab-en">luggage</span><span class="vocab-tr">bagaj</span></div>
+          <div class="vocab-item"><span class="vocab-en">suitcase</span><span class="vocab-tr">bavul</span></div>
+          <div class="vocab-item"><span class="vocab-en">hotel</span><span class="vocab-tr">otel</span></div>
+          <div class="vocab-item"><span class="vocab-en">map</span><span class="vocab-tr">harita</span></div>
+          <div class="vocab-item"><span class="vocab-en">flight</span><span class="vocab-tr">uçuş</span></div>
+          <div class="vocab-item"><span class="vocab-en">gate</span><span class="vocab-tr">kapı (uçak)</span></div>
+          <div class="vocab-item"><span class="vocab-en">boarding pass</span><span class="vocab-tr">biniş kartı</span></div>
+          <div class="vocab-item"><span class="vocab-en">check-in</span><span class="vocab-tr">giriş / kayıt</span></div>
+          <div class="vocab-item"><span class="vocab-en">reservation</span><span class="vocab-tr">rezervasyon</span></div>
+          <div class="vocab-item"><span class="vocab-en">platform</span><span class="vocab-tr">peron</span></div>
+          <div class="vocab-item"><span class="vocab-en">departure</span><span class="vocab-tr">kalkış</span></div>
+          <div class="vocab-item"><span class="vocab-en">arrival</span><span class="vocab-tr">varış</span></div>
+          <div class="vocab-item"><span class="vocab-en">tourist</span><span class="vocab-tr">turist</span></div>
+        </div>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Luggage</strong> = sayılamayan (uncountable). Bavul sayısı için: <span style="font-family:var(--mono)">two suitcases / pieces of luggage</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🚌</span><h2>Ulaşım Araçları — Transportation</h2></div>
+      <div class="card-body">
+        <div class="trans-chips" style="margin-bottom:10px">
+          <span class="trans-chip">bus <span class="chip-tr">otobüs</span></span>
+          <span class="trans-chip">train <span class="chip-tr">tren</span></span>
+          <span class="trans-chip">taxi <span class="chip-tr">taksi</span></span>
+          <span class="trans-chip">metro <span class="chip-tr">metro</span></span>
+          <span class="trans-chip">tram <span class="chip-tr">tramvay</span></span>
+          <span class="trans-chip">plane <span class="chip-tr">uçak</span></span>
+          <span class="trans-chip">car <span class="chip-tr">araba</span></span>
+          <span class="trans-chip">bicycle <span class="chip-tr">bisiklet</span></span>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">by + araç (yöntem)</div>
+          <span class="slot slot-verb">go / travel</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-prep">by bus / train / car / plane</span>
+          <div class="struct-ex">I go to work by bus. · We travelled by train.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">on + araç (içinde)</div>
+          <span class="slot slot-verb">be / sit</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-prep">on the bus / train / plane</span>
+          <div class="struct-ex">She is on the bus. · We're on the train now.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">on foot (yürüyerek)</div>
+          <span class="slot slot-verb">go / walk</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-prep">on foot</span>
+          <div class="struct-ex">The hotel is near — let's go on foot. (by foot ✗)</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">in + araç (kapalı, küçük)</div>
+          <span class="slot slot-verb">be / sit</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-prep">in a taxi / car</span>
+          <div class="struct-ex">He's in a taxi. · We arrived in a car.</div>
+        </div>
+
+        <table class="conj-table" style="margin-top:6px">
+          <thead>
+            <tr><th>İfade</th><th>Örnek</th><th>Türkçe</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">take a bus</td>
+              <td class="col-pos">Take the number 42 bus.</td>
+              <td class="col-tr">Otobüse bin</td>
+            </tr>
+            <tr>
+              <td class="col-pro">catch a train</td>
+              <td class="col-pos">We need to catch the 9:15 train.</td>
+              <td class="col-tr">Trene yetiş</td>
+            </tr>
+            <tr>
+              <td class="col-pro">get on / off</td>
+              <td class="col-pos">Get on at the next stop. · Get off here.</td>
+              <td class="col-tr">Bin / in</td>
+            </tr>
+            <tr>
+              <td class="col-pro">change (trains)</td>
+              <td class="col-pos">You need to change at Central Station.</td>
+              <td class="col-tr">Aktarma yap</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edatlar -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📍</span><h2>Hareket ve Yer Edatları — at · in · on · to · from · through · across</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head">Edat</th>
+              <th class="prep-head">Kullanım</th>
+              <th class="prep-head">Seyahat Örnekleri</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">at</span></td>
+              <td><div class="cmp-ex">Belirli nokta / adres</div><div class="cmp-tr">Durak, havalimanı, otel girişi</div></td>
+              <td><div class="cmp-ex">at the airport · at the bus stop · at Gate 12</div><div class="cmp-tr">Havalimanında · Otobüs durağında</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">in</span></td>
+              <td><div class="cmp-ex">İçinde / şehir·ülke</div><div class="cmp-tr">Kapalı alan, büyük bölge</div></td>
+              <td><div class="cmp-ex">in London · in the hotel · in a taxi</div><div class="cmp-tr">Londra'da · Otelde · Takside</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">on</span></td>
+              <td><div class="cmp-ex">Üstünde / araçta</div><div class="cmp-tr">Yüzey veya toplu taşıma</div></td>
+              <td><div class="cmp-ex">on the bus · on the train · on the map</div><div class="cmp-tr">Otobüste · Trende · Haritada</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">to</span></td>
+              <td><div class="cmp-ex">Yönelim — nereye?</div><div class="cmp-tr">Hareket yönü</div></td>
+              <td><div class="cmp-ex">go to the airport · fly to Paris · walk to the hotel</div><div class="cmp-tr">Havalimanına git · Paris'e uç</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">from</span></td>
+              <td><div class="cmp-ex">Başlangıç — nereden?</div><div class="cmp-tr">Çıkış noktası</div></td>
+              <td><div class="cmp-ex">from Istanbul to London · a ticket from Ankara</div><div class="cmp-tr">İstanbul'dan Londra'ya</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">through</span></td>
+              <td><div class="cmp-ex">İçinden geçerek</div><div class="cmp-tr">Bir yerin ortasından</div></td>
+              <td><div class="cmp-ex">walk through the park · drive through the tunnel</div><div class="cmp-tr">Parkın içinden yürü · Tünelden geç</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell"><span class="prep-hl">across</span></td>
+              <td><div class="cmp-ex">Karşısına / bir uçtan bir uca</div><div class="cmp-tr">Geniş alanın öbür tarafına</div></td>
+              <td><div class="cmp-ex">walk across the street · go across the bridge</div><div class="cmp-tr">Caddenin karşısına geç · Köprünün karşısına git</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box" style="margin-top:8px">
+          <strong>arrive at</strong> (küçük yer: station, airport) · <strong>arrive in</strong> (şehir/ülke: London, Turkey) · <strong>get to</strong> = ulaşmak: <span style="font-family:var(--mono)">How do I get to the museum?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yön sorma + verme -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🗺️</span><h2>Yön Sorma — Asking for Directions</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr><th>Soru</th><th>Anlam</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-q">How do I get to…?</td>
+              <td class="col-tr">…'ya nasıl giderim?</td>
+            </tr>
+            <tr>
+              <td class="col-q">Where is…?</td>
+              <td class="col-tr">… nerede?</td>
+            </tr>
+            <tr>
+              <td class="col-q">How far is…?</td>
+              <td class="col-tr">… ne kadar uzakta?</td>
+            </tr>
+            <tr>
+              <td class="col-q">Is it far from here?</td>
+              <td class="col-tr">Buradan uzak mı?</td>
+            </tr>
+            <tr>
+              <td class="col-q">Can you show me on the map?</td>
+              <td class="col-tr">Haritada gösterebilir misiniz?</td>
+            </tr>
+            <tr>
+              <td class="col-q">Excuse me, I'm lost.</td>
+              <td class="col-tr">Affedersiniz, kayboldum.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Which way to the station?</td>
+              <td class="col-tr">İstasyona hangi yönden?</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>➡️</span><h2>Yön Verme — Giving Directions</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item dir">
+            <div class="use-title">Düz git</div>
+            <div class="use-ex">Go straight. · Go straight ahead. · Keep going.</div>
+            <div class="use-tr">Düz git. · Düz devam et.</div>
+          </div>
+          <div class="use-item dir">
+            <div class="use-title">Dön</div>
+            <div class="use-ex">Turn left. · Turn right. · Take the first left.</div>
+            <div class="use-tr">Sola dön. · Sağa dön. · İlk soldan dön.</div>
+          </div>
+          <div class="use-item place">
+            <div class="use-title">Konum</div>
+            <div class="use-ex">It's next to the bank. · It's opposite the café. · It's between the park and the school.</div>
+            <div class="use-tr">Bankanın yanında. · Kafenin karşısında.</div>
+          </div>
+          <div class="use-item place">
+            <div class="use-title">Mesafe</div>
+            <div class="use-ex">It's about 5 minutes on foot. · It's not far. · It's on your left.</div>
+            <div class="use-tr">Yürüyerek yaklaşık 5 dakika. · Uzak değil.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:6px;padding:8px 10px;background:var(--purple-bg);border-radius:7px;border:0.5px solid #c9b8ef;font-size:12px;line-height:1.8">
+          <span style="font-family:var(--mono);color:var(--purple)">Go straight</span> →
+          <span style="font-family:var(--mono);color:var(--purple)">turn right</span> →
+          <span style="font-family:var(--mono);color:var(--purple)">it's on your left</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Faydalı ifadeler + tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Faydalı Seyahat İfadeleri</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item phrase">
+            <div class="use-title">🎫 Rezervasyon / Bilet</div>
+            <div class="use-ex">I'd like to book a room. · Do you have any rooms available?<br>I need a return ticket to Ankara. · A single / return ticket, please.</div>
+            <div class="use-tr">Oda ayırtmak istiyorum. · Müsait oda var mı?<br>Ankara'ya gidiş-dönüş bilet.</div>
+          </div>
+          <div class="use-item phrase">
+            <div class="use-title">🏨 Check-in</div>
+            <div class="use-ex">I have a reservation under the name Yılmaz.<br>What time is check-in? · Here's my passport.</div>
+            <div class="use-tr">Yılmaz adına rezervasyonum var.<br>Giriş saati kaç? · İşte pasaportum.</div>
+          </div>
+          <div class="use-item phrase">
+            <div class="use-title">✈️ Havalimanı</div>
+            <div class="use-ex">Where is gate 7? · My flight is delayed.<br>Where can I find my luggage? · Is this the right platform?</div>
+            <div class="use-tr">7 numaralı kapı nerede? · Uçuşum rötarlı.<br>Bagajımı nerede bulurum?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 in the bus vs on the bus</div>
+            <div class="trap-desc">Türkçe "otobüste" deriz; İngilizce'de toplu taşımada (bus, train, plane) <strong>on</strong> kullanılır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I'm in the bus. · She is in the train.</span><br>
+              <span class="right">✓ I'm on the bus. · She is on the train.</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">arrive to vs arrive at / in</div>
+            <div class="trap-desc">Arrive'dan sonra <strong>to gelmez</strong>. Küçük yer = at, şehir/ülke = in.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ We arrived to the airport. · I arrived to London.</span><br>
+              <span class="right">✓ We arrived at the airport. · I arrived in London.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">go with foot / by foot</div>
+            <div class="trap-desc">Yürüyerek = sabit ifade: <strong>on foot</strong> (by foot değil).</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I go with foot. · Let's go by foot.</span><br>
+              <span class="right">✓ I go on foot. · It's 10 minutes on foot.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">by bus vs in the bus</div>
+            <div class="trap-desc"><strong>by bus</strong> = yöntem (nasıl gidiyorsun). <strong>on the bus</strong> = şu an otobüstesin.</div>
+            <div class="trap-ex">
+              <span class="right">I go to school <strong>by bus</strong>. (yöntem)</span><br>
+              <span class="right">I am <strong>on the bus</strong> now. (konum)</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ get to = arrive at/in (günlük dil)</div>
+            <div class="trap-desc">"How do I get to…?" çok doğal. "How do I arrive to…?" yanlış.</div>
+            <div class="trap-ex"><span class="right">How do I <strong>get to</strong> the hotel? · When did you <strong>get to</strong> the airport?</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Kayıp Turist (Havalimanı + Sokak)</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>seyahat kelimesi</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>yön ifadesi</strong> &nbsp;·&nbsp; 🩵 Turkuaz = <strong>edat</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble right">
+            <div class="avatar av-b">T</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Excuse me. Where is <span class="hl-trav">gate</span> 12? I can't find it on the <span class="hl-trav">map</span>.</div>
+              <div class="bubble-tr">Affedersiniz. 12 numaralı kapı nerede? Haritada bulamıyorum.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-dir">Go straight</span> and <span class="hl-dir">turn left</span> after the café. Gate 12 is <span class="hl-prep">next to</span> the information desk.</div>
+              <div class="bubble-tr">Düz gidin ve kafeden sonra sola dönün. 12 numaralı kapı bilgi masasının yanında.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">T</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-dir">How far is</span> it from here? My <span class="hl-trav">flight</span> leaves in 20 minutes.</div>
+              <div class="bubble-tr">Buradan ne kadar uzak? Uçuşum 20 dakika içinde kalkıyor.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">It's about 3 minutes <span class="hl-prep">on foot</span>. Don't worry — you're <span class="hl-prep">at</span> the right terminal.</div>
+              <div class="bubble-tr">Yürüyerek yaklaşık 3 dakika. Endişelenmeyin — doğru terminaldesiniz.</div>
+            </div>
+          </div>
+          <div style="border-top:0.5px dashed var(--rule);margin:6px 0;padding-top:8px;font-size:10px;color:var(--ink-4);text-align:center">— Birkaç gün sonra, şehir merkezinde —</div>
+          <div class="bubble right">
+            <div class="avatar av-c">T</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sorry, I'm lost. <span class="hl-dir">How do I get to</span> the <span class="hl-trav">hotel</span> "Blue Star"?</div>
+              <div class="bubble-tr">Özür dilerim, kayboldum. Blue Star oteline nasıl giderim?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">L</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-dir">Go straight</span> <span class="hl-prep">across</span> the square. <span class="hl-dir">Turn right</span> <span class="hl-prep">at</span> the traffic lights. The hotel is <span class="hl-prep">opposite</span> the <span class="hl-trav">train</span> station.</div>
+              <div class="bubble-tr">Meydanın karşısından düz gidin. Trafik ışıklarında sağa dönün. Otel tren istasyonunun karşısında.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-c">T</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Can I take a <span class="hl-trav">bus</span> there? Or should I walk?</div>
+              <div class="bubble-tr">Oraya otobüsle gidebilir miyim? Yoksa yürümeli miyim?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">L</div>
+            <div class="bubble-text">
+              <div class="bubble-en">You can take bus number 5. Get <span class="hl-prep">off</span> at the third stop. Or it's 8 minutes <span class="hl-prep">on foot</span> — not far!</div>
+              <div class="bubble-tr">5 numaralı otobüse binebilirsiniz. Üçüncü durakta inin. Ya da yürüyerek 8 dakika — uzak değil!</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-c">T</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thank you so much! I'll go <span class="hl-prep">on foot</span> — I need some exercise after the <span class="hl-trav">flight</span>.</div>
+              <div class="bubble-tr">Çok teşekkürler! Yürüyeceğim — uçuştan sonra biraz hareket etmem lazım.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Edat — at / in / on / to / from</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> We arrived <span class="blank"></span> the airport at 6.<br>
+                <span class="pr-num">2.</span> She lives <span class="blank"></span> Istanbul.<br>
+                <span class="pr-num">3.</span> He's <span class="blank"></span> the train right now.<br>
+                <span class="pr-num">4.</span> How do I get <span class="blank"></span> the museum?<br>
+                <span class="pr-num">5.</span> A ticket <span class="blank"></span> Ankara to Izmir.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> at &nbsp; <span class="a-num">2.</span> in &nbsp; <span class="a-num">3.</span> on &nbsp; <span class="a-num">4.</span> to &nbsp; <span class="a-num">5.</span> from
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Ulaşım — by / on / in / on foot</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I go to work <span class="blank"></span> bus.<br>
+                <span class="pr-num">2.</span> We're <span class="blank"></span> a taxi.<br>
+                <span class="pr-num">3.</span> The hotel is close — let's go <span class="blank"></span>.<br>
+                <span class="pr-num">4.</span> She is <span class="blank"></span> the plane.<br>
+                <span class="pr-num">5.</span> They travelled <span class="blank"></span> train.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> by &nbsp; <span class="a-num">2.</span> in &nbsp; <span class="a-num">3.</span> on foot &nbsp; <span class="a-num">4.</span> on &nbsp; <span class="a-num">5.</span> by
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I arrived to London. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> She is in the bus. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Let's go by foot. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Turn to left at the corner. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I arrived in London. &nbsp; <span class="a-num">2.</span> She is on the bus. &nbsp; <span class="a-num">3.</span> Let's go on foot. &nbsp; <span class="a-num">4.</span> Turn left at the corner.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Yön tarifi — tamamla</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> (düz git) → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> The bank is <span class="blank"></span> the post office. (yanında)<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> do I get to the station?<br>
+                <span class="pr-num">4.</span> Walk <span class="blank"></span> the street. (karşıya)<br>
+                <span class="pr-num">5.</span> It's 5 minutes <span class="blank"></span>. (yürüyerek)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Go straight. / Go straight ahead. &nbsp; <span class="a-num">2.</span> next to &nbsp; <span class="a-num">3.</span> How &nbsp; <span class="a-num">4.</span> across &nbsp; <span class="a-num">5.</span> on foot
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">✈️</span><span class="take-text">Temel kelimeler: <strong>airport, ticket, passport, luggage, hotel, map</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🚌</span><span class="take-text"><strong>by bus</strong> = yöntem · <strong>on the bus</strong> = konum · <strong>on foot</strong> = yürüyerek.</span></div>
+          <div class="take-item"><span class="take-ico">📍</span><span class="take-text"><strong>at</strong> nokta · <strong>in</strong> şehir/iç · <strong>on</strong> araç/yüzey · <strong>to/from</strong> yön.</span></div>
+          <div class="take-item"><span class="take-ico">🗺️</span><span class="take-text">Sor: <strong>How do I get to…?</strong> · <strong>Where is…?</strong> · <strong>How far is…?</strong></span></div>
+          <div class="take-item"><span class="take-ico">➡️</span><span class="take-text">Söyle: <strong>Go straight</strong> · <strong>turn left/right</strong> · <strong>next to / opposite</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text"><strong>arrive at/in</strong> (to değil!) · <strong>on the bus</strong> (in değil!).</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🗺️</span>
+          <div class="mission-body">
+            <span class="m-title">Evinden Yakındaki Bir Yere Yön Tarifi</span>
+            Evinden yakındaki bir yere (market, okul, park, eczane…) <strong>6 cümlelik</strong> İngilizce yön tarifi yaz. Şunları kullan:<br>
+            <strong>1.</strong> Go straight… &nbsp; <strong>2.</strong> Turn left/right… &nbsp; <strong>3.</strong> It's next to / opposite…<br>
+            <strong>4.</strong> How far…? veya It's X minutes on foot. &nbsp; <strong>5–6.</strong> by bus / on foot / get to<br>
+            <span style="color:var(--ink-3)">Bonus: Bir arkadaşına sesli anlat ve "arrive at" ile "get to" farkını göster.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 13 / 25 &nbsp;·&nbsp; Ünite 3: Kelimeler Dünyası</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="12.html">‹ Önceki: Ders 12</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="14.html">Sonraki: Ders 14 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

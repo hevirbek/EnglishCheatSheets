@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 10 — Modals: Can, Must, Should · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-modal { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.ability   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.perm      { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.poss      { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.past      { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.oblig     { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-item.prohib    { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.no-oblig  { background: var(--bg-2); border-color: var(--rule); }
+  .use-item.advice    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.ability  .use-title { color: var(--accent); }
+  .use-item.perm     .use-title { color: var(--ok); }
+  .use-item.poss     .use-title { color: var(--teal); }
+  .use-item.past     .use-title { color: var(--purple); }
+  .use-item.oblig    .use-title { color: var(--rose); }
+  .use-item.prohib   .use-title { color: var(--warn); }
+  .use-item.no-oblig .use-title { color: var(--ink-2); }
+  .use-item.advice   .use-title { color: var(--ok); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.can-head  { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.must-head { background: var(--rose-bg); color: var(--rose); }
+  .cmp-table th.shd-head  { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head  { background: var(--bg-3); color: var(--ink-3); width: 110px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .can-cell  { background: #f7faff; }
+  .cmp-table .must-cell { background: #fff5f7; }
+  .cmp-table .shd-cell  { background: #f4fbf7; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-modal { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-neg   { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-q     { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-can  { color: var(--accent); font-weight: 600; }
+  .hl-must { color: var(--rose); font-weight: 600; }
+  .hl-shd  { color: var(--ok); font-weight: 600; }
+  .hl-have { color: var(--warn); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 10 · Ünite 2</span>
+      <h1>Modals: Can, Must, Should</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A2</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Modal'dan sonra <strong>to yok</strong>, fiil <strong>yalın</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ I must to go</span><br>
+        <span class="right">✓ I must go</span>
+      </span><br>
+      İstisna: <strong>have to</strong> (have + to + fiil)
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders</span>
+    <span class="recall-item"><strong>will</strong> = anlık karar / tahmin</span>
+    <span class="recall-item"><strong>going to</strong> = plan / kanıta dayalı tahmin</span>
+    <span class="recall-item">Plans vs <strong>spontaneous</strong> decisions</span>
+    <span class="recall-item">I'm going to study. vs I'll help you!</span>
+  </div>
+
+  <!-- Yapı + CAN -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Modal Yapısı — Özne + Modal + Yalın Fiil</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">Subject<small>I / You / He…</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-modal">can / must / should<small>modal (değişmez!)</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-verb">BASE verb<small>yalın fiil</small></div>
+        </div>
+
+        <div class="rule-box">
+          <strong>3 altın kural:</strong> ① Modal'dan sonra <strong>to yok</strong> (have to hariç) &nbsp; ② Fiile <strong>-s eklenmez</strong> (He can swim ✓) &nbsp; ③ Modal <strong>he/she/it ile değişmez</strong> (He can ✓ · He cans ✗)
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I</td>
+              <td class="col-pos">I <span class="verb-hl">can</span> swim</td>
+              <td class="col-neg">I can't swim</td>
+              <td class="col-q">Can I swim?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">You</td>
+              <td class="col-pos">You <span class="verb-hl">must</span> go</td>
+              <td class="col-neg">You mustn't go</td>
+              <td class="col-q">Must you go?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He/She/It</td>
+              <td class="col-pos">She <span class="verb-hl">should</span> rest</td>
+              <td class="col-neg">She shouldn't rest</td>
+              <td class="col-q">Should she rest?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">We</td>
+              <td class="col-pos">We <span class="verb-hl">can</span> help</td>
+              <td class="col-neg">We can't help</td>
+              <td class="col-q">Can we help?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">They</td>
+              <td class="col-pos">They <span class="verb-hl">have to</span> work</td>
+              <td class="col-neg">They don't have to work</td>
+              <td class="col-q">Do they have to work?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-modal">modal</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-verb">yalın fiil</span>
+            <div class="struct-ex">I can speak English. · You must wear a seatbelt.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-neg">modal + not</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-verb">yalın fiil</span>
+            <div class="struct-ex">can't · mustn't · shouldn't · don't have to</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru</div>
+            <span class="slot slot-q">Modal</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-verb">yalın fiil?</span>
+            <div class="struct-ex">Can you help? · Must I pay? · Should we leave?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>💪</span><h2>CAN / CAN'T / COULD — Yetenek, İzin, Olasılık</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item ability">
+            <div class="use-title">💪 Yetenek (ability)</div>
+            <div class="use-kw">can / can't</div>
+            <div class="use-ex">I can swim. · She can't drive.</div>
+            <div class="use-tr">Yüzebilirim. · O araba kullanamaz.</div>
+          </div>
+          <div class="use-item perm">
+            <div class="use-title">🚪 İzin (permission)</div>
+            <div class="use-kw">Can I…? · You can…</div>
+            <div class="use-ex">Can I sit here? — Yes, you can.</div>
+            <div class="use-tr">Buraya oturabilir miyim? — Evet, oturabilirsin.</div>
+          </div>
+          <div class="use-item poss">
+            <div class="use-title">🌧 Olasılık (possibility)</div>
+            <div class="use-kw">can · It can rain…</div>
+            <div class="use-ex">It can get very hot in July.</div>
+            <div class="use-tr">Temmuz'da çok sıcak olabilir.</div>
+          </div>
+          <div class="use-item past">
+            <div class="use-title">🕐 COULD — Geçmiş yetenek / kibar istek</div>
+            <div class="use-kw">could · Could you…?</div>
+            <div class="use-ex">I could run fast when I was young.<br>Could you open the window, please?</div>
+            <div class="use-tr">Gençken hızlı koşabilirdim.<br>Pencereyi açar mısınız lütfen?</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:4px">
+          <strong>Can vs Could:</strong> <span style="font-family:var(--mono)">Can you help?</span> = normal istek &nbsp;|&nbsp; <span style="font-family:var(--mono)">Could you help?</span> = daha kibar / resmi
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MUST + SHOULD -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>MUST / MUSTN'T / HAVE TO / DON'T HAVE TO</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item oblig">
+            <div class="use-title">🔴 Zorunluluk — MUST</div>
+            <div class="use-kw">must · kesin kural / iç ses</div>
+            <div class="use-ex">You must wear a seatbelt.<br>I must finish this today.</div>
+            <div class="use-tr">Emniyet kemeri takmalısın. (kural)<br>Bunu bugün bitirmeliyim. (iç zorunluluk)</div>
+          </div>
+          <div class="use-item oblig">
+            <div class="use-title">🏢 Dış zorunluluk — HAVE TO</div>
+            <div class="use-kw">have to / has to · dış kural</div>
+            <div class="use-ex">I have to work at 8. (boss)<br>She has to wear a uniform.</div>
+            <div class="use-tr">Saat 8'de çalışmak zorundayım. (patron)<br>Üniforma giymek zorunda.</div>
+          </div>
+          <div class="use-item prohib">
+            <div class="use-title">🚫 Yasak — MUSTN'T</div>
+            <div class="use-kw">mustn't = yasak!</div>
+            <div class="use-ex">You mustn't smoke here.<br>Students mustn't use phones in class.</div>
+            <div class="use-tr">Burada sigara içemezsin. (yasak)<br>Öğrenciler derste telefon kullanamaz.</div>
+          </div>
+          <div class="use-item no-oblig">
+            <div class="use-title">✅ Zorunlu değil — DON'T HAVE TO</div>
+            <div class="use-kw">don't have to = seçenek var</div>
+            <div class="use-ex">You don't have to come. (optional)<br>We don't have to pay today.</div>
+            <div class="use-tr">Gelmek zorunda değilsin. (isteğe bağlı)<br>Bugün ödemek zorunda değiliz.</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px;border-left-color:var(--rose);background:var(--rose-bg)">
+          <strong style="color:var(--rose)">⚠️ KRİTİK:</strong> <span style="font-family:var(--mono)">mustn't</span> ≠ <span style="font-family:var(--mono)">don't have to</span><br>
+          <span style="font-family:var(--mono)">mustn't</span> = yasak (yapma!) &nbsp;|&nbsp; <span style="font-family:var(--mono)">don't have to</span> = zorunlu değil (istersen yapma)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>💡</span><h2>SHOULD / SHOULDN'T — Tavsiye, Öneri</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item advice">
+            <div class="use-title">💡 Tavsiye (advice / recommendation)</div>
+            <div class="use-kw">should · shouldn't · You should…</div>
+            <div class="use-ex">You should drink more water.<br>You shouldn't eat so much sugar.<br>We should leave early tomorrow.</div>
+            <div class="use-tr">Daha fazla su içmelisin. (tavsiye)<br>Bu kadar şeker yememelisin.<br>Yarın erken çıkmalıyız.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px;padding:8px 10px;background:var(--bg-2);border-radius:7px;border:0.5px solid var(--rule)">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Güç sıralaması</div>
+          <div style="font-size:12px;line-height:1.8">
+            <span style="color:var(--rose);font-weight:600">MUST</span> (zorunlu / kural) &nbsp;→&nbsp;
+            <span style="color:var(--ok);font-weight:600">SHOULD</span> (tavsiye / iyi fikir) &nbsp;→&nbsp;
+            <span style="color:var(--accent);font-weight:600">CAN</span> (yapabilirsin / izin)
+          </div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:4px">
+            You <strong>must</strong> take this medicine. (doktor emri) vs You <strong>should</strong> rest. (tavsiye) vs You <strong>can</strong> go home now. (izin)
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Must vs Should tavsiyede:</strong> Doktor "You must stop smoking" derse = ciddi uyarı. "You should exercise" = iyi fikir, zorunlu değil.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Karşılaştırma tablosu -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>CAN vs MUST vs SHOULD — Büyük Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="can-head">CAN / CAN'T</th>
+              <th class="must-head">MUST / MUSTN'T</th>
+              <th class="shd-head">SHOULD / SHOULDN'T</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Anlam</td>
+              <td class="can-cell"><div class="cmp-ex">Yetenek, izin, olasılık</div><div class="cmp-tr">-ebilir / yapabilirsin</div></td>
+              <td class="must-cell"><div class="cmp-ex">Zorunluluk veya yasak</div><div class="cmp-tr">-meli / -memeli (kesin)</div></td>
+              <td class="shd-cell"><div class="cmp-ex">Tavsiye, öneri</div><div class="cmp-tr">-meli (yumuşak tavsiye)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Güç</td>
+              <td class="can-cell"><div class="cmp-ex">Nötr — seçenek var</div></td>
+              <td class="must-cell"><div class="cmp-ex">Güçlü — kural / emir</div></td>
+              <td class="shd-cell"><div class="cmp-ex">Orta — iyi fikir</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek</td>
+              <td class="can-cell"><div class="cmp-ex" style="color:var(--accent)">I can speak Turkish.</div><div class="cmp-tr">Türkçe konuşabilirim.</div></td>
+              <td class="must-cell"><div class="cmp-ex" style="color:var(--rose)">You must be quiet.</div><div class="cmp-tr">Sessiz olmalısın. (zorunlu)</div></td>
+              <td class="shd-cell"><div class="cmp-ex" style="color:var(--ok)">You should study more.</div><div class="cmp-tr">Daha çok çalışmalısın. (tavsiye)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Olumsuz</td>
+              <td class="can-cell"><div class="cmp-ex" style="color:var(--accent)">I can't come.</div><div class="cmp-tr">Gelemem. (yetenek/izin yok)</div></td>
+              <td class="must-cell"><div class="cmp-ex" style="color:var(--rose)">You mustn't park here.</div><div class="cmp-tr">Buraya park edemezsin. (yasak)</div></td>
+              <td class="shd-cell"><div class="cmp-ex" style="color:var(--ok)">You shouldn't skip breakfast.</div><div class="cmp-tr">Kahvaltıyı atlamamalısın.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Soru</td>
+              <td class="can-cell"><div class="cmp-ex" style="color:var(--accent)">Can you help me?</div><div class="cmp-tr">Bana yardım edebilir misin?</div></td>
+              <td class="must-cell"><div class="cmp-ex" style="color:var(--rose)">Must I pay now?</div><div class="cmp-tr">Şimdi ödemek zorunda mıyım?</div></td>
+              <td class="shd-cell"><div class="cmp-ex" style="color:var(--ok)">Should we wait?</div><div class="cmp-tr">Beklemeli miyiz?</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Kısa cevap</td>
+              <td class="can-cell"><div class="cmp-ex">Yes, I can. / No, I can't.</div></td>
+              <td class="must-cell"><div class="cmp-ex">Yes, you must. / No, you mustn't.</div></td>
+              <td class="shd-cell"><div class="cmp-ex">Yes, you should. / No, you shouldn't.</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sorular + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>❓</span><h2>Soru Kalıpları — Can / Must / Should</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Soru</th>
+              <th>Anlam</th>
+              <th>Örnek cevap</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-q">Can you…?</td>
+              <td class="col-tr">…yapabilir misin? (istek/izin)</td>
+              <td class="col-pos">Sure! / Sorry, I can't.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Could you…?</td>
+              <td class="col-tr">…yapar mısınız? (kibar)</td>
+              <td class="col-pos">Of course. / I'm afraid not.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Can I…?</td>
+              <td class="col-tr">…yapabilir miyim? (izin isteği)</td>
+              <td class="col-pos">Yes, you can. / No, you can't.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Must I…?</td>
+              <td class="col-tr">…mek zorunda mıyım?</td>
+              <td class="col-pos">Yes, you must. / No, you don't have to.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Do I have to…?</td>
+              <td class="col-tr">…mek zorunda mıyım? (dış kural)</td>
+              <td class="col-pos">Yes, you do. / No, you don't.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Should we…?</td>
+              <td class="col-tr">…meli miyiz? (tavsiye sor)</td>
+              <td class="col-pos">Yes, we should. / No, we shouldn't.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:7px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          <strong style="color:var(--accent)">Not:</strong> <span style="font-family:var(--mono)">have to</span> soruda <strong>do/does</strong> alır: <span style="font-family:var(--mono)">Do you have to work tomorrow?</span> — Modal gibi başa gelmez.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 mustn't vs don't have to — EN KRİTİK TUZAK</div>
+            <div class="trap-desc">Türkçe "-memelisin" hem yasak hem "zorunda değilsin" anlamına gelebilir. İngilizce'de tamamen farklı!</div>
+            <div class="trap-ex">
+              <span class="right">✓ You <strong>mustn't</strong> tell anyone. = Kimseye söyleme! (yasak)</span><br>
+              <span class="right">✓ You <strong>don't have to</strong> tell anyone. = Söylemek zorunda değilsin. (isteğe bağlı)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Modal'dan sonra "to" eklemek</div>
+            <div class="trap-desc">Must, can, should'dan sonra to gelmez. Sadece have to'da to vardır (çünkü have fiili + to).</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I must to go. · She can to swim.</span><br>
+              <span class="right">✓ I must go. · She can swim. · I have to go. ✓</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">can vs must karıştırmak</div>
+            <div class="trap-desc">Can = yapabilirsin (yetenek/izin). Must = yapmalısın (zorunluluk). Türkçe "-ebilir" ile "-meli" karıştırılmamalı.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ You can study harder. (tavsiye için)</span><br>
+              <span class="right">✓ You should study harder. (tavsiye) · You must wear a helmet. (kural)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">He cans / He can swims</div>
+            <div class="trap-desc">Modal'dan sonra fiil her zaman yalın — he/she/it için -s eklenmez.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ He cans play. · She can speaks English.</span><br>
+              <span class="right">✓ He can play. · She can speak English.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Must I…? cevabında don't have to kullan</div>
+            <div class="trap-desc">"Must I come?" sorusuna "No, you mustn't" demek yasak anlamına gelir! Doğrusu:</div>
+            <div class="trap-ex"><span class="right">Must I come? — No, you <strong>don't have to</strong>. (Gelmek zorunda değilsin.)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Doktorda Tavsiye</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>can</strong> &nbsp;·&nbsp; 🔴 Kırmızı = <strong>must / mustn't</strong> &nbsp;·&nbsp; 🟢 Yeşil = <strong>should</strong> &nbsp;·&nbsp; 🟠 Turuncu = <strong>have to</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good morning. What <span class="hl-can">can</span> I do for you?</div>
+              <div class="bubble-tr">Günaydın. Size nasıl yardımcı olabilirim?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-can">can't</span> sleep well. I <span class="hl-have">have to</span> wake up at 5 every day for work.</div>
+              <div class="bubble-tr">İyi uyuyamıyorum. İş için her gün saat 5'te kalkmak zorundayım.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I see. You <span class="hl-shd">should</span> avoid coffee after 4 pm. And you <span class="hl-shd">shouldn't</span> use your phone in bed.</div>
+              <div class="bubble-tr">Anlıyorum. Saat 16'dan sonra kahve içmemelisiniz. Ve yatakta telefon kullanmamalısınız.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-shd">Should</span> I take any medicine? <span class="hl-can">Can</span> I buy it at the pharmacy?</div>
+              <div class="bubble-tr">İlaç almalı mıyım? Eczaneden alabilir miyim?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, you <span class="hl-shd">should</span> take this tablet before bed. You <span class="hl-must">mustn't</span> drive after taking it — it's dangerous.</div>
+              <div class="bubble-tr">Evet, bu tableti yatmadan önce almalısınız. Aldıktan sonra araba kullanamazsınız — tehlikeli.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-must">Must</span> I come back next week?</div>
+              <div class="bubble-tr">Gelecek hafta geri gelmek zorunda mıyım?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">No, you <span class="hl-have">don't have to</span> come if you feel better. But you <span class="hl-shd">should</span> call me if the problem continues.</div>
+              <div class="bubble-tr">Hayır, kendinizi iyi hissediyorsanız gelmek zorunda değilsiniz. Ama sorun devam ederse beni aramalısınız.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thank you, doctor. <span class="hl-can">Could</span> you write the prescription, please?</div>
+              <div class="bubble-tr">Teşekkürler doktor. Reçeteyi yazar mısınız lütfen?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) can / must / should — doğru modalı seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> You <span class="blank"></span> wear a helmet on a motorbike. (kural)<br>
+                <span class="pr-num">2.</span> I <span class="blank"></span> speak three languages. (yetenek)<br>
+                <span class="pr-num">3.</span> You <span class="blank"></span> eat more vegetables. (tavsiye)<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> I use your phone? (izin isteği)<br>
+                <span class="pr-num">5.</span> We <span class="blank"></span> be at the airport at 6. (zorunluluk)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> must &nbsp; <span class="a-num">2.</span> can &nbsp; <span class="a-num">3.</span> should &nbsp; <span class="a-num">4.</span> Can &nbsp; <span class="a-num">5.</span> must / have to
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) mustn't mi, don't have to mu?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> You <span class="blank"></span> smoke in hospitals. (yasak)<br>
+                <span class="pr-num">2.</span> You <span class="blank"></span> bring food — lunch is free. (zorunlu değil)<br>
+                <span class="pr-num">3.</span> Students <span class="blank"></span> cheat in exams. (yasak)<br>
+                <span class="pr-num">4.</span> You <span class="blank"></span> pay — it's a free event. (zorunlu değil)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> mustn't &nbsp; <span class="a-num">2.</span> don't have to &nbsp; <span class="a-num">3.</span> mustn't &nbsp; <span class="a-num">4.</span> don't have to
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She must to study. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> He cans swim very well. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> You should to rest. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Can she speaks English? → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> She must study. &nbsp; <span class="a-num">2.</span> He can swim very well. &nbsp; <span class="a-num">3.</span> You should rest. &nbsp; <span class="a-num">4.</span> Can she speak English?
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Soru oluştur veya tamamla</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> (you / help / me) → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> (we / leave / early) → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Must I pay now? — No, you <span class="blank"></span>.<br>
+                <span class="pr-num">4.</span> You mustn't run here. = Burada <span class="blank"></span>.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Can you help me? / Could you help me? &nbsp; <span class="a-num">2.</span> Should we leave early? &nbsp; <span class="a-num">3.</span> don't have to &nbsp; <span class="a-num">4.</span> koşamazsın / koşmamalısın (yasak)
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text">Yapı: <strong>özne + modal + yalın fiil</strong> (to yok, -s yok).</span></div>
+          <div class="take-item"><span class="take-ico">💪</span><span class="take-text"><strong>Can</strong> = yetenek, izin, olasılık. <strong>Could</strong> = kibar istek.</span></div>
+          <div class="take-item"><span class="take-ico">🔴</span><span class="take-text"><strong>Must</strong> = zorunlu. <strong>Mustn't</strong> = yasak. <strong>Have to</strong> = dış kural.</span></div>
+          <div class="take-item"><span class="take-ico">✅</span><span class="take-text"><strong>Don't have to</strong> = zorunlu değil (mustn't değil!).</span></div>
+          <div class="take-item"><span class="take-ico">💡</span><span class="take-text"><strong>Should</strong> = tavsiye. Must'tan daha yumuşak.</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Soru: <strong>Modal + özne + fiil?</strong> (have to → Do you have to…?)</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">İngilizce Öğrenme Tavsiye Sütunu</span>
+            Bir arkadaşına İngilizce öğrenmesi için <strong>5 tavsiye</strong> yaz. Her cümlede farklı bir modal kullan:<br>
+            <strong>1.</strong> You <strong>should</strong> practise every day.<br>
+            <strong>2.</strong> You <strong>must</strong> make mistakes — it's normal!<br>
+            <strong>3.</strong> You <strong>can</strong> watch films with subtitles.<br>
+            <strong>4.</strong> You <strong>shouldn't</strong> be afraid to speak.<br>
+            <strong>5.</strong> You <strong>mustn't</strong> give up after one bad day.<br>
+            <span style="color:var(--ink-3)">Bonus: Kendi 5 cümleni yaz ve mustn't ile don't have to farkını göster.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 10 / 25 &nbsp;·&nbsp; Ünite 2: Hayat Akıyor</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="9.html">‹ Önceki: Ders 9</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="../3/11.html">Sonraki: Ders 11 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

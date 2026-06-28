@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 11 — Vücudumuz ve Sağlık Dili · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-there { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .fs-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-noun  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-quant { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+
+  .vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 6px; }
+  .vocab-item { padding: 7px 8px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); text-align: center; }
+  .vocab-ico { font-size: 22px; line-height: 1.2; margin-bottom: 3px; }
+  .vocab-en { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--ink); }
+  .vocab-tr { font-size: 10px; color: var(--ink-3); margin-top: 1px; }
+
+  .symptom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .symptom-item { padding: 7px 10px; border-radius: 6px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .symptom-en { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--rose); }
+  .symptom-tr { font-size: 11px; color: var(--ink-3); }
+  .symptom-ex { font-size: 11px; color: var(--ink-2); margin-top: 2px; font-style: italic; }
+
+  .phrase-list { display: flex; flex-direction: column; gap: 5px; }
+  .phrase-row { display: flex; gap: 8px; padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); align-items: flex-start; }
+  .phrase-en { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--accent); flex: 1; }
+  .phrase-tr { font-size: 11px; color: var(--ink-3); flex: 1; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.count-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.uncount-head { background: var(--rose-bg); color: var(--rose); }
+  .cmp-table th.both-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.singular { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.plural   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.negative { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.question { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.singular .use-title { color: var(--teal); }
+  .use-item.plural   .use-title { color: var(--accent); }
+  .use-item.negative .use-title { color: var(--warn); }
+  .use-item.question .use-title { color: var(--purple); }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-there { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .slot-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-noun  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-quant { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-there { color: var(--teal); font-weight: 600; }
+  .hl-quant { color: var(--warn); font-weight: 600; }
+  .hl-shd   { color: var(--ok); font-weight: 600; }
+  .hl-must  { color: var(--rose); font-weight: 600; }
+  .hl-have  { color: var(--warn); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .symptom-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 11 · Ünite 3</span>
+      <h1>Vücudumuz ve Sağlık Dili</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A2</span>
+        <span class="badge badge-level">Kelime + Gramer</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Semptom için <strong>I have a…</strong> veya <strong>My … hurts</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ I have headache</span><br>
+        <span class="right">✓ I have <strong>a</strong> headache</span>
+      </span><br>
+      Çoğul insan: <strong>many people</strong> (much people ✗)
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 10 hatırlat</span>
+    <span class="recall-item"><strong>can / must / should</strong> + yalın fiil</span>
+    <span class="recall-item"><strong>mustn't</strong> = yasak</span>
+    <span class="recall-item"><strong>don't have to</strong> = zorunlu değil</span>
+    <span class="recall-item">You <strong>should</strong> rest. · You <strong>mustn't</strong> smoke.</span>
+  </div>
+
+  <!-- Vücut + Semptomlar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🧍</span><h2>Vücut Bölümleri — Body Parts</h2></div>
+      <div class="card-body">
+        <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-ico">🧠</div><div class="vocab-en">head</div><div class="vocab-tr">baş, kafa</div></div>
+          <div class="vocab-item"><div class="vocab-ico">😊</div><div class="vocab-en">face</div><div class="vocab-tr">yüz</div></div>
+          <div class="vocab-item"><div class="vocab-ico">👁️</div><div class="vocab-en">eye</div><div class="vocab-tr">göz</div></div>
+          <div class="vocab-item"><div class="vocab-ico">👂</div><div class="vocab-en">ear</div><div class="vocab-tr">kulak</div></div>
+          <div class="vocab-item"><div class="vocab-ico">👃</div><div class="vocab-en">nose</div><div class="vocab-tr">burun</div></div>
+          <div class="vocab-item"><div class="vocab-ico">👄</div><div class="vocab-en">mouth</div><div class="vocab-tr">ağız</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🦷</div><div class="vocab-en">tooth</div><div class="vocab-tr">diş</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🫁</div><div class="vocab-en">neck</div><div class="vocab-tr">boyun</div></div>
+          <div class="vocab-item"><div class="vocab-ico">💪</div><div class="vocab-en">arm</div><div class="vocab-tr">kol</div></div>
+          <div class="vocab-item"><div class="vocab-ico">✋</div><div class="vocab-en">hand</div><div class="vocab-tr">el</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🫃</div><div class="vocab-en">stomach</div><div class="vocab-tr">karın, mide</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🫀</div><div class="vocab-en">chest</div><div class="vocab-tr">göğüs</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🔙</div><div class="vocab-en">back</div><div class="vocab-tr">sırt</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🦵</div><div class="vocab-en">leg</div><div class="vocab-tr">bacak</div></div>
+          <div class="vocab-item"><div class="vocab-ico">🦶</div><div class="vocab-en">foot</div><div class="vocab-tr">ayak</div></div>
+          <div class="vocab-item"><div class="vocab-ico">❤️</div><div class="vocab-en">heart</div><div class="vocab-tr">kalp</div></div>
+        </div>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Çoğul:</strong> foot → <strong>feet</strong> · tooth → <strong>teeth</strong> · My <strong>feet</strong> hurt. (ayaklarım ağrıyor)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🤒</span><h2>Semptomlar ve Hastalıklar</h2></div>
+      <div class="card-body">
+        <div class="symptom-grid">
+          <div class="symptom-item">
+            <div class="symptom-en">headache</div>
+            <div class="symptom-tr">baş ağrısı</div>
+            <div class="symptom-ex">I have a headache.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">fever</div>
+            <div class="symptom-tr">ateş</div>
+            <div class="symptom-ex">She has a fever.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">cough</div>
+            <div class="symptom-tr">öksürük</div>
+            <div class="symptom-ex">I have a bad cough.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">sore throat</div>
+            <div class="symptom-tr">boğaz ağrısı</div>
+            <div class="symptom-ex">My throat hurts.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">tired</div>
+            <div class="symptom-tr">yorgun</div>
+            <div class="symptom-ex">I feel tired.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">sick / ill</div>
+            <div class="symptom-tr">hasta</div>
+            <div class="symptom-ex">I feel sick today.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">a cold</div>
+            <div class="symptom-tr">soğuk algınlığı</div>
+            <div class="symptom-ex">I have a cold.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">the flu</div>
+            <div class="symptom-tr">grip</div>
+            <div class="symptom-ex">He has the flu.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">dizzy</div>
+            <div class="symptom-tr">baş dönmesi</div>
+            <div class="symptom-ex">I feel dizzy.</div>
+          </div>
+          <div class="symptom-item">
+            <div class="symptom-en">pain / ache</div>
+            <div class="symptom-tr">ağrı</div>
+            <div class="symptom-ex">I have pain in my back.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doktorda -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🏥</span><h2>Doktorda — Temel İfadeler</h2></div>
+      <div class="card-body">
+        <div class="phrase-list">
+          <div class="phrase-row">
+            <div class="phrase-en">I have a headache / fever / cold.</div>
+            <div class="phrase-tr">Baş ağrım / ateşim / nezlem var.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">My head / arm / stomach hurts.</div>
+            <div class="phrase-tr">Başım / kolum / karnım ağrıyor.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">I feel tired / sick / dizzy.</div>
+            <div class="phrase-tr">Yorgun / hasta / başım dönüyor hissediyorum.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">It hurts when I cough / breathe.</div>
+            <div class="phrase-tr">Öksürünce / nefes alınca acıyor.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">I need to see a doctor.</div>
+            <div class="phrase-tr">Doktora gitmem lazım.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">Take this medicine twice a day.</div>
+            <div class="phrase-tr">Bu ilacı günde iki kez al.</div>
+          </div>
+          <div class="phrase-row">
+            <div class="phrase-en">Get some rest. / Drink lots of water.</div>
+            <div class="phrase-tr">Dinlen. / Bol su iç.</div>
+          </div>
+        </div>
+        <div class="rule-box" style="margin-top:8px">
+          <strong>3 kalıp:</strong> ① <strong>I have a +</strong> hastalık (a headache, a cold) &nbsp; ② <strong>My + vücut + hurts</strong> &nbsp; ③ <strong>I feel + sıfat</strong> (tired, sick, dizzy)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- There is/are -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📍</span><h2>There Is / There Are — Var / Yok</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-there">There is / There are<small>var</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-noun">noun<small>isim</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Tekil → There is (There's):</strong> There's a doctor. · There's a pain in my back.<br>
+          <strong>Çoğul → There are:</strong> There are many patients. · There are two tablets left.
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Form</th>
+              <th>Örnek (sağlık)</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pos">There's a…</td>
+              <td class="col-pro">There's a pharmacy near here.</td>
+              <td class="col-tr">Yakında bir eczane var.</td>
+            </tr>
+            <tr>
+              <td class="col-pos">There are…</td>
+              <td class="col-pro">There are many people in the waiting room.</td>
+              <td class="col-tr">Bekleme odasında çok insan var.</td>
+            </tr>
+            <tr>
+              <td class="col-neg">There isn't…</td>
+              <td class="col-pro">There isn't any medicine left.</td>
+              <td class="col-tr">Hiç ilaç kalmadı.</td>
+            </tr>
+            <tr>
+              <td class="col-neg">There aren't…</td>
+              <td class="col-pro">There aren't any free beds.</td>
+              <td class="col-tr">Boş yatak yok.</td>
+            </tr>
+            <tr>
+              <td class="col-q">Is there…?</td>
+              <td class="col-pro">Is there a doctor here?</td>
+              <td class="col-tr">Burada doktor var mı?</td>
+            </tr>
+            <tr>
+              <td class="col-q">Are there…?</td>
+              <td class="col-pro">Are there any side effects?</td>
+              <td class="col-tr">Yan etki var mı?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:8px">
+          <div class="struct-row">
+            <div class="struct-label">Olumlu tekil</div>
+            <span class="slot slot-there">There is / There's</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-noun">a doctor</span>
+            <div class="struct-ex">There's a pain in my stomach.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumlu çoğul</div>
+            <span class="slot slot-there">There are</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-noun">many patients</span>
+            <div class="struct-ex">There are some tablets in the box.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔢</span><h2>Quantifiers — Miktar Belirteçleri</h2></div>
+      <div class="card-body">
+        <div class="rule-box">
+          <strong>Sayılabilir (countable):</strong> people, tablets, doctors, days<br>
+          <strong>Sayılamaz (uncountable):</strong> water, medicine, pain, time, money
+        </div>
+
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head">Kelime</th>
+              <th class="count-head">Sayılabilir ✓</th>
+              <th class="uncount-head">Sayılamaz ✓</th>
+              <th class="cat-head">Kural</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">many</td>
+              <td><div class="cmp-ex">many people</div><div class="cmp-tr">çok insan</div></td>
+              <td style="color:var(--rose)"><div class="cmp-ex">✗ much people</div></td>
+              <td class="col-tr">Olumsuz/soruda çoğul</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">much</td>
+              <td style="color:var(--rose)"><div class="cmp-ex">✗ much tablets</div></td>
+              <td><div class="cmp-ex">much pain</div><div class="cmp-tr">çok ağrı</div></td>
+              <td class="col-tr">Olumsuz/soruda (a lot of tercih)</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">a lot of</td>
+              <td><div class="cmp-ex">a lot of patients</div></td>
+              <td><div class="cmp-ex">a lot of medicine</div></td>
+              <td class="col-tr">Her ikisi — olumlu cümle</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">some</td>
+              <td><div class="cmp-ex">some tablets</div></td>
+              <td><div class="cmp-ex">some water</div></td>
+              <td class="col-tr">Olumlu cümle</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">any</td>
+              <td><div class="cmp-ex">any doctors?</div></td>
+              <td><div class="cmp-ex">any medicine?</div></td>
+              <td class="col-tr">Olumsuz + soru</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">a few</td>
+              <td><div class="cmp-ex">a few days</div><div class="cmp-tr">birkaç gün</div></td>
+              <td style="color:var(--rose)"><div class="cmp-ex">✗ a few water</div></td>
+              <td class="col-tr">Az sayıda (çoğul)</td>
+            </tr>
+            <tr>
+              <td class="cat-cell">a little</td>
+              <td style="color:var(--rose)"><div class="cmp-ex">✗ a little tablets</div></td>
+              <td><div class="cmp-ex">a little rest</div><div class="cmp-tr">biraz dinlenme</div></td>
+              <td class="col-tr">Az miktar (tekil)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="uses-grid" style="margin-top:8px">
+          <div class="use-item singular">
+            <div class="use-title">There is + a little / some</div>
+            <div class="use-ex">There's a little medicine left.<br>There's some pain in my leg.</div>
+            <div class="use-tr">Biraz ilaç kaldı. · Bacağımda biraz ağrı var.</div>
+          </div>
+          <div class="use-item plural">
+            <div class="use-title">There are + many / a few / some</div>
+            <div class="use-ex">There are many patients today.<br>There are a few tablets in the box.</div>
+            <div class="use-tr">Bugün çok hasta var. · Kutuda birkaç tablet var.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuzaklar -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 ache vs pain — baş ağrısı nasıl söylenir?</div>
+            <div class="trap-desc">Türkçe "başım ağrıyor" → İngilizce'de genelde bileşik isim veya <strong>My head hurts</strong>. "I have pain in my head" doğru ama doğal değil.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I have pain in head. · I have headache.</span><br>
+              <span class="right">✓ I have <strong>a headache</strong>. · My head <strong>hurts</strong>. · I have <strong>a stomach ache</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 have vs has — semptomlarda çekim</div>
+            <div class="trap-desc">He/She/It ile <strong>has</strong> kullan — have değil!</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She have a fever. · He have a cough.</span><br>
+              <span class="right">✓ She <strong>has</strong> a fever. · He <strong>has</strong> a cough. · I/You/We/They <strong>have</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">much people — EN yaygın quantifier hatası</div>
+            <div class="trap-desc"><strong>People</strong> sayılabilir (çoğul). Much sadece sayılamaz isimlerle.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ There are much people in the hospital.</span><br>
+              <span class="right">✓ There are <strong>many</strong> people. · There's <strong>a lot of</strong> medicine.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">There is + çoğul isim</div>
+            <div class="trap-desc">Çoğul isim → <strong>There are</strong> (There is değil).</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ There is many doctors here.</span><br>
+              <span class="right">✓ There <strong>are</strong> many doctors here.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ some vs any kuralı</div>
+            <div class="trap-desc">Olumlu → some · Olumsuz/soru → any</div>
+            <div class="trap-ex">
+              <span class="right">There are <strong>some</strong> pills. · There aren't <strong>any</strong> pills. · Are there <strong>any</strong> side effects?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Doktorda</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 <strong>there is/are</strong> &nbsp;·&nbsp; 🟠 <strong>quantifiers</strong> &nbsp;·&nbsp; 🟢 <strong>should</strong> &nbsp;·&nbsp; 🔴 <strong>mustn't</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good morning. What's the problem?</div>
+              <div class="bubble-tr">Günaydın. Sorun nedir?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I have a headache and I feel dizzy. My throat hurts too.</div>
+              <div class="bubble-tr">Baş ağrım var ve başım dönüyor. Boğazım da ağrıyor.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I see. <span class="hl-there">Is there</span> <span class="hl-quant">any</span> fever?</div>
+              <div class="bubble-tr">Anlıyorum. Ateş var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, I think so. <span class="hl-there">There are</span> <span class="hl-quant">a lot of</span> people sick at my office this week.</div>
+              <div class="bubble-tr">Evet, sanırım. Bu hafta ofisimde çok kişi hasta.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">It sounds like a cold. You <span class="hl-shd">should</span> rest for <span class="hl-quant">a few</span> days. Drink <span class="hl-quant">a lot of</span> water.</div>
+              <div class="bubble-tr">Soğuk algınlığı gibi. Birkaç gün dinlenmelisin. Bol su iç.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Do I need medicine? <span class="hl-there">Is there</span> <span class="hl-quant">any</span> pharmacy near the hospital?</div>
+              <div class="bubble-tr">İlaç gerekir mi? Hastanenin yakınında eczane var mı?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes. <span class="hl-there">There's</span> one across the street. Take <span class="hl-quant">some</span> of these tablets. You <span class="hl-must">mustn't</span> drive after taking them.</div>
+              <div class="bubble-tr">Evet. Karşıda bir tane var. Şu tabletlerden al. Aldıktan sonra araba kullanamazsın.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">P</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-there">Are there</span> <span class="hl-quant">any</span> side effects?</div>
+              <div class="bubble-tr">Yan etki var mı?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">Dr</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-there">There isn't</span> <span class="hl-quant">much</span> risk, but you may feel <span class="hl-quant">a little</span> tired. You <span class="hl-have">don't have to</span> come back if you feel better.</div>
+              <div class="bubble-tr">Çok risk yok ama biraz yorgun hissedebilirsin. İyileşirsen geri gelmek zorunda değilsin.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Sağlık ifadeleri — tamamla</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I <span class="blank"></span> a headache. (baş ağrısı var)<br>
+                <span class="pr-num">2.</span> My arm <span class="blank"></span>. (kolum ağrıyor)<br>
+                <span class="pr-num">3.</span> She <span class="blank"></span> a fever. (ateşi var)<br>
+                <span class="pr-num">4.</span> I feel <span class="blank"></span>. (yorgunum)<br>
+                <span class="pr-num">5.</span> He has a bad <span class="blank"></span>. (öksürük)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> have &nbsp; <span class="a-num">2.</span> hurts &nbsp; <span class="a-num">3.</span> has &nbsp; <span class="a-num">4.</span> tired &nbsp; <span class="a-num">5.</span> cough
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) There is / There are</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> <span class="blank"></span> a doctor in this clinic.<br>
+                <span class="pr-num">2.</span> <span class="blank"></span> many patients today.<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> there any medicine left?<br>
+                <span class="pr-num">4.</span> There <span class="blank"></span> any free appointments.<br>
+                <span class="pr-num">5.</span> There's a pain <span class="blank"></span> my back.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> There's / There is &nbsp; <span class="a-num">2.</span> There are &nbsp; <span class="a-num">3.</span> Is &nbsp; <span class="a-num">4.</span> aren't &nbsp; <span class="a-num">5.</span> in
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Quantifiers — doğru kelimeyi seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> There are <span class="blank"></span> people in the waiting room.<br>
+                <span class="pr-num">2.</span> I need <span class="blank"></span> water, please.<br>
+                <span class="pr-num">3.</span> There aren't <span class="blank"></span> tablets left.<br>
+                <span class="pr-num">4.</span> Rest for <span class="blank"></span> days.<br>
+                <span class="pr-num">5.</span> There's <span class="blank"></span> pain in my leg.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> many / a lot of &nbsp; <span class="a-num">2.</span> some / a little &nbsp; <span class="a-num">3.</span> any &nbsp; <span class="a-num">4.</span> a few &nbsp; <span class="a-num">5.</span> a little / some
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She have a cold. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> There is many doctors. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I have pain in my head. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> There are much medicine. → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> Are there some side effects? → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> She has a cold. &nbsp; <span class="a-num">2.</span> There are many doctors. &nbsp; <span class="a-num">3.</span> I have a headache. / My head hurts. &nbsp; <span class="a-num">4.</span> There is a lot of medicine. / There isn't much medicine. &nbsp; <span class="a-num">5.</span> Are there any side effects?
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🧍</span><span class="take-text"><strong>I have a +</strong> hastalık · <strong>My … hurts</strong> · <strong>I feel +</strong> sıfat.</span></div>
+          <div class="take-item"><span class="take-ico">📍</span><span class="take-text"><strong>There's</strong> (tekil) · <strong>There are</strong> (çoğul) — var/yok sormak için.</span></div>
+          <div class="take-item"><span class="take-ico">🔢</span><span class="take-text"><strong>many/a few</strong> = sayılabilir · <strong>much/a little</strong> = sayılamaz.</span></div>
+          <div class="take-item"><span class="take-ico">✅</span><span class="take-text"><strong>some</strong> olumlu · <strong>any</strong> olumsuz/soru · <strong>a lot of</strong> her ikisi.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">She <strong>has</strong> (have değil) · <strong>many people</strong> (much değil).</span></div>
+          <div class="take-item"><span class="take-ico">💡</span><span class="take-text">Ders 10: <strong>should</strong> rest · <strong>mustn't</strong> drive · <strong>don't have to</strong> come back.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">Bugün Nasıl Hissediyorsun + Odanda Ne Var?</span>
+            İngilizce <strong>6 cümle</strong> yaz:<br>
+            <strong>3 cümle</strong> — bugün nasıl hissettiğini anlat (<em>I feel…, I have a…, My … hurts</em>)<br>
+            <strong>3 cümle</strong> — odanda ne olduğunu <strong>there is/are</strong> ile anlat (<em>There's a…, There are some…, There isn't any…</em>)<br>
+            <span style="color:var(--ink-3)">Bonus: En az bir quantifier kullan (some, many, a few, a little).</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 11 / 25 &nbsp;·&nbsp; Ünite 3: Kelimeler Dünyası</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="../2/10.html">‹ Önceki: Ders 10</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="12.html">Sonraki: Ders 12 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

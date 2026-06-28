@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 23 — Yazma: Paragraf ve Kompozisyon · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-topic { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-sup   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-con   { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-type { font-weight: 600; color: var(--accent); font-size: 12px; }
+  .col-pos  { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .col-tr   { color: var(--ink-3); font-size: 11px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.opinion  { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.advdis   { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.probsol  { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.formal   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.informal { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.opinion  .use-title { color: var(--accent); }
+  .use-item.advdis   .use-title { color: var(--teal); }
+  .use-item.probsol  .use-title { color: var(--warn); }
+  .use-item.formal   .use-title { color: var(--ok); }
+  .use-item.informal .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-topic { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-sup   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-con   { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-link  { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; line-height: 1.7; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .para-box { padding: 10px 12px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); font-size: 13px; line-height: 1.85; color: var(--ink); }
+  .para-tr { font-size: 11px; color: var(--ink-3); margin-top: 8px; padding-top: 8px; border-top: 0.5px dashed var(--rule); line-height: 1.65; }
+  .para-legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11px; color: var(--ink-3); margin-bottom: 10px; padding: 5px 10px; background: var(--bg-2); border-radius: 6px; border: 0.5px solid var(--rule); }
+
+  .hl-topic { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .hl-sup   { color: var(--ok); font-weight: 600; }
+  .hl-con   { color: var(--purple); font-weight: 600; }
+  .hl-add   { color: var(--ok); font-weight: 600; }
+  .hl-con2  { color: var(--rose); font-weight: 600; }
+  .hl-cau   { color: var(--warn); font-weight: 600; }
+  .hl-seq   { color: var(--teal); font-weight: 600; }
+
+  .rewrite-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rewrite-col { padding: 10px 12px; border-radius: 8px; border: 0.5px solid var(--rule); }
+  .rewrite-col.before { background: var(--rose-bg); border-color: #fecdd3; }
+  .rewrite-col.after  { background: var(--ok-bg); border-color: #a8d4bc; }
+  .rewrite-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .rewrite-col.before .rewrite-label { color: var(--rose); }
+  .rewrite-col.after  .rewrite-label { color: var(--ok); }
+  .rewrite-text { font-size: 12px; line-height: 1.75; color: var(--ink); }
+
+  .outline-box { padding: 8px 10px; background: var(--bg-2); border-radius: 7px; border: 0.5px solid var(--rule); font-size: 12px; line-height: 1.8; font-family: var(--mono); }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .rewrite-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .rewrite-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 23 · Ünite 5</span>
+      <h1>Yazma: Paragraf ve Kompozisyon</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1–B2</span>
+        <span class="badge badge-level">Yazma Becerisi</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Bir paragraf = <strong>tek ana fikir</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ 5 konu, 1 paragraf</span><br>
+        <span class="right">✓ 1 konu + 3–4 destek cümlesi</span>
+      </span><br>
+      Her paragrafın <strong>topic sentence</strong>'ı olmalı.
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 22</span>
+    <span class="recall-item"><strong>Listening strategies:</strong> predict · gist · detail · note-taking</span>
+    <span class="recall-item"><strong>Clarification:</strong> Sorry, could you repeat that?</span>
+    <span class="recall-item">What do you mean by…? · Could you speak more slowly?</span>
+    <span class="recall-item">Dinleme becerileri yazmada da işe yarar: ana fikir → outline</span>
+  </div>
+
+  <!-- Paragraf yapısı + Essay türleri -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📐</span><h2>Paragraf Yapısı — Topic · Supporting · Concluding</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-topic">Topic Sentence<small>ana fikir</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-sup">Supporting × 2–4<small>kanıt / örnek</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-con">Concluding<small>özet / sonuç</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Altın kural:</strong> Bir paragraf = bir ana fikir. Yeni konu → yeni paragraf. Topic sentence genelde <strong>ilk cümle</strong>dir; bazen son cümlede de olabilir (deductive vs inductive).
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Bölüm</th>
+              <th>Görevi</th>
+              <th>Örnek ifadeler</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-type" style="color:var(--accent)">Topic sentence</td>
+              <td class="col-tr">Paragrafın ana fikrini söyler</td>
+              <td class="col-pos">Learning English is essential today.</td>
+            </tr>
+            <tr>
+              <td class="col-type" style="color:var(--ok)">Supporting sentences</td>
+              <td class="col-tr">Kanıt, örnek, açıklama, istatistik</td>
+              <td class="col-pos">First… · For example… · Moreover…</td>
+            </tr>
+            <tr>
+              <td class="col-type" style="color:var(--purple)">Concluding sentence</td>
+              <td class="col-tr">Ana fikri özetler / sonuç çıkarır</td>
+              <td class="col-pos">In conclusion… · Therefore… · To sum up…</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Standart paragraf akışı</div>
+            <span class="slot slot-topic">Topic</span>
+            <span class="slot-sep">→</span>
+            <span class="slot slot-sup">Support 1</span>
+            <span class="slot-sep">→</span>
+            <span class="slot slot-sup">Support 2</span>
+            <span class="slot-sep">→</span>
+            <span class="slot slot-con">Conclusion</span>
+            <div class="struct-ex">Her destek cümlesi topic sentence'ı güçlendirmeli — alakasız detay ekleme.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📝</span><h2>Essay Türleri — Kısa Genel Bakış</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item opinion">
+            <div class="use-title">💭 Opinion Essay (Görüş)</div>
+            <div class="use-kw">I believe · In my view · It seems to me</div>
+            <div class="use-ex">"Do you agree that social media is harmful?" → Evet/hayır + 2–3 neden.</div>
+            <div class="use-tr">Soru: fikrin ne? → Paragraf 1: görüş + neden 1. Paragraf 2: neden 2.</div>
+          </div>
+          <div class="use-item advdis">
+            <div class="use-title">⚖️ Advantage / Disadvantage</div>
+            <div class="use-kw">On the one hand · On the other hand · However</div>
+            <div class="use-ex">"What are the pros and cons of working from home?"</div>
+            <div class="use-tr">Paragraf 1: avantajlar. Paragraf 2: dezavantajlar. Son: dengeli sonuç.</div>
+          </div>
+          <div class="use-item probsol" style="grid-column:1/-1">
+            <div class="use-title">🔧 Problem / Solution</div>
+            <div class="use-kw">The main problem is… · One solution would be… · As a result</div>
+            <div class="use-ex">"Traffic in big cities is getting worse. What can be done?"</div>
+            <div class="use-tr">Paragraf 1: sorunu tanımla. Paragraf 2: çözüm öner. Son: beklenen sonuç.</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px">
+          <strong>B1–B2 ipucu:</strong> Sınavda genelde <strong>250–300 kelime</strong> istenir. 4–5 paragraf yeterli: giriş (topic + plan) → 2–3 gövde → sonuç. Her gövde paragrafı = tek ana fikir.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Linking words + Formal/Informal -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔗</span><h2>Linking Words — Yazmaya Odaklı (Ders 17 hatırlatma)</h2></div>
+      <div class="card-body">
+        <div class="rule-box ok-box">
+          Konuşmada <strong>and / but / so</strong> yeterli olabilir; yazıda <strong>moreover, however, therefore</strong> gibi kelimeler paragrafı daha profesyonel gösterir. (Ders 17'deki 4 grup aynı — burada paragraf içi kullanım.)
+        </div>
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Grup</th>
+              <th>Yazıda kullan</th>
+              <th>Paragraf örneği</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-type"><span class="hl-add">Ekleme</span></td>
+              <td class="col-pos">Moreover · Furthermore · In addition · Also</td>
+              <td class="col-tr">…opens job opportunities. <strong>Moreover</strong>, it improves travel.</td>
+            </tr>
+            <tr>
+              <td class="col-type"><span class="hl-con2">Karşıtlık</span></td>
+              <td class="col-pos">However · Although · On the other hand · Despite</td>
+              <td class="col-tr"><strong>Although</strong> it takes time, the results are worth it.</td>
+            </tr>
+            <tr>
+              <td class="col-type"><span class="hl-cau">Sebep-sonuç</span></td>
+              <td class="col-pos">Because · Therefore · As a result · Consequently</td>
+              <td class="col-tr">Practice is essential; <strong>therefore</strong>, daily study matters.</td>
+            </tr>
+            <tr>
+              <td class="col-type"><span class="hl-seq">Sıra</span></td>
+              <td class="col-pos">First · Then · Next · Finally · In conclusion</td>
+              <td class="col-tr"><strong>First</strong>, set a goal. <strong>Then</strong>, create a schedule.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:7px 10px;background:var(--warn-bg);border-radius:6px;border:0.5px solid #f5c896">
+          <strong style="color:var(--warn)">Yazı tuzak:</strong> <span style="font-family:var(--mono)">Although…, but…</span> ✗ — although ve but aynı cümlede kullanılmaz!
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>👔</span><h2>Formal vs Informal Register — E-posta &amp; Essay</h2></div>
+      <div class="card-body">
+        <div class="rewrite-grid" style="margin-bottom:10px">
+          <div class="rewrite-col before">
+            <div class="rewrite-label">✗ Informal (arkadaşa)</div>
+            <div class="rewrite-text">Hey! What's up?<br>I wanna ask u something.<br>Thanks a lot!<br>See ya!</div>
+          </div>
+          <div class="rewrite-col after">
+            <div class="rewrite-label">✓ Formal (iş / sınav)</div>
+            <div class="rewrite-text">Dear Mr Smith,<br>I would like to inquire about…<br>Thank you for your time.<br>Yours sincerely,</div>
+          </div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Informal</th>
+              <th>Formal alternatif</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="col-pos">I think</td><td class="col-tr">I believe / In my opinion / It appears that</td></tr>
+            <tr><td class="col-pos">get</td><td class="col-tr">obtain / receive / achieve</td></tr>
+            <tr><td class="col-pos">a lot of</td><td class="col-tr">numerous / a significant number of</td></tr>
+            <tr><td class="col-pos">can't</td><td class="col-tr">cannot / is unable to</td></tr>
+            <tr><td class="col-pos">kids</td><td class="col-tr">children</td></tr>
+            <tr><td class="col-pos">stuff / things</td><td class="col-tr">matters / issues / aspects</td></tr>
+            <tr><td class="col-pos">Also</td><td class="col-tr">Furthermore / Moreover</td></tr>
+            <tr><td class="col-pos">But</td><td class="col-tr">However / Nevertheless</td></tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Essay'de:</strong> Kısaltma kullanma (don't → do not). Emoji yok. "Hey" yok. Opinion essay'de <strong>I believe</strong> kullanılabilir ama her cümlede tekrarlama.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Türkçe tuzaklar -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Yazma Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Bir paragrafta birden fazla ana fikir</div>
+            <div class="trap-desc">Türkçe'de uzun paragraflar normal; İngilizce akademik yazıda her paragraf tek konuya odaklanır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Paragraf: İngilizce önemli + hava durumu + teknoloji (3 konu)</span><br>
+              <span class="right">✓ Paragraf 1: İngilizce neden önemli. Paragraf 2: Nasıl öğrenilir.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">"I think" aşırı kullanımı</div>
+            <div class="trap-desc">Her cümlede "I think" yazmak zayıf görünür. Alternatifler kullan ve kanıt sun.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I think English is good. I think it helps jobs. I think…</span><br>
+              <span class="right">✓ English is essential for international careers. <strong>Moreover</strong>, it provides access to global media.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Topic sentence eksikliği</div>
+            <div class="trap-desc">Paragrafa doğrudan örnekle başlamak okuyucuyu şaşırtır. Önce ana fikri söyle.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ For example, I watch Netflix every day. (Ana fikir nerede?)</span><br>
+              <span class="right">✓ <strong>Watching films with subtitles is an effective learning method.</strong> For example, I watch one episode daily.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Türkçe düşünme sırası → garip İngilizce</div>
+            <div class="trap-desc">"Ben İngilizce öğreniyorum çünkü iş bulmak istiyorum" → kelime kelime çeviri yapma.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I am learning English because I want to find work.</span><br>
+              <span class="right">✓ I am learning English <strong>to improve my career prospects</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ "I think" alternatifleri — opinion essay için</div>
+            <div class="trap-desc">Görüş bildirirken çeşitlilik kullan:</div>
+            <div class="trap-ex">
+              <span class="right">In my view · I believe · It seems to me · From my perspective · It could be argued that</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Model paragraf -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📖</span><h2>Model Paragraf — "Learning English" (~100 kelime, yapı etiketli)</h2></div>
+      <div class="card-body">
+        <div class="para-legend">
+          <span><span class="hl-topic">Mavi</span> = topic sentence</span>
+          <span><span class="hl-sup">Yeşil</span> = supporting sentences</span>
+          <span><span class="hl-con">Mor</span> = concluding sentence</span>
+        </div>
+        <div class="para-box">
+          <span class="hl-topic">Learning English is one of the most valuable skills a person can develop today.</span>
+          <span class="hl-sup"> First, it opens doors to international jobs and higher education opportunities.</span>
+          <span class="hl-sup"> Moreover, English allows you to access information on the internet, as most websites and research papers are written in English.</span>
+          <span class="hl-sup"> Although mastering a language takes time and consistent practice, the results are worth the effort.</span>
+          <span class="hl-sup"> Many Turkish learners find that watching films with subtitles and reading short articles help them improve faster.</span>
+          <span class="hl-con"> In conclusion, investing time in English learning pays off in both personal and professional life.</span>
+          <span class="hl-con"> Therefore, starting early and practising daily is essential.</span>
+        </div>
+        <div class="para-tr">
+          <strong>Yapı analizi:</strong> Cümle 1 = topic (ana fikir: İngilizce değerli). Cümle 2–5 = supporting (iş/eğitim, internet, pratik, Türk öğrenci örneği). Cümle 6–7 = concluding (özet + tavsiye). Linking words: <em>First, Moreover, Although, In conclusion, Therefore</em>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Outline oluştur — "Social media and teenagers"</div>
+            <div class="pr-block-body">
+              <div class="pr-q" style="line-height:1.7">
+                Opinion essay için 4 maddelik outline yaz:<br>
+                <span class="pr-num">•</span> Introduction (topic + opinion)<br>
+                <span class="pr-num">•</span> Body 1<br>
+                <span class="pr-num">•</span> Body 2<br>
+                <span class="pr-num">•</span> Conclusion
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <strong>Örnek outline:</strong><br>
+                  <span class="a-num">Intro:</span> Social media affects teenagers significantly; I believe the disadvantages outweigh the advantages.<br>
+                  <span class="a-num">Body 1:</span> Advantage — connection with friends, access to information, creative expression.<br>
+                  <span class="a-num">Body 2:</span> Disadvantage — addiction, mental health issues, reduced face-to-face communication.<br>
+                  <span class="a-num">Conclusion:</span> Parents and schools should teach responsible use; overall, limits are necessary.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Informal → Formal yeniden yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q" style="line-height:1.7">
+                <span class="pr-num">1.</span> I think English is super important for getting a good job.<br>
+                <span class="pr-num">2.</span> Also, there's a lot of stuff on the internet in English.<br>
+                <span class="pr-num">3.</span> But it's kinda hard to learn.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I believe English is essential for securing employment opportunities.<br>
+                  <span class="a-num">2.</span> Furthermore, a significant amount of online content is available in English.<br>
+                  <span class="a-num">3.</span> However, mastering the language can be challenging.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Topic sentence yaz — hangi paragraf?</div>
+            <div class="pr-block-body">
+              <div class="pr-q" style="line-height:1.7">
+                Aşağıdaki destek cümleleri için uygun topic sentence yaz:<br>
+                <span class="pr-num">1.</span> (Avantajlar: flexible hours, no commute, save money) → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> (Çözümler: public transport, bike lanes, car-free zones) → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Working from home offers several significant advantages.<br>
+                  <span class="a-num">2.</span> There are several effective solutions to reduce urban traffic congestion.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q" style="line-height:1.7">
+                <span class="pr-num">1.</span> Although he is tired, but he continues working. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I think English is important. I think it helps. I think travel is easy. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> For example, learning languages is useful. (topic sentence yok) → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> I wanna get a lot of stuff from the internet. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Although he is tired, he continues working. (but kaldır)<br>
+                  <span class="a-num">2.</span> English is important for careers, travel, and communication. (tek topic + supporting)<br>
+                  <span class="a-num">3.</span> Learning languages is highly useful. For example, it improves memory and career options.<br>
+                  <span class="a-num">4.</span> I would like to obtain a significant amount of information from the internet.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">📐</span><span class="take-text">Paragraf = <strong>topic + supporting + concluding</strong>. Tek ana fikir.</span></div>
+          <div class="take-item"><span class="take-ico">📝</span><span class="take-text">Essay türleri: <strong>opinion · adv/dis · problem/solution</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🔗</span><span class="take-text">Yazıda <strong>moreover, however, therefore</strong> kullan (Ders 17).</span></div>
+          <div class="take-item"><span class="take-ico">👔</span><span class="take-text">Essay/e-posta = <strong>formal register</strong>. Kısaltma yok.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text"><strong>I think</strong> tekrarından kaçın; kanıt ve linking words kullan.</span></div>
+          <div class="take-item"><span class="take-ico">✍️</span><span class="take-text">Yazmadan önce <strong>outline</strong> yap — dinlemedeki ana fikir stratejisi gibi.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">120 Kelimelik Opinion Paragrafı</span>
+            Seçtiğin bir konuda (ör. remote work, learning English, social media) <strong>tek paragraf</strong> yaz — yaklaşık <strong>120 kelime</strong>.<br>
+            <strong>1.</strong> Topic sentence ile başla (görüşünü net söyle).<br>
+            <strong>2.</strong> En az <strong>3 supporting sentence</strong> + linking words (Moreover, However, For example).<br>
+            <strong>3.</strong> <strong>In conclusion</strong> ile bitir.<br>
+            <strong>4.</strong> Formal register kullan — "I think" en fazla 1 kez.<br>
+            <span style="color:var(--ink-3)">Bonus: Outline'ını önce yaz, sonra paragrafı genişlet. Kelime sayısını kontrol et.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 23 / 25 &nbsp;·&nbsp; Ünite 5: Gerçek Dünya</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="22.html">‹ Önceki: Ders 22</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="24.html">Sonraki: Ders 24 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

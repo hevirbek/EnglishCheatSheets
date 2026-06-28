@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 8 — Present Perfect · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  /* Formation */
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-have { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-v3   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  /* Conjugation table */
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .v3-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Uses */
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.experience { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.unfinished { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.result     { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.ever       { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.experience .use-title { color: var(--accent); }
+  .use-item.unfinished .use-title { color: var(--ok); }
+  .use-item.result     .use-title { color: var(--teal); }
+  .use-item.ever       .use-title { color: var(--purple); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  /* Big comparison table */
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.sp-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.pp-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head { background: var(--bg-3); color: var(--ink-3); width: 110px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .sp-cell { background: #f7faff; }
+  .cmp-table .pp-cell { background: #f4fbf7; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  /* Keywords */
+  .kw-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .kw-item { padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .kw-item.pos { background: var(--ok-bg); border-color: #a8d4bc; }
+  .kw-item.neg { background: var(--warn-bg); border-color: #f5c896; }
+  .kw-item.time { background: var(--teal-bg); border-color: #a5f3fc; }
+  .kw-word { font-family: var(--mono); font-size: 13px; font-weight: 700; margin-bottom: 2px; }
+  .kw-item.pos .kw-word { color: var(--ok); }
+  .kw-item.neg .kw-word { color: var(--warn); }
+  .kw-item.time .kw-word { color: var(--teal); }
+  .kw-item:not(.pos):not(.neg):not(.time) .kw-word { color: var(--accent); }
+  .kw-mean { font-size: 11px; color: var(--ink-2); line-height: 1.5; }
+  .kw-ex { font-family: var(--mono); font-size: 10px; color: var(--ink-3); margin-top: 3px; line-height: 1.6; }
+
+  /* Since vs For */
+  .sf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sf-box { padding: 10px 12px; border-radius: 8px; border: 0.5px solid; }
+  .sf-box.since-box { background: var(--accent-bg); border-color: #b3c9ef; }
+  .sf-box.for-box   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .sf-title { font-family: var(--mono); font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .sf-box.since-box .sf-title { color: var(--accent); }
+  .sf-box.for-box   .sf-title { color: var(--ok); }
+  .sf-rule { font-size: 12px; color: var(--ink); margin-bottom: 4px; line-height: 1.55; }
+  .sf-tr { font-size: 11px; color: var(--ink-3); margin-bottom: 6px; }
+  .sf-ex { font-family: var(--mono); font-size: 11px; color: var(--ink-2); line-height: 1.8; }
+
+  /* Past participles */
+  .pp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .pp-rule { padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .pp-rule.irreg { background: var(--warn-bg); border-color: #f5c896; }
+  .pp-rule.reg   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .pp-title { font-size: 11px; font-weight: 600; color: var(--ink-2); margin-bottom: 3px; }
+  .pp-rule.irreg .pp-title { color: var(--warn); }
+  .pp-rule.reg   .pp-title { color: var(--ok); }
+  .pp-ex { font-family: var(--mono); font-size: 11px; color: var(--ink-3); line-height: 1.8; }
+
+  /* Trap items */
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  /* Struct row */
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-have { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-v3   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-neg  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-q    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-rest { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep  { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  /* Dialogue */
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-pp { color: var(--ok); font-weight: 600; }
+  .hl-sp { color: var(--accent); font-weight: 600; }
+
+  /* Footer */
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  /* ===== Ortak eklenti bileşenleri ===== */
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .kw-grid { grid-template-columns: 1fr 1fr; }
+    .sf-grid { grid-template-columns: 1fr; }
+    .pp-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 8 · Ünite 2</span>
+      <h1>Henüz mi, Zaten mi? — Present Perfect</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A2</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Türkçe'de "-miş/-mış" tek başına hem geçmişi hem şimdiki sonucu anlatır.<br>
+      İngilizce'de <strong>zamanı bil</strong>:<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span style="color:var(--accent)">I went</span> yesterday. (SP — zaman belli)<br>
+        <span style="color:var(--ok)">I have been</span> to Paris. (PP — deneyim)
+      </span>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 7'den</span>
+    <span class="recall-item">Simple Past = <strong>V2 / -ed</strong></span>
+    <span class="recall-item">did / didn't + <strong>yalın fiil</strong></span>
+    <span class="recall-item">yesterday · last week · ago</span>
+    <span class="recall-item">Zaman belli → <strong>Simple Past</strong></span>
+  </div>
+
+  <!-- Yapı + Kullanım -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Yapı — have/has + V3</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-have">have / has<small>yardımcı fiil</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-v3">past participle (V3)<small>3. form</small></div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I / You / We / They</td>
+              <td class="col-pos">have <span class="v3-hl">seen</span></td>
+              <td class="col-neg">haven't seen</td>
+              <td class="col-q">Have you seen?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He / She / It</td>
+              <td class="col-pos">has <span class="v3-hl">gone</span></td>
+              <td class="col-neg">hasn't gone</td>
+              <td class="col-q">Has she gone?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-have">have/has</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-v3">V3</span>
+            <div class="struct-ex">I have finished my homework. · She has lived here for 3 years.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-neg">haven't/hasn't</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-v3">V3</span>
+            <div class="struct-ex">I haven't eaten yet. · He hasn't called.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru</div>
+            <span class="slot slot-q">Have/Has</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-v3">V3?</span>
+            <div class="struct-ex">Have you ever been to London? · Has it stopped raining?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📌</span><h2>Present Perfect Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item experience">
+            <div class="use-title">🌍 Yaşam deneyimi</div>
+            <div class="use-kw">ever · never · before · once · twice</div>
+            <div class="use-ex">I have visited Japan twice.</div>
+            <div class="use-tr">Japonya'ya iki kez gittim. (hayatımda)</div>
+          </div>
+          <div class="use-item unfinished">
+            <div class="use-title">⏳ Bitmemiş zaman</div>
+            <div class="use-kw">today · this week · this year · so far</div>
+            <div class="use-ex">I have sent three emails today.</div>
+            <div class="use-tr">Bugün üç e-posta gönderdim. (gün bitmedi)</div>
+          </div>
+          <div class="use-item result">
+            <div class="use-title">✅ Şimdiki sonuç</div>
+            <div class="use-kw">just · already · (no time word)</div>
+            <div class="use-ex">She has lost her keys. (şimdi yok)</div>
+            <div class="use-tr">Anahtarlarını kaybetti. (şu an bulamıyor)</div>
+          </div>
+          <div class="use-item ever">
+            <div class="use-title">❓ Deneyim sorusu</div>
+            <div class="use-kw">Have you ever...?</div>
+            <div class="use-ex">Have you ever tried sushi?</div>
+            <div class="use-tr">Hiç suşi denedin mi?</div>
+          </div>
+        </div>
+
+        <div style="padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn);font-size:11px;color:var(--ink-3);line-height:1.6">
+          <strong style="color:var(--warn)">Altın kural:</strong> Zaman <strong>belli</strong>yse (yesterday, in 2019, last Monday) → <strong>Simple Past</strong>. Zaman <strong>belirsiz</strong> veya <strong>henüz bitmemiş</strong>se → <strong>Present Perfect</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple Past vs Present Perfect KARŞILAŞTIRMA -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Simple Past vs Present Perfect — Büyük Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="sp-head">Simple Past</th>
+              <th class="pp-head">Present Perfect</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Yapı</td>
+              <td class="sp-cell"><div class="cmp-ex">V2 / -ed</div><div class="cmp-tr">did + yalın fiil (soru/olumsuz)</div></td>
+              <td class="pp-cell"><div class="cmp-ex">have/has + V3</div><div class="cmp-tr">haven't/hasn't + V3</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Zaman</td>
+              <td class="sp-cell"><div class="cmp-ex">Belli, bitmiş</div><div class="cmp-tr">Ne zaman olduğu önemli</div></td>
+              <td class="pp-cell"><div class="cmp-ex">Belirsiz veya devam eden</div><div class="cmp-tr">Ne zaman değil, sonuç/deneyim önemli</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Anahtar kelimeler</td>
+              <td class="sp-cell"><div class="cmp-ex">yesterday · last week · ago<br>in 2020 · when · then</div></td>
+              <td class="pp-cell"><div class="cmp-ex">ever · never · yet · already · just<br>since · for · today · this week</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Deneyim</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">I went to Rome in 2019.</div><div class="cmp-tr">2019'da Roma'ya gittim. (tarih belli)</div></td>
+              <td class="pp-cell"><div class="cmp-ex" style="color:var(--ok)">I have been to Rome.</div><div class="cmp-tr">Roma'ya gittim. (hayatımda, tarih yok)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Bugün / bu hafta</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">I sent an email this morning.</div><div class="cmp-tr">Bu sabah e-posta gönderdim. (sabah bitti)</div></td>
+              <td class="pp-cell"><div class="cmp-ex" style="color:var(--ok)">I have sent three emails today.</div><div class="cmp-tr">Bugün üç e-posta gönderdim. (gün devam ediyor)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Sonuç şimdi</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">I lost my keys yesterday.</div><div class="cmp-tr">Dün anahtarlarımı kaybettim.</div></td>
+              <td class="pp-cell"><div class="cmp-ex" style="color:var(--ok)">I have lost my keys.</div><div class="cmp-tr">Anahtarlarımı kaybettim. (şimdi yok)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Soru</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">Did you see that film?</div><div class="cmp-tr">O filmi gördün mü? (belirli bir zaman)</div></td>
+              <td class="pp-cell"><div class="cmp-ex" style="color:var(--ok)">Have you ever seen that film?</div><div class="cmp-tr">O filmi hiç gördün mü? (hayatında)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anahtar Kelimeler + Since/For -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔑</span><h2>Anahtar Kelimeler</h2></div>
+      <div class="card-body">
+        <div class="kw-grid">
+          <div class="kw-item">
+            <div class="kw-word">ever</div>
+            <div class="kw-mean">hiç (soru) — hayatında bir kez bile?</div>
+            <div class="kw-ex">Have you <strong>ever</strong> been abroad?</div>
+          </div>
+          <div class="kw-item neg">
+            <div class="kw-word">never</div>
+            <div class="kw-mean">hiç (olumsuz) — hayatımda hiç</div>
+            <div class="kw-ex">I have <strong>never</strong> tried skiing.</div>
+          </div>
+          <div class="kw-item neg">
+            <div class="kw-word">yet</div>
+            <div class="kw-mean">henüz (olumsuz/soru) — sona gelir</div>
+            <div class="kw-ex">I haven't finished <strong>yet</strong>.</div>
+          </div>
+          <div class="kw-item pos">
+            <div class="kw-word">already</div>
+            <div class="kw-mean">zaten — beklenenden erken</div>
+            <div class="kw-ex">She has <strong>already</strong> left.</div>
+          </div>
+          <div class="kw-item pos">
+            <div class="kw-word">just</div>
+            <div class="kw-mean">az önce — çok yakın geçmiş</div>
+            <div class="kw-ex">I have <strong>just</strong> arrived.</div>
+          </div>
+          <div class="kw-item time">
+            <div class="kw-word">since / for</div>
+            <div class="kw-mean">-den beri / süredir — aşağıda detay</div>
+            <div class="kw-ex">since 2020 · for 3 years</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule);font-size:11px;color:var(--ink-3);line-height:1.6">
+          <strong style="color:var(--ink-2)">Konum ipucu:</strong> <span style="font-family:var(--mono)">already</span> ve <span style="font-family:var(--mono)">just</span> → have/has ile V3 <strong>arasında</strong>. <span style="font-family:var(--mono)">yet</span> → cümlenin <strong>sonunda</strong>.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Since vs For — Türkçe Konuşanlar İçin</h2></div>
+      <div class="card-body">
+        <div class="sf-grid">
+          <div class="sf-box since-box">
+            <div class="sf-title">since + BAŞLANGIÇ</div>
+            <div class="sf-rule">Bir <strong>nokta</strong> — tarih veya zaman</div>
+            <div class="sf-tr">Türkçe: "-den beri" (2020'den beri, Pazartesi'den beri)</div>
+            <div class="sf-ex">since 2020<br>since Monday<br>since I was a child<br>since last summer</div>
+          </div>
+          <div class="sf-box for-box">
+            <div class="sf-title">for + SÜRE</div>
+            <div class="sf-rule">Bir <strong>miktar</strong> — ne kadar süre</div>
+            <div class="sf-tr">Türkçe: "süredir" (3 yıldır, 2 saattir)</div>
+            <div class="sf-ex">for 3 years<br>for two hours<br>for a long time<br>for ages</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn);font-size:11px;color:var(--ink-3);line-height:1.6">
+          <strong style="color:var(--warn)">Tuzak:</strong> Türkçe "3 yıldır" → İngilizce <strong>for 3 years</strong> (since değil!).<br>
+          Türkçe "2020'den beri" → İngilizce <strong>since 2020</strong> (for değil!).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Past Participles + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📋</span><h2>Yaygın Past Participles (V3)</h2></div>
+      <div class="card-body">
+        <div class="pp-grid">
+          <div class="pp-rule reg">
+            <div class="pp-title">✓ Düzenli fiiller → V2 = V3 = -ed</div>
+            <div class="pp-ex">work → worked → work<strong>ed</strong><br>play → played → play<strong>ed</strong><br>visit → visited → visit<strong>ed</strong><br>finish → finished → finish<strong>ed</strong></div>
+          </div>
+          <div class="pp-rule irreg">
+            <div class="pp-title">⚠️ Düzensiz — ezberle!</div>
+            <div class="pp-ex">be → was/were → <strong>been</strong><br>go → went → <strong>gone</strong><br>see → saw → <strong>seen</strong><br>do → did → <strong>done</strong></div>
+          </div>
+          <div class="pp-rule irreg">
+            <div class="pp-title">⚠️ Daha fazla düzensiz</div>
+            <div class="pp-ex">eat → ate → <strong>eaten</strong><br>write → wrote → <strong>written</strong><br>take → took → <strong>taken</strong><br>make → made → <strong>made</strong></div>
+          </div>
+          <div class="pp-rule reg">
+            <div class="pp-title">✓ been vs gone farkı</div>
+            <div class="pp-ex">I have <strong>been</strong> to Paris. (gittim + döndüm)<br>She has <strong>gone</strong> to Paris. (gitti, hâlâ orada)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item">
+            <div class="trap-title">ever ile Simple Past kullanmak</div>
+            <div class="trap-desc"><strong>ever</strong> ve <strong>never</strong> sadece Present Perfect ile gelir — Simple Past ile kullanılmaz.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Did you ever try sushi?</span><br>
+              <span class="right">✓ Have you ever tried sushi?</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Yanlış yardımcı fiil (did yerine have/has)</div>
+            <div class="trap-desc">Present Perfect'te <strong>did</strong> kullanılmaz — have/has + V3 kullanılır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I did see that film.</span> (deneyim için)<br>
+              <span class="right">✓ I have seen that film.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">since / for karışıklığı</div>
+            <div class="trap-desc">"3 yıldır" = for. "2020'den beri" = since. Tarih/süre ayrımını karıştırma.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I live here since 3 years.</span><br>
+              <span class="right">✓ I have lived here for 3 years.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Belli zamanla Present Perfect</div>
+            <div class="trap-desc">yesterday, last week, ago gibi kelimelerle Present Perfect kullanılmaz.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I have visited Paris last year.</span><br>
+              <span class="right">✓ I visited Paris last year.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ He/She/It → has (have değil)</div>
+            <div class="trap-desc">3. tekil şahısta have değil has kullanılır.</div>
+            <div class="trap-ex"><span class="right">✓ She has finished. &nbsp; He hasn't called yet.</span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Kısa cevap: have/has tekrar gelir</div>
+            <div class="trap-desc">Yes/No sorularında kısa cevapta have/has kullanılır, V3 gelmez.</div>
+            <div class="trap-ex"><span class="right">✓ Have you eaten? — Yes, I have. / No, I haven't.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gerçek diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Seyahat ve Deneyimler</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = Present Perfect (deneyim/sonuç) &nbsp;·&nbsp; 🔵 Mavi = Simple Past (belli zaman)
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hey! <span class="hl-pp">Have</span> you <span class="hl-pp">ever been</span> to Cappadocia?</div>
+              <div class="bubble-tr">Hey! Hiç Kapadokya'ya gittin mi?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes! I <span class="hl-sp">went</span> there last summer. It <span class="hl-sp">was</span> amazing. <span class="hl-pp">Have</span> you <span class="hl-pp">ever tried</span> a hot air balloon ride?</div>
+              <div class="bubble-tr">Evet! Geçen yaz oraya gittim. Harikaydı. Hiç sıcak hava balonu turu denedin mi?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">No, I <span class="hl-pp">have never been</span> on one. But I <span class="hl-pp">have just booked</span> a trip for next month!</div>
+              <div class="bubble-tr">Hayır, hiç binmedim. Ama az önce gelecek ay için bir gezi ayarladım!</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Wow! How long <span class="hl-pp">have</span> you <span class="hl-pp">wanted</span> to go?</div>
+              <div class="bubble-tr">Vay! Ne zamandır gitmek istiyorsun?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-pp">have wanted</span> to go <span class="hl-pp">since</span> I <span class="hl-sp">saw</span> a documentary in 2022. I <span class="hl-pp">have saved</span> money <span class="hl-pp">for</span> two years.</div>
+              <div class="bubble-tr">2022'de bir belgesel izlediğimden beri gitmek istiyorum. İki yıldır para biriktiriyorum.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">That's great! <span class="hl-pp">Have</span> you <span class="hl-pp">already</span> booked your hotel?</div>
+              <div class="bubble-tr">Harika! Oteli zaten ayarladın mı?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Not yet — I <span class="hl-pp">haven't found</span> the right place <span class="hl-pp">yet</span>. Any recommendations?</div>
+              <div class="bubble-tr">Henüz değil — henüz doğru yeri bulamadım. Tavsiyen var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Definitely! I <span class="hl-pp">have stayed</span> at a cave hotel there. I <span class="hl-sp">loved</span> it — I'll send you the name.</div>
+              <div class="bubble-tr">Kesinlikle! Orada bir mağara otelde kaldım. Çok sevdim — sana ismini göndereceğim.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) have/has + V3 — doğru formu yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She <span class="blank"></span> (finish) her homework.<br>
+                <span class="pr-num">2.</span> They <span class="blank"></span> (not / eat) yet.<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> you ever <span class="blank"></span> (be) to London?<br>
+                <span class="pr-num">4.</span> I <span class="blank"></span> (just / see) that film.<br>
+                <span class="pr-num">5.</span> He <span class="blank"></span> (live) here for five years.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> has finished &nbsp; <span class="a-num">2.</span> haven't eaten &nbsp; <span class="a-num">3.</span> Have / been &nbsp; <span class="a-num">4.</span> have just seen &nbsp; <span class="a-num">5.</span> has lived
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Simple Past mi, Present Perfect mi?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I <span class="blank"></span> (visit) Paris last year.<br>
+                <span class="pr-num">2.</span> I <span class="blank"></span> (visit) Paris three times.<br>
+                <span class="pr-num">3.</span> She <span class="blank"></span> (lose) her keys. (şimdi yok)<br>
+                <span class="pr-num">4.</span> We <span class="blank"></span> (meet) him yesterday.<br>
+                <span class="pr-num">5.</span> We <span class="blank"></span> (meet) him before.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> visited &nbsp; <span class="a-num">2.</span> have visited &nbsp; <span class="a-num">3.</span> has lost &nbsp; <span class="a-num">4.</span> met &nbsp; <span class="a-num">5.</span> have met
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) since mi, for mu?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I have studied English <span class="blank"></span> 2020.<br>
+                <span class="pr-num">2.</span> I have studied English <span class="blank"></span> four years.<br>
+                <span class="pr-num">3.</span> She has worked here <span class="blank"></span> Monday.<br>
+                <span class="pr-num">4.</span> They have been friends <span class="blank"></span> a long time.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> since &nbsp; <span class="a-num">2.</span> for &nbsp; <span class="a-num">3.</span> since &nbsp; <span class="a-num">4.</span> for
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Did you ever visit Japan? → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I have went to school yesterday. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> She have finished her work. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> I live here since 3 years. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Have you ever visited Japan? &nbsp; <span class="a-num">2.</span> I went to school yesterday. &nbsp; <span class="a-num">3.</span> She has finished her work. &nbsp; <span class="a-num">4.</span> I have lived here for 3 years.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text">Yapı: <strong>have/has + V3</strong> (did kullanılmaz).</span></div>
+          <div class="take-item"><span class="take-ico">⏳</span><span class="take-text">Zaman <strong>belirsiz</strong> veya <strong>bitmemiş</strong> → PP.</span></div>
+          <div class="take-item"><span class="take-ico">🌍</span><span class="take-text"><strong>ever/never</strong> = hayat deneyimi.</span></div>
+          <div class="take-item"><span class="take-ico">🔑</span><span class="take-text"><strong>yet</strong> (henüz) · <strong>already</strong> (zaten) · <strong>just</strong> (az önce).</span></div>
+          <div class="take-item"><span class="take-ico">📅</span><span class="take-text"><strong>since</strong> = başlangıç · <strong>for</strong> = süre.</span></div>
+          <div class="take-item"><span class="take-ico">⚖️</span><span class="take-text">yesterday/ago → <strong>Simple Past</strong>. ever/never → <strong>Present Perfect</strong>.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🎤</span>
+          <div class="mission-body">
+            <span class="m-title">Deneyim Röportajı (Experience Interview)</span>
+            Bir arkadaşını veya aile üyesini <strong>5 dakika</strong> röportaj yap. Her soruda <strong>"Have you ever...?"</strong> kullan:<br>
+            <strong>"Have you ever been abroad? Have you ever cooked for 10 people? Have you ever broken a bone?"</strong><br>
+            Cevapları not al: <em>Yes, I have. / No, I haven't. / Yes, I went to Greece in 2023.</em><br>
+            <span style="color:var(--ink-3)">Bonus: Her cevaptan sonra "When?" diye sor — Simple Past'a geçişi fark et.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 8 / 25 &nbsp;·&nbsp; Ünite 2: Hayat Akıyor</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="7.html">‹ Önceki: Ders 7</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="9.html">Sonraki: Ders 9 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

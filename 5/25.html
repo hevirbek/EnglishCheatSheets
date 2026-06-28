@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 25 — Büyük Final: Mini TED Talk Projesi · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --gold: #92400e;
+    --gold-bg: #fffbeb;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--rose); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .badge-capstone { background: var(--gold-bg); color: var(--gold); border: 0.5px solid #fcd34d; }
+  .badge-final { background: linear-gradient(120deg, var(--purple), var(--rose)); color: #fff; }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--purple); }
+
+  .celebrate { display:flex; gap:10px; align-items:center; padding:12px 14px; background:linear-gradient(120deg,var(--purple-bg),var(--gold-bg),var(--ok-bg)); border:0.5px solid #c9b8ef; border-radius:10px; margin-bottom:1rem; }
+  .celebrate-ico { font-size:28px; line-height:1; }
+  .celebrate-text { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .celebrate-text strong { color:var(--purple); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .curriculum-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
+  .cur-unit { border-radius:7px; border:0.5px solid var(--rule); overflow:hidden; }
+  .cur-unit-head { font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; padding:4px 6px; text-align:center; }
+  .cur-unit.u1 .cur-unit-head { background:var(--accent-bg); color:var(--accent); }
+  .cur-unit.u2 .cur-unit-head { background:var(--ok-bg); color:var(--ok); }
+  .cur-unit.u3 .cur-unit-head { background:var(--purple-bg); color:var(--purple); }
+  .cur-unit.u4 .cur-unit-head { background:var(--warn-bg); color:var(--warn); }
+  .cur-unit.u5 .cur-unit-head { background:var(--rose-bg); color:var(--rose); }
+  .cur-lessons { padding:5px 6px; font-size:9.5px; color:var(--ink-2); line-height:1.55; background:var(--bg); }
+  .cur-lessons strong { color:var(--ink); font-family:var(--mono); font-size:9px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; flex-wrap: wrap;
+    padding: 12px 10px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 7px 12px; border-radius: 8px;
+    font-family: var(--mono); font-size: 12px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 9px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-hook  { background: var(--rose-bg); color: var(--rose); border: 0.5px solid #fecdd3; }
+  .fs-p1    { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-p2    { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-p3    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-cta   { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .fs-arrow { font-size: 16px; color: var(--ink-4); padding: 0; background: none; border: none; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.hook   { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-item.points { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.close  { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.eye    { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.pace   { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.pause  { background: var(--warn-bg); border-color: #f5c896; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.hook   .use-title { color: var(--rose); }
+  .use-item.points .use-title { color: var(--accent); }
+  .use-item.close  .use-title { color: var(--ok); }
+  .use-item.eye    .use-title { color: var(--teal); }
+  .use-item.pace   .use-title { color: var(--purple); }
+  .use-item.pause  .use-title { color: var(--warn); }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-en { font-family: var(--mono); font-weight: 500; color: var(--accent); font-size: 12px; }
+  .col-use { color: var(--ink-2); font-size: 12px; }
+  .col-tr  { color: var(--ink-3); font-size: 11px; }
+
+  .checklist { display:flex; flex-direction:column; gap:5px; }
+  .check-item { display:flex; gap:8px; align-items:flex-start; padding:6px 8px; border-radius:6px; background:var(--bg-2); border:0.5px solid var(--rule); font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .check-box { width:14px; height:14px; border:1.5px solid var(--ink-4); border-radius:3px; flex-shrink:0; margin-top:2px; }
+  .check-item strong { color:var(--ink); }
+  .check-tag { font-size:9px; font-weight:600; padding:1px 5px; border-radius:8px; background:var(--accent-bg); color:var(--accent); margin-left:4px; white-space:nowrap; }
+
+  .outline-box { padding:10px 12px; background:var(--bg-2); border-radius:8px; border:0.5px dashed var(--ink-4); font-size:12px; line-height:2; color:var(--ink-2); }
+  .outline-box .ol-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-3); display:block; margin-top:6px; }
+  .outline-box .ol-label:first-child { margin-top:0; }
+  .outline-blank { display:inline-block; min-width:180px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+
+  .rubric-table { width:100%; border-collapse:collapse; font-size:11px; }
+  .rubric-table th { padding:6px 8px; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; border-bottom:1px solid var(--rule); text-align:left; background:var(--bg-2); color:var(--ink-3); }
+  .rubric-table td { padding:6px 8px; border-bottom:0.5px solid var(--rule); vertical-align:top; color:var(--ink-2); line-height:1.5; }
+  .rubric-table tr:last-child td { border-bottom:none; }
+  .rubric-crit { font-weight:600; color:var(--ink); white-space:nowrap; }
+  .score { font-family:var(--mono); font-size:10px; font-weight:600; padding:2px 6px; border-radius:10px; }
+  .score-1 { background:var(--rose-bg); color:var(--rose); }
+  .score-3 { background:var(--warn-bg); color:var(--warn); }
+  .score-5 { background:var(--ok-bg); color:var(--ok); }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+  .rule-box.purple-box { background: var(--purple-bg); border-left-color: var(--purple); }
+  .rule-box.purple-box strong { color: var(--purple); }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:12px 14px; background:linear-gradient(120deg,var(--purple-bg),var(--gold-bg),var(--ok-bg)); border:0.5px solid #c9b8ef; border-radius:8px; }
+  .mission-badge { font-size:28px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--purple); margin-bottom:4px; font-size:13px; }
+
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+  .nav-link.final { background:var(--purple-bg); color:var(--purple); border-color:#c9b8ef; font-weight:600; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .celebrate, .curriculum-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .curriculum-grid { grid-template-columns: 1fr 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 25 · Ünite 5 · Büyük Final</span>
+      <h1>Mini TED Talk Projesi</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1–B2</span>
+        <span class="badge badge-level">Konuşma + Proje</span>
+        <span class="badge badge-capstone">Ünite 5 Capstone</span>
+        <span class="badge badge-final">🏆 Müfredat Finali</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>25 ders tamamlandı!</strong> Bu son ders, tüm müfredatı bir araya getiriyor.<br>
+      Hedef: <strong>3 dakikalık</strong> mini TED konuşması — yapı, dil ve teslim birlikte.<br>
+      Mükemmel olmak zorunda değilsin; <strong>paylaşmak</strong> yeterli.
+    </div>
+  </div>
+
+  <!-- Kutlama -->
+  <div class="celebrate">
+    <span class="celebrate-ico">🎉</span>
+    <div class="celebrate-text">
+      <strong>Tebrikler — 25 derslik yolculuğun son durağındasın!</strong> Alfabeden mini TED Talk'a kadar geldin. Bu ders, öğrendiğin her şeyi sahneye taşıma günü. Konuş, kaydet, kutla — sen bunu hak ettin.
+    </div>
+  </div>
+
+  <!-- Müfredat Özeti -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📚</span><h2>25 Ders — Tam Müfredat Özeti</h2></div>
+      <div class="card-body">
+        <div class="curriculum-grid">
+          <div class="cur-unit u1">
+            <div class="cur-unit-head">Ünite 1 · Temel</div>
+            <div class="cur-lessons">
+              <strong>1</strong> Telaffuz · IPA<br>
+              <strong>2</strong> To be · zamirler<br>
+              <strong>3</strong> Sayılar · a/an/the<br>
+              <strong>4</strong> WH sorular<br>
+              <strong>5</strong> Simple Present
+            </div>
+          </div>
+          <div class="cur-unit u2">
+            <div class="cur-unit-head">Ünite 2 · Zamanlar</div>
+            <div class="cur-lessons">
+              <strong>6</strong> Present Continuous<br>
+              <strong>7</strong> Simple Past<br>
+              <strong>8</strong> Present Perfect<br>
+              <strong>9</strong> Will · Going to<br>
+              <strong>10</strong> Can · Must · Should
+            </div>
+          </div>
+          <div class="cur-unit u3">
+            <div class="cur-unit-head">Ünite 3 · Kelime</div>
+            <div class="cur-lessons">
+              <strong>11</strong> Sağlık · there is/are<br>
+              <strong>12</strong> Yemek · some/any<br>
+              <strong>13</strong> Seyahat · edatlar<br>
+              <strong>14</strong> İş · collocations<br>
+              <strong>15</strong> Deyimler · phrasal verbs
+            </div>
+          </div>
+          <div class="cur-unit u4">
+            <div class="cur-unit-head">Ünite 4 · Yapılar</div>
+            <div class="cur-lessons">
+              <strong>16</strong> Passive voice<br>
+              <strong>17</strong> Linking words<br>
+              <strong>18</strong> If clauses<br>
+              <strong>19</strong> Reported speech<br>
+              <strong>20</strong> Comparative · superlative
+            </div>
+          </div>
+          <div class="cur-unit u5">
+            <div class="cur-unit-head">Ünite 5 · Beceriler</div>
+            <div class="cur-lessons">
+              <strong>21</strong> Okuma stratejileri<br>
+              <strong>22</strong> Dinleme · aksan<br>
+              <strong>23</strong> Yazma · paragraf<br>
+              <strong>24</strong> Konuşma · hedging<br>
+              <strong>25</strong> Mini TED Talk 🎤
+            </div>
+          </div>
+        </div>
+        <div class="rule-box purple-box" style="margin-top:10px;margin-bottom:0">
+          <strong>Capstone mantığı:</strong> Konuşmanda en az <strong>3 farklı üniteden</strong> beceri kullan — geçmiş zaman hikâyesi (Ü2), bağlayıcı kelimeler (Ü4), modal tavsiye (Ü2), koşul cümlesi (Ü4), tema kelimesi (Ü3).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 24</span>
+    <span class="recall-item"><strong>hedging</strong> = I think · perhaps · it seems</span>
+    <span class="recall-item"><strong>filler</strong> = Well… · You know… · Let me see…</span>
+    <span class="recall-item"><strong>clarifying</strong> = What I mean is…</span>
+    <span class="recall-item">Konuşmada mükemmel gramer değil, <strong>iletişim</strong> önemli</span>
+  </div>
+
+  <!-- İyi Konuşma + TED Yapısı -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>İyi Kısa Konuşmanın 3 Sırrı</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item hook">
+            <div class="use-title">🪝 Hook — Dikkat çek (15–20 sn)</div>
+            <div class="use-ex">Soru, şaşırtıcı istatistik veya kişisel anı ile başla.</div>
+            <div class="use-tr">Did you know…? · Three years ago, I couldn't say "hello".</div>
+          </div>
+          <div class="use-item points">
+            <div class="use-title">📌 3 Ana Nokta — Net ve tekrarlanabilir</div>
+            <div class="use-ex">Her nokta = bir fikir + bir örnek. Dinleyici 3 şey hatırlasın.</div>
+            <div class="use-tr">First… · Second… · Finally… — her biri ~40 sn</div>
+          </div>
+          <div class="use-item close">
+            <div class="use-title">✨ Unutulmaz Kapanış — Duygu + eylem</div>
+            <div class="use-ex">Özetle, ilham ver, dinleyiciye bir şey yapmasını söyle.</div>
+            <div class="use-tr">To sum up… · So, start today. · Thank you.</div>
+          </div>
+        </div>
+        <div class="rule-box ok-box" style="margin-bottom:0">
+          <strong>3 dakika kuralı:</strong> ~450 kelime · Hook 50 · Her nokta 60–70 · Kapanış 40. Yavaş ve net konuş.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🎤</span><h2>TED Talk Yapı Şablonu</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-hook">Opening Hook<small>15–20 sn</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-p1">Point 1<small>+ örnek</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-p2">Point 2<small>+ örnek</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-p3">Point 3<small>+ örnek</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-cta">Call to Action<small>unutulmaz kapanış</small></div>
+        </div>
+        <table class="conj-table">
+          <thead>
+            <tr><th>Bölüm</th><th>Ne yaparsın?</th><th>Örnek cümle</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-use"><strong>Hook</strong></td>
+              <td class="col-tr">Merak uyandır</td>
+              <td class="col-en">What if I told you one word changed everything?</td>
+            </tr>
+            <tr>
+              <td class="col-use"><strong>Point 1</strong></td>
+              <td class="col-tr">İlk ana fikir</td>
+              <td class="col-en">First, English opened doors for me.</td>
+            </tr>
+            <tr>
+              <td class="col-use"><strong>Point 2</strong></td>
+              <td class="col-tr">İkinci fikir + gelişim</td>
+              <td class="col-en">Second, it changed how I think.</td>
+            </tr>
+            <tr>
+              <td class="col-use"><strong>Point 3</strong></td>
+              <td class="col-tr">Üçüncü fikir + kanıt</td>
+              <td class="col-en">Finally, it gave me confidence.</td>
+            </tr>
+            <tr>
+              <td class="col-use"><strong>CTA</strong></td>
+              <td class="col-tr">Özet + harekete geçir</td>
+              <td class="col-en">So, take the first step today. Thank you.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beceri Checklist + Sunum Dili -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>✅</span><h2>25 Dersten Beceri Entegrasyonu — Checklist</h2></div>
+      <div class="card-body">
+        <div class="checklist">
+          <div class="check-item"><span class="check-box"></span><span><strong>Simple Present / Past / Perfect</strong> — rutin, hikâye, deneyim <span class="check-tag">Ü2</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Modals</strong> — can, should, must (tavsiye &amp; zorunluluk) <span class="check-tag">D10</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Linking words</strong> — however, because, therefore, in addition <span class="check-tag">D17</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>If clauses</strong> — If you practise, you will improve. <span class="check-tag">D18</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Passive</strong> — English is spoken worldwide. <span class="check-tag">D16</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Comparatives</strong> — better, more confident, the most important <span class="check-tag">D20</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Theme vocabulary</strong> — iş, seyahat, sağlık kelimelerinden en az 3 <span class="check-tag">Ü3</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Phrasal verbs / idioms</strong> — give up, look forward to, piece of cake <span class="check-tag">D15</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Hedging</strong> — I believe, perhaps, it seems to me <span class="check-tag">D24</span></span></div>
+          <div class="check-item"><span class="check-box"></span><span><strong>Reported speech</strong> — My teacher said that… <span class="check-tag">D19</span></span></div>
+        </div>
+        <div class="rule-box" style="margin-top:8px;margin-bottom:0">
+          <strong>Hedef:</strong> Konuşmanda en az <strong>5 madde</strong> işaretle. Hepsini sığdırmaya çalışma — doğal olsun.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Sunum Dili — Hazır Kalıplar</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr><th>Aşama</th><th>İngilizce</th><th>Türkçe</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-use">Açılış</td>
+              <td class="col-en">Today I'd like to talk about…</td>
+              <td class="col-tr">Bugün … hakkında konuşmak istiyorum.</td>
+            </tr>
+            <tr>
+              <td class="col-use">Konu tanıtma</td>
+              <td class="col-en">My topic is… / I'm going to share three ideas.</td>
+              <td class="col-tr">Konum… / Üç fikir paylaşacağım.</td>
+            </tr>
+            <tr>
+              <td class="col-use">Geçiş</td>
+              <td class="col-en">Let me give you an example…</td>
+              <td class="col-tr">Size bir örnek vereyim…</td>
+            </tr>
+            <tr>
+              <td class="col-use">Vurgulama</td>
+              <td class="col-en">The key point is… / What's important is…</td>
+              <td class="col-tr">Ana nokta… / Önemli olan…</td>
+            </tr>
+            <tr>
+              <td class="col-use">Sıralama</td>
+              <td class="col-en">First… · Secondly… · Finally…</td>
+              <td class="col-tr">İlk olarak… · İkinci… · Son olarak…</td>
+            </tr>
+            <tr>
+              <td class="col-use">Özet</td>
+              <td class="col-en">To sum up… / In conclusion…</td>
+              <td class="col-tr">Özetlemek gerekirse… / Sonuç olarak…</td>
+            </tr>
+            <tr>
+              <td class="col-use">CTA</td>
+              <td class="col-en">So, I encourage you to… / Start today.</td>
+              <td class="col-tr">Sizi … yapmaya teşvik ediyorum.</td>
+            </tr>
+            <tr>
+              <td class="col-use">Kapanış</td>
+              <td class="col-en">Thank you for listening. · Any questions?</td>
+              <td class="col-tr">Dinlediğiniz için teşekkürler.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beden Dili + Örnek Outline -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🧍</span><h2>Beden Dili &amp; Teslim İpuçları</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item eye">
+            <div class="use-title">👁 Göz teması</div>
+            <div class="use-ex">Kameraya veya dinleyiciye bak — 3–4 sn, sonra kaçır.</div>
+            <div class="use-tr">Notlara bakma; başın yukarıda kalsın.</div>
+          </div>
+          <div class="use-item pace">
+            <div class="use-title">⏱ Tempo</div>
+            <div class="use-ex">Dakikada ~130–150 kelime. TED konuşmacıları yavaştır.</div>
+            <div class="use-tr">Acele etme — net telaffuz kazanır.</div>
+          </div>
+          <div class="use-item pause">
+            <div class="use-title">⏸ Duraklamalar</div>
+            <div class="use-ex">Önemli cümlelerden önce ve sonra 1–2 sn dur.</div>
+            <div class="use-tr">Sessizlik = vurgu. "…and that changed <em>everything</em>."</div>
+          </div>
+          <div class="use-item hook">
+            <div class="use-title">🙌 Eller &amp; duruş</div>
+            <div class="use-ex">Eller görünsün; omuzlar açık; sabit dur, sallanma.</div>
+            <div class="use-tr">Jestler kelimeleri desteklesin, dikkat dağıtmasın.</div>
+          </div>
+        </div>
+        <div class="rule-box ok-box" style="margin-bottom:0">
+          <strong>Pro ipucu:</strong> Telefonda kendini kaydet. İlk sefer garip hissedilir — üçüncü sefer çok daha iyi. Pratik = güven.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📝</span><h2>Örnek Outline — Why Learning English Changed My Life</h2></div>
+      <div class="card-body">
+        <div class="outline-box">
+          <span class="ol-label">🪝 Hook (doldur)</span>
+          Three years ago, I couldn't <span class="outline-blank"></span>. Today, I'm standing here speaking English.<br>
+          <span class="ol-label">📌 Point 1 — Doors opened</span>
+          First, English helped me <span class="outline-blank"></span>. For example, <span class="outline-blank"></span>.<br>
+          <span class="ol-label">📌 Point 2 — New way of thinking</span>
+          Second, I started to think <span class="outline-blank"></span>. However, <span class="outline-blank"></span>.<br>
+          <span class="ol-label">📌 Point 3 — Confidence</span>
+          Finally, I became <span class="outline-blank"></span> than before. If I <span class="outline-blank"></span>, I wouldn't be here.<br>
+          <span class="ol-label">✨ Call to action</span>
+          To sum up, English <span class="outline-blank"></span>. So, <span class="outline-blank"></span>. Thank you.
+        </div>
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:6px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          Bu şablonu kendi hikâyenle doldur — iş, seyahat, arkadaşlık veya okul teması olabilir.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rubric -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📊</span><h2>Öz Değerlendirme Rubriği</h2></div>
+      <div class="card-body">
+        <table class="rubric-table">
+          <thead>
+            <tr>
+              <th>Kriter</th>
+              <th><span class="score score-1">1 — Gelişiyor</span></th>
+              <th><span class="score score-3">3 — İyi</span></th>
+              <th><span class="score score-5">5 — Güçlü</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="rubric-crit">İçerik</td>
+              <td>Konu belirsiz; 3 nokta yok</td>
+              <td>Hook + 3 nokta var; örnekler sınırlı</td>
+              <td>Net yapı; güçlü örnekler; akılda kalıcı CTA</td>
+            </tr>
+            <tr>
+              <td class="rubric-crit">Gramer</td>
+              <td>Sık hatalar anlamı bozar</td>
+              <td>Küçük hatalar; genel anlaşılır</td>
+              <td>Çeşitli yapılar doğru (past, modal, if…)</td>
+            </tr>
+            <tr>
+              <td class="rubric-crit">Akıcılık</td>
+              <td>Çok duraksama; okuma hissi</td>
+              <td>Bazı duraksamalar; genel akış iyi</td>
+              <td>Doğal tempo; bağlayıcılar kullanılmış</td>
+            </tr>
+            <tr>
+              <td class="rubric-crit">Etkileşim</td>
+              <td>Göz teması yok; monoton ses</td>
+              <td>Bazı göz teması; yeterli enerji</td>
+              <td>Güvenli duruş; vurgu ve duraklamalar etkili</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="rule-box purple-box" style="margin-top:10px;margin-bottom:0">
+          <strong>Puanlama:</strong> Her kriterde kendine 1–5 ver. Toplam <strong>16+</strong> = müfredatı başarıyla tamamladın! 12–15 = bir kez daha prova et. Her puan bir sonraki konuşman için geri bildirim.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Konuşmanı Hazırla</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Outline doldur — kendi konun</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                Konu: <span class="blank" style="min-width:140px"></span><br>
+                <span class="pr-num">1.</span> Hook: <span class="blank" style="min-width:180px"></span><br>
+                <span class="pr-num">2.</span> Point 1: <span class="blank" style="min-width:160px"></span><br>
+                <span class="pr-num">3.</span> Point 2: <span class="blank" style="min-width:160px"></span><br>
+                <span class="pr-num">4.</span> Point 3: <span class="blank" style="min-width:160px"></span><br>
+                <span class="pr-num">5.</span> CTA: <span class="blank" style="min-width:160px"></span>
+              </div>
+              <details class="answers">
+                <summary>Örnek cevap göster</summary>
+                <div class="answers-body">
+                  Konu: <strong>Why reading changed my life</strong><br>
+                  <span class="a-num">1.</span> Before I was 20, I had never finished a book in English.<br>
+                  <span class="a-num">2.</span> First, reading improved my vocabulary faster than any app.<br>
+                  <span class="a-num">3.</span> Second, it helped me understand different cultures.<br>
+                  <span class="a-num">4.</span> Finally, I feel more confident when I write emails at work.<br>
+                  <span class="a-num">5.</span> To sum up, pick up one book this week. Start with ten pages. Thank you.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Hook yaz — 3 farklı stil</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                Konu: İngilizce öğrenmek<br>
+                <span class="pr-num">1.</span> Soru ile: <span class="blank" style="min-width:170px"></span><br>
+                <span class="pr-num">2.</span> İstatistik/şok ile: <span class="blank" style="min-width:150px"></span><br>
+                <span class="pr-num">3.</span> Kişisel anı ile: <span class="blank" style="min-width:150px"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Have you ever felt stuck because of one language?<br>
+                  <span class="a-num">2.</span> Over 1.5 billion people speak English — and I used to be afraid of it.<br>
+                  <span class="a-num">3.</span> I still remember the day I ordered coffee and the waiter actually understood me.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Bağlayıcı ekle — linking words</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I was shy. <span class="blank"></span> I joined a speaking club.<br>
+                <span class="pr-num">2.</span> English is useful <span class="blank"></span> it opens global opportunities.<br>
+                <span class="pr-num">3.</span> I made mistakes. <span class="blank"></span>, I didn't give up.<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> I practise every day. <span class="blank"></span>, I watch series with subtitles.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> However / But &nbsp;
+                  <span class="a-num">2.</span> because &nbsp;
+                  <span class="a-num">3.</span> However / Nevertheless &nbsp;
+                  <span class="a-num">4.</span> First, · In addition / Also
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Peer review — arkadaşın konuşmasını değerlendir</div>
+            <div class="pr-block-body">
+              <div class="pr-q" style="line-height:1.9">
+                <span class="pr-num">☐</span> Hook ilk 20 saniyede dikkat çekti mi?<br>
+                <span class="pr-num">☐</span> 3 ana nokta net miydi?<br>
+                <span class="pr-num">☐</span> En az 1 örnek duydun mu?<br>
+                <span class="pr-num">☐</span> To sum up / In conclusion var mıydı?<br>
+                <span class="pr-num">☐</span> Göz teması &amp; ses tonu yeterli miydi?<br>
+                <span class="pr-num">☐</span> Geri bildirim: "I liked… / Next time try…"
+              </div>
+              <details class="answers">
+                <summary>Örnek geri bildirim</summary>
+                <div class="answers-body">
+                  <strong>I liked</strong> your personal story in Point 2 — it was very clear.<br>
+                  <strong>Next time try</strong> speaking a little slower after the hook.<br>
+                  <strong>One grammar tip:</strong> "I have went" → "I went" or "I have gone".<br>
+                  <strong>Score:</strong> Content 4 · Grammar 3 · Fluency 4 · Engagement 4 = <strong>15/20</strong> — Great job!
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Final Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🪝</span><span class="take-text"><strong>Hook</strong> + <strong>3 nokta</strong> + <strong>CTA</strong> = mini TED yapısı.</span></div>
+          <div class="take-item"><span class="take-ico">📚</span><span class="take-text">25 dersten en az <strong>5 beceri</strong> konuşmana yedir.</span></div>
+          <div class="take-item"><span class="take-ico">💬</span><span class="take-text"><strong>Today I'd like to…</strong> · <strong>Let me give you an example…</strong> · <strong>To sum up…</strong></span></div>
+          <div class="take-item"><span class="take-ico">👁</span><span class="take-text">Göz teması, yavaş tempo, cesur duraklamalar.</span></div>
+          <div class="take-item"><span class="take-ico">📊</span><span class="take-text">Rubrik ile kendini değerlendir — <strong>16+</strong> = başarı.</span></div>
+          <div class="take-item"><span class="take-ico">🎉</span><span class="take-text"><strong>25 ders bitti.</strong> Sen artık İngilizce konuşan biri değil — konuşmayı seçen biri.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Final Mission — Müfredat Capstone</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🎤</span>
+          <div class="mission-body">
+            <span class="m-title">3 Dakikalık Mini TED Talk — Hazırla &amp; Sun</span>
+            <strong>1.</strong> Konunu seç (İngilizce hayatını değiştirdi mi? okuma? seyahat? iş?).<br>
+            <strong>2.</strong> Outline yaz: Hook → 3 nokta → CTA (Pratik A şablonu).<br>
+            <strong>3.</strong> En az 5 beceri checklist maddesi kullan.<br>
+            <strong>4.</strong> 3 kez prova et — telefonda kaydet veya sınıfta sun.<br>
+            <strong>5.</strong> Rubrik ile puanla; arkadaşına dinlet (Peer review D).<br>
+            <span style="color:var(--purple);font-weight:600;margin-top:6px;display:block">🎊 Tebrikler — 25 derslik müfredatı tamamladın! Bu konuşma senin kapanış törenin.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 25 / 25 &nbsp;·&nbsp; Ünite 5: Gerçek Dünya · 🏆 Büyük Final</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="24.html">‹ Önceki: Ders 24</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <span class="nav-link final">🎉 Müfredat Tamamlandı!</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

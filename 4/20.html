@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 20 — Karşılaştırma (Comparative & Superlative) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .badge-capstone { background: var(--purple-bg); color: var(--purple); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-adj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-comp { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-super { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-than { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-adj { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-comp { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-super { font-family: var(--mono); font-weight: 600; color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.short   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.long    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.y-rule  { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.equal   { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.noun    { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.super   { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.short  .use-title { color: var(--accent); }
+  .use-item.long   .use-title { color: var(--ok); }
+  .use-item.y-rule .use-title { color: var(--teal); }
+  .use-item.equal  .use-title { color: var(--purple); }
+  .use-item.noun   .use-title { color: var(--warn); }
+  .use-item.super  .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.comp-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.super-head { background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.base-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-adj   { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-comp  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-super { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-than  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-the   { background: var(--rose-bg); color: var(--rose); border: 0.5px solid #fecdd3; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-comp  { color: var(--ok); font-weight: 600; }
+  .hl-super { color: var(--purple); font-weight: 600; }
+  .hl-than  { color: var(--warn); font-weight: 600; }
+  .hl-as    { color: var(--teal); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 20 · Ünite 4 · Capstone</span>
+      <h1>Karşılaştırma — Comparative & Superlative</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-capstone">Ünite 4 Capstone</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Tek karşılaştırma yeterli — <strong>more + -er birlikte kullanılmaz</strong>.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ more better</span><br>
+        <span class="right">✓ better</span> · <span class="right">✓ more expensive</span>
+      </span><br>
+      Karşılaştırmada <strong>than</strong>, eşitlikte <strong>as…as</strong>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 19</span>
+    <span class="recall-item"><strong>reported speech</strong> = dolaylı anlatım</span>
+    <span class="recall-item"><strong>say</strong> (söylemek) vs <strong>tell</strong> (anlatmak)</span>
+    <span class="recall-item"><strong>backshift</strong> = zaman kayması (said, was, could…)</span>
+    <span class="recall-item">She said (that) she <strong>was</strong> tired.</span>
+  </div>
+
+  <!-- Kurallar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Karşılaştırma Kuralları — -er / more / -est / most</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item short">
+            <div class="use-title">📏 Kısa sıfat (1–2 hece)</div>
+            <div class="use-kw">adj + -er · adj + -est</div>
+            <div class="use-ex">tall → taller → tallest<br>big → bigger → biggest (son sessiz çiftlenir)<br>hot → hotter → hottest</div>
+            <div class="use-tr">uzun → daha uzun → en uzun</div>
+          </div>
+          <div class="use-item long">
+            <div class="use-title">📚 Uzun sıfat (2+ hece)</div>
+            <div class="use-kw">more + adj · most + adj</div>
+            <div class="use-ex">expensive → more expensive → most expensive<br>beautiful → more beautiful → most beautiful<br>interesting → more interesting → most interesting</div>
+            <div class="use-tr">pahalı → daha pahalı → en pahalı</div>
+          </div>
+          <div class="use-item y-rule">
+            <div class="use-title">✏️ -y ile biten sıfatlar</div>
+            <div class="use-kw">y → i + -er / -est</div>
+            <div class="use-ex">happy → happier → happiest<br>easy → easier → easiest<br>busy → busier → busiest</div>
+            <div class="use-tr">mutlu → daha mutlu → en mutlu</div>
+          </div>
+          <div class="use-item short">
+            <div class="use-title">⚠️ -e ile bitenler</div>
+            <div class="use-kw">-e düşer + -r / -st</div>
+            <div class="use-ex">nice → nicer → nicest<br>large → larger → largest<br>safe → safer → safest</div>
+            <div class="use-tr">güzel → daha güzel → en güzel</div>
+          </div>
+        </div>
+
+        <div class="formation-box">
+          <div class="form-slot fs-adj">adj<small>sıfat</small></div>
+          <div class="form-slot fs-plus">→</div>
+          <div class="form-slot fs-comp">-er / more<small>comparative</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-than">than<small>karşılaştırma</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Hece kuralı (genel):</strong> 1 hece (big, hot) veya 2 hece + tek sesli (happy, easy) → <strong>-er/-est</strong>. Uzun kelimeler (beautiful, expensive) → <strong>more/most</strong>. Emin değilsen <strong>more</strong> genelde güvenli.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>⚡</span><h2>Düzensiz (Irregular) Sıfatlar</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="base-head">Base (pozitif)</th>
+              <th class="comp-head">Comparative</th>
+              <th class="super-head">Superlative</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="cmp-ex">good</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">better</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">the best</div></td>
+              <td><div class="cmp-tr">iyi → daha iyi → en iyi</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-ex">bad</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">worse</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">the worst</div></td>
+              <td><div class="cmp-tr">kötü → daha kötü → en kötü</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-ex">far</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">farther / further</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">the farthest / furthest</div></td>
+              <td><div class="cmp-tr">uzak → daha uzak → en uzak</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-ex">little</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">less</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">the least</div></td>
+              <td><div class="cmp-tr">az → daha az → en az</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-ex">many / much</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">more</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">the most</div></td>
+              <td><div class="cmp-tr">çok → daha çok → en çok</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box" style="margin-top:8px">
+          <strong>Far vs Further:</strong> <span style="font-family:var(--mono)">farther</span> = fiziksel mesafe &nbsp;|&nbsp; <span style="font-family:var(--mono)">further</span> = mesafe veya "daha fazla" (further information). Günlük konuşmada ikisi de kullanılır.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- as...as + İsim karşılaştırma -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Eşitlik — as…as / not as…as / the same as</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item equal">
+            <div class="use-title">✅ Aynı derece — as + adj + as</div>
+            <div class="use-kw">as … as = kadar …</div>
+            <div class="use-ex">She is <strong>as tall as</strong> her brother.<br>This book is <strong>as interesting as</strong> that one.<br>He runs <strong>as fast as</strong> a professional.</div>
+            <div class="use-tr">Kardeşi kadar uzun. · Bu kitap o kadar ilginç. · Profesyonel kadar hızlı koşuyor.</div>
+          </div>
+          <div class="use-item equal">
+            <div class="use-title">❌ Daha az — not as…as / not so…as</div>
+            <div class="use-kw">not as … as = … kadar … değil</div>
+            <div class="use-ex">This phone is <strong>not as expensive as</strong> that one.<br>I'm <strong>not as busy as</strong> I was last week.<br>It's <strong>not so cold as</strong> yesterday. (= aynı anlam)</div>
+            <div class="use-tr">Bu telefon o kadar pahalı değil. · Geçen haftaki kadar meşgul değilim.</div>
+          </div>
+          <div class="use-item equal">
+            <div class="use-title">🔄 Aynı şey — the same as</div>
+            <div class="use-kw">the same + noun + as</div>
+            <div class="use-ex">My bag is <strong>the same as</strong> yours.<br>We have <strong>the same</strong> phone <strong>as</strong> them.<br>Her salary is <strong>the same as</strong> mine.</div>
+            <div class="use-tr">Çantam seninkiyle aynı. · Onlarla aynı telefona sahibiz.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div class="struct-row">
+            <div class="struct-label">Eşitlik</div>
+            <span class="slot slot-rest">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-comp">as + adj + as</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-rest">karşılaştırılan</span>
+            <div class="struct-ex">Istanbul is as big as London. (London kadar büyük)</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Eşit değil</div>
+            <span class="slot slot-rest">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-than">not as + adj + as</span>
+            <div class="struct-ex">Ankara is not as crowded as Istanbul.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📦</span><h2>İsimlerle Karşılaştırma — more / fewer / less + noun</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item noun">
+            <div class="use-title">➕ Daha fazla — more + noun + than</div>
+            <div class="use-kw">more + isim (sayılabilen/sayılamayan)</div>
+            <div class="use-ex">I have <strong>more books than</strong> you.<br>She spends <strong>more money than</strong> her sister.<br>There are <strong>more people than</strong> yesterday.</div>
+            <div class="use-tr">Senden daha fazla kitabım var. · Kız kardeşinden daha fazla para harcıyor.</div>
+          </div>
+          <div class="use-item noun">
+            <div class="use-title">➖ Sayılabilen — fewer + noun + than</div>
+            <div class="use-kw">fewer + çoğul isim</div>
+            <div class="use-ex">This shop has <strong>fewer customers than</strong> last year.<br>I made <strong>fewer mistakes than</strong> before.<br>There are <strong>fewer cars than</strong> bikes here.</div>
+            <div class="use-tr">Bu mağazada geçen yıla göre daha az müşteri var.</div>
+          </div>
+          <div class="use-item noun">
+            <div class="use-title">➖ Sayılamayan — less + noun + than</div>
+            <div class="use-kw">less + tekil / sayılamayan isim</div>
+            <div class="use-ex">I have <strong>less time than</strong> you.<br>This model uses <strong>less energy than</strong> the old one.<br>She drinks <strong>less coffee than</strong> me.</div>
+            <div class="use-tr">Senden daha az zamanım var. · Bu model eskisinden daha az enerji kullanıyor.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:4px">
+          <strong>Fewer vs Less:</strong> <span style="font-family:var(--mono)">fewer</span> = sayılabilen (fewer apples) &nbsp;|&nbsp; <span style="font-family:var(--mono)">less</span> = sayılamayan (less sugar). Günlük İngilizce'de "less people" duyulur ama sınavda <strong>fewer people</strong> doğru.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Superlative -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Superlative — the + -est / the most (En …)</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-the" style="background:var(--rose-bg);color:var(--rose);border:0.5px solid #fecdd3">the<small>her zaman!</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-super">-est / most + adj<small>superlative</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-rest" style="background:var(--bg-3);color:var(--ink-2);border:0.5px solid var(--rule)">(in / of …)<small>grup belirt</small></div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Tip</th>
+              <th>Superlative</th>
+              <th>Örnek cümle</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-adj">Kısa sıfat</td>
+              <td class="col-super">the + -est</td>
+              <td class="col-comp">Mount Everest is <span class="verb-hl">the highest</span> mountain in the world.</td>
+              <td class="col-tr">Dünyadaki en yüksek dağ</td>
+            </tr>
+            <tr>
+              <td class="col-adj">Uzun sıfat</td>
+              <td class="col-super">the most + adj</td>
+              <td class="col-comp">This is <span class="verb-hl">the most interesting</span> book I've ever read.</td>
+              <td class="col-tr">Okuduğum en ilginç kitap</td>
+            </tr>
+            <tr>
+              <td class="col-adj">Düzensiz</td>
+              <td class="col-super">the best / worst / least</td>
+              <td class="col-comp">She is <span class="verb-hl">the best</span> student in the class.</td>
+              <td class="col-tr">Sınıftaki en iyi öğrenci</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="struct-row" style="margin:0">
+            <div class="struct-label">Grup içinde (in)</div>
+            <span class="slot slot-the">the</span>
+            <span class="slot slot-super">biggest</span>
+            <span class="slot slot-rest">city in Turkey</span>
+            <div class="struct-ex">Türkiye'deki en büyük şehir</div>
+          </div>
+          <div class="struct-row" style="margin:0">
+            <div class="struct-label">Grup arasında (of)</div>
+            <span class="slot slot-the">the</span>
+            <span class="slot slot-super">most expensive</span>
+            <span class="slot slot-rest">of the three phones</span>
+            <div class="struct-ex">Üç telefon arasında en pahalı</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:8px;border-left-color:var(--rose);background:var(--rose-bg)">
+          <strong style="color:var(--rose)">⚠️ THE unutma!</strong> Superlative'te <span style="font-family:var(--mono)">the</span> neredeyse her zaman gerekli: <span style="font-family:var(--mono)">the biggest</span>, <span style="font-family:var(--mono)">the most popular</span>. Tek başına "biggest city" eksik kalır.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📋</span><h2>Hızlı Referans — Comparative vs Superlative</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th style="background:var(--bg-3);color:var(--ink-3)">Ne zaman?</th>
+              <th class="comp-head">Comparative (2 şey)</th>
+              <th class="super-head">Superlative (3+ / grup)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="cmp-tr">Anlam</div></td>
+              <td><div class="cmp-ex">daha … (than)</div><div class="cmp-tr">A, B'den daha büyük</div></td>
+              <td><div class="cmp-ex">en … (the + -est/most)</div><div class="cmp-tr">gruptaki en büyük</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-tr">Yapı</div></td>
+              <td><div class="cmp-ex">bigger <strong>than</strong> · more expensive <strong>than</strong></div></td>
+              <td><div class="cmp-ex"><strong>the</strong> biggest · <strong>the</strong> most expensive</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-tr">Eşitlik</div></td>
+              <td><div class="cmp-ex">as tall <strong>as</strong> · not as fast <strong>as</strong></div></td>
+              <td><div class="cmp-ex">— (superlative eşitlikte kullanılmaz)</div></td>
+            </tr>
+            <tr>
+              <td><div class="cmp-tr">Örnek</div></td>
+              <td><div class="cmp-ex" style="color:var(--ok)">Istanbul is bigger than Ankara.</div></td>
+              <td><div class="cmp-ex" style="color:var(--purple)">Istanbul is the biggest city in Turkey.</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 more better / more worse — ÇİFT KARŞILAŞTIRMA</div>
+            <div class="trap-desc">Düzensiz sıfatlar zaten karşılaştırma formundadır; more eklenmez!</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ This is more better than that.</span><br>
+              <span class="right">✓ This is <strong>better</strong> than that.</span><br>
+              <span class="wrong">✗ more worse · more best</span><br>
+              <span class="right">✓ worse · the best</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">than vs from</div>
+            <div class="trap-desc">Türkçe "-den" karşılaştırması İngilizce'de <strong>than</strong> ile yapılır, from değil.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She is taller from me.</span><br>
+              <span class="right">✓ She is taller <strong>than</strong> me. / than I am.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Double comparative — daha daha</div>
+            <div class="trap-desc">Bir cümlede iki karşılaştırma formu kullanılmaz.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ more easier · more bigger · the most best</span><br>
+              <span class="right">✓ easier · bigger · the best</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Superlative'te the unutmak</div>
+            <div class="trap-desc">Türkçe "en büyük şehir" derken İngilizce'de the şart.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Istanbul is biggest city.</span><br>
+              <span class="right">✓ Istanbul is <strong>the</strong> biggest city in Turkey.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ than me vs than I am</div>
+            <div class="trap-desc">Günlük konuşmada "than me" normal. Resmi yazıda "than I am" tercih edilir — ikisi de kabul görür.</div>
+            <div class="trap-ex"><span class="right">She is taller than me. ✓ · She is taller than I am. ✓ (formal)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Alışverişte Ürün Karşılaştırma</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = <strong>comparative</strong> (-er / more) &nbsp;·&nbsp; 🟣 Mor = <strong>superlative</strong> (the -est / the most) &nbsp;·&nbsp; 🔵 Mavi = <strong>as…as / the same as</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hi! Can I help you compare these two laptops?</div>
+              <div class="bubble-tr">Merhaba! Bu iki laptopu karşılaştırmanıza yardım edebilir miyim?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">C</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, please. Which one is <span class="hl-comp">lighter</span>?</div>
+              <div class="bubble-tr">Evet lütfen. Hangisi daha hafif?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">The silver one is <span class="hl-comp">lighter than</span> the black one — only 1.2 kg. But the black one is <span class="hl-comp">more powerful</span>.</div>
+              <div class="bubble-tr">Gümüş olan siyah olandan daha hafif — sadece 1,2 kg. Ama siyah olan daha güçlü.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">C</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Is the screen <span class="hl-as">as big as</span> on the other model?</div>
+              <div class="bubble-tr">Ekran diğer modeldeki kadar büyük mü?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Almost — it's <span class="hl-as">not as large as</span> the black one, but the battery life is <span class="hl-comp">better</span>. And it's <span class="hl-comp">cheaper than</span> all the others in the shop.</div>
+              <div class="bubble-tr">Neredeyse — siyah o kadar büyük değil, ama pil ömrü daha iyi. Ve mağazadaki diğerlerinden daha ucuz.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">C</div>
+            <div class="bubble-text">
+              <div class="bubble-en">What about the phone? I need something with <span class="hl-comp">more storage than</span> my old one.</div>
+              <div class="bubble-tr">Telefon ne olacak? Eskisinden daha fazla depolamaya ihtiyacım var.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">This model has <span class="hl-comp">less memory than</span> the Pro, but the camera is <span class="hl-super">the best</span> in this price range. It's <span class="hl-as">the same as</span> the one your friend bought last month.</div>
+              <div class="bubble-tr">Bu modelde Pro'dan daha az bellek var, ama kamera bu fiyat aralığındaki en iyisi. Arkadaşınızın geçen ay aldığıyla aynı.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">C</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Perfect! The silver laptop and this phone — are they <span class="hl-super">the most popular</span> products here?</div>
+              <div class="bubble-tr">Mükemmel! Gümüş laptop ve bu telefon — buradaki en popüler ürünler mi?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">S</div>
+            <div class="bubble-text">
+              <div class="bubble-en">The phone is <span class="hl-super">the most popular</span>, yes. The laptop is <span class="hl-comp">more popular than</span> the gaming models but <span class="hl-as">not as popular as</span> our budget tablets.</div>
+              <div class="bubble-tr">Telefon en popüler, evet. Laptop oyun modellerinden daha popüler ama bütçe tabletlerimiz kadar popüler değil.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Comparative veya superlative yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> This hotel is <span class="blank"></span> (good) than the last one.<br>
+                <span class="pr-num">2.</span> She is <span class="blank"></span> (the / tall) student in the class.<br>
+                <span class="pr-num">3.</span> Today is <span class="blank"></span> (hot) than yesterday.<br>
+                <span class="pr-num">4.</span> It was <span class="blank"></span> (bad) exam I've ever taken.<br>
+                <span class="pr-num">5.</span> This route is <span class="blank"></span> (far) — let's take it.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> better &nbsp; <span class="a-num">2.</span> the tallest &nbsp; <span class="a-num">3.</span> hotter &nbsp; <span class="a-num">4.</span> the worst &nbsp; <span class="a-num">5.</span> farther / further
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) as…as / not as…as / the same as</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> My room is <span class="blank"></span> yours. (aynı büyüklükte)<br>
+                <span class="pr-num">2.</span> This coffee is <span class="blank"></span> the one in Italy. (o kadar iyi değil)<br>
+                <span class="pr-num">3.</span> His car is <span class="blank"></span> mine. (aynı model)<br>
+                <span class="pr-num">4.</span> She doesn't earn <span class="blank"></span> her colleague. (aynı miktarda değil)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> as big as &nbsp; <span class="a-num">2.</span> not as good as &nbsp; <span class="a-num">3.</span> the same as &nbsp; <span class="a-num">4.</span> as much as
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She is more taller than me. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> This is the most best restaurant. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Istanbul is bigger from Ankara. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> I have less friends than you. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> She is taller than me. &nbsp; <span class="a-num">2.</span> This is the best restaurant. &nbsp; <span class="a-num">3.</span> Istanbul is bigger than Ankara. &nbsp; <span class="a-num">4.</span> I have fewer friends than you.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Cümle tamamla — isim karşılaştırma</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> There are <span class="blank"></span> (few) students in this class than last year.<br>
+                <span class="pr-num">2.</span> I need <span class="blank"></span> (much) time to finish.<br>
+                <span class="pr-num">3.</span> She bought <span class="blank"></span> (many) books than her brother.<br>
+                <span class="pr-num">4.</span> This phone has <span class="blank"></span> (little) battery life than the Pro model.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> fewer &nbsp; <span class="a-num">2.</span> more &nbsp; <span class="a-num">3.</span> more &nbsp; <span class="a-num">4.</span> less
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">📏</span><span class="take-text">Kısa sıfat: <strong>-er / -est</strong>. Uzun: <strong>more / most</strong>. -y → <strong>-ier/-iest</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">⚡</span><span class="take-text">Düzensiz: <strong>good→better→best</strong>, bad→worse→worst, far→further, little→less→least.</span></div>
+          <div class="take-item"><span class="take-ico">⚖️</span><span class="take-text">Eşitlik: <strong>as + adj + as</strong>. Olumsuz: <strong>not as…as</strong>. Aynı: <strong>the same as</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">📦</span><span class="take-text">İsim: <strong>more/fewer/less + noun + than</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🏆</span><span class="take-text">Superlative: <strong>the + -est / the most</strong> (+ in/of grup).</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Asla <strong>more better</strong>. Karşılaştırma = <strong>than</strong>, from değil.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi — Ünite 4 Capstone</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">3 Şehir veya 3 Telefon Karşılaştır</span>
+            <strong>10 cümle</strong> yaz — en az <strong>5 comparative</strong> ve <strong>3 superlative</strong> olsun. Örnek başlangıç:<br>
+            <strong>1.</strong> Istanbul is <strong>bigger than</strong> Ankara.<br>
+            <strong>2.</strong> Izmir is <strong>not as crowded as</strong> Istanbul.<br>
+            <strong>3.</strong> Ankara is <strong>the coldest</strong> of the three in winter.<br>
+            <strong>4.</strong> Istanbul has <strong>more tourists than</strong> the other cities.<br>
+            <strong>5.</strong> The iPhone is <strong>more expensive than</strong> the Samsung.<br>
+            <span style="color:var(--ink-3)">Bonus: Bir cümleyi reported speech'e çevir (Ders 19): "She said Istanbul was the biggest city."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 20 / 25 &nbsp;·&nbsp; Ünite 4: İnce Ayrımlar · Capstone</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="19.html">‹ Önceki: Ders 19</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="../5/21.html">Sonraki: Ders 21 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

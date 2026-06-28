@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 15 — Deyimler ve Phrasal Verbs · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .badge-capstone { background: var(--purple-bg); color: var(--purple); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-part  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-eq    { font-size: 18px; color: var(--ink-4); }
+  .fs-mean  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 5px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pv  { font-family: var(--mono); font-weight: 600; color: var(--ok); white-space: nowrap; }
+  .col-tr  { color: var(--ink-3); font-size: 11px; }
+  .col-ex  { font-size: 12px; color: var(--ink); }
+  .verb-hl { color: var(--ok); font-weight: 700; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.sep   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.insep { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.sep   .use-title { color: var(--accent); }
+  .use-item.insep .use-title { color: var(--purple); }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .idiom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .idiom-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .idiom-name { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--purple); margin-bottom: 2px; }
+  .idiom-mean { font-size: 11px; color: var(--ink-2); font-weight: 500; margin-bottom: 3px; }
+  .idiom-ex   { font-size: 11px; color: var(--ink); }
+  .idiom-tr   { font-size: 10px; color: var(--ink-3); margin-top: 2px; font-style: italic; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-verb  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-part  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-obj   { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-pv    { color: var(--ok); font-weight: 600; }
+  .hl-idiom { color: var(--purple); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  .particle-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:8px; }
+  .ptag { font-family:var(--mono); font-size:11px; padding:3px 9px; border-radius:14px; background:var(--bg-3); color:var(--ink-2); border:0.5px solid var(--rule); }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .idiom-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .idiom-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 15 · Ünite 3 · Capstone</span>
+      <h1>Deyimler ve Phrasal Verbs</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Kelime + İfade</span>
+        <span class="badge badge-capstone">🏁 Ünite Sonu</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Phrasal verb'leri kelime kelime çevirme!<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ I gave up it</span><br>
+        <span class="right">✓ I gave it up</span>
+      </span><br>
+      <strong>put on</strong> ≠ <strong>put off</strong> — tamamen farklı anlamlar!
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 14</span>
+    <span class="recall-item"><strong>work vocabulary</strong> — apply for, get promoted</span>
+    <span class="recall-item"><strong>collocations</strong> — make a decision, take a break</span>
+    <span class="recall-item"><strong>interview phrases</strong> — I'm good at…, strengths & weaknesses</span>
+    <span class="recall-item">Bugün bunları phrasal verb ve deyimlerle zenginleştiriyoruz</span>
+  </div>
+
+  <!-- Phrasal Verb Nedir? -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Phrasal Verb Nedir? — Fiil + Parçacık = Yeni Anlam</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-verb">VERB<small>fiil</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-part">PARTICLE<small>up · out · off · on…</small></div>
+          <div class="form-slot fs-eq">=</div>
+          <div class="form-slot fs-mean">NEW MEANING<small>yeni anlam!</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Temel fikir:</strong> <span style="font-family:var(--mono)">get</span> = almak / olmak &nbsp;|&nbsp; <span style="font-family:var(--mono)">get up</span> = <strong>kalkmak</strong> (tamamen farklı!)<br>
+          Parçacık (particle) edat gibi görünür ama fiille <strong>birleşerek</strong> yeni bir ifade oluşturur.
+        </div>
+
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.05em">Sık parçacıklar</div>
+        <div class="particle-tags">
+          <span class="ptag">up ↑</span>
+          <span class="ptag">out →</span>
+          <span class="ptag">off ✕</span>
+          <span class="ptag">on ✓</span>
+          <span class="ptag">in</span>
+          <span class="ptag">down ↓</span>
+          <span class="ptag">away</span>
+          <span class="ptag">back</span>
+          <span class="ptag">over</span>
+          <span class="ptag">through</span>
+        </div>
+
+        <div style="margin-top:10px;font-size:12px;line-height:1.8">
+          <span style="font-family:var(--mono);color:var(--ok)">turn</span> + <span style="font-family:var(--mono);color:var(--purple)">on</span> = açmak (ışık, TV)<br>
+          <span style="font-family:var(--mono);color:var(--ok)">turn</span> + <span style="font-family:var(--mono);color:var(--purple)">off</span> = kapatmak<br>
+          <span style="font-family:var(--mono);color:var(--ok)">run</span> + <span style="font-family:var(--mono);color:var(--purple)">out of</span> = tükenmek (stok bitmek)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>↔️</span><h2>Ayrılabilir vs Ayrılamaz — Separable / Inseparable</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item sep">
+            <div class="use-title">↔️ Ayrılabilir (Separable)</div>
+            <div class="use-ex">Nesne <strong>araya</strong> girebilir veya sonda kalabilir.</div>
+            <div class="use-tr" style="font-family:var(--mono);margin-top:4px">Turn <strong>on</strong> the light.<br>Turn the light <strong>on</strong>. ✓</div>
+          </div>
+          <div class="use-item insep">
+            <div class="use-title">🔗 Ayrılamaz (Inseparable)</div>
+            <div class="use-ex">Nesne <strong>asla araya giremez</strong> — hep sonda.</div>
+            <div class="use-tr" style="font-family:var(--mono);margin-top:4px">Look <strong>for</strong> my keys. ✓<br>Look my keys <strong>for</strong>. ✗</div>
+          </div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Ayrılabilir — zamir varsa araya koy!</div>
+          <span class="slot slot-verb">Turn</span>
+          <span class="slot slot-obj">it</span>
+          <span class="slot slot-part">on</span>
+          <div class="struct-ex">Turn it on. ✓ &nbsp;·&nbsp; Turn on it. ✗ (zamir sonda olamaz!)</div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Ayrılamaz — fiil + parçacık birlikte</div>
+          <span class="slot slot-verb">look</span>
+          <span class="slot slot-part">for</span>
+          <span class="slot slot-obj">a job</span>
+          <div class="struct-ex">I'm looking for a new job. (Ders 14'teki iş kelimeleriyle birleşir!)</div>
+        </div>
+
+        <div class="rule-box" style="margin-top:4px">
+          <strong>İpucu:</strong> Emin değilsen nesneyi <strong>sona</strong> koy — genelde doğru olur: <span style="font-family:var(--mono)">Give up smoking.</span> ✓
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 25 Phrasal Verbs -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⭐</span><h2>25 Temel Phrasal Verb — Türkçe + Örnek</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Phrasal Verb</th>
+              <th>Türkçe</th>
+              <th>Örnek Cümle</th>
+              <th>Tür</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="col-pv">get up</td><td class="col-tr">kalkmak (yataktan)</td><td class="col-ex">I <span class="verb-hl">get up</span> at 7 every morning.</td><td class="col-tr">insep</td></tr>
+            <tr><td>2</td><td class="col-pv">give up</td><td class="col-tr">vazgeçmek, bırakmak</td><td class="col-ex">Don't <span class="verb-hl">give up</span> on your dreams.</td><td class="col-tr">sep</td></tr>
+            <tr><td>3</td><td class="col-pv">look for</td><td class="col-tr">aramak</td><td class="col-ex">I'm <span class="verb-hl">looking for</span> a new job.</td><td class="col-tr">insep</td></tr>
+            <tr><td>4</td><td class="col-pv">turn on</td><td class="col-tr">açmak (cihaz)</td><td class="col-ex"><span class="verb-hl">Turn on</span> the lights, please.</td><td class="col-tr">sep</td></tr>
+            <tr><td>5</td><td class="col-pv">turn off</td><td class="col-tr">kapatmak (cihaz)</td><td class="col-ex"><span class="verb-hl">Turn off</span> your phone in the meeting.</td><td class="col-tr">sep</td></tr>
+            <tr><td>6</td><td class="col-pv">run out of</td><td class="col-tr">tükenmek, bitmek</td><td class="col-ex">We <span class="verb-hl">ran out of</span> coffee at the office.</td><td class="col-tr">insep</td></tr>
+            <tr><td>7</td><td class="col-pv">pick up</td><td class="col-tr">almak, toplamak</td><td class="col-ex">Can you <span class="verb-hl">pick me up</span> at 5?</td><td class="col-tr">sep</td></tr>
+            <tr><td>8</td><td class="col-pv">put on</td><td class="col-tr">giymek, takmak</td><td class="col-ex"><span class="verb-hl">Put on</span> your jacket — it's cold.</td><td class="col-tr">sep</td></tr>
+            <tr><td>9</td><td class="col-pv">take off</td><td class="col-tr">çıkarmak; kalkmak (uçak)</td><td class="col-ex"><span class="verb-hl">Take off</span> your shoes at the door.</td><td class="col-tr">sep</td></tr>
+            <tr><td>10</td><td class="col-pv">look after</td><td class="col-tr">bakmak, ilgilenmek</td><td class="col-ex">She <span class="verb-hl">looks after</span> the new trainees.</td><td class="col-tr">insep</td></tr>
+            <tr><td>11</td><td class="col-pv">find out</td><td class="col-tr">öğrenmek, keşfetmek</td><td class="col-ex">I <span class="verb-hl">found out</span> I got the job!</td><td class="col-tr">insep</td></tr>
+            <tr><td>12</td><td class="col-pv">give back</td><td class="col-tr">geri vermek</td><td class="col-ex"><span class="verb-hl">Give it back</span> to me, please.</td><td class="col-tr">sep</td></tr>
+            <tr><td>13</td><td class="col-pv">get on</td><td class="col-tr">binmek; iyi geçinmek</td><td class="col-ex">I <span class="verb-hl">get on</span> well with my colleagues.</td><td class="col-tr">insep</td></tr>
+            <tr><td>14</td><td class="col-pv">get off</td><td class="col-tr">inmek (araçtan)</td><td class="col-ex"><span class="verb-hl">Get off</span> at the next stop.</td><td class="col-tr">insep</td></tr>
+            <tr><td>15</td><td class="col-pv">wake up</td><td class="col-tr">uyanmak</td><td class="col-ex">I <span class="verb-hl">woke up</span> late today.</td><td class="col-tr">insep</td></tr>
+            <tr><td>16</td><td class="col-pv">sit down</td><td class="col-tr">oturmak</td><td class="col-ex">Please <span class="verb-hl">sit down</span> and relax.</td><td class="col-tr">insep</td></tr>
+            <tr><td>17</td><td class="col-pv">stand up</td><td class="col-tr">ayağa kalkmak</td><td class="col-ex"><span class="verb-hl">Stand up</span> when the manager enters.</td><td class="col-tr">insep</td></tr>
+            <tr><td>18</td><td class="col-pv">come back</td><td class="col-tr">geri dönmek</td><td class="col-ex">When will you <span class="verb-hl">come back</span> from lunch?</td><td class="col-tr">insep</td></tr>
+            <tr><td>19</td><td class="col-pv">go out</td><td class="col-tr">dışarı çıkmak</td><td class="col-ex">Let's <span class="verb-hl">go out</span> for dinner after work.</td><td class="col-tr">insep</td></tr>
+            <tr><td>20</td><td class="col-pv">work out</td><td class="col-tr">çözmek; egzersiz yapmak</td><td class="col-ex">We need to <span class="verb-hl">work out</span> a solution.</td><td class="col-tr">insep</td></tr>
+            <tr><td>21</td><td class="col-pv">hold on</td><td class="col-tr">beklemek; tutunmak</td><td class="col-ex"><span class="verb-hl">Hold on</span> — I'll check your CV.</td><td class="col-tr">insep</td></tr>
+            <tr><td>22</td><td class="col-pv">fill in</td><td class="col-tr">doldurmak (form)</td><td class="col-ex"><span class="verb-hl">Fill in</span> this application form.</td><td class="col-tr">sep</td></tr>
+            <tr><td>23</td><td class="col-pv">look up</td><td class="col-tr">aramak (sözlükte / internette)</td><td class="col-ex"><span class="verb-hl">Look up</span> the word if you don't know it.</td><td class="col-tr">sep</td></tr>
+            <tr><td>24</td><td class="col-pv">break down</td><td class="col-tr">bozulmak; yıkılmak (duygusal)</td><td class="col-ex">My car <span class="verb-hl">broke down</span> on the way to the interview.</td><td class="col-tr">insep</td></tr>
+            <tr><td>25</td><td class="col-pv">carry on</td><td class="col-tr">devam etmek</td><td class="col-ex"><span class="verb-hl">Carry on</span> with your presentation.</td><td class="col-tr">insep</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:6px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          <strong style="color:var(--accent)">sep</strong> = ayrılabilir &nbsp;·&nbsp; <strong style="color:var(--purple)">insep</strong> = ayrılamaz &nbsp;·&nbsp; Geçmiş: get <strong>up</strong> → got <strong>up</strong> · give <strong>up</strong> → gave <strong>up</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Idioms + Traps -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>10 Temel İngilizce Deyim — Türkçe Konuşanlar İçin</h2></div>
+      <div class="card-body">
+        <div class="idiom-grid">
+          <div class="idiom-item">
+            <div class="idiom-name">break the ice</div>
+            <div class="idiom-mean">buzları kırmak, ortamı yumuşatmak</div>
+            <div class="idiom-ex">He told a joke to break the ice at the meeting.</div>
+            <div class="idiom-tr">Toplantıda ortamı yumuşatmak için şaka yaptı.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">a piece of cake</div>
+            <div class="idiom-mean">çok kolay, çocuk oyuncağı</div>
+            <div class="idiom-ex">The interview was a piece of cake!</div>
+            <div class="idiom-tr">Mülakat çocuk oyuncağıydı!</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">under the weather</div>
+            <div class="idiom-mean">keyifsiz, hasta gibi hissetmek</div>
+            <div class="idiom-ex">I'm feeling a bit under the weather today.</div>
+            <div class="idiom-tr">Bugün biraz keyifsizim.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">hit the road</div>
+            <div class="idiom-mean">yola çıkmak, gitmek</div>
+            <div class="idiom-ex">It's 6 pm — let's hit the road.</div>
+            <div class="idiom-tr">Saat 6 oldu — hadi gidelim.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">once in a blue moon</div>
+            <div class="idiom-mean">çok nadir, ayda bir</div>
+            <div class="idiom-ex">I only eat fast food once in a blue moon.</div>
+            <div class="idiom-tr">Fast food'u çok nadiren yerim.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">call it a day</div>
+            <div class="idiom-mean">işi bitirmek, günü kapatmak</div>
+            <div class="idiom-ex">We've done enough — let's call it a day.</div>
+            <div class="idiom-tr">Yeterince yaptık — hadi işi bitirelim.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">spill the beans</div>
+            <div class="idiom-mean">sırrı açığa vurmak, dedikodu yapmak</div>
+            <div class="idiom-ex">Don't spill the beans about the surprise party!</div>
+            <div class="idiom-tr">Sürpriz parti hakkında konuşma!</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">cost an arm and a leg</div>
+            <div class="idiom-mean">çok pahalı olmak</div>
+            <div class="idiom-ex">That new laptop costs an arm and a leg.</div>
+            <div class="idiom-tr">O yeni laptop çok pahalı.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">get cold feet</div>
+            <div class="idiom-mean">son anda korkup geri adım atmak</div>
+            <div class="idiom-ex">She got cold feet before the job interview.</div>
+            <div class="idiom-tr">İş mülakatından önce korkup geri adım attı.</div>
+          </div>
+          <div class="idiom-item">
+            <div class="idiom-name">on the same page</div>
+            <div class="idiom-mean">aynı fikirde olmak, anlaşmak</div>
+            <div class="idiom-ex">Let's make sure we're on the same page.</div>
+            <div class="idiom-tr">Aynı fikirde olduğumuzdan emin olalım.</div>
+          </div>
+        </div>
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Deyim kuralı:</strong> Kelime kelime çevirme! <span style="font-family:var(--mono)">under the weather</span> ≠ "havanın altında". Anlamı <strong>bütün olarak</strong> öğren.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Kelime kelime çeviri — EN BÜYÜK TUZAK</div>
+            <div class="trap-desc">Phrasal verb ve deyimler Türkçe'ye kelime kelime çevrilmez. Anlamı bütün olarak öğren.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ "I am under the weather" = Havanın altındayım</span><br>
+              <span class="right">✓ under the weather = keyifsiz / hasta gibi hissediyorum</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">put off vs put on — karıştırma!</div>
+            <div class="trap-desc">Aynı fiil (put), farklı parçacık, tamamen farklı anlam!</div>
+            <div class="trap-ex">
+              <span class="right">✓ <strong>put on</strong> a coat = mont giymek</span><br>
+              <span class="right">✓ <strong>put off</strong> a meeting = toplantıyı ertelemek</span><br>
+              <span class="wrong">✗ Don't put on the meeting. (anlamsız!)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">look forward to + -ing (to + fiil DEĞİL!)</div>
+            <div class="trap-desc">"to" burada edat — ardından fiil + <strong>-ing</strong> gelir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I look forward to meet you.</span><br>
+              <span class="right">✓ I look forward to <strong>meeting</strong> you. (Sizinle tanışmayı dört gözle bekliyorum.)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Zamir + ayrılabilir phrasal verb</div>
+            <div class="trap-desc">Zamir (it, them, me) varsa parçacık <strong>sonda</strong> olmalı.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Turn on it. · Give up it.</span><br>
+              <span class="right">✓ Turn it on. · Give it up.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Phrasal verb ≠ tek kelime eşanlamlı</div>
+            <div class="trap-desc"><span style="font-family:var(--mono)">give up</span> = quit/bırakmak ama her yerde değiştiremezsin. Resmi yazıda "resign", günlük konuşmada "give up" daha doğal.</div>
+            <div class="trap-ex"><span class="right">I gave up smoking. (günlük) · He resigned from his job. (resmi)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — İş Günü Sonu (Phrasal Verbs + Deyimler)</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = <strong>phrasal verb</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>deyim (idiom)</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">E</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hey, you look tired. Are you <span class="hl-idiom">under the weather</span>?</div>
+              <div class="bubble-tr">Hey, yorgun görünüyorsun. Keyifsiz misin?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">A bit. I <span class="hl-pv">woke up</span> at 5 and we've <span class="hl-pv">run out of</span> coffee in the kitchen!</div>
+              <div class="bubble-tr">Biraz. Saat 5'te kalktım ve mutfakta kahve bitti!</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">E</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Tough day. But your presentation was <span class="hl-idiom">a piece of cake</span>, right? You really <span class="hl-pv">got on</span> well with the clients.</div>
+              <div class="bubble-tr">Zor gündü. Ama sunumun çocuk oyuncağıydı, değil mi? Müşterilerle çok iyi anlaştın.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thanks! I was nervous at first, but telling a joke helped <span class="hl-idiom">break the ice</span>. Then I <span class="hl-pv">carried on</span> with the slides.</div>
+              <div class="bubble-tr">Teşekkürler! Başta gergindim ama şaka yapmak buzları kırdı. Sonra slaytlarla devam ettim.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">E</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Nice! <span class="hl-pv">Hold on</span> — did you <span class="hl-pv">find out</span> about the promotion?</div>
+              <div class="bubble-tr">Güzel! Bekle — terfi hakkında bir şey öğrendin mi?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Not yet. HR said they'll <span class="hl-pv">get back</span> to me next week. I <span class="hl-pv">look forward to</span> hearing from them!</div>
+              <div class="bubble-tr">Henüz değil. İK gelecek hafta döneceğini söyledi. Haberlerini dört gözle bekliyorum!</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">E</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Fingers crossed! Anyway, it's 6 — let's <span class="hl-idiom">call it a day</span> and <span class="hl-idiom">hit the road</span>. Want to <span class="hl-pv">go out</span> for dinner?</div>
+              <div class="bubble-tr">Umarım olur! Neyse, saat 6 — hadi işi bitirelim ve gidelim. Akşam yemeğine çıkmak ister misin?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sure! But that new restaurant <span class="hl-idiom">costs an arm and a leg</span>. Let's <span class="hl-pv">pick up</span> something cheaper on the way.</div>
+              <div class="bubble-tr">Olur! Ama o yeni restoran çok pahalı. Yolda daha ucuz bir şey alalım.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Phrasal verb → anlam eşleştir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> give up &nbsp;→&nbsp; a) aramak<br>
+                <span class="pr-num">2.</span> look for &nbsp;→&nbsp; b) vazgeçmek<br>
+                <span class="pr-num">3.</span> run out of &nbsp;→&nbsp; c) tükenmek<br>
+                <span class="pr-num">4.</span> turn on &nbsp;→&nbsp; d) açmak<br>
+                <span class="pr-num">5.</span> carry on &nbsp;→&nbsp; e) devam etmek
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> b &nbsp; <span class="a-num">2.</span> a &nbsp; <span class="a-num">3.</span> c &nbsp; <span class="a-num">4.</span> d &nbsp; <span class="a-num">5.</span> e
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Boşlukları doldur — phrasal verb</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I <span class="blank"></span> at 6:30 every day. (kalkmak)<br>
+                <span class="pr-num">2.</span> Please <span class="blank"></span> the TV — I'm trying to work. (kapatmak)<br>
+                <span class="pr-num">3.</span> We're <span class="blank"></span> milk. Can you buy some? (tükenmek)<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> your coat — it's freezing outside. (giymek)<br>
+                <span class="pr-num">5.</span> Don't <span class="blank"></span> — keep trying! (vazgeçmek)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> get up &nbsp; <span class="a-num">2.</span> turn off &nbsp; <span class="a-num">3.</span> running out of &nbsp; <span class="a-num">4.</span> Put on &nbsp; <span class="a-num">5.</span> give up
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Deyim anlamı — doğru seçeneği yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> It's a piece of cake. = <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I'm under the weather. = <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Let's hit the road. = <span class="blank"></span><br>
+                <span class="pr-num">4.</span> He got cold feet. = <span class="blank"></span><br>
+                <span class="pr-num">5.</span> Once in a blue moon. = <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> çok kolay &nbsp; <span class="a-num">2.</span> keyifsiz / hasta gibi &nbsp; <span class="a-num">3.</span> hadi gidelim / yola çıkalım &nbsp; <span class="a-num">4.</span> korkup geri adım attı &nbsp; <span class="a-num">5.</span> çok nadir
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Turn on it, please. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> I look forward to meet you. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> She put on the meeting to Friday. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Look my keys for! → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Turn it on, please. &nbsp; <span class="a-num">2.</span> I look forward to meeting you. &nbsp; <span class="a-num">3.</span> She put off the meeting to Friday. &nbsp; <span class="a-num">4.</span> Look for my keys!
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text"><strong>Phrasal verb</strong> = fiil + parçacık → yeni anlam (get up ≠ get).</span></div>
+          <div class="take-item"><span class="take-ico">↔️</span><span class="take-text"><strong>Separable:</strong> Turn the light on. / Turn it on. · <strong>Inseparable:</strong> look for, run out of.</span></div>
+          <div class="take-item"><span class="take-ico">💬</span><span class="take-text"><strong>Deyimler</strong> kelime kelime çevrilmez — bütün olarak öğren.</span></div>
+          <div class="take-item"><span class="take-ico">⚠️</span><span class="take-text"><strong>put on</strong> (giymek) ≠ <strong>put off</strong> (ertelemek).</span></div>
+          <div class="take-item"><span class="take-ico">📝</span><span class="take-text"><strong>look forward to</strong> + <strong>-ing</strong> (to + fiil değil!).</span></div>
+          <div class="take-item"><span class="take-ico">🏁</span><span class="take-text">Ünite 3 capstone: kelime + collocation + phrasal verb + deyim = doğal İngilizce.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">Kısa Hikâye Yaz — Phrasal Verbs + Deyimler</span>
+            İş veya günlük hayat hakkında <strong>8–10 cümlelik</strong> kısa bir hikâye yaz. Kurallar:<br>
+            <strong>①</strong> En az <strong>5 farklı phrasal verb</strong> kullan (get up, give up, look for, turn on, run out of…)<br>
+            <strong>②</strong> En az <strong>2 deyim</strong> kullan (piece of cake, hit the road, break the ice…)<br>
+            <strong>③</strong> Bir cümlede Ders 14'ten bir collocation ekle (<em>make a decision, take a break</em>)<br>
+            <span style="color:var(--ink-3)">Bonus: Hikâyeni yüksek sesle oku ve phrasal verb'leri vurgula. Ayrılabilir olanlarda zamiri araya koymayı dene: "I turned it off."</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 15 / 25 &nbsp;·&nbsp; Ünite 3: Kelimeler Dünyası · Capstone</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="14.html">‹ Önceki: Ders 14</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="../4/16.html">Sonraki: Ders 16 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

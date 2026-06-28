@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 16 — Pasif Yapı (The Passive Voice) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-be    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-pp    { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-by    { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-opt   { font-size: 11px; color: var(--ink-3); font-family: var(--sans); font-weight: 500; padding: 4px 8px; background: var(--bg-3); border-radius: 6px; border: 0.5px dashed var(--rule); }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-tense { font-size: 11px; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .col-form  { font-family: var(--mono); font-weight: 500; color: var(--purple); font-size: 11px; }
+  .col-ex    { font-size: 12px; color: var(--ink); }
+  .col-tr    { color: var(--ink-3); font-size: 11px; }
+  .verb-hl   { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  .be-hl      { color: var(--purple); font-weight: 700; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.active  { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.passive { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.focus   { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.formal  { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.active  .use-title { color: var(--accent); }
+  .use-item.passive .use-title { color: var(--ok); }
+  .use-item.focus   .use-title { color: var(--teal); }
+  .use-item.formal  .use-title { color: var(--purple); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.act-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.pas-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .act-cell { background: #f7faff; }
+  .cmp-table .pas-cell { background: #f4fbf7; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .news-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .news-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .news-phrase { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--ok); margin-bottom: 2px; }
+  .news-mean { font-size: 11px; color: var(--ink-2); margin-bottom: 3px; }
+  .news-ex { font-size: 11px; color: var(--ink); }
+  .news-tr { font-size: 10px; color: var(--ink-3); margin-top: 2px; font-style: italic; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-be    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-pp    { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-by    { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .av-c { background: var(--teal-bg); color: var(--teal); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble.center .bubble-text { background: var(--ok-bg); border: 0.5px solid #a8d4bc; border-radius: 10px; max-width: 100%; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-pass { color: var(--ok); font-weight: 600; }
+  .hl-be   { color: var(--purple); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  .arrow-row { display:flex; align-items:center; justify-content:center; gap:12px; padding:10px; background:var(--bg-2); border-radius:8px; border:0.5px solid var(--rule); margin-bottom:8px; flex-wrap:wrap; }
+  .arrow-box { padding:8px 12px; border-radius:8px; font-size:12px; text-align:center; flex:1; min-width:140px; }
+  .arrow-box.act { background:var(--accent-bg); border:0.5px solid #b3c9ef; }
+  .arrow-box.pas { background:var(--ok-bg); border:0.5px solid #a8d4bc; }
+  .arrow-box .ab-en { font-family:var(--mono); font-weight:600; margin-bottom:2px; }
+  .arrow-box .ab-tr { font-size:10px; color:var(--ink-3); }
+  .arrow-icon { font-size:22px; color:var(--purple); font-weight:700; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .news-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .news-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 16 · Ünite 4</span>
+      <h1>Pasif Yapı (The Passive Voice)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Gramer + Haber Dili</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Pasif = mutlaka <strong>be + V3</strong> (past participle).<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ The door opened</span> (aktif!)<br>
+        <span class="right">✓ The door was opened</span> (pasif)
+      </span><br>
+      <span class="wrong">✗ was open</span> = açıktı (durum) ≠ <span class="right">was opened</span> = açıldı (eylem)
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 15</span>
+    <span class="recall-item"><strong>phrasal verbs</strong> = fiil + edat</span>
+    <span class="recall-item"><strong>separable</strong> · turn <em>it</em> off</span>
+    <span class="recall-item"><strong>inseparable</strong> · look after</span>
+    <span class="recall-item"><strong>break the ice</strong> · <strong>look forward to</strong> + -ing</span>
+  </div>
+
+  <!-- Active vs Passive -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚡</span><h2>Active vs Passive — Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item active">
+            <div class="use-title">🔵 Active — Etkileyeni vurgula</div>
+            <div class="use-kw">Subject + verb + object</div>
+            <div class="use-ex">The chef <strong>cooked</strong> the meal.<br>Scientists <strong>discovered</strong> a new drug.</div>
+            <div class="use-tr">Şef yemeği pişirdi. · Bilim insanları yeni bir ilaç keşfetti.<br><em>Kim yaptı?</em> önemli.</div>
+          </div>
+          <div class="use-item passive">
+            <div class="use-title">🟢 Passive — Eylemi / sonucu vurgula</div>
+            <div class="use-kw">Subject + be + past participle</div>
+            <div class="use-ex">The meal <strong>was cooked</strong> by the chef.<br>A new drug <strong>was discovered</strong>.</div>
+            <div class="use-tr">Yemek pişirildi. · Yeni bir ilaç keşfedildi.<br><em>Ne oldu?</em> önemli; kim yaptı belirsiz.</div>
+          </div>
+          <div class="use-item focus">
+            <div class="use-title">📰 Haber / resmi dil</div>
+            <div class="use-kw">was built · is made · has been announced</div>
+            <div class="use-ex">The bridge <strong>was built</strong> in 1990.<br>Results <strong>will be published</strong> tomorrow.</div>
+            <div class="use-tr">Köprü 1990'da inşa edildi. · Sonuçlar yarın yayınlanacak.<br>Eylem ön planda; faili gizlemek veya bilinmemek normal.</div>
+          </div>
+          <div class="use-item formal">
+            <div class="use-title">🏥 Klinik / duyuru dili</div>
+            <div class="use-kw">Patients are asked to… · Smoking is not allowed</div>
+            <div class="use-ex">All visitors <strong>are required</strong> to register.<br>The test <strong>will be performed</strong> at 9 am.</div>
+            <div class="use-tr">Tüm ziyaretçilerin kayıt olması gerekmektedir.<br>Test saat 9'da uygulanacaktır.<br>Resmi, tarafsız, kurumsal ton.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:4px">
+          <strong>Altın kural:</strong> Eylemi yapan kişi <strong>önemsiz, bilinmiyor veya açık</strong> ise → pasif tercih et. Türkçe'de "-ildi / -ilmiş" çoğu zaman pasife karşılık gelir ama İngilizce'de <strong>be fiili şart</strong>.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Pasif Yapı — Formation</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">Subject<small>özne (eylem alan)</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-be">be<small>am/is/are/was/were…</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-pp">past participle<small>V3: built, made, opened</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-opt">+ by + agent<small>isteğe bağlı</small></div>
+        </div>
+
+        <div class="arrow-row">
+          <div class="arrow-box act">
+            <div class="ab-en" style="color:var(--accent)">Active: They built the bridge.</div>
+            <div class="ab-tr">Onlar köprüyü inşa etti.</div>
+          </div>
+          <div class="arrow-icon">→</div>
+          <div class="arrow-box pas">
+            <div class="ab-en" style="color:var(--ok)">Passive: The bridge was built (by them).</div>
+            <div class="ab-tr">Köprü inşa edildi.</div>
+          </div>
+        </div>
+
+        <div class="struct-row">
+          <div class="struct-label">Temel yapı</div>
+          <span class="slot slot-subj">Subject</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-be">be (zamana göre)</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-pp">past participle (V3)</span>
+          <div class="struct-ex">English is spoken here. · The letter was sent yesterday.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Ajan ile (by + agent)</div>
+          <span class="slot slot-subj">Subject</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-be">be</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-pp">V3</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-by">by + agent</span>
+          <div class="struct-ex">The book was written by Orwell. · The cake was made by my mother.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Olumsuz</div>
+          <span class="slot slot-subj">Subject</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-be">be + not</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-pp">V3</span>
+          <div class="struct-ex">Smoking is not allowed. · The window wasn't opened.</div>
+        </div>
+        <div class="struct-row">
+          <div class="struct-label">Soru</div>
+          <span class="slot slot-be">Be</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-subj">subject</span>
+          <span class="slot-sep">+</span>
+          <span class="slot slot-pp">V3?</span>
+          <div class="struct-ex">Is English spoken here? · Was the door opened? · Has the report been finished?</div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px">
+          <strong>V3 nasıl bulunur?</strong> Düzenli fiiller: <span style="font-family:var(--mono)">-ed</span> (opened, cleaned). Düzensiz: 2. sütun veya 3. sütun (write → written, make → made, build → built). Pasifte <strong>asla yalın fiil kullanılmaz</strong>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zaman tablosu -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📅</span><h2>Pasif Zamanlar — Tense Table</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zaman</th>
+              <th>Aktif örnek</th>
+              <th>Pasif formül</th>
+              <th>Pasif örnek</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-tense">Present Simple</td>
+              <td class="col-ex">They <strong>make</strong> cars here.</td>
+              <td class="col-form">am/is/are + V3</td>
+              <td class="col-ex">Cars <span class="be-hl">are</span> <span class="verb-hl">made</span> here.</td>
+              <td class="col-tr">Arabalar burada üretilir.</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Past Simple</td>
+              <td class="col-ex">Someone <strong>stole</strong> my bike.</td>
+              <td class="col-form">was/were + V3</td>
+              <td class="col-ex">My bike <span class="be-hl">was</span> <span class="verb-hl">stolen</span>.</td>
+              <td class="col-tr">Bisikletim çalındı.</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Future (will)</td>
+              <td class="col-ex">They <strong>will announce</strong> the results.</td>
+              <td class="col-form">will be + V3</td>
+              <td class="col-ex">The results <span class="be-hl">will be</span> <span class="verb-hl">announced</span> tomorrow.</td>
+              <td class="col-tr">Sonuçlar yarın açıklanacak.</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Present Perfect</td>
+              <td class="col-ex">They <strong>have finished</strong> the report.</td>
+              <td class="col-form">have/has been + V3</td>
+              <td class="col-ex">The report <span class="be-hl">has been</span> <span class="verb-hl">finished</span>.</td>
+              <td class="col-tr">Rapor tamamlanmış / bitti.</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Present Continuous</td>
+              <td class="col-ex">They <strong>are repairing</strong> the road.</td>
+              <td class="col-form">am/is/are being + V3</td>
+              <td class="col-ex">The road <span class="be-hl">is being</span> <span class="verb-hl">repaired</span>.</td>
+              <td class="col-tr">Yol onarılıyor (şu an).</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Past Continuous</td>
+              <td class="col-ex">They <strong>were filming</strong> the scene.</td>
+              <td class="col-form">was/were being + V3</td>
+              <td class="col-ex">The scene <span class="be-hl">was being</span> <span class="verb-hl">filmed</span> when we arrived.</td>
+              <td class="col-tr">Sahne çekiliyordu.</td>
+            </tr>
+            <tr>
+              <td class="col-tense">Modal (can/must/should)</td>
+              <td class="col-ex">You <strong>must finish</strong> this today.</td>
+              <td class="col-form">modal + be + V3</td>
+              <td class="col-ex">This <span class="be-hl">must be</span> <span class="verb-hl">finished</span> today.</td>
+              <td class="col-tr">Bu bugün bitirilmeli.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="rule-box ok-box" style="margin:0">
+            <strong>Present Perfect Passive:</strong> <span style="font-family:var(--mono)">has/have been + V3</span> — yakın geçmişte tamamlanan eylem, sonuç şimdi geçerli.<br>
+            <span style="font-family:var(--mono)">A new hospital has been opened.</span> = Yeni bir hastane açıldı (ve hâlâ açık).
+          </div>
+          <div class="rule-box" style="margin:0">
+            <strong>Future Passive:</strong> <span style="font-family:var(--mono)">will be + V3</span> veya <span style="font-family:var(--mono)">is going to be + V3</span><br>
+            <span style="font-family:var(--mono)">The meeting will be held on Monday.</span> = Toplantı Pazartesi yapılacak.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Active vs Passive karşılaştırma + Haber ifadeleri -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Active → Passive Dönüşüm Adımları</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head">Adım</th>
+              <th class="act-head">Active</th>
+              <th class="pas-head">Passive</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">① Nesne → özne</td>
+              <td class="act-cell"><div class="cmp-ex">The company <em>employs</em> 500 people.</div></td>
+              <td class="pas-cell"><div class="cmp-ex" style="color:var(--ok)"><em>500 people</em> are employed…</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">② Be + V3</td>
+              <td class="act-cell"><div class="cmp-ex">present simple → employs</div></td>
+              <td class="pas-cell"><div class="cmp-ex" style="color:var(--ok)">→ are employed</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">③ Özne → by</td>
+              <td class="act-cell"><div class="cmp-ex"><em>The company</em> …</div></td>
+              <td class="pas-cell"><div class="cmp-ex" style="color:var(--ok)">… by the company</div><div class="cmp-tr">(isteğe bağlı — çoğu haberde atlanır)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek</td>
+              <td class="act-cell"><div class="cmp-ex" style="color:var(--accent)">They opened the store in 2020.</div><div class="cmp-tr">Mağazayı 2020'de açtılar.</div></td>
+              <td class="pas-cell"><div class="cmp-ex" style="color:var(--ok)">The store was opened in 2020.</div><div class="cmp-tr">Mağaza 2020'de açıldı.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Perfect</td>
+              <td class="act-cell"><div class="cmp-ex" style="color:var(--accent)">Someone has stolen my phone.</div></td>
+              <td class="pas-cell"><div class="cmp-ex" style="color:var(--ok)">My phone has been stolen.</div><div class="cmp-tr">Telefonum çalınmış.</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📰</span><h2>Haber ve Resmi Dilde Sık Pasif İfadeler</h2></div>
+      <div class="card-body">
+        <div class="news-grid">
+          <div class="news-item">
+            <div class="news-phrase">was built / were built</div>
+            <div class="news-mean">inşa edildi / yapıldı</div>
+            <div class="news-ex">The stadium <strong>was built</strong> in 2010.</div>
+            <div class="news-tr">Stadyum 2010'da inşa edildi.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">is made / are made</div>
+            <div class="news-mean">üretilir / yapılır</div>
+            <div class="news-ex">These phones <strong>are made</strong> in China.</div>
+            <div class="news-tr">Bu telefonlar Çin'de üretilir.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">has been announced</div>
+            <div class="news-mean">duyuruldu (yakın geçmiş)</div>
+            <div class="news-ex">A new policy <strong>has been announced</strong>.</div>
+            <div class="news-tr">Yeni bir politika duyuruldu.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">will be held / will be published</div>
+            <div class="news-mean">yapılacak / yayınlanacak</div>
+            <div class="news-ex">The conference <strong>will be held</strong> in May.</div>
+            <div class="news-tr">Konferans Mayıs'ta yapılacak.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">is expected / is believed</div>
+            <div class="news-mean">bekleniyor / inanılıyor</div>
+            <div class="news-ex">He <strong>is believed</strong> to be abroad.</div>
+            <div class="news-tr">Yurt dışında olduğuna inanılıyor.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">was injured / were arrested</div>
+            <div class="news-mean">yaralandı / tutuklandı</div>
+            <div class="news-ex">Three people <strong>were injured</strong> in the crash.</div>
+            <div class="news-tr">Kazada üç kişi yaralandı.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">is required / is not allowed</div>
+            <div class="news-mean">gereklidir / izin verilmez</div>
+            <div class="news-ex">A passport <strong>is required</strong> for travel.</div>
+            <div class="news-tr">Seyahat için pasaport gereklidir.</div>
+          </div>
+          <div class="news-item">
+            <div class="news-phrase">was founded / was established</div>
+            <div class="news-mean">kuruldu</div>
+            <div class="news-ex">The university <strong>was founded</strong> in 1947.</div>
+            <div class="news-tr">Üniversite 1947'de kuruldu.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 was opened vs was open — EN KRİTİK TUZAK</div>
+            <div class="trap-desc"><strong>was opened</strong> = eylem (biri açtı / açıldı). <strong>was open</strong> = durum (açıktı, kapalı değildi). Türkçe "açıldı" ile "açıktı" karışır!</div>
+            <div class="trap-ex">
+              <span class="right">✓ The shop <strong>was opened</strong> at 9. = Mağaza saat 9'da açıldı. (eylem)</span><br>
+              <span class="right">✓ The shop <strong>was open</strong> until 6. = Mağaza 6'ya kadar açıktı. (durum — adjective)</span><br>
+              <span class="wrong">✗ The door was open by the wind. → The door <strong>was opened</strong> by the wind.</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 "be" fiilini unutmak — pasif değil, aktif kalır!</div>
+            <div class="trap-desc">Türkçe'de "-ildi" yeter; İngilizce'de mutlaka <strong>be + V3</strong> gerekir. Yalın fiil veya sadece V3 pasif değildir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ The letter sent yesterday. · The window broken.</span><br>
+              <span class="right">✓ The letter <strong>was</strong> sent yesterday. · The window <strong>was</strong> broken.</span><br>
+              <span class="wrong">✗ English speak here. → English <strong>is spoken</strong> here.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">by who? → by whom?</div>
+            <div class="trap-desc">Resmi İngilizce'de "kim tarafından?" sorusu <strong>By whom?</strong> olur. Konuşmada <strong>Who … by?</strong> da kullanılır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ By who was it written?</span><br>
+              <span class="right">✓ By whom was it written? (formal) · Who was it written by? (informal)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">V2 kullanmak (opened ✓ ama opened alone ✗)</div>
+            <div class="trap-desc">Pasifte <strong>past participle (V3)</strong> gerekir. Düzensiz fiillerde V2 ≠ V3 olabilir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ The book was wrote by her. · It was taked.</span><br>
+              <span class="right">✓ The book was <strong>written</strong> by her. · It was <strong>taken</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Intransitive fiiller pasif olmaz</div>
+            <div class="trap-desc">Nesne almayan fiiller (arrive, happen, sleep, die) pasife çevrilemez.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ The accident was happened yesterday.</span><br>
+              <span class="right">✓ The accident <strong>happened</strong> yesterday. (aktif kalır)</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ get + past participle (informal passive)</div>
+            <div class="trap-desc">Konuşmada <strong>get</strong> pasif anlamı verir — özellikle beklenmedik / olumsuz olaylarda.</div>
+            <div class="trap-ex"><span class="right">My phone <strong>got stolen</strong>. · He <strong>got fired</strong>. = was stolen / was fired (daha informal)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔍</span><h2>was opened vs was open — Hızlı Referans</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>İfade</th>
+              <th>Tür</th>
+              <th>Anlam</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-form">was/were + V3</td>
+              <td class="col-tense">Pasif (eylem)</td>
+              <td class="col-tr">-ildi, -ilmiş</td>
+              <td class="col-ex">The bank <strong>was robbed</strong>.</td>
+            </tr>
+            <tr>
+              <td class="col-form">was/were + adjective</td>
+              <td class="col-tense">Durum (sıfat)</td>
+              <td class="col-tr">-di (durum)</td>
+              <td class="col-ex">The bank <strong>was closed</strong> (kapalıydı).</td>
+            </tr>
+            <tr>
+              <td class="col-form">was/were + V3</td>
+              <td class="col-tense">Pasif (eylem)</td>
+              <td class="col-tr">kapatıldı</td>
+              <td class="col-ex">The bank <strong>was closed</strong> by the manager.</td>
+            </tr>
+            <tr>
+              <td class="col-form">is/are + V3</td>
+              <td class="col-tense">Genel pasif</td>
+              <td class="col-tr">-ilir, -ilir</td>
+              <td class="col-ex">Turkish <strong>is spoken</strong> here.</td>
+            </tr>
+            <tr>
+              <td class="col-form">is/are + adjective</td>
+              <td class="col-tense">Durum</td>
+              <td class="col-tr">-dir (durum)</td>
+              <td class="col-ex">The door <strong>is open</strong>.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box" style="margin-top:10px;border-left-color:var(--rose);background:var(--rose-bg)">
+          <strong style="color:var(--rose)">İpucu:</strong> Cümlede <strong>by + agent</strong> varsa neredeyse kesin pasiftir: <span style="font-family:var(--mono)">was closed <em>by</em> the manager</span>. Agent yoksa bağlama bak: eylem mi, durum mu?
+        </div>
+
+        <div style="margin-top:8px;padding:8px 10px;background:var(--bg-2);border-radius:7px;border:0.5px solid var(--rule)">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Sık karışan çiftler</div>
+          <div style="font-size:12px;line-height:1.9;font-family:var(--mono)">
+            <span style="color:var(--ok)">was broken</span> = kırıldı &nbsp;|&nbsp; <span style="color:var(--accent)">was broken (injured)</span> = yaralıydı<br>
+            <span style="color:var(--ok)">was interested</span> = ilgilendi &nbsp;|&nbsp; <span style="color:var(--accent)">was interesting</span> = ilginçti<br>
+            <span style="color:var(--ok)">was surprised</span> = şaşırdı &nbsp;|&nbsp; <span style="color:var(--accent)">was surprising</span> = şaşırtıcıydı
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat — Hastane Duyurusu ve Haber Bülteni</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = <strong>passive (be + V3)</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>be</strong> fiili &nbsp;·&nbsp; Resmi duyuru ve haber dili tipik pasif kullanır
+        </div>
+        <div class="dialogue">
+          <div class="bubble center">
+            <div class="avatar av-c">📢</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><strong>Hospital announcement:</strong> Attention please. All patients <span class="hl-be">are</span> <span class="hl-pass">asked</span> to remain in the waiting area. The blood test <span class="hl-be">will be</span> <span class="hl-pass">performed</span> in Room 4. Mobile phones <span class="hl-be">must be</span> <span class="hl-pass">switched off</span> in the examination rooms. Thank you for your cooperation.</div>
+              <div class="bubble-tr">Hastane duyurusu: Dikkat lütfen. Tüm hastalar bekleme alanında kalmaya davet edilmektedir. Kan testi 4 numaralı odada uygulanacaktır. Muayene odalarında cep telefonları kapatılmalıdır.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">N</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good evening. A new health centre <span class="hl-be">has been</span> <span class="hl-pass">opened</span> in the city centre. The building <span class="hl-be">was</span> <span class="hl-pass">designed</span> by a local architect and <span class="hl-be">was</span> <span class="hl-pass">built</span> in just eighteen months.</div>
+              <div class="bubble-tr">İyi akşamlar. Şehir merkezinde yeni bir sağlık merkezi açıldı. Bina yerel bir mimar tarafından tasarlandı ve sadece on sekiz ayda inşa edildi.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">R</div>
+            <div class="bubble-text">
+              <div class="bubble-en">How many people <span class="hl-be">will be</span> <span class="hl-pass">served</span> there?</div>
+              <div class="bubble-tr">Orada kaç kişiye hizmet verilecek?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">N</div>
+            <div class="bubble-text">
+              <div class="bubble-en">About five thousand patients <span class="hl-be">are expected</span> to <span class="hl-pass">be treated</span> every month. Free vaccinations <span class="hl-be">will also be</span> <span class="hl-pass">offered</span> to children under twelve.</div>
+              <div class="bubble-tr">Her ay yaklaşık beş bin hastanın tedavi edilmesi bekleniyor. On iki yaş altı çocuklara ücretsiz aşılar da sunulacak.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">R</div>
+            <div class="bubble-text">
+              <div class="bubble-en">When <span class="hl-be">was</span> the project first <span class="hl-pass">announced</span>?</div>
+              <div class="bubble-tr">Proje ilk ne zaman duyuruldu?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">N</div>
+            <div class="bubble-text">
+              <div class="bubble-en">It <span class="hl-be">was</span> <span class="hl-pass">announced</span> by the mayor last year, but construction <span class="hl-be">was</span> <span class="hl-pass">delayed</span> because of bad weather. The centre <span class="hl-be">is</span> now <span class="hl-pass">open</span> to the public — and yes, that means it <span class="hl-be">is</span> <span class="hl-pass">open</span>, not "opened"! The doors <span class="hl-be">were officially opened</span> at 10 am this morning.</div>
+              <div class="bubble-tr">Geçen yıl belediye başkanı tarafından duyuruldu, ancak kötü hava nedeniyle inşaat gecikti. Merkez artık halka açık — evet, "açık" demek istiyoruz, "açıldı" değil! Kapılar bu sabah saat 10'da resmen açıldı.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Aktif → Pasif dönüştür</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> They built this bridge in 2005. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Someone stole my wallet. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> They will announce the results tomorrow. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> The chef cooked the meal. → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> They have finished the project. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> This bridge was built in 2005.<br>
+                  <span class="a-num">2.</span> My wallet was stolen.<br>
+                  <span class="a-num">3.</span> The results will be announced tomorrow.<br>
+                  <span class="a-num">4.</span> The meal was cooked (by the chef).<br>
+                  <span class="a-num">5.</span> The project has been finished.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Doğru be + V3 formunu seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> English <span class="blank"></span> (speak) in many countries.<br>
+                <span class="pr-num">2.</span> The window <span class="blank"></span> (break) last night.<br>
+                <span class="pr-num">3.</span> The meeting <span class="blank"></span> (hold) next Monday.<br>
+                <span class="pr-num">4.</span> My keys <span class="blank"></span> (lose) — I can't find them.<br>
+                <span class="pr-num">5.</span> The road <span class="blank"></span> (repair) at the moment.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> is spoken &nbsp; <span class="a-num">2.</span> was broken &nbsp; <span class="a-num">3.</span> will be held &nbsp; <span class="a-num">4.</span> have been lost &nbsp; <span class="a-num">5.</span> is being repaired
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) was opened mi, was open mı?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> The shop <span class="blank"></span> at 8 am every day. (eylem — her gün açılıyor)<br>
+                <span class="pr-num">2.</span> The shop <span class="blank"></span> until midnight yesterday. (durum — gece yarısına kadar açıktı)<br>
+                <span class="pr-num">3.</span> The new library <span class="blank"></span> by the mayor last week. (eylem)<br>
+                <span class="pr-num">4.</span> The door <span class="blank"></span> — please close it. (durum — şu an açık)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> is opened (veya opens — aktif de olabilir) &nbsp; <span class="a-num">2.</span> was open<br>
+                  <span class="a-num">3.</span> was opened &nbsp; <span class="a-num">4.</span> is open
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> The letter sent yesterday. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> The book was wrote by her. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> By who was it made? → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> The accident was happened on Monday. → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> The results have announced. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> The letter was sent yesterday.<br>
+                  <span class="a-num">2.</span> The book was written by her.<br>
+                  <span class="a-num">3.</span> By whom was it made? / Who was it made by?<br>
+                  <span class="a-num">4.</span> The accident happened on Monday.<br>
+                  <span class="a-num">5.</span> The results have been announced.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text">Yapı: <strong>subject + be + past participle (V3)</strong> (+ by agent).</span></div>
+          <div class="take-item"><span class="take-ico">🎯</span><span class="take-text">Pasif = <strong>eylem / sonuç</strong> önemli; kim yaptı belirsiz veya önemsiz.</span></div>
+          <div class="take-item"><span class="take-ico">📰</span><span class="take-text">Haber ve resmi dilde sık: <strong>was built, is made, has been announced</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">📅</span><span class="take-text">Zaman: <strong>is made · was built · will be held · has been finished</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🚨</span><span class="take-text"><strong>was opened</strong> (eylem) ≠ <strong>was open</strong> (durum). <strong>be</strong> unutma!</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Resmi soru: <strong>By whom…?</strong> · Konuşma: <strong>Who … by?</strong></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">5 Aktif Cümleyi Pasife Çevir</span>
+            Aşağıdaki cümleleri pasif yap. <strong>by + agent</strong> sadece gerekirse ekle.<br>
+            <strong>1.</strong> The government launched a new programme.<br>
+            <strong>2.</strong> Someone broke the window.<br>
+            <strong>3.</strong> They are repairing the road.<br>
+            <strong>4.</strong> The company will publish the report next week.<br>
+            <strong>5.</strong> People speak Spanish in many countries.<br>
+            <span style="color:var(--ink-3)">Bonus: Bir haber paragrafı yaz (4–5 cümle) — en az 3 pasif kullan. Ders 15'ten bir deyim ekle: <em>The mayor broke the ice at the opening ceremony.</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 16 / 25 &nbsp;·&nbsp; Ünite 4: İnce Ayrımlar</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="../3/15.html">‹ Önceki: Ders 15</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="17.html">Sonraki: Ders 17 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

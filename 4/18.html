@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 18 — Koşul Cümleleri (If Clauses) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 6px; flex-wrap: wrap;
+    padding: 12px 10px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 7px 12px; border-radius: 8px;
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-if    { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 18px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-then  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-would { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-warn  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-ex  { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.zero  { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.first { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.second{ background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.third { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-item.extra { background: var(--warn-bg); border-color: #f5c896; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.zero   .use-title { color: var(--teal); }
+  .use-item.first  .use-title { color: var(--accent); }
+  .use-item.second .use-title { color: var(--purple); }
+  .use-item.third  .use-title { color: var(--rose); }
+  .use-item.extra  .use-title { color: var(--warn); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.zero-head  { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.first-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.second-head{ background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.third-head { background: var(--rose-bg); color: var(--rose); }
+  .cmp-table th.cat-head   { background: var(--bg-3); color: var(--ink-3); width: 90px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .zero-cell  { background: #f0fdff; }
+  .cmp-table .first-cell { background: #f7faff; }
+  .cmp-table .second-cell{ background: #faf8ff; }
+  .cmp-table .third-cell { background: #fff5f7; }
+  .cmp-ex { font-family: var(--mono); font-size: 11px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-1st { color: var(--accent); font-weight: 600; }
+  .hl-2nd { color: var(--purple); font-weight: 600; }
+  .hl-zero{ color: var(--teal); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 18 · Ünite 4</span>
+      <h1>Koşul Cümleleri (If Clauses)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> If'ten sonra <strong>will yok</strong> — present kullan.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ If I will go…</span><br>
+        <span class="right">✓ If I go, I will…</span>
+      </span><br>
+      Gerçek gelecek = 1st · Hayali = 2nd · Geçmiş pişmanlık = 3rd
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 17</span>
+    <span class="recall-item"><strong>although</strong> = rağmen (zıtlık)</span>
+    <span class="recall-item"><strong>however</strong> = ancak (cümle başı)</span>
+    <span class="recall-item"><strong>therefore</strong> = bu yüzden (sonuç)</span>
+    <span class="recall-item">Although it rained, we went out. · It rained. However, we went out.</span>
+  </div>
+
+  <!-- Zero + First -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔬</span><h2>Zero Conditional — Genel Gerçekler / Bilim</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-if">If + present<small>present simple</small></div>
+          <div class="form-slot fs-plus">,</div>
+          <div class="form-slot fs-then">present<small>present simple</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Ne zaman?</strong> Her zaman doğru olan gerçekler, bilimsel kurallar, otomatik sonuçlar. Zaman fark etmez — genel doğa yasası gibi düşün.
+        </div>
+
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item zero">
+            <div class="use-title">🔬 Bilim &amp; genel gerçek</div>
+            <div class="use-kw">If + present, present</div>
+            <div class="use-ex">If you heat ice, it melts.<br>If water reaches 100°C, it boils.<br>If I don't sleep enough, I feel tired.</div>
+            <div class="use-tr">Buzu ısıtırsan erir. · Su 100°C'ye ulaşırsa kaynar. · Yeterince uyumazsam yorgun hissederim.</div>
+          </div>
+        </div>
+
+        <div style="font-size:11px;color:var(--ink-3);padding:6px 10px;background:var(--teal-bg);border-radius:6px;border:0.5px solid #a5f3fc">
+          <strong style="color:var(--teal)">When = If:</strong> Genel gerçeklerde <span style="font-family:var(--mono)">when</span> de kullanılabilir: <span style="font-family:var(--mono)">When I wake up, I drink coffee.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>First Conditional — Gerçek Gelecek</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-if">If + present<small>present simple</small></div>
+          <div class="form-slot fs-plus">,</div>
+          <div class="form-slot fs-then">will + base<small>gelecek</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Ne zaman?</strong> Koşul gerçekleşirse sonuç gerçekten olacak. Olasılık yüksek veya makul — plan, tehdit, vaat, tahmin.
+        </div>
+
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item first">
+            <div class="use-title">🎯 Gerçek gelecek olasılık</div>
+            <div class="use-kw">If + present, will + base</div>
+            <div class="use-ex">If it rains tomorrow, we will stay home.<br>If you study hard, you will pass the exam.<br>I'll call you if I arrive early.</div>
+            <div class="use-tr">Yarın yağmur yağarsa evde kalırız. · Sıkı çalışırsan sınavı geçersin. · Erken varırsam seni ararım.</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px">
+          <strong>Alternatifler:</strong> <span style="font-family:var(--mono)">will</span> yerine <span style="font-family:var(--mono)">can / may / might / should</span> kullanılabilir:<br>
+          <span style="font-family:var(--mono)">If you finish early, you can leave.</span> · <span style="font-family:var(--mono)">If he's late, he might miss the train.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second + Third -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>💭</span><h2>Second Conditional — Hayali / Gerçek Dışı Şimdi</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-if">If + past simple<small>was/were</small></div>
+          <div class="form-slot fs-plus">,</div>
+          <div class="form-slot fs-would">would + base<small>hayali sonuç</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Ne zaman?</strong> Şu an gerçek olmayan veya çok düşük olasılıklı durumlar. Hayal, tavsiye, nazik istek, eleştiri.
+        </div>
+
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item second">
+            <div class="use-title">💭 Hayali şimdi / düşük olasılık</div>
+            <div class="use-kw">If + past simple, would + base</div>
+            <div class="use-ex">If I had a million dollars, I would travel the world.<br>If I were you, I would accept the offer.<br>What would you do if you won the lottery?</div>
+            <div class="use-tr">Bir milyon dolarım olsaydı dünyayı gezerdim. · Senin yerinde olsam teklifi kabul ederdim. · Piyangoyu kazansan ne yapardın?</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px;border-left-color:var(--purple);background:var(--purple-bg)">
+          <strong style="color:var(--purple)">If I were…</strong> Resmi/kurallı İngilizcede tüm öznelerle <span style="font-family:var(--mono)">were</span> tercih edilir: <span style="font-family:var(--mono)">If I were rich…</span> (If I was rich… konuşmada duyulur ama sınavda were güvenli)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>⏪</span><h2>Third Conditional — Geçmiş Pişmanlık (Kısa Giriş)</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-if">If + past perfect<small>had + V3</small></div>
+          <div class="form-slot fs-plus">,</div>
+          <div class="form-slot fs-would">would have + V3<small>hayali geçmiş</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Ne zaman?</strong> Geçmişte olan bir şeyin tersini hayal etmek — pişmanlık, eleştiri, "keşke" cümleleri. Koşul gerçekleşmedi, sonuç da olmadı.
+        </div>
+
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item third">
+            <div class="use-title">⏪ Geçmişte olmayan — pişmanlık</div>
+            <div class="use-kw">If + had + V3, would have + V3</div>
+            <div class="use-ex">If I had studied harder, I would have passed.<br>If she had left earlier, she wouldn't have missed the flight.<br>We would have arrived on time if we hadn't taken the wrong turn.</div>
+            <div class="use-tr">Daha sıkı çalışsaydım geçerdim. · Erken çıksaydı uçağı kaçırmazdı. · Yanlış dönmeseydik zamanında varırdık.</div>
+          </div>
+        </div>
+
+        <div style="font-size:11px;color:var(--ink-3);padding:6px 10px;background:var(--rose-bg);border-radius:6px;border:0.5px solid #fecdd3;margin-top:4px">
+          <strong style="color:var(--rose)">B1 notu:</strong> Third conditional detaylı çalışma Ders 19'da devam eder. Şimdilik yapıyı tanı — <span style="font-family:var(--mono)">had + V3</span> + <span style="font-family:var(--mono)">would have + V3</span> eşleşmesi kritik.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Karşılaştırma tablosu -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>4 Koşul Tipi — Büyük Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="zero-head">Zero</th>
+              <th class="first-head">First</th>
+              <th class="second-head">Second</th>
+              <th class="third-head">Third</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">If kısmı</td>
+              <td class="zero-cell"><div class="cmp-ex">present</div></td>
+              <td class="first-cell"><div class="cmp-ex">present</div></td>
+              <td class="second-cell"><div class="cmp-ex">past simple</div></td>
+              <td class="third-cell"><div class="cmp-ex">past perfect</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Sonuç</td>
+              <td class="zero-cell"><div class="cmp-ex">present</div></td>
+              <td class="first-cell"><div class="cmp-ex">will + base</div></td>
+              <td class="second-cell"><div class="cmp-ex">would + base</div></td>
+              <td class="third-cell"><div class="cmp-ex">would have + V3</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Zaman</td>
+              <td class="zero-cell"><div class="cmp-ex">Her zaman</div><div class="cmp-tr">genel gerçek</div></td>
+              <td class="first-cell"><div class="cmp-ex">Gelecek</div><div class="cmp-tr">gerçek olasılık</div></td>
+              <td class="second-cell"><div class="cmp-ex">Şimdi</div><div class="cmp-tr">hayali / düşük ihtimal</div></td>
+              <td class="third-cell"><div class="cmp-ex">Geçmiş</div><div class="cmp-tr">pişmanlık</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek</td>
+              <td class="zero-cell"><div class="cmp-ex" style="color:var(--teal)">If you mix red and blue, you get purple.</div></td>
+              <td class="first-cell"><div class="cmp-ex" style="color:var(--accent)">If I see her, I'll tell her.</div></td>
+              <td class="second-cell"><div class="cmp-ex" style="color:var(--purple)">If I saw her, I would tell her.</div></td>
+              <td class="third-cell"><div class="cmp-ex" style="color:var(--rose)">If I had seen her, I would have told her.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Türkçe</td>
+              <td class="zero-cell"><div class="cmp-tr">-arsan … -ar</div></td>
+              <td class="first-cell"><div class="cmp-tr">-arsan … -acak/-ecek</div></td>
+              <td class="second-cell"><div class="cmp-tr">-saydım … -rdım (hayali)</div></td>
+              <td class="third-cell"><div class="cmp-tr">-saydım … -miş olurdu</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unless + tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔗</span><h2>Unless · As Long As · In Case</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item extra">
+            <div class="use-title">🚫 Unless = if … not</div>
+            <div class="use-kw">unless + present (1st) · unless + past (2nd)</div>
+            <div class="use-ex">I won't go unless you come with me.<br>= I won't go if you don't come with me.<br>Unless it stops raining, we won't leave.</div>
+            <div class="use-tr">Sen gelmezsen gitmem. · Yağmur durmazsa çıkmayız.</div>
+          </div>
+          <div class="use-item extra">
+            <div class="use-title">✅ As long as = provided that</div>
+            <div class="use-kw">koşul sağlandığı sürece</div>
+            <div class="use-ex">You can stay as long as you keep quiet.<br>As long as you finish by Friday, it's fine.</div>
+            <div class="use-tr">Sessiz kaldığın sürece kalabilirsin. · Cuma'ya kadar bitirirsen sorun yok.</div>
+          </div>
+          <div class="use-item extra">
+            <div class="use-title">🛡 In case = as a precaution</div>
+            <div class="use-kw">ihtimaline karşı · -mesi ihtimaline karşı</div>
+            <div class="use-ex">Take an umbrella in case it rains.<br>I'll save some food in case you're hungry later.</div>
+            <div class="use-tr">Yağmur yağması ihtimaline karşı şemsiye al. · Sonra acıkman ihtimaline karşı yemek ayırırım.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:4px">
+          <strong>Unless tuzak:</strong> Unless'ten sonra <strong>not kullanma</strong> — zaten olumsuz anlam taşır.<br>
+          <span class="wrong">✗ Unless you don't hurry…</span> &nbsp;→&nbsp; <span class="right">✓ Unless you hurry…</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 If I will go — EN KRİTİK TUZAK</div>
+            <div class="trap-desc">Türkçe "-ecek" gelecek zaman if cümlesine taşınır. If'ten sonra <strong>asla will kullanma</strong> — present simple kullan.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ If I will go to London, I will visit Big Ben.</span><br>
+              <span class="right">✓ If I go to London, I will visit Big Ben.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Will vs Would karıştırmak (1st vs 2nd)</div>
+            <div class="trap-desc">Gerçek gelecek = will. Hayali/gerçek dışı = would. Aynı cümlede ikisini karıştırma.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ If I win the lottery, I would buy a house. (gerçek gelecek için)</span><br>
+              <span class="right">✓ If I win the lottery, I will buy a house. (1st — olabilir)</span><br>
+              <span class="right">✓ If I won the lottery, I would buy a house. (2nd — hayal)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Virgül kuralı</div>
+            <div class="trap-desc">If cümlesi <strong>başta</strong> gelirse virgül kullan. Sonda gelirse virgül yok.</div>
+            <div class="trap-ex">
+              <span class="right">✓ If it rains<strong>,</strong> we will stay home.</span><br>
+              <span class="right">✓ We will stay home if it rains. (virgül yok)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Unless + not</div>
+            <div class="trap-desc">Unless zaten "if not" demek — çift olumsuz yapma.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Unless you don't call me…</span><br>
+              <span class="right">✓ Unless you call me… = If you don't call me…</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ In case ≠ If</div>
+            <div class="trap-desc">In case = ihtimaline karşı önlem al. If = koşul gerçekleşirse.</div>
+            <div class="trap-ex">
+              <span class="right">Take a jacket in case it gets cold. (önlem — henüz soğuk değil)</span><br>
+              <span class="right">If it gets cold, I'll put on my jacket. (koşul gerçekleşince)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Seyahat Planlama</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>1st conditional</strong> (will) &nbsp;·&nbsp; 🟣 Mor = <strong>2nd conditional</strong> (would)
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Have you thought about our trip to Italy? <span class="hl-1st">If we book early, we'll get cheaper flights.</span></div>
+              <div class="bubble-tr">İtalya seyahatimizi düşündün mü? Erken rezervasyon yaparsak daha ucuz uçak bileti buluruz.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">True. But <span class="hl-2nd">if I had more vacation days, I would stay for two weeks instead of one.</span></div>
+              <div class="bubble-tr">Doğru. Ama daha fazla tatil günüm olsaydı bir yerine iki hafta kalırdım.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-1st">If the weather is good, we can visit the Amalfi Coast.</span> We should book a hotel near the station too.</div>
+              <div class="bubble-tr">Hava güzelse Amalfi Kıyıları'nı ziyaret edebiliriz. İstasyon yakınına otel de ayırtmalıyız.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-2nd">If I were you, I would choose a place with a kitchen.</span> Eating out every day is expensive.</div>
+              <div class="bubble-tr">Senin yerinde olsam mutfaklı bir yer seçerdim. Her gün dışarıda yemek pahalı.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good idea. <span class="hl-1st">If we don't find a good hotel, we'll stay in an Airbnb.</span> I'll also pack a power adapter in case the sockets are different.</div>
+              <div class="bubble-tr">İyi fikir. İyi otel bulamazsak Airbnb'de kalırız. Prizler farklı olması ihtimaline karşı adaptör de koyacağım.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-1st">If you send me the dates today, I'll check the flights tonight.</span> <span class="hl-2nd">What would you do if we missed the last train to Rome?</span></div>
+              <div class="bubble-tr">Bugün tarihleri gönderirsen bu gece uçuşlara bakarım. Roma'ya son trene yetişemezsek ne yapardın?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-2nd">If that happened, I would take a taxi.</span> But <span class="hl-1st">if we leave the airport by 6, we won't miss it.</span></div>
+              <div class="bubble-tr">Öyle olsaydı taksi tutardım. Ama havaalanından saat 6'da çıkarsak kaçırmayız.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Zero / 1st / 2nd — doğru tipi seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> If you mix vinegar and baking soda, it <span class="blank"></span> (fizz). → zero<br>
+                <span class="pr-num">2.</span> If she <span class="blank"></span> (call) tonight, tell her I'm busy. → 1st<br>
+                <span class="pr-num">3.</span> If I <span class="blank"></span> (be) rich, I <span class="blank"></span> (buy) a yacht. → 2nd<br>
+                <span class="pr-num">4.</span> Water <span class="blank"></span> (freeze) if the temperature drops below 0°C. → zero<br>
+                <span class="pr-num">5.</span> If it <span class="blank"></span> (rain) tomorrow, the match <span class="blank"></span> (be) cancelled. → 1st
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> fizzes &nbsp; <span class="a-num">2.</span> calls &nbsp; <span class="a-num">3.</span> were/was, would buy &nbsp; <span class="a-num">4.</span> freezes &nbsp; <span class="a-num">5.</span> rains, will be
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Unless / as long as / in case</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> You can't enter <span class="blank"></span> you show your ID. (if not)<br>
+                <span class="pr-num">2.</span> I'll lend you my car <span class="blank"></span> you drive carefully. (provided that)<br>
+                <span class="pr-num">3.</span> Take some cash <span class="blank"></span> the card machine doesn't work.<br>
+                <span class="pr-num">4.</span> We won't start <span class="blank"></span> everyone is here. (if not)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> unless &nbsp; <span class="a-num">2.</span> as long as &nbsp; <span class="a-num">3.</span> in case &nbsp; <span class="a-num">4.</span> unless
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> If I will see him, I'll say hello. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> If I would have time, I will help you. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Unless you don't hurry, you'll be late. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> If she wins, she would donate the money. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> If I see him, I'll say hello. &nbsp; <span class="a-num">2.</span> If I have time, I will help you. / If I had time, I would help you. &nbsp; <span class="a-num">3.</span> Unless you hurry, you'll be late. &nbsp; <span class="a-num">4.</span> If she wins, she will donate the money. / If she won, she would donate the money.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Cümle tamamla — 1st veya 2nd</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> If I find a cheap flight, I <span class="blank"></span> (book) it immediately.<br>
+                <span class="pr-num">2.</span> If I <span class="blank"></span> (speak) fluent English, I <span class="blank"></span> (apply) for that job abroad.<br>
+                <span class="pr-num">3.</span> What <span class="blank"></span> you <span class="blank"></span> (do) if your phone <span class="blank"></span> (break) tomorrow?<br>
+                <span class="pr-num">4.</span> If they <span class="blank"></span> (offer) me the position, I <span class="blank"></span> (accept) it. (gerçek olasılık)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> will book / 'll book &nbsp; <span class="a-num">2.</span> spoke, would apply &nbsp; <span class="a-num">3.</span> will you do, breaks (1st) / would you do, broke (2nd — ikisi de kabul) &nbsp; <span class="a-num">4.</span> offer, will accept / 'll accept
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔬</span><span class="take-text"><strong>Zero:</strong> If + present, present — genel gerçekler, bilim.</span></div>
+          <div class="take-item"><span class="take-ico">🎯</span><span class="take-text"><strong>First:</strong> If + present, will + base — gerçek gelecek. If'ten sonra will yok!</span></div>
+          <div class="take-item"><span class="take-ico">💭</span><span class="take-text"><strong>Second:</strong> If + past, would + base — hayali şimdi. If I were you…</span></div>
+          <div class="take-item"><span class="take-ico">⏪</span><span class="take-text"><strong>Third:</strong> If + had + V3, would have + V3 — geçmiş pişmanlık.</span></div>
+          <div class="take-item"><span class="take-ico">🚫</span><span class="take-text"><strong>Unless</strong> = if not · <strong>As long as</strong> = koşul sağlandığı sürece · <strong>In case</strong> = ihtimaline karşı.</span></div>
+          <div class="take-item"><span class="take-ico">✏️</span><span class="take-text">If başta → virgül. If sonda → virgül yok.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">Hayatına Dair Koşul Cümleleri — 9 Cümle</span>
+            Kendi hayatın hakkında aşağıdaki koşul tiplerini kullanarak <strong>her tip için 3 cümle</strong> yaz:<br><br>
+            <strong>1st conditional (3 cümle):</strong> Gerçek gelecek planların<br>
+            <em>Örn: If I save enough money, I will visit Japan next year.</em><br><br>
+            <strong>2nd conditional (3 cümle):</strong> Hayali durumlar / "keşke" senaryoları<br>
+            <em>Örn: If I didn't have to work on Saturdays, I would learn to play the guitar.</em><br><br>
+            <strong>3rd conditional (3 cümle):</strong> Geçmiş pişmanlıklar<br>
+            <em>Örn: If I had started English earlier, I would have been fluent by now.</em><br>
+            <span style="color:var(--ink-3)">Bonus: Cümlelerini yüksek sesle oku ve if cümlesi başta mı sonda mı olduğuna göre virgülü kontrol et.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 18 / 25 &nbsp;·&nbsp; Ünite 4: İnce Ayrımlar</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="17.html">‹ Önceki: Ders 17</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="19.html">Sonraki: Ders 19 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

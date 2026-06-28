@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 24 — Konuşma Stratejileri ve Hedging · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-fluency { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-vs { font-size: 18px; color: var(--ink-4); padding: 0; background: none; border: none; font-weight: 400; }
+  .fs-accuracy { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-en { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-tr { color: var(--ink-3); font-size: 12px; }
+  .col-use { font-size: 12px; color: var(--ink-2); }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.filler   { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.hedge    { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.agree    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.disagree { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.small    { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.weather  { background: var(--bg-2); border-color: var(--rule); }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.filler   .use-title { color: var(--teal); }
+  .use-item.hedge    .use-title { color: var(--purple); }
+  .use-item.agree    .use-title { color: var(--ok); }
+  .use-item.disagree .use-title { color: var(--warn); }
+  .use-item.small    .use-title { color: var(--accent); }
+  .use-item.weather  .use-title { color: var(--ink-2); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.hedge-head { background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.type-head  { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-hedge { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-opinion { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-but { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-hedge  { color: var(--purple); font-weight: 600; }
+  .hl-filler { color: var(--teal); font-weight: 600; }
+  .hl-agree  { color: var(--ok); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  .topic-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .chip { font-size:11px; padding:4px 10px; border-radius:14px; background:var(--bg-2); border:0.5px solid var(--rule); color:var(--ink-2); }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 24 · Ünite 5</span>
+      <h1>Konuşma Stratejileri ve Hedging</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1–B2</span>
+        <span class="badge badge-level">Konuşma (Speaking)</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Altın kural:</strong> Konuşmada <strong>iletişim önce</strong>, mükemmel gramer sonra.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ Sessiz kal, kelime ara</span><br>
+        <span class="right">✓ Well… I think… probably…</span>
+      </span><br>
+      <strong>Hedging</strong> = fikri yumuşatmak, kibar ve güvenli konuşmak
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 23</span>
+    <span class="recall-item"><strong>paragraph structure</strong> = giriş · gelişme · sonuç</span>
+    <span class="recall-item"><strong>topic sentence</strong> = paragrafın ana fikri</span>
+    <span class="recall-item"><strong>formal</strong> vs <strong>informal</strong> yazı dili</span>
+    <span class="recall-item">Yazdığın gibi konuşma — konuşma daha esnek!</span>
+  </div>
+
+  <!-- Fluency vs Accuracy + Filler -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🗣️</span><h2>Fluency vs Accuracy — Önce İletişim</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-fluency">Fluency<small>akıcılık · mesajı ilet</small></div>
+          <div class="form-slot fs-vs">vs</div>
+          <div class="form-slot fs-accuracy">Accuracy<small>doğruluk · gramer/kelime</small></div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Konuşmada öncelik:</strong> Mesajını ilet → duraksama normal → hata yap, devam et. Sınav/mülakatta bile <strong>sessiz kalmaktan iyidir</strong> konuşmak.
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Strateji</th>
+              <th>Ne yap?</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-en">Keep going</td>
+              <td class="col-use">Durma, devam et</td>
+              <td class="col-tr">I went to… um… the market yesterday.</td>
+            </tr>
+            <tr>
+              <td class="col-en">Paraphrase</td>
+              <td class="col-use">Kelimeyi başka söyle</td>
+              <td class="col-tr">The thing you use to… cut paper. (scissors)</td>
+            </tr>
+            <tr>
+              <td class="col-en">Ask back</td>
+              <td class="col-use">Anlamadıysan sor</td>
+              <td class="col-tr">Sorry, could you repeat that?</td>
+            </tr>
+            <tr>
+              <td class="col-en">Self-correct</td>
+              <td class="col-use">Hızlı düzelt, geç</td>
+              <td class="col-tr">I go — I mean, I went — yesterday.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:8px;font-size:11px;color:var(--ink-3);padding:7px 10px;background:var(--ok-bg);border-radius:6px;border:0.5px solid #a8d4bc">
+          <strong style="color:var(--ok)">B1–B2 hedefi:</strong> %70 anlaşılır konuş → sonra grameri cilala. Mükemmel cümle bekleyerek <strong>5 saniye sessizlik</strong> = fluency kaybı.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>⏸️</span><h2>Filler Phrases — Düşünürken Konuş</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item filler">
+            <div class="use-title">⏸️ Zaman kazan</div>
+            <div class="use-kw">Well… · Let me think… · Hmm…</div>
+            <div class="use-ex">Well, that's an interesting question.</div>
+            <div class="use-tr">Hmm, bu ilginç bir soru.</div>
+          </div>
+          <div class="use-item filler">
+            <div class="use-title">🙏 Soruyu takdir et</div>
+            <div class="use-kw">That's a good question… · Good point…</div>
+            <div class="use-ex">That's a good question. Let me think…</div>
+            <div class="use-tr">İyi soru. Bir düşüneyim…</div>
+          </div>
+          <div class="use-item filler">
+            <div class="use-title">🔄 Konuya dön</div>
+            <div class="use-kw">Anyway… · So… · Right, so…</div>
+            <div class="use-ex">Anyway, what I wanted to say is…</div>
+            <div class="use-tr">Neyse, demek istediğim şey…</div>
+          </div>
+          <div class="use-item filler">
+            <div class="use-title">✅ Onay al / bağla</div>
+            <div class="use-kw">You know… · I mean… · Kind of…</div>
+            <div class="use-ex">It's kind of difficult, you know?</div>
+            <div class="use-tr">Biliyor musun, biraz zor.</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:4px">
+          <strong>Dikkat:</strong> Filler'lar doğal ama <strong>fazlası</strong> profesyonel görünmez. Mülakatta: <span style="font-family:var(--mono)">Well…</span> ve <span style="font-family:var(--mono)">Let me think…</span> yeterli; <span style="font-family:var(--mono)">like like like</span> kaçın.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hedging -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🛡️</span><h2>Hedging Language — Fikri Yumuşatmak</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--purple-bg);border-radius:6px;border:0.5px solid #c9b8ef">
+          <strong style="color:var(--purple)">Hedging</strong> = kesin iddia yerine ihtimal / kişisel görüş ifade etmek. İngilizcede <strong>çok yaygın</strong> — özellikle mülakat, tartışma, akademik konuşmada.
+        </div>
+
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="type-head">Tür</th>
+              <th class="hedge-head">İfade</th>
+              <th>Örnek</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="font-size:11px;font-weight:600;color:var(--ink-3);background:var(--bg-2)">Görüş</td>
+              <td><div class="cmp-ex" style="color:var(--purple)">I think · I believe · In my opinion</div></td>
+              <td><div class="cmp-ex">I think remote work is useful.</div></td>
+              <td><div class="cmp-tr">Bence uzaktan çalışma faydalı.</div></td>
+            </tr>
+            <tr>
+              <td style="font-size:11px;font-weight:600;color:var(--ink-3);background:var(--bg-2)">Olasılık</td>
+              <td><div class="cmp-ex" style="color:var(--purple)">probably · maybe · might · could</div></td>
+              <td><div class="cmp-ex">It might rain later.</div></td>
+              <td><div class="cmp-tr">Sonra yağmur yağabilir.</div></td>
+            </tr>
+            <tr>
+              <td style="font-size:11px;font-weight:600;color:var(--ink-3);background:var(--bg-2)">Gözlem</td>
+              <td><div class="cmp-ex" style="color:var(--purple)">it seems · it appears · apparently</div></td>
+              <td><div class="cmp-ex">It seems the project is delayed.</div></td>
+              <td><div class="cmp-tr">Proje gecikmiş gibi görünüyor.</div></td>
+            </tr>
+            <tr>
+              <td style="font-size:11px;font-weight:600;color:var(--ink-3);background:var(--bg-2)">Bilgi sınırı</td>
+              <td><div class="cmp-ex" style="color:var(--purple)">as far as I know · to my knowledge</div></td>
+              <td><div class="cmp-ex">As far as I know, the deadline is Friday.</div></td>
+              <td><div class="cmp-tr">Bildiğim kadarıyla son tarih Cuma.</div></td>
+            </tr>
+            <tr>
+              <td style="font-size:11px;font-weight:600;color:var(--ink-3);background:var(--bg-2)">Yumuşatma</td>
+              <td><div class="cmp-ex" style="color:var(--purple)">a bit · somewhat · quite · fairly</div></td>
+              <td><div class="cmp-ex">I'm a bit tired today.</div></td>
+              <td><div class="cmp-tr">Bugün biraz yorgunum.</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Güçlü iddia (sert)</div>
+            <span class="slot slot-opinion">This is wrong.</span>
+            <span class="slot slot-opinion">Everyone knows that.</span>
+            <div class="struct-ex">Kesin, tartışmaya kapalı — informal tartışmada bile sert.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Hedged iddia (yumuşak) ✓</div>
+            <span class="slot slot-hedge">I think</span>
+            <span class="slot slot-opinion">this might be wrong.</span>
+            <span class="slot-sep">·</span>
+            <span class="slot slot-hedge">As far as I know,</span>
+            <span class="slot slot-opinion">most people agree.</span>
+            <div class="struct-ex">Kibar, açık, profesyonel — B1–B2 konuşmanın temel taşı.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:6px">
+          <strong>Türkçe fark:</strong> Türkçe'de "bence" tek başına yeterli. İngilizce'de <strong>I think + probably/might</strong> birlikte kullanmak doğal: <span style="font-family:var(--mono)">I think it might work.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Agree/Disagree + Small Talk -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🤝</span><h2>Kibar Onaylama ve Karşı Çıkma</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item agree">
+            <div class="use-title">✅ Tamamen katılıyorum</div>
+            <div class="use-ex">Exactly. · That's true. · I completely agree. · You're absolutely right.</div>
+            <div class="use-tr">Kesinlikle. · Doğru. · Tamamen katılıyorum.</div>
+          </div>
+          <div class="use-item agree">
+            <div class="use-title">✅ Kısmen katılıyorum</div>
+            <div class="use-ex">That's true, <strong>however</strong>… · I see your point, <strong>but</strong>… · I agree to some extent, <strong>although</strong>…</div>
+            <div class="use-tr">Doğru, ancak… · Dediklerini anlıyorum, fakat…</div>
+          </div>
+          <div class="use-item disagree">
+            <div class="use-title">🔄 Nazikçe karşı çık</div>
+            <div class="use-ex">I'm not sure I agree. · I see it differently. · That's one way to look at it, but…</div>
+            <div class="use-tr">Katıldığımdan emin değilim. · Ben farklı düşünüyorum.</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div class="struct-row">
+            <div class="struct-label">Klasik kalıp</div>
+            <span class="slot slot-hedge">I see your point,</span>
+            <span class="slot slot-but">but</span>
+            <span class="slot slot-opinion">I think we need more time.</span>
+            <div class="struct-ex">Önce onayla → sonra but/however ile farklı görüşünü söyle.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Alternatif</div>
+            <span class="slot slot-hedge">That's true,</span>
+            <span class="slot slot-but">however,</span>
+            <span class="slot slot-opinion">it depends on the situation.</span>
+            <div class="struct-ex">"That's true, however…" = resmi tartışmada çok kullanılır.</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px">
+          <strong>Kaçın:</strong> <span style="font-family:var(--mono)">You're wrong.</span> · <span style="font-family:var(--mono)">No, that's not true.</span> → Bunun yerine <span style="font-family:var(--mono)">I'm not sure I agree.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>☕</span><h2>Small Talk — Hafif Sohbet Konuları</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item small">
+            <div class="use-title">🌤 Hava</div>
+            <div class="use-ex">Nice weather today, isn't it?<br>It's quite cold for this time of year.</div>
+            <div class="use-tr">Bugün hava güzel, değil mi?</div>
+          </div>
+          <div class="use-item small">
+            <div class="use-title">📅 Hafta sonu</div>
+            <div class="use-ex">Any plans for the weekend?<br>Did you do anything fun?</div>
+            <div class="use-tr">Hafta sonu planın var mı?</div>
+          </div>
+          <div class="use-item small">
+            <div class="use-title">🎯 Hobiler</div>
+            <div class="use-ex">What do you like to do in your free time?<br>Do you play any sports?</div>
+            <div class="use-tr">Boş zamanında ne yapmayı seversin?</div>
+          </div>
+          <div class="use-item small">
+            <div class="use-title">💼 İş / okul</div>
+            <div class="use-ex">How's work going?<br>How are your classes this term?</div>
+            <div class="use-tr">İşler nasıl gidiyor?</div>
+          </div>
+        </div>
+
+        <div style="margin-top:8px;padding:8px 10px;background:var(--bg-2);border-radius:7px;border:0.5px solid var(--rule)">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Güvenli sorular</div>
+          <div class="topic-chips">
+            <span class="chip">How was your weekend?</span>
+            <span class="chip">Have you seen any good films lately?</span>
+            <span class="chip">How long have you lived here?</span>
+            <span class="chip">What brought you here today?</span>
+          </div>
+          <div style="font-size:11px;color:var(--ink-3);margin-top:8px">
+            <strong style="color:var(--rose)">Kaçın:</strong> yaş, maaş, siyaset, din — tanımadığın kişilerle.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Türkçe Tuzaklar -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Deyimleri kelime kelime çevirmek</div>
+            <div class="trap-desc">Türkçe deyim İngilizce'de anlamsız olur. Anlamı aktar, kelimeleri değil.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I have a frog in my throat. (boğazımda kurbağa var — yanlış bağlam)</span><br>
+              <span class="right">✓ I'm a bit under the weather. = Biraz keyifsizim / hasta gibiyim.</span><br>
+              <span class="right">✓ It cost an arm and a leg. = Çok pahalıya mal oldu. (İngilizce deyim)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Gerginken çok hızlı konuşmak</div>
+            <div class="trap-desc">Heyecan = hız artışı = telaffuz bozulur, dinleyici anlamaz. Bilinçli yavaşla, duraksama kullan.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I'mstudyingengineeringatuniversitybecauseIlikecomputers…</span><br>
+              <span class="right">✓ Well… I'm studying engineering. · I chose it because I like computers.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Kesin iddia — "This is true" / "Everyone knows"</div>
+            <div class="trap-desc">Türkçe'de doğrudan konuşmak normal; İngilizce tartışmada sert gelir. Hedging ekle.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Social media is bad for teenagers.</span><br>
+              <span class="right">✓ I think social media <strong>can be</strong> harmful for some teenagers.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">"Yes" ile doğrudan karşı çıkmak</div>
+            <div class="trap-desc">Türkçe "Evet ama…" mantığı var; İngilizce'de önce onay cümlesi, sonra but/however.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Yes, but you're wrong about the date.</span><br>
+              <span class="right">✓ I see your point, but I think the date might be different.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Sessiz kalmak yerine filler kullan</div>
+            <div class="trap-desc">5 saniye sessizlik = akıcılık puanı düşer. Well… / Let me think… = doğal ve kabul edilir.</div>
+            <div class="trap-ex"><span class="right">That's a good question. Let me think… I'd say probably yes.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Örnek Diyalog — İş / Üniversite Mülakatı</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟣 Mor = <strong>hedging</strong> &nbsp;·&nbsp; 🔵 Turkuaz = <strong>filler</strong> &nbsp;·&nbsp; 🟢 Yeşil = <strong>kibar onay/karşı çıkma</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good morning. Tell me a little about yourself and why you're interested in this position.</div>
+              <div class="bubble-tr">Günaydın. Kendinizden bahsedin ve bu pozisyona neden ilgi duyduğunuzu anlatın.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-filler">Well,</span> <span class="hl-hedge">I think</span> my background in marketing <span class="hl-hedge">could be</span> a good fit here. <span class="hl-hedge">As far as I know,</span> your company focuses on sustainable products — and that <span class="hl-hedge">seems</span> to align with my values.</div>
+              <div class="bubble-tr">Pazarlama geçmişimin buraya uygun olabileceğini düşünüyorum. Bildiğim kadarıyla şirketiniz sürdürülebilir ürünlere odaklanıyor — bu da değerlerimle örtüşüyor gibi.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Interesting. What would you say is your biggest strength?</div>
+              <div class="bubble-tr">İlginç. En büyük güçlü yönünüz nedir derdiniz?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-filler">That's a good question.</span> <span class="hl-filler">Let me think…</span> <span class="hl-hedge">I'd say</span> I'm quite good at working in teams. In my last project, we <span class="hl-hedge">probably</span> increased engagement by about 20% — <span class="hl-hedge">I believe</span> teamwork made the difference.</div>
+              <div class="bubble-tr">İyi soru. Bir düşüneyim… Takım çalışmasında oldukça iyiyim derdim. Son projemizde etkileşimi yaklaşık %20 artırmış olabiliriz — bence farkı takım çalışması yarattı.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Some people say remote work reduces productivity. What's your view?</div>
+              <div class="bubble-tr">Bazıları uzaktan çalışmanın verimliliği düşürdüğünü söylüyor. Siz ne düşünüyorsunuz?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en"><span class="hl-agree">I see your point,</span> <span class="hl-hedge">but I think</span> it <span class="hl-hedge">depends on</span> the person. <span class="hl-hedge">It seems</span> that with clear goals, remote work <span class="hl-hedge">might actually</span> help some people focus better.</div>
+              <div class="bubble-tr">Dediklerinizi anlıyorum, ama bence kişiye bağlı. Net hedeflerle uzaktan çalışma bazı insanların daha iyi odaklanmasına yardımcı olabilir gibi görünüyor.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">HR</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Do you have any questions for us?</div>
+              <div class="bubble-tr">Bize sormak istediğiniz bir şey var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes. <span class="hl-hedge">I was wondering</span> what training opportunities <span class="hl-hedge">might be</span> available in the first year. <span class="hl-hedge">As far as I know,</span> continuous learning is important here — is that right?</div>
+              <div class="bubble-tr">Evet. İlk yılda hangi eğitim fırsatlarının olabileceğini merak ediyordum. Bildiğim kadarıyla sürekli öğrenme burada önemli — doğru mu?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Hedging ekle — cümleyi yumuşat</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Social media is bad. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> The meeting is on Monday. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> She will get the job. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> This plan will fail. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I think social media can be bad. / Social media might be harmful.<br>
+                  <span class="a-num">2.</span> As far as I know, the meeting is on Monday.<br>
+                  <span class="a-num">3.</span> She'll probably get the job. / She might get the job.<br>
+                  <span class="a-num">4.</span> I think this plan might fail. / It seems this plan could fail.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Filler phrase seç — boşluğu doldur</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> <span class="blank"></span> I haven't decided yet.<br>
+                <span class="pr-num">2.</span> <span class="blank"></span> what were your hobbies as a child?<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> let me check my calendar.<br>
+                <span class="pr-num">4.</span> It's difficult, <span class="blank"></span> because the rules keep changing.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Well, / Let me think… &nbsp;
+                  <span class="a-num">2.</span> By the way, / So, &nbsp;
+                  <span class="a-num">3.</span> Let me think… / Well, &nbsp;
+                  <span class="a-num">4.</span> you know, / I mean,
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Kibarca katıl veya karşı çık</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> "English is easy." — (katılma) → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> "We should cancel the trip." — (karşı çık) → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> "Online learning is the future." — (kısmen katıl) → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> "Everyone loves winter." — (karşı çık) → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I'm not sure I agree. / I think it depends on the person.<br>
+                  <span class="a-num">2.</span> I see your point, but I think we could try to reschedule.<br>
+                  <span class="a-num">3.</span> That's true, however, I think face-to-face learning still matters.<br>
+                  <span class="a-num">4.</span> I see it differently. / That's one way to look at it, but not everyone enjoys cold weather.
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Small talk — uygun soru veya cevap yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> (hava hakkında aç) → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Any plans for the weekend? → (kısa cevap) <span class="blank"></span><br>
+                <span class="pr-num">3.</span> (hobi sorusu) → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> How's work going? → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Nice weather today, isn't it? / It's quite warm for October.<br>
+                  <span class="a-num">2.</span> Not much, just relaxing. / I'm meeting some friends on Saturday.<br>
+                  <span class="a-num">3.</span> What do you like to do in your free time? / Do you play any sports?<br>
+                  <span class="a-num">4.</span> Pretty busy, but good! / Not bad, thanks. How about you?
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🗣️</span><span class="take-text"><strong>Fluency önce</strong> — iletişim kur, hata yap, devam et.</span></div>
+          <div class="take-item"><span class="take-ico">⏸️</span><span class="take-text"><strong>Filler'lar</strong> = Well… · Let me think… · That's a good question…</span></div>
+          <div class="take-item"><span class="take-ico">🛡️</span><span class="take-text"><strong>Hedging</strong> = I think · probably · it seems · might · as far as I know.</span></div>
+          <div class="take-item"><span class="take-ico">🤝</span><span class="take-text"><strong>Karşı çık:</strong> I see your point, but… / That's true, however…</span></div>
+          <div class="take-item"><span class="take-ico">☕</span><span class="take-text"><strong>Small talk:</strong> hava · hafta sonu · hobiler · güvenli sorular.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Deyim çevirme · hızlı konuşma · kesin iddia = tuzak.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🎙️</span>
+          <div class="mission-body">
+            <span class="m-title">2 Dakikalık Self-Intro Kaydı</span>
+            Telefonuna <strong>2 dakikalık bir tanıtım</strong> kaydet (iş veya okul bağlamında). En az <strong>5 hedging ifadesi</strong> kullan:<br>
+            <strong>1.</strong> <span style="font-family:var(--mono);color:var(--purple)">I think…</span><br>
+            <strong>2.</strong> <span style="font-family:var(--mono);color:var(--purple)">probably / might / could</span><br>
+            <strong>3.</strong> <span style="font-family:var(--mono);color:var(--purple)">it seems…</span><br>
+            <strong>4.</strong> <span style="font-family:var(--mono);color:var(--purple)">as far as I know…</span><br>
+            <strong>5.</strong> <span style="font-family:var(--mono);color:var(--purple)">I'd say… / I believe…</span><br>
+            <span style="color:var(--ink-3)">Bonus: 1 filler (Well… / Let me think…) + dinleyip kendini değerlendir.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 24 / 25 &nbsp;·&nbsp; Ünite 5: Gerçek Dünya</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="23.html">‹ Önceki: Ders 23</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="25.html">Sonraki: Ders 25 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

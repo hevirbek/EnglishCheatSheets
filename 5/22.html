@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 22 — Dinleme ve Aksan Çeşitliliği (Listening) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-step1 { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-step2 { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-step3 { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-arrow { font-size: 18px; color: var(--ink-4); padding: 0; background: none; border: none; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-word { font-family: var(--mono); font-weight: 600; color: var(--accent); }
+  .col-uk { font-family: var(--mono); color: var(--purple); }
+  .col-us { font-family: var(--mono); color: var(--ok); }
+  .col-au { font-family: var(--mono); color: var(--teal); }
+  .col-tr { color: var(--ink-3); font-size: 12px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.predict  { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.keywords { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.calm     { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.gist     { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.predict  .use-title { color: var(--accent); }
+  .use-item.keywords .use-title { color: var(--ok); }
+  .use-item.calm     .use-title { color: var(--teal); }
+  .use-item.gist     .use-title { color: var(--purple); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.uk-head { background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.us-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.au-head { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.word-head { background: var(--bg-3); color: var(--ink-3); width: 90px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-full  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-red   { background: var(--rose-bg); color: var(--rose); border: 0.5px solid #fecdd3; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-kw   { color: var(--accent); font-weight: 600; }
+  .hl-red  { color: var(--rose); font-weight: 600; text-decoration: line-through; opacity: .7; }
+  .hl-conn { color: var(--purple); font-weight: 600; }
+
+  .script-box {
+    padding: 12px 14px; background: var(--bg-2); border-radius: 8px;
+    border: 0.5px solid var(--rule); font-size: 12px; line-height: 1.75;
+    margin-bottom: 10px;
+  }
+  .script-box p { margin-bottom: 8px; }
+  .script-box p:last-child { margin-bottom: 0; }
+  .script-label { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .comp-q { padding: 6px 10px; background: var(--accent-bg); border-radius: 6px; border: 0.5px solid #b3c9ef; font-size: 11px; margin-top: 8px; }
+  .comp-q strong { color: var(--accent); }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 22 · Ünite 5</span>
+      <h1>Dinleme ve Aksan Çeşitliliği (Listening)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">B1–B2</span>
+        <span class="badge badge-level">Dinleme Becerisi</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Her kelimeyi duymayı bekleme — <strong>ana fikri</strong> yakala.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ Bilmediğim kelimede dur, geri kalanı kaçır</span><br>
+        <span class="right">✓ Tahmin et, anahtar kelimelere odaklan, devam et</span>
+      </span><br>
+      Okumada <strong>skimming</strong> gibi; dinlemede de <strong>gist</strong> (genel anlam) yeterli olabilir.
+    </div>
+  </div>
+
+  <!-- Hatırlatma — Ders 21 -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 21</span>
+    <span class="recall-item"><strong>skimming</strong> = hızlı genel bakış</span>
+    <span class="recall-item"><strong>scanning</strong> = belirli bilgi arama</span>
+    <span class="recall-item"><strong>context clues</strong> = bağlamdan anlam çıkarma</span>
+    <span class="recall-item">Okuma stratejileri dinlemede de geçerli: tahmin et → odaklan → bağlamdan anla</span>
+  </div>
+
+  <!-- Aktif Dinleme -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎧</span><h2>Aktif Dinleme Stratejileri</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-step1">1. Predict<small>önceden tahmin et</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-step2">2. Keywords<small>anahtar kelimeleri dinle</small></div>
+          <div class="form-slot fs-arrow">→</div>
+          <div class="form-slot fs-step3">3. Keep going<small>bilinmeyen kelimede panik yok</small></div>
+        </div>
+
+        <div class="uses-grid">
+          <div class="use-item predict">
+            <div class="use-title">🔮 Tahmin et (predict)</div>
+            <div class="use-kw">başlık · görsel · soru · konu</div>
+            <div class="use-ex">Podcast başlığı "Remote Work Tips" → evden çalışma, verimlilik, araçlar beklenir.</div>
+            <div class="use-tr">Dinlemeden önce ne duyacağını tahmin et — beynin hazır olur.</div>
+          </div>
+          <div class="use-item keywords">
+            <div class="use-title">🎯 Anahtar kelimeleri dinle</div>
+            <div class="use-kw">who · what · when · why · numbers</div>
+            <div class="use-ex">Soru: "When did she start?" → <strong>when</strong>, tarih, yıl, ay kelimelerine odaklan.</div>
+            <div class="use-tr">Her kelimeyi değil, cevabı taşıyan kelimeleri yakala.</div>
+          </div>
+          <div class="use-item calm">
+            <div class="use-title">😌 Bilinmeyen kelimede panik yok</div>
+            <div class="use-kw">skip · guess · context</div>
+            <div class="use-ex">"The meeting was <em>postponed</em>." → postponed bilmiyorsan bile: meeting + olumsuz ton = ertelendi?</div>
+            <div class="use-tr">Ders 21'deki context clues dinlemede de işe yarar.</div>
+          </div>
+          <div class="use-item gist">
+            <div class="use-title">📋 Gist — genel anlam yeterli</div>
+            <div class="use-kw">main idea · attitude · purpose</div>
+            <div class="use-ex">Detay kaçtı mı? Sor: Konuşmacı ne demek istiyor? Olumlu mu, olumsuz mu?</div>
+            <div class="use-tr">Skimming'in dinleme karşılığı: %100 anlamak zorunda değilsin.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>3 dinleme turu:</strong> ① İlk dinleme = genel anlam (gist) &nbsp; ② İkinci = detay / sorular &nbsp; ③ Üçüncü = zor kısımlar (gerekirse)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🌍</span><h2>British vs American vs Australian — Aksan Farkları</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="word-head">Kelime</th>
+              <th class="uk-head">🇬🇧 British (RP)</th>
+              <th class="us-head">🇺🇸 American</th>
+              <th class="au-head">🇦🇺 Australian</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-word">schedule</td>
+              <td><div class="cmp-ex">/ˈʃed.juːl/</div><div class="cmp-tr">SHE-jool · "sh" ile başlar</div></td>
+              <td><div class="cmp-ex">/ˈsked.juːl/</div><div class="cmp-tr">SKED-jool · "sk" ile başlar</div></td>
+              <td><div class="cmp-ex">/ˈʃed.juːl/</div><div class="cmp-tr">Genelde UK'ye yakın</div></td>
+            </tr>
+            <tr>
+              <td class="col-word">tomato</td>
+              <td><div class="cmp-ex">/təˈmɑː.təʊ/</div><div class="cmp-tr">tə-MAH-toh</div></td>
+              <td><div class="cmp-ex">/təˈmeɪ.t̬oʊ/</div><div class="cmp-tr">tə-MAY-toh</div></td>
+              <td><div class="cmp-ex">/təˈmɑː.təʊ/</div><div class="cmp-tr">tə-MAH-toh (UK'ye yakın)</div></td>
+            </tr>
+            <tr>
+              <td class="col-word">dance</td>
+              <td><div class="cmp-ex">/dɑːns/</div><div class="cmp-tr">dahns — uzun "a"</div></td>
+              <td><div class="cmp-ex">/dæns/</div><div class="cmp-tr">dans — kısa "a"</div></td>
+              <td><div class="cmp-ex">/dɑːns/</div><div class="cmp-tr">dahns — UK'ye yakın</div></td>
+            </tr>
+            <tr>
+              <td class="col-word">water</td>
+              <td><div class="cmp-ex">/ˈwɔː.tə/</div><div class="cmp-tr">WAW-tuh</div></td>
+              <td><div class="cmp-ex">/ˈwɑː.t̬ɚ/</div><div class="cmp-tr">WAH-der (r belirgin)</div></td>
+              <td><div class="cmp-ex">/ˈwoː.tə/</div><div class="cmp-tr">WO-tah (dudak yuvarlak)</div></td>
+            </tr>
+            <tr>
+              <td class="col-word">can't</td>
+              <td><div class="cmp-ex">/kɑːnt/</div><div class="cmp-tr">kahnt</div></td>
+              <td><div class="cmp-ex">/kænt/</div><div class="cmp-tr">kant</div></td>
+              <td><div class="cmp-ex">/kɑːnt/</div><div class="cmp-tr">kahnt</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box" style="margin-top:8px">
+          <strong>Pratik ipucu:</strong> Aynı kelime farklı duyulabilir — <strong>bağlam</strong> ve <strong>konu</strong> ipucu verir. "tomato" tartışması değil, yemek tarifi dinliyorsan anlam netleşir.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connected Speech + Numbers -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔗</span><h2>Connected Speech — Bağlı Konuşma ve Kısaltmalar</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Yazılı</th>
+              <th>Duyduğun</th>
+              <th>Anlam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-word">going to</td>
+              <td class="col-uk">gonna</td>
+              <td class="col-tr">-eceğim / -acak (gelecek)</td>
+            </tr>
+            <tr>
+              <td class="col-word">want to</td>
+              <td class="col-uk">wanna</td>
+              <td class="col-tr">istemek</td>
+            </tr>
+            <tr>
+              <td class="col-word">got to</td>
+              <td class="col-uk">gotta</td>
+              <td class="col-tr">zorunda / -meli (informal)</td>
+            </tr>
+            <tr>
+              <td class="col-word">kind of</td>
+              <td class="col-uk">kinda</td>
+              <td class="col-tr">biraz, gibi</td>
+            </tr>
+            <tr>
+              <td class="col-word">give me</td>
+              <td class="col-uk">gimme</td>
+              <td class="col-tr">bana ver</td>
+            </tr>
+            <tr>
+              <td class="col-word">did you</td>
+              <td class="col-uk">didja / d'you</td>
+              <td class="col-tr">…din mi?</td>
+            </tr>
+            <tr>
+              <td class="col-word">what are you</td>
+              <td class="col-uk">whatcha</td>
+              <td class="col-tr">ne yapıyorsun?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Örnek — tam cümle</div>
+            <span class="slot slot-full">I'm gonna</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-rest">grab a coffee</span>
+            <div class="struct-ex">I'm <span class="hl-conn">gonna</span> grab a coffee. = Kahve alacağım.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Reduction — ses düşmesi</div>
+            <span class="slot slot-red">h</span>
+            <span class="slot-sep">→</span>
+            <span class="slot slot-rest">"Tell <em>'im</em> I called." (him → 'im)</span>
+            <div class="struct-ex">"I <em>should've</em> known." = should have · "She <em>would've</em> come." = would have</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:4px">
+          <strong>Resmi vs informal:</strong> Job interview'de "going to" duyarsın; arkadaş sohbetinde "gonna" normal. İkisini de tanı.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔢</span><h2>Sayılar, Tarihler, İsimler — Dinleme Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 13 vs 30 · 14 vs 40 · 15 vs 50</div>
+            <div class="trap-desc">-teen vs -ty: vurgu farkı! -TEEN vurgusu sonda, -TY vurgusu başta.</div>
+            <div class="trap-ex">
+              <span class="right">thir<strong>TEEN</strong> (13) vs <strong>THIR</strong>ty (30)</span><br>
+              <span class="right">four<strong>TEEN</strong> (14) vs <strong>FOR</strong>ty (40)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Tarih formatları</div>
+            <div class="trap-desc">UK: 28/06/2026 = "the twenty-eighth of June" · US: "June twenty-eighth, twenty twenty-six"</div>
+            <div class="trap-ex">
+              <span class="right">UK: 5/3/2026 = 5 March &nbsp;|&nbsp; US: 5/3/2026 = May 3rd</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Telefon &amp; posta kodu</div>
+            <div class="trap-desc">Rakamlar tek tek veya gruplar halinde okunur: "double five" = 55 · "oh" = 0</div>
+            <div class="trap-ex">
+              <span class="right">555-0142 → "five five five, oh one four two"</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">İsimler — yazım ≠ telaffuz</div>
+            <div class="trap-desc">Sean = /ʃɔːn/ (Shawn) · Siobhan = /ʃəˈvɔːn/ · Nguyen = /wɪn/</div>
+            <div class="trap-ex">
+              <span class="right">Duymadığında: "Could you spell that for me, please?"</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Dinleme ipucu: sayı sorularında not al</div>
+            <div class="trap-desc">Fiyat, tarih, telefon duyduğunda hemen yaz — ikinci dinlemede doğrula.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clarification + Turkish Traps -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>❓</span><h2>Anlamadığında — Netleştirme İfadeleri</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>İfade</th>
+              <th>Ne zaman?</th>
+              <th>Resmiyet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-word">Sorry, could you repeat that?</td>
+              <td class="col-tr">Tamamen kaçırdın</td>
+              <td class="col-tr">Nötr / kibar</td>
+            </tr>
+            <tr>
+              <td class="col-word">Could you say that again, please?</td>
+              <td class="col-tr">Tekrar iste</td>
+              <td class="col-tr">Kibar</td>
+            </tr>
+            <tr>
+              <td class="col-word">What does … mean?</td>
+              <td class="col-tr">Tek kelime anlamadın</td>
+              <td class="col-tr">Her ortam</td>
+            </tr>
+            <tr>
+              <td class="col-word">Could you speak more slowly?</td>
+              <td class="col-tr">Çok hızlı konuşuyor</td>
+              <td class="col-tr">Kibar istek</td>
+            </tr>
+            <tr>
+              <td class="col-word">I didn't catch that.</td>
+              <td class="col-tr">Duydum ama anlamadım</td>
+              <td class="col-tr">Informal</td>
+            </tr>
+            <tr>
+              <td class="col-word">Could you spell that for me?</td>
+              <td class="col-tr">İsim / adres</td>
+              <td class="col-tr">Resmi / nötr</td>
+            </tr>
+            <tr>
+              <td class="col-word">So you mean …?</td>
+              <td class="col-tr">Anladığını doğrula</td>
+              <td class="col-tr">Aktif dinleme</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box ok-box" style="margin-top:8px">
+          <strong>Unutma:</strong> "Repeat?" demek kaba olabilir. <strong>Could you…?</strong> ile başla — kibar ve etkili.
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Dinleme Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Her kelimeyi duymayı beklemek</div>
+            <div class="trap-desc">Ana dilinde bile %100 kelime yakalamazsın. İngilizce'de bilinmeyen kelimede durursan cümlenin geri kalanını kaçırırsın.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ "Postponed" ne demek? → (3 saniye düşün) → geri kalan cümle gitti</span><br>
+              <span class="right">✓ "Meeting + olumsuz ton = kötü haber" → devam et, sonra sor</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Altyazıyı stratejik kullanmamak</div>
+            <div class="trap-desc">Sürekli Türkçe altyazı = dinleme pratiği yapmazsın. Sürekli İngilizce altyazı = okuma pratiği yaparsın, dinleme az.</div>
+            <div class="trap-ex">
+              <span class="right">✓ 1. tur: altyazısız dinle &nbsp; 2. tur: EN altyazı &nbsp; 3. tur: zor kısımlar</span><br>
+              <span class="right">✓ Film/dizi: önce EN subs, anlamadığın yerde TR subs</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Sadece tek aksana maruz kalmak</div>
+            <div class="trap-desc">Sadece US Netflix veya sadece UK podcast → diğer aksanı "anlamıyorum" sanırsın. Aksan çeşitliliği normal.</div>
+            <div class="trap-ex">
+              <span class="right">✓ Haftada 1 farklı aksan kaynağı ekle (AU news, UK radio, US podcast)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Pasif dinleme — arka planda bırakmak</div>
+            <div class="trap-desc">Podcast arka planda çalışırken odak yoksa öğrenme sınırlı. Aktif dinleme = not al, tahmin et, soru sor.</div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Ders 21 bağlantısı</div>
+            <div class="trap-desc">Okumada scanning yapıyorsan, dinlemede de soruya göre odaklan: "When?" → tarih kelimeleri. "Who?" → isimler.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Podcast Script -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🎙️</span><h2>Simüle Dinleme — Podcast Intro (Daily Focus)</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = <strong>anahtar kelime</strong> &nbsp;·&nbsp; 🟣 Mor = <strong>connected speech</strong> &nbsp;·&nbsp; Dinlemeden önce tahmin et: Bu podcast ne hakkında?
+        </div>
+
+        <div class="script-box">
+          <div class="script-label">🎧 Script — oku veya sesli okut (tahmin: üretkenlik / uzaktan çalışma?)</div>
+          <p>
+            <strong>Host:</strong> Hey everyone, welcome back to <span class="hl-kw">Daily Focus</span> — the podcast for people who <span class="hl-conn">wanna</span> get more done without burning out. I'm your host, <span class="hl-kw">Sarah Chen</span>, and today we're talking about <span class="hl-kw">remote work habits</span> that actually stick.
+          </p>
+          <p>
+            Our guest today is <span class="hl-kw">Dr. James O'Brien</span>, a productivity researcher from Melbourne. He's <span class="hl-conn">gonna</span> share three simple tips he discovered after studying over <span class="hl-kw">two thousand</span> remote workers across Australia, the UK, and the US.
+          </p>
+          <p>
+            Before we start — quick reminder: if you enjoy the show, leave us a review. It really helps. Alright, let's dive in. James, thanks for joining us.
+          </p>
+          <p>
+            <strong>James:</strong> Thanks for having me, Sarah. So, tip number one: <span class="hl-kw">start your day with a five-minute plan</span> — not your email. Most people <span class="hl-conn">gotta</span> break that habit first.
+          </p>
+        </div>
+
+        <div class="comp-q">
+          <strong>Comprehension focus — dinleme sonrası sorular:</strong><br>
+          1. Podcast'in adı ne? &nbsp; 2. Konuk kim ve nereden? &nbsp; 3. Kaç ipucu paylaşılacak? &nbsp; 4. Birinci ipucu ne? &nbsp; 5. "wanna" ve "gonna" hangi tam formların kısaltması?
+        </div>
+
+        <details class="answers" style="margin-top:10px">
+          <summary>Cevapları göster</summary>
+          <div class="answers-body">
+            <span class="a-num">1.</span> Daily Focus &nbsp;
+            <span class="a-num">2.</span> Dr. James O'Brien, Melbourne (Australia) &nbsp;
+            <span class="a-num">3.</span> Three (3) tips &nbsp;
+            <span class="a-num">4.</span> Start your day with a five-minute plan (not email) &nbsp;
+            <span class="a-num">5.</span> wanna = want to · gonna = going to · gotta = got to
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- Clarification Dialogue -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat — Anlamadığında Ne Dersin?</h2></div>
+      <div class="card-body">
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">The meeting's been <span class="hl-kw">postponed</span> till the fifteenth.</div>
+              <div class="bubble-tr">Toplantı on beşine ertelendi.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sorry, <span class="hl-kw">could you repeat that</span>? I didn't catch the date.</div>
+              <div class="bubble-tr">Affedersin, tekrar eder misin? Tarihi duyamadım.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sure — it's on the <span class="hl-kw">fifteenth</span>, not the fifth.</div>
+              <div class="bubble-tr">Tabii — beş değil, on beşinde.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Got it. And <span class="hl-kw">what does "postponed" mean</span> exactly?</div>
+              <div class="bubble-tr">Anladım. Peki "postponed" tam olarak ne demek?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">It means delayed — moved to a later date.</div>
+              <div class="bubble-tr">Ertelendi demek — daha sonraki bir tarihe alındı.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thanks! <span class="hl-kw">Could you speak a bit more slowly</span> next time? I'm still getting used to fast calls.</div>
+              <div class="bubble-tr">Teşekkürler! Bir dahaki sefer biraz daha yavaş konuşabilir misin? Hızlı görüşmelere alışıyorum hâlâ.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Connected speech — tam forma çevir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I'm gonna leave early. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Do you wanna come? → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I gotta finish this. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Kinda tired today. → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> Didja see that? → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I'm going to leave early. &nbsp;
+                  <span class="a-num">2.</span> Do you want to come? &nbsp;
+                  <span class="a-num">3.</span> I've got to finish this. / I got to finish this. &nbsp;
+                  <span class="a-num">4.</span> Kind of tired today. &nbsp;
+                  <span class="a-num">5.</span> Did you see that?
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Sayı tuzakları — hangisi?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> thir<strong>TEEN</strong> → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> <strong>FOR</strong>ty → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> "double oh seven" → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> fif<strong>TEEN</strong> vs fif<strong>TY</strong> → <span class="blank"></span> vs <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> 13 &nbsp;
+                  <span class="a-num">2.</span> 40 &nbsp;
+                  <span class="a-num">3.</span> 007 (or 007 as phone: 007) &nbsp;
+                  <span class="a-num">4.</span> 15 vs 50
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Netleştirme — doğru ifadeyi seç</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Konuşmacı çok hızlı → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Bir kelime duymadın → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> İsim duymadın → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> Cümleyi tamamen kaçırdın → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Could you speak more slowly? &nbsp;
+                  <span class="a-num">2.</span> What does … mean? &nbsp;
+                  <span class="a-num">3.</span> Could you spell that for me? &nbsp;
+                  <span class="a-num">4.</span> Sorry, could you repeat that?
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Podcast script — kısa cevap</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Podcast konusu? → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Kaç remote worker incelendi? → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> James'in birinci tavsiyesi? → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> UK "schedule" nasıl başlar? → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Remote work habits / productivity without burnout &nbsp;
+                  <span class="a-num">2.</span> Over two thousand (2000+) &nbsp;
+                  <span class="a-num">3.</span> Start your day with a five-minute plan (not email) &nbsp;
+                  <span class="a-num">4.</span> With "sh" sound (/ˈʃed.juːl/ — SHE-)
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🎧</span><span class="take-text"><strong>Tahmin et → anahtar kelime → devam et.</strong> Bilinmeyen kelimede durma.</span></div>
+          <div class="take-item"><span class="take-ico">🌍</span><span class="take-text">UK / US / AU aynı kelimeyi farklı söyler — <strong>bağlam</strong> kurtarır.</span></div>
+          <div class="take-item"><span class="take-ico">🔗</span><span class="take-text"><strong>gonna, wanna, gotta</strong> = günlük konuşmada normal kısaltmalar.</span></div>
+          <div class="take-item"><span class="take-ico">🔢</span><span class="take-text"><strong>-teen vs -ty</strong> vurgusu: 13 ≠ 30. Sayı duyunca not al.</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text"><strong>Could you repeat / speak slowly?</strong> — sormaktan çekinme.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Altyazıyı <strong>stratejik</strong> kullan: önce subsız, sonra EN.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🎧</span>
+          <div class="mission-body">
+            <span class="m-title">5 Dakikalık Dinleme Görevi</span>
+            Herhangi bir İngilizce ses kaynağından (podcast, YouTube, haber) <strong>5 dakika</strong> aktif dinle:<br>
+            <strong>1.</strong> Dinlemeden önce konuyu tahmin et.<br>
+            <strong>2.</strong> Altyazısız dinle — ana fikri yakala.<br>
+            <strong>3.</strong> <strong>3 yeni ifade</strong> not al (kelime veya kısa cümle).<br>
+            <strong>4.</strong> connected speech duydun mu? (gonna, wanna, gotta?)<br>
+            <span style="color:var(--ink-3)">Bonus: Farklı aksan dene — bir UK, bir US, bir AU kaynağı karşılaştır.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 22 / 25 &nbsp;·&nbsp; Ünite 5: Gerçek Dünya</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="21.html">‹ Önceki: Ders 21</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="23.html">Sonraki: Ders 23 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

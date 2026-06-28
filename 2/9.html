@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 9 — Will vs Going to · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .fs-will { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-be   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-goto { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .fs-base { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .fs-plus { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .will-hl { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  .goto-hl { color: var(--teal); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.predict  { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.spont    { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.promise  { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.offer    { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.plan     { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.evidence { background: var(--warn-bg); border-color: #f5c896; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.predict  .use-title { color: var(--accent); }
+  .use-item.spont    .use-title { color: var(--purple); }
+  .use-item.promise  .use-title { color: var(--ok); }
+  .use-item.offer    .use-title { color: var(--teal); }
+  .use-item.plan     .use-title { color: var(--ok); }
+  .use-item.evidence .use-title { color: var(--warn); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.will-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.goto-head { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.cat-head { background: var(--bg-3); color: var(--ink-3); width: 110px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .will-cell { background: #f7faff; }
+  .cmp-table .goto-cell { background: #f0fdfa; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .time-chip { padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); text-align: center; }
+  .time-word { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); }
+  .time-ex { font-size: 10px; color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-will { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-be   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-goto { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .slot-base { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-neg  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-q    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-rest { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep  { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-will { color: var(--accent); font-weight: 600; }
+  .hl-goto { color: var(--teal); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--teal-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .time-grid { grid-template-columns: 1fr 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 9 · Ünite 2</span>
+      <h1>Gelecekten Haberler — Will vs Going to</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A2</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Türkçe'de tek "-ecek/-acak" eki her ikisini de karşılar.<br>
+      İngilizce'de iki ayrı yapı:<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span style="color:var(--accent)">I'll help</span> you. (anlık karar)<br>
+        <span style="color:var(--teal)">I'm going to visit</span> my mom. (plan)
+      </span>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders</span>
+    <span class="recall-item">Present Perfect = <strong>have/has + V3</strong></span>
+    <span class="recall-item"><strong>ever / never / yet / already</strong></span>
+    <span class="recall-item"><strong>since</strong> (başlangıç) · <strong>for</strong> (süre)</span>
+  </div>
+
+  <!-- Will + Going to Yapıları -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔵</span><h2>Will + Yalın Fiil (base form)</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">I / You / He…<small>özne</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-will">will<small>'ll / won't</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-base">base verb<small>go · eat · help</small></div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I</td>
+              <td class="col-pos">I'<span class="will-hl">ll</span> go</td>
+              <td class="col-neg">I won't go</td>
+              <td class="col-q">Will I go?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">You</td>
+              <td class="col-pos">You'll help</td>
+              <td class="col-neg">You won't help</td>
+              <td class="col-q">Will you help?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He/She/It</td>
+              <td class="col-pos">She'll call</td>
+              <td class="col-neg">She won't call</td>
+              <td class="col-q">Will she call?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">We/They</td>
+              <td class="col-pos">They'll arrive</td>
+              <td class="col-neg">They won't arrive</td>
+              <td class="col-q">Will they arrive?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;padding:7px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef;font-size:11px;color:var(--ink-3)">
+          <strong style="color:var(--accent)">won't</strong> = will not &nbsp;·&nbsp; Tüm öznelerde aynı: <span style="font-family:var(--mono)">will / won't</span> (s/es yok!)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🟢</span><h2>be going to + Yalın Fiil</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">I / You / He…<small>özne</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-be">am / is / are<small>to be</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-goto">going to<small>plan / kanıt</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-base">base verb</div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I</td>
+              <td class="col-pos">I'<span class="goto-hl">m going to</span> study</td>
+              <td class="col-neg">I'm not going to study</td>
+              <td class="col-q">Am I going to study?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">You</td>
+              <td class="col-pos">You're going to travel</td>
+              <td class="col-neg">You aren't going to travel</td>
+              <td class="col-q">Are you going to travel?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He/She/It</td>
+              <td class="col-pos">He's going to rain</td>
+              <td class="col-neg">She isn't going to rain</td>
+              <td class="col-q">Is it going to rain?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">We/They</td>
+              <td class="col-pos">We're going to move</td>
+              <td class="col-neg">They aren't going to move</td>
+              <td class="col-q">Are they going to move?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;padding:7px 10px;background:var(--teal-bg);border-radius:6px;border:0.5px solid #a5f3fc;font-size:11px;color:var(--ink-3)">
+          <strong style="color:var(--teal)">Kısaltmalar:</strong> I'm going to → <span style="font-family:var(--mono)">I'm gonna</span> (konuşmada) &nbsp;·&nbsp; Soru: <span style="font-family:var(--mono)">Are you going to…?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kullanımlar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔵</span><h2>Will Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item predict">
+            <div class="use-title">🔮 Tahmin (genel)</div>
+            <div class="use-kw">I think · probably · maybe</div>
+            <div class="use-ex">I think it will rain tomorrow.</div>
+            <div class="use-tr">Sanırım yarın yağmur yağacak.</div>
+          </div>
+          <div class="use-item spont">
+            <div class="use-title">⚡ Anlık karar</div>
+            <div class="use-kw">konuşma anında karar</div>
+            <div class="use-ex">The phone is ringing. I'll answer it!</div>
+            <div class="use-tr">Telefon çalıyor. Ben açarım!</div>
+          </div>
+          <div class="use-item promise">
+            <div class="use-title">🤝 Söz / vaat</div>
+            <div class="use-kw">I promise · I swear</div>
+            <div class="use-ex">I won't tell anyone. I promise.</div>
+            <div class="use-tr">Kimseye söylemeyeceğim. Söz veriyorum.</div>
+          </div>
+          <div class="use-item offer">
+            <div class="use-title">🙋 Teklif / yardım</div>
+            <div class="use-kw">I'll… (spontane teklif)</div>
+            <div class="use-ex">I'll carry that bag for you.</div>
+            <div class="use-tr">O çantayı senin için taşırım.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <div class="struct-row">
+            <div class="struct-label">Cümle yapısı — Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-will">will ('ll)</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil</span>
+            <div class="struct-ex">She will call you tonight. · We'll be there soon.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz — won't</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-neg">won't (will not)</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil</span>
+            <div class="struct-ex">I won't be late. · They won't come.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru — Will you…?</div>
+            <span class="slot slot-q">Will</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil?</span>
+            <div class="struct-ex">Will you help me? · Will it be sunny?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🟢</span><h2>Going to Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item plan">
+            <div class="use-title">📅 Plan / niyet (önceden düşünülmüş)</div>
+            <div class="use-kw">this weekend · next month · I've decided</div>
+            <div class="use-ex">I'm going to visit my parents this weekend.</div>
+            <div class="use-tr">Bu hafta sonu ailemi ziyaret edeceğim. (planım var)</div>
+          </div>
+          <div class="use-item evidence">
+            <div class="use-title">👀 Kanıta dayalı tahmin</div>
+            <div class="use-kw">Look! · dark clouds · evidence now</div>
+            <div class="use-ex">Look at those clouds! It's going to rain.</div>
+            <div class="use-tr">Şu bulutlara bak! Yağmur yağacak. (görüyoruz)</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <div class="struct-row">
+            <div class="struct-label">Cümle yapısı — Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-be">am/is/are</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-goto">going to</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil</span>
+            <div class="struct-ex">We're going to have a party. · She's going to study medicine.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-neg">am/is/are + not</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-goto">going to</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil</span>
+            <div class="struct-ex">I'm not going to work tomorrow. · It isn't going to snow.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru — Are you going to…?</div>
+            <span class="slot slot-q">Am/Is/Are</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-goto">going to</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">yalın fiil?</span>
+            <div class="struct-ex">Are you going to cook tonight? · Is he going to call?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Karşılaştırma Tablosu -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Will vs Going to — Büyük Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="will-head">Will</th>
+              <th class="goto-head">Going to</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Anlam</td>
+              <td class="will-cell"><div class="cmp-ex">Anlık karar, tahmin, söz, teklif</div><div class="cmp-tr">Konuşma anında / genel gelecek</div></td>
+              <td class="goto-cell"><div class="cmp-ex">Önceden plan, kanıtlı tahmin</div><div class="cmp-tr">Karar önceden verilmiş / kanıt var</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Yapı</td>
+              <td class="will-cell"><div class="cmp-ex">will + base verb</div><div class="cmp-tr">He will go · won't = will not</div></td>
+              <td class="goto-cell"><div class="cmp-ex">am/is/are + going to + base</div><div class="cmp-tr">She is going to leave</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Tahmin</td>
+              <td class="will-cell"><div class="cmp-ex" style="color:var(--accent)">I think Brazil will win.</div><div class="cmp-tr">Kişisel görüş, kanıt şart değil</div></td>
+              <td class="goto-cell"><div class="cmp-ex" style="color:var(--teal)">Look! He's going to fall!</div><div class="cmp-tr">Şu an görülen kanıt var</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Plan</td>
+              <td class="will-cell"><div class="cmp-ex" style="color:var(--accent)">"What will you do?" — "I'll stay home."</div><div class="cmp-tr">Soru anında karar veriliyor</div></td>
+              <td class="goto-cell"><div class="cmp-ex" style="color:var(--teal)">I'm going to study abroad next year.</div><div class="cmp-tr">Önceden düşünülmüş plan</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Teklif</td>
+              <td class="will-cell"><div class="cmp-ex" style="color:var(--accent)">I'll open the window for you.</div><div class="cmp-tr">Spontane yardım teklifi</div></td>
+              <td class="goto-cell"><div class="cmp-ex" style="color:var(--teal)">— (going to teklif için kullanılmaz)</div><div class="cmp-tr">Tekliflerde will tercih edilir</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Soru</td>
+              <td class="will-cell"><div class="cmp-ex" style="color:var(--accent)">Will you marry me?</div><div class="cmp-tr">Will + özne + fiil?</div></td>
+              <td class="goto-cell"><div class="cmp-ex" style="color:var(--teal)">Are you going to move house?</div><div class="cmp-tr">Are/Is + özne + going to + fiil?</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zaman İfadeleri + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>⏰</span><h2>Zaman İfadeleri — Her İkisiyle de Kullanılır</h2></div>
+      <div class="card-body">
+        <div style="font-size:12px;color:var(--ink-3);margin-bottom:8px;line-height:1.6">
+          Bu kelimeler gelecek zamanı işaret eder; <strong>will</strong> veya <strong>going to</strong> seçimi anlama bağlıdır, zamana değil.
+        </div>
+        <div class="time-grid">
+          <div class="time-chip">
+            <div class="time-word">tomorrow</div>
+            <div class="time-ex">I'll call you tomorrow.<br>I'm going to travel tomorrow.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-word">next week</div>
+            <div class="time-ex">We will start next week.<br>She's going to start next week.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-word">soon</div>
+            <div class="time-ex">It will be ready soon.<br>They're going to arrive soon.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-word">in 5 minutes</div>
+            <div class="time-ex">I'll be there in 5 minutes.<br>The train is going to leave in 5 minutes.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-word">tonight</div>
+            <div class="time-ex">Will you cook tonight?<br>I'm going to cook tonight.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-word">this weekend</div>
+            <div class="time-ex">I think it will be fun.<br>We're going to visit friends.</div>
+          </div>
+        </div>
+        <div style="margin-top:10px;padding:7px 10px;background:var(--purple-bg);border-radius:6px;border:0.5px solid #c9b8ef;font-size:11px;color:var(--ink-3)">
+          <strong style="color:var(--purple)">İpucu:</strong> <span style="font-family:var(--mono)">in + süre</span> = "… sonra" (in 10 minutes) &nbsp;·&nbsp; <span style="font-family:var(--mono)">next + zaman</span> = "gelecek …" (next Monday)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item">
+            <div class="trap-title">Her gelecek için will kullanmak</div>
+            <div class="trap-desc">Türkçe "-ecek" tek eki her şeyi karşılar. Planlar için going to şart.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I will visit my grandma this weekend.</span> (plan → going to)<br>
+              <span class="right">✓ I'm going to visit my grandma this weekend.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Planlar için going to'yu unutmak</div>
+            <div class="trap-desc">Önceden karar verilmiş plan = am/is/are + going to. Will değil!</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She will study medicine. (planım var demek istiyorsan)</span><br>
+              <span class="right">✓ She's going to study medicine.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">will + to + fiil (yanlış!)</div>
+            <div class="trap-desc">Will'ten sonra yalın fiil gelir. "to" yok, V3 yok.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I will to go. / I will went.</span><br>
+              <span class="right">✓ I will go. / I'll go.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">going to'da to be'yi unutmak</div>
+            <div class="trap-desc">Going to her zaman am/is/are ile birlikte kullanılır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I going to travel.</span><br>
+              <span class="right">✓ I <strong>am</strong> going to travel.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Anlık kararda will doğru</div>
+            <div class="trap-desc">Telefon çalıyor, kapı çalıyor, biri yardım istiyor → will kullan.</div>
+            <div class="trap-ex"><span class="right">✓ "I'm thirsty." — "I'll get you some water."</span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Kanıt görüyorsan going to</div>
+            <div class="trap-desc">Kara bulutlar, düşmek üzere olan biri, boş benzin göstergesi…</div>
+            <div class="trap-ex"><span class="right">✓ The car is going to stop. (benzin bitiyor — görüyoruz)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Hafta Sonu Planları</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = Will (anlık karar / teklif / tahmin) &nbsp;·&nbsp; 🟢 Yeşil = Going to (plan / kanıtlı tahmin)
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hey! What <span class="hl-goto">are you going to do</span> this weekend?</div>
+              <div class="bubble-tr">Hey! Bu hafta sonu ne yapacaksın? (planın ne?)</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-goto">'m going to visit</span> my cousin in Izmir. We <span class="hl-goto">'re going to</span> go to the beach on Saturday.</div>
+              <div class="bubble-tr">İzmir'deki kuzenimi ziyaret edeceğim. Cumartesi sahile gideceğiz.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sounds great! I <span class="hl-will">'ll probably stay</span> in Istanbul. I think it <span class="hl-will">'ll be</span> sunny.</div>
+              <div class="bubble-tr">Harika! Muhtemelen İstanbul'da kalacağım. Sanırım hava güneşli olacak.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Nice! Oh, look at the sky — it <span class="hl-goto">'s going to rain</span> tonight though.</div>
+              <div class="bubble-tr">Güzel! Ama bak gökyüzüne — bu gece yağmur yağacak gibi.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">You're right. Hmm… I haven't decided about Sunday. <span class="hl-will">Will</span> you <span class="hl-will">be</span> back by then?</div>
+              <div class="bubble-tr">Haklısın. Pazar için karar vermedim. O zamana kadar döner misin?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, I <span class="hl-goto">'m going to take</span> the evening train on Sunday. Want to grab dinner?</div>
+              <div class="bubble-tr">Evet, Pazar akşam trenine bineceğim. Akşam yemeğine çıkmak ister misin?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sure! <span class="hl-will">I'll book</span> a table. There's a new Italian place near me.</div>
+              <div class="bubble-tr">Tabii! Masa ayırtırım. Yakınımda yeni bir İtalyan restoranı var.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Perfect! I <span class="hl-will">'ll text</span> you when I get on the train. Thanks!</div>
+              <div class="bubble-tr">Mükemmel! Trene bindiğimde mesaj atarım. Teşekkürler!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Will mi, Going to mu?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Look! The baby <span class="blank"></span> (fall)!<br>
+                <span class="pr-num">2.</span> I think Real Madrid <span class="blank"></span> (win) the match.<br>
+                <span class="pr-num">3.</span> We <span class="blank"></span> (get) married next June. (plan)<br>
+                <span class="pr-num">4.</span> "I'm cold." — "I <span class="blank"></span> (close) the window."
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> is going to fall (kanıt) &nbsp; <span class="a-num">2.</span> will win (tahmin) &nbsp; <span class="a-num">3.</span> are going to get (plan) &nbsp; <span class="a-num">4.</span> will close (anlık teklif)
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Boşlukları doldur</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She <span class="blank"></span> going to start a new job.<br>
+                <span class="pr-num">2.</span> They <span class="blank"></span> come to the party. (olumsuz — won't)<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> you going to cook tonight?<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> he call you later?
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> is &nbsp; <span class="a-num">2.</span> won't &nbsp; <span class="a-num">3.</span> Are &nbsp; <span class="a-num">4.</span> Will
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Doğru mu? (✓ / ✗) — düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I will to travel next month. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> She going to buy a car. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I'll help you with that. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> We're going to move house in July. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> ✗ → I will travel / I'm going to travel next month. &nbsp; <span class="a-num">2.</span> ✗ → She is going to buy a car. &nbsp; <span class="a-num">3.</span> ✓ &nbsp; <span class="a-num">4.</span> ✓
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Cümleyi tamamla (zaman ifadesiyle)</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> The meeting starts <span class="blank"></span> 10 minutes. (in / soon)<br>
+                <span class="pr-num">2.</span> I'm going to call you <span class="blank"></span>. (tomorrow)<br>
+                <span class="pr-num">3.</span> We will finish the project <span class="blank"></span> week. (next)<br>
+                <span class="pr-num">4.</span> Don't worry — I'll be there <span class="blank"></span>. (soon)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> in &nbsp; <span class="a-num">2.</span> tomorrow &nbsp; <span class="a-num">3.</span> next &nbsp; <span class="a-num">4.</span> soon
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔵</span><span class="take-text"><strong>Will</strong> = tahmin, anlık karar, söz, teklif. Yapı: will + yalın fiil.</span></div>
+          <div class="take-item"><span class="take-ico">🟢</span><span class="take-text"><strong>Going to</strong> = plan/niyet + kanıtlı tahmin. Yapı: am/is/are + going to + fiil.</span></div>
+          <div class="take-item"><span class="take-ico">🚫</span><span class="take-text"><strong>won't</strong> = will not. Will'ten sonra to veya V3 gelmez.</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Sorular: <strong>Will you…?</strong> · <strong>Are you going to…?</strong></span></div>
+          <div class="take-item"><span class="take-ico">⏰</span><span class="take-text">tomorrow · next week · soon · in 5 minutes — her ikisiyle de kullanılır.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Türkçe "-ecek" tek; İngilizce'de plan = <strong>going to</strong>, anlık = <strong>will</strong>.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">Planlar vs Tahminler</span>
+            Geleceğinle ilgili <strong>5 cümle</strong> yaz:<br>
+            <strong>3 cümle going to</strong> (önceden düşündüğün planlar) + <strong>2 cümle will</strong> (tahminler veya anlık kararlar).<br>
+            Örnek: <em>"I'm going to learn English every day. I think it will be easier soon. I'll start tonight!"</em><br>
+            <span style="color:var(--ink-3)">Bonus: Bir arkadaşına sor — "What are you going to do this weekend?"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 9 / 25 &nbsp;·&nbsp; Ünite 2: Hayat Akıyor</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="8.html">‹ Önceki: Ders 8</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="10.html">Sonraki: Ders 10 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

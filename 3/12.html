@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 12 — Yiyecek, Mutfak ve Restoran · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-count { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-uncount { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .fs-plus { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-some { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .verb-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.count   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.uncount { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.some    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.any     { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.offer   { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.order   { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.count   .use-title { color: var(--accent); }
+  .use-item.uncount .use-title { color: var(--teal); }
+  .use-item.some    .use-title { color: var(--ok); }
+  .use-item.any     .use-title { color: var(--warn); }
+  .use-item.offer   .use-title { color: var(--purple); }
+  .use-item.order   .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.count-head  { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.uncount-head { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.cat-head  { background: var(--bg-3); color: var(--ink-3); width: 110px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .count-cell  { background: #f7faff; }
+  .cmp-table .uncount-cell { background: #ecfeff; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .vocab-cat { padding: 8px 10px; border-radius: 7px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .vocab-cat.fruit  { background: var(--rose-bg); border-color: #fecdd3; }
+  .vocab-cat.veg    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .vocab-cat.meat   { background: var(--warn-bg); border-color: #f5c896; }
+  .vocab-cat.drink  { background: var(--accent-bg); border-color: #b3c9ef; }
+  .vocab-cat.kitchen { background: var(--purple-bg); border-color: #c9b8ef; }
+  .vocab-title { font-size: 11px; font-weight: 600; margin-bottom: 4px; }
+  .vocab-cat.fruit  .vocab-title { color: var(--rose); }
+  .vocab-cat.veg    .vocab-title { color: var(--ok); }
+  .vocab-cat.meat   .vocab-title { color: var(--warn); }
+  .vocab-cat.drink  .vocab-title { color: var(--accent); }
+  .vocab-cat.kitchen .vocab-title { color: var(--purple); }
+  .vocab-words { font-size: 12px; color: var(--ink); line-height: 1.7; }
+  .vocab-tr { font-size: 10px; color: var(--ink-3); margin-top: 2px; }
+
+  .verb-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+  .verb-item { padding: 8px 6px; border-radius: 7px; background: var(--bg-2); border: 0.5px solid var(--rule); text-align: center; }
+  .verb-en { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--ok); }
+  .verb-tr { font-size: 10px; color: var(--ink-3); margin-top: 2px; }
+  .verb-ex { font-size: 10px; color: var(--ink-2); margin-top: 3px; font-style: italic; line-height: 1.4; }
+
+  .phrase-list { display: flex; flex-direction: column; gap: 5px; }
+  .phrase-row { display: flex; gap: 8px; padding: 6px 8px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); align-items: flex-start; }
+  .phrase-en { font-family: var(--mono); font-size: 12px; color: var(--accent); font-weight: 500; min-width: 140px; flex-shrink: 0; }
+  .phrase-tr { font-size: 11px; color: var(--ink-3); }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-some  { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-any   { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-noun  { background: var(--teal-bg); color: var(--teal); border: 0.5px solid #a5f3fc; }
+  .slot-rest  { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep   { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-some { color: var(--ok); font-weight: 600; }
+  .hl-any  { color: var(--warn); font-weight: 600; }
+  .hl-like { color: var(--accent); font-weight: 600; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .vocab-grid, .verb-grid { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .verb-grid { grid-template-columns: repeat(3, 1fr); }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 12 · Ünite 3</span>
+      <h1>Yiyecek, Mutfak ve Restoran</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A2</span>
+        <span class="badge badge-level">Kelime + Gramer</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Sayılabilen / sayılamayan ayrımı.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ How many water?</span><br>
+        <span class="right">✓ How much water?</span>
+      </span><br>
+      Tekil: <strong>a/an</strong> &nbsp;|&nbsp; Çoğul: <strong>some</strong>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 11</span>
+    <span class="recall-item"><strong>there is / there are</strong></span>
+    <span class="recall-item"><strong>much / many</strong></span>
+    <span class="recall-item"><strong>some / any</strong> (temel)</span>
+    <span class="recall-item">vücut &amp; sağlık kelimeleri</span>
+    <span class="recall-item">There <strong>is</strong> a headache. · There <strong>are</strong> two pills.</span>
+  </div>
+
+  <!-- Kelime + Countable -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🍎</span><h2>Yiyecek Kelimeleri — Kategoriler</h2></div>
+      <div class="card-body">
+        <div class="vocab-grid">
+          <div class="vocab-cat fruit">
+            <div class="vocab-title">🍎 Meyveler (fruits)</div>
+            <div class="vocab-words">apple · banana · orange · strawberry · grape · lemon · peach · watermelon</div>
+            <div class="vocab-tr">elma · muz · portakal · çilek · üzüm · limon · şeftali · karpuz</div>
+          </div>
+          <div class="vocab-cat veg">
+            <div class="vocab-title">🥦 Sebzeler (vegetables)</div>
+            <div class="vocab-words">tomato · potato · onion · carrot · pepper · cucumber · lettuce · garlic</div>
+            <div class="vocab-tr">domates · patates · soğan · havuç · biber · salatalık · marul · sarımsak</div>
+          </div>
+          <div class="vocab-cat meat">
+            <div class="vocab-title">🥩 Et &amp; Protein (meat &amp; protein)</div>
+            <div class="vocab-words">chicken · beef · lamb · fish · egg · cheese · sausage · tofu</div>
+            <div class="vocab-tr">tavuk · sığır eti · kuzu · balık · yumurta · peynir · sosis · tofu</div>
+          </div>
+          <div class="vocab-cat drink">
+            <div class="vocab-title">🥤 İçecekler (drinks)</div>
+            <div class="vocab-words">water · milk · juice · tea · coffee · wine · beer · lemonade</div>
+            <div class="vocab-tr">su · süt · meyve suyu · çay · kahve · şarap · bira · limonata</div>
+          </div>
+          <div class="vocab-cat kitchen" style="grid-column: 1 / -1;">
+            <div class="vocab-title">🍳 Mutfak Eşyaları (kitchen items)</div>
+            <div class="vocab-words">plate · bowl · cup · glass · knife · fork · spoon · pan · pot · oven · fridge · microwave · chopping board</div>
+            <div class="vocab-tr">tabak · kase · fincan · bardak · bıçak · çatal · kaşık · tava · tencere · fırın · buzdolabı · mikrodalga · kesme tahtası</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🔢</span><h2>Sayılabilen vs Sayılamayan — Temel Kural</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-count">Countable<small>apple / apples</small></div>
+          <div class="form-slot fs-plus">vs</div>
+          <div class="form-slot fs-uncount">Uncountable<small>rice / water</small></div>
+        </div>
+
+        <div class="uses-grid">
+          <div class="use-item count">
+            <div class="use-title">✅ Sayılabilen (countable)</div>
+            <div class="use-kw">a/an · two · many · few</div>
+            <div class="use-ex">an apple · three eggs · many tomatoes</div>
+            <div class="use-tr">bir elma · üç yumurta · çok domates</div>
+          </div>
+          <div class="use-item uncount">
+            <div class="use-title">💧 Sayılamayan (uncountable)</div>
+            <div class="use-kw">some · much · a little · a bottle of</div>
+            <div class="use-ex">some rice · much water · a glass of milk</div>
+            <div class="use-tr">biraz pirinç · çok su · bir bardak süt</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box">
+          <strong>Altın kural:</strong> Tek tek sayabiliyorsan → countable (<span style="font-family:var(--mono)">an egg, two eggs</span>). Sayamazsan → uncountable (<span style="font-family:var(--mono)">some water</span>, <strong>asla</strong> <span style="font-family:var(--mono)">a water</span> değil).
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Ne sorarsın?</th>
+              <th>Countable</th>
+              <th>Uncountable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-tr">Ne kadar?</td>
+              <td class="col-pos"><span class="verb-hl">How many</span> apples?</td>
+              <td class="col-q"><span class="verb-hl">How much</span> rice?</td>
+            </tr>
+            <tr>
+              <td class="col-tr">Tekil</td>
+              <td class="col-pos">a / an apple</td>
+              <td class="col-neg">✗ a rice → <span class="col-pos">some rice</span></td>
+            </tr>
+            <tr>
+              <td class="col-tr">Çoğul</td>
+              <td class="col-pos">apple<strong>s</strong> (s eklenir)</td>
+              <td class="col-tr">rice (değişmez)</td>
+            </tr>
+            <tr>
+              <td class="col-tr">There is/are</td>
+              <td class="col-pos">There <strong>are</strong> two eggs.</td>
+              <td class="col-pos">There <strong>is</strong> some milk.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Karşılaştırma tablosu + some/any -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Countable vs Uncountable — Görsel Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="count-head">Countable · Sayılabilen</th>
+              <th class="uncount-head">Uncountable · Sayılamayan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Tanım</td>
+              <td class="count-cell"><div class="cmp-ex">Tek tek sayılabilir</div><div class="cmp-tr">1, 2, 3… diye sayarsın</div></td>
+              <td class="uncount-cell"><div class="cmp-ex">Tek tek sayılamaz</div><div class="cmp-tr">su, pirinç, ekmek (genel)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Tekil</td>
+              <td class="count-cell"><div class="cmp-ex" style="color:var(--accent)">an apple · a tomato</div><div class="cmp-tr">bir elma · bir domates</div></td>
+              <td class="uncount-cell"><div class="cmp-ex" style="color:var(--teal)">some rice · some bread</div><div class="cmp-tr">biraz pirinç · biraz ekmek</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Çoğul</td>
+              <td class="count-cell"><div class="cmp-ex" style="color:var(--accent)">apples · tomatoes · eggs</div><div class="cmp-tr">elmalar · domatesler · yumurtalar</div></td>
+              <td class="uncount-cell"><div class="cmp-ex" style="color:var(--teal)">rice · water · cheese</div><div class="cmp-tr">-s yok! (rice ✓ · rices ✗)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Miktar sorusu</td>
+              <td class="count-cell"><div class="cmp-ex" style="color:var(--accent)">How many apples?</div><div class="cmp-tr">Kaç elma?</div></td>
+              <td class="uncount-cell"><div class="cmp-ex" style="color:var(--teal)">How much water?</div><div class="cmp-tr">Ne kadar su?</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Miktar kelimesi</td>
+              <td class="count-cell"><div class="cmp-ex">many · a few · a lot of</div><div class="cmp-tr">çok · birkaç · bol miktarda</div></td>
+              <td class="uncount-cell"><div class="cmp-ex">much · a little · a lot of</div><div class="cmp-tr">çok · biraz · bol miktarda</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek cümle</td>
+              <td class="count-cell"><div class="cmp-ex">I need <strong>two</strong> onions.</div><div class="cmp-tr">İki soğana ihtiyacım var.</div></td>
+              <td class="uncount-cell"><div class="cmp-ex">I need <strong>some</strong> sugar.</div><div class="cmp-tr">Biraz şekere ihtiyacım var.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Konteyner</td>
+              <td class="count-cell"><div class="cmp-ex">a bottle of water</div><div class="cmp-tr">bir şişe su (sayılabilir hale gelir)</div></td>
+              <td class="uncount-cell"><div class="cmp-ex">a slice of bread · a cup of tea</div><div class="cmp-tr">bir dilim ekmek · bir fincan çay</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- some/any + Restoran -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>📦</span><h2>Some / Any — Kurallar</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Cümle tipi</th>
+              <th>Kural</th>
+              <th>Örnek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-tr">Olumlu (+)</td>
+              <td class="col-pos"><strong>some</strong></td>
+              <td class="col-pos">I have <span class="verb-hl">some</span> apples.<br>There is <span class="verb-hl">some</span> milk.</td>
+            </tr>
+            <tr>
+              <td class="col-tr">Olumsuz (−)</td>
+              <td class="col-neg"><strong>any</strong></td>
+              <td class="col-neg">I don't have <span class="verb-hl">any</span> eggs.<br>There isn't <span class="verb-hl">any</span> cheese.</td>
+            </tr>
+            <tr>
+              <td class="col-tr">Soru (?)</td>
+              <td class="col-q"><strong>any</strong> (genel)</td>
+              <td class="col-q">Do you have <span class="verb-hl">any</span> tomatoes?<br>Is there <span class="verb-hl">any</span> bread?</td>
+            </tr>
+            <tr>
+              <td class="col-tr">Teklif / İstek</td>
+              <td class="col-pos"><strong>some</strong> (özel!)</td>
+              <td class="col-pos">Would you like <span class="verb-hl">some</span> tea?<br>Can I have <span class="verb-hl">some</span> water?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div class="struct-row">
+            <div class="struct-label">Teklif (offer)</div>
+            <span class="slot slot-rest">Would you like</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-some">some</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-noun">noun?</span>
+            <div class="struct-ex">Would you like some coffee? — Biraz kahve ister misiniz?</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">İstek (request)</div>
+            <span class="slot slot-rest">Can I have</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-some">some / a</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-noun">noun?</span>
+            <div class="struct-ex">Can I have some bread, please? · Can I have a menu?</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Var mı? (question)</div>
+            <span class="slot slot-rest">Do you have</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-any">any</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-noun">noun?</span>
+            <div class="struct-ex">Do you have any vegetarian dishes? — Vejetaryen yemek var mı?</div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px">
+          <strong>İstisna:</strong> Teklif ve kibar isteklerde soru cümlesinde bile <strong>some</strong> kullanılır: <span style="font-family:var(--mono)">Would you like some juice?</span> (Cevap bekleniyor, teklif ediyorsun.)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🍽️</span><h2>Restoran İfadeleri — Sipariş &amp; Hesap</h2></div>
+      <div class="card-body">
+        <div class="phrase-list">
+          <div class="phrase-row">
+            <span class="phrase-en">A table for two, please.</span>
+            <span class="phrase-tr">İki kişilik masa lütfen.</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">Can I see the menu?</span>
+            <span class="phrase-tr">Menüyü görebilir miyim?</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">I'd like the chicken soup.</span>
+            <span class="phrase-tr">Tavuk çorbası istiyorum.</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">Can I have a glass of water?</span>
+            <span class="phrase-tr">Bir bardak su alabilir miyim?</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">What do you recommend?</span>
+            <span class="phrase-tr">Ne tavsiye edersiniz?</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">I'm allergic to nuts.</span>
+            <span class="phrase-tr">Fındık alerjim var.</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">Is service included?</span>
+            <span class="phrase-tr">Servis dahil mi?</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">Can I have the bill, please?</span>
+            <span class="phrase-tr">Hesabı alabilir miyim lütfen?</span>
+          </div>
+          <div class="phrase-row">
+            <span class="phrase-en">Keep the change.</span>
+            <span class="phrase-tr">Üstü kalsın. (bahşiş)</span>
+          </div>
+        </div>
+
+        <div class="uses-grid" style="margin-top:10px">
+          <div class="use-item offer">
+            <div class="use-title">🤝 Teklif — Would you like…?</div>
+            <div class="use-ex">Would you like some dessert?<br>Would you like anything to drink?</div>
+            <div class="use-tr">Tatlı ister misiniz?<br>İçecek bir şey ister misiniz?</div>
+          </div>
+          <div class="use-item order">
+            <div class="use-title">📝 Sipariş — I'd like… / Can I have…</div>
+            <div class="use-ex">I'd like a pizza, please.<br>Can I have the fish and chips?</div>
+            <div class="use-tr">Bir pizza istiyorum lütfen.<br>Balık ve patates kızartması alabilir miyim?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pişirme fiilleri + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>👨‍🍳</span><h2>Pişirme Fiilleri (Cooking Verbs)</h2></div>
+      <div class="card-body">
+        <div class="verb-grid">
+          <div class="verb-item">
+            <div class="verb-en">boil</div>
+            <div class="verb-tr">kaynatmak</div>
+            <div class="verb-ex">Boil the water.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">fry</div>
+            <div class="verb-tr">kızartmak</div>
+            <div class="verb-ex">Fry the eggs.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">bake</div>
+            <div class="verb-tr">fırında pişirmek</div>
+            <div class="verb-ex">Bake the bread.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">chop</div>
+            <div class="verb-tr">doğramak</div>
+            <div class="verb-ex">Chop the onions.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">mix</div>
+            <div class="verb-tr">karıştırmak</div>
+            <div class="verb-ex">Mix the ingredients.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">grill</div>
+            <div class="verb-tr">ızgara yapmak</div>
+            <div class="verb-ex">Grill the chicken.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">peel</div>
+            <div class="verb-tr">soymak</div>
+            <div class="verb-ex">Peel the potato.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">pour</div>
+            <div class="verb-tr">dökmek</div>
+            <div class="verb-ex">Pour the milk.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">serve</div>
+            <div class="verb-tr">servis etmek</div>
+            <div class="verb-ex">Serve the soup hot.</div>
+          </div>
+          <div class="verb-item">
+            <div class="verb-en">taste</div>
+            <div class="verb-tr">tatmak</div>
+            <div class="verb-ex">Taste the sauce.</div>
+          </div>
+        </div>
+
+        <div class="rule-box ok-box" style="margin-top:10px">
+          <strong>Emir cümlesi:</strong> Pişirme tariflerinde özne yok — fiil başta: <span style="font-family:var(--mono)">Chop the vegetables. · Mix well. · Bake for 30 minutes.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 How many water? — EN KRİTİK TUZAK</div>
+            <div class="trap-desc">Su sayılamaz → <strong>how much</strong>. Elma sayılabilir → <strong>how many</strong>.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ How many water do you drink?</span><br>
+              <span class="right">✓ How <strong>much</strong> water do you drink?</span><br>
+              <span class="right">✓ How <strong>many</strong> apples do you eat?</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">informations / funs — çoğul ekleme</div>
+            <div class="trap-desc">Information ve fun sayılamaz — asla -s eklenmez.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I need some informations. · We had a lot of funs.</span><br>
+              <span class="right">✓ I need some <strong>information</strong>. · We had a lot of <strong>fun</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Yemek siparişinde artikel unutmak</div>
+            <div class="trap-desc">Türkçe'de "pizza istiyorum" derken İngilizce'de genelde a/the gerekir.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I want pizza. · Can I have menu?</span><br>
+              <span class="right">✓ I want <strong>a</strong> pizza. · Can I have <strong>the</strong> menu?</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">a water / two rices</div>
+            <div class="trap-desc">Sayılamayan isimlerle a/an ve çoğul -s kullanılmaz. Konteyner kullan:</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ a water · two rices · three breads</span><br>
+              <span class="right">✓ <strong>a glass of</strong> water · <strong>some</strong> rice · <strong>two loaves of</strong> bread</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Soru cümlesinde some kullanmak</div>
+            <div class="trap-desc">Genel sorularda any; teklif/istek sorularında some:</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Do you have some milk? (genel soru)</span><br>
+              <span class="right">✓ Do you have <strong>any</strong> milk? · Would you like <strong>some</strong> milk? (teklif)</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ I'd like = kibar sipariş</div>
+            <div class="trap-desc">Restoranda "I want" kaba gelebilir. Kibar alternatif:</div>
+            <div class="trap-ex"><span class="right">I'd like the grilled chicken, please. · Can I have some more bread?</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Restoranda Sipariş</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = <strong>some</strong> &nbsp;·&nbsp; 🟠 Turuncu = <strong>any</strong> &nbsp;·&nbsp; 🔵 Mavi = <strong>I'd like / Can I have</strong>
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">W</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Good evening! A table for two, please.</div>
+              <div class="bubble-tr">İyi akşamlar! İki kişilik masa lütfen.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">H</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Of course. Here's the menu. Would you like <span class="hl-some">some</span> water while you decide?</div>
+              <div class="bubble-tr">Tabii. İşte menü. Karar verirken biraz su ister misiniz?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">W</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, please. <span class="hl-like">Can I have</span> a glass of water? And do you have <span class="hl-any">any</span> vegetarian options?</div>
+              <div class="bubble-tr">Evet lütfen. Bir bardak su alabilir miyim? Vejetaryen seçenekleriniz var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">H</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, we have a pasta with vegetables. Would you like <span class="hl-some">some</span> bread with that?</div>
+              <div class="bubble-tr">Evet, sebzeli makarnamız var. Yanında biraz ekmek ister misiniz?</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">W</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Perfect. <span class="hl-like">I'd like</span> the pasta, please. And my friend will have the grilled chicken.</div>
+              <div class="bubble-tr">Harika. Makarna istiyorum lütfen. Arkadaşım ızgara tavuk alacak.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">H</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Great choices! Anything to drink? We don't have <span class="hl-any">any</span> fresh orange juice today, but we have lemonade.</div>
+              <div class="bubble-tr">Harika seçimler! İçecek bir şey? Bugün taze portakal suyumuz yok ama limonatamız var.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">W</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Two lemonades, please. Oh — is there <span class="hl-any">any</span> cheese in the pasta?</div>
+              <div class="bubble-tr">İki limonata lütfen. Ah — makarnada peynir var mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">H</div>
+            <div class="bubble-text">
+              <div class="bubble-en">No, there isn't <span class="hl-any">any</span> cheese. I'll bring <span class="hl-some">some</span> extra vegetables instead.</div>
+              <div class="bubble-tr">Hayır, peynir yok. Onun yerine biraz ekstra sebze getireceğim.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">W</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Thank you! The food was delicious. <span class="hl-like">Can I have</span> the bill, please?</div>
+              <div class="bubble-tr">Teşekkürler! Yemek çok lezzetliydi. Hesabı alabilir miyim lütfen?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">H</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Here you are. Would you like <span class="hl-some">some</span> dessert before you go? We have fresh apple pie.</div>
+              <div class="bubble-tr">Buyurun. Gitmeden önce tatlı ister misiniz? Taze elmalı turta var.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Countable mı, uncountable mı?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> rice → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> apple → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> water → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> egg → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> bread → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> uncountable &nbsp; <span class="a-num">2.</span> countable &nbsp; <span class="a-num">3.</span> uncountable &nbsp; <span class="a-num">4.</span> countable &nbsp; <span class="a-num">5.</span> uncountable
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) some mu, any mi?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I don't have <span class="blank"></span> milk.<br>
+                <span class="pr-num">2.</span> Would you like <span class="blank"></span> tea?<br>
+                <span class="pr-num">3.</span> Do you have <span class="blank"></span> tomatoes?<br>
+                <span class="pr-num">4.</span> There is <span class="blank"></span> cheese in the fridge.<br>
+                <span class="pr-num">5.</span> Can I have <span class="blank"></span> water, please?
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> any &nbsp; <span class="a-num">2.</span> some &nbsp; <span class="a-num">3.</span> any &nbsp; <span class="a-num">4.</span> some &nbsp; <span class="a-num">5.</span> some
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) How much / How many?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> <span class="blank"></span> sugar do you need?<br>
+                <span class="pr-num">2.</span> <span class="blank"></span> onions are in the bag?<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> coffee do you drink a day?<br>
+                <span class="pr-num">4.</span> <span class="blank"></span> bottles of juice did you buy?
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> How much &nbsp; <span class="a-num">2.</span> How many &nbsp; <span class="a-num">3.</span> How much &nbsp; <span class="a-num">4.</span> How many
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I want menu. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> How many water? → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> Do you have some bread? → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> I need two rices. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I want the menu. / a menu. &nbsp; <span class="a-num">2.</span> How much water? &nbsp; <span class="a-num">3.</span> Do you have any bread? &nbsp; <span class="a-num">4.</span> I need some rice. / two bowls of rice.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔢</span><span class="take-text"><strong>Countable:</strong> a/an, -s, how many, many.</span></div>
+          <div class="take-item"><span class="take-ico">💧</span><span class="take-text"><strong>Uncountable:</strong> some, how much, much — -s yok!</span></div>
+          <div class="take-item"><span class="take-ico">📦</span><span class="take-text"><strong>some</strong> = olumlu + teklif/istek. <strong>any</strong> = olumsuz + soru.</span></div>
+          <div class="take-item"><span class="take-ico">🍽️</span><span class="take-text">Sipariş: <strong>I'd like…</strong> · <strong>Can I have…?</strong></span></div>
+          <div class="take-item"><span class="take-ico">👨‍🍳</span><span class="take-text">Pişirme: boil, fry, bake, chop, mix.</span></div>
+          <div class="take-item"><span class="take-ico">⚠️</span><span class="take-text">Tuzak: how many water ✗ → <strong>how much</strong> water ✓</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📝</span>
+          <div class="mission-body">
+            <span class="m-title">Restoran + Buzdolabı Pratiği</span>
+            <strong>1.</strong> Bir restoran sipariş diyaloğu yaz (en az 8 replik). <strong>I'd like</strong>, <strong>Can I have</strong>, <strong>Would you like some</strong> ve <strong>Do you have any</strong> kullan.<br>
+            <strong>2.</strong> Buzdolabındaki yiyecekleri listele — <strong>some/any</strong> ile:<br>
+            There is <strong>some</strong> milk. · There aren't <strong>any</strong> eggs. · Do we have <strong>any</strong> cheese?<br>
+            <span style="color:var(--ink-3)">Bonus: Countable ve uncountable kelimeleri ayrı gruplara ayır.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 12 / 25 &nbsp;·&nbsp; Ünite 3: Kelimeler Dünyası</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="11.html">‹ Önceki: Ders 11</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="13.html">Sonraki: Ders 13 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

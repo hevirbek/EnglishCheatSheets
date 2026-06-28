@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 21 — Okuma Stratejileri (Reading Skills) · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.skim   { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.scan   { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.intens { background: var(--purple-bg); border-color: #c9b8ef; }
+  .use-item.clue   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.tfn    { background: var(--warn-bg); border-color: #f5c896; }
+  .use-item.sign   { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.skim   .use-title { color: var(--accent); }
+  .use-item.scan   .use-title { color: var(--teal); }
+  .use-item.intens .use-title { color: var(--purple); }
+  .use-item.clue   .use-title { color: var(--ok); }
+  .use-item.tfn    .use-title { color: var(--warn); }
+  .use-item.sign   .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.skim-head  { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.scan-head  { background: var(--teal-bg); color: var(--teal); }
+  .cmp-table th.int-head   { background: var(--purple-bg); color: var(--purple); }
+  .cmp-table th.cat-head   { background: var(--bg-3); color: var(--ink-3); width: 100px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .skim-cell  { background: #f7faff; }
+  .cmp-table .scan-cell  { background: #f0fdff; }
+  .cmp-table .int-cell   { background: #faf8ff; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.critical { border-left-color: var(--rose); background: var(--rose-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  .rule-box { padding: 7px 10px; border-radius: 6px; background: var(--warn-bg); border-left: 3px solid var(--warn); font-size: 11px; color: var(--ink-3); line-height: 1.6; margin-bottom: 8px; }
+  .rule-box strong { color: var(--warn); }
+  .rule-box.ok-box { background: var(--ok-bg); border-left-color: var(--ok); }
+  .rule-box.ok-box strong { color: var(--ok); }
+
+  .read-text { padding: 12px 14px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); font-size: 13px; line-height: 1.75; color: var(--ink); }
+  .read-text p { margin-bottom: 8px; }
+  .read-text p:last-child { margin-bottom: 0; }
+  .hl-vocab { background: var(--accent-bg); color: var(--accent); font-weight: 600; padding: 0 3px; border-radius: 3px; }
+  .hl-sign  { background: var(--rose-bg); color: var(--rose); font-weight: 600; padding: 0 3px; border-radius: 3px; }
+  .hl-comp  { background: var(--ok-bg); color: var(--ok); font-weight: 600; padding: 0 3px; border-radius: 3px; }
+  .vocab-key { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .vocab-chip { font-size: 10px; padding: 3px 8px; border-radius: 12px; background: var(--bg); border: 0.5px solid var(--rule); color: var(--ink-2); }
+  .vocab-chip strong { color: var(--accent); font-family: var(--mono); }
+
+  .signpost-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .sign-item { padding: 7px 9px; border-radius: 7px; border: 0.5px solid var(--rule); background: var(--bg-2); font-size: 11px; }
+  .sign-word { font-family: var(--mono); font-weight: 600; color: var(--rose); display: block; margin-bottom: 2px; }
+  .sign-role { color: var(--ink-3); font-size: 10px; }
+
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways, .read-text { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .signpost-grid { grid-template-columns: 1fr 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 21 · Ünite 5</span>
+      <h1>Okuma Stratejileri (Reading Skills)</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">Gerçek Dünya</span>
+        <span class="badge badge-level">B1–B2 · Okuma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Her kelimeyi yavaş yavaş okumak = hız değil, anlama kaybı.<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span class="wrong">✗ Kelime kelime çevir</span><br>
+        <span class="right">✓ Amaç seç → strateji uygula</span>
+      </span><br>
+      Okuma = aktif bir beceri, pasif çeviri değil.
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 20</span>
+    <span class="recall-item"><strong>comparative</strong> = -er / more + than</span>
+    <span class="recall-item"><strong>superlative</strong> = the -est / the most</span>
+    <span class="recall-item"><strong>as…as</strong> = eşit karşılaştırma</span>
+    <span class="recall-item">not as crowded <strong>as</strong> · the <strong>most</strong> crowded</span>
+  </div>
+
+  <!-- 3 Okuma Türü -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📖</span><h2>Skimming vs Scanning vs Intensive Reading — Ne Zaman Hangisi?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="use-item skim">
+            <div class="use-title">⚡ Skimming — Hızlı tarama</div>
+            <div class="use-kw">Ana fikir · genel bakış</div>
+            <div class="use-ex">Başlık, ilk/son paragraf, kalın kelimeler. Hızlı bak, detay atlama.</div>
+            <div class="use-tr">Metnin ne hakkında olduğunu anlamak için.</div>
+          </div>
+          <div class="use-item scan">
+            <div class="use-title">🔍 Scanning — Hedef arama</div>
+            <div class="use-kw">Spesifik bilgi · sayı · isim · tarih</div>
+            <div class="use-ex">Gözünü anahtar kelimeye kilitle. Tüm metni okuma — sadece ara.</div>
+            <div class="use-tr">"Saat kaçta?" "Fiyat ne?" gibi sorular için.</div>
+          </div>
+          <div class="use-item intens">
+            <div class="use-title">🔬 Intensive — Derin okuma</div>
+            <div class="use-kw">Detay · gramer · kelime · mantık</div>
+            <div class="use-ex">Cümle cümle, bağlaçlara dikkat. Anlamadığın yerde dur.</div>
+            <div class="use-tr">Sınav, ödev, zor metin analizi için.</div>
+          </div>
+        </div>
+
+        <table class="cmp-table" style="margin-top:10px">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="skim-head">Skimming</th>
+              <th class="scan-head">Scanning</th>
+              <th class="int-head">Intensive</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Amaç</td>
+              <td class="skim-cell"><div class="cmp-ex">Genel konu / ana fikir</div><div class="cmp-tr">"Bu metin ne anlatıyor?"</div></td>
+              <td class="scan-cell"><div class="cmp-ex">Belirli bir bilgi bul</div><div class="cmp-tr">"Emma saat kaçta kalkıyor?"</div></td>
+              <td class="int-cell"><div class="cmp-ex">Tam anlama + analiz</div><div class="cmp-tr">"Yazar ne demek istiyor?"</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Hız</td>
+              <td class="skim-cell"><div class="cmp-ex">Çok hızlı</div></td>
+              <td class="scan-cell"><div class="cmp-ex">Hızlı, hedefli</div></td>
+              <td class="int-cell"><div class="cmp-ex">Yavaş, dikkatli</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Nereye bak</td>
+              <td class="skim-cell"><div class="cmp-ex">Başlık · intro · conclusion</div></td>
+              <td class="scan-cell"><div class="cmp-ex">Sayılar · isimler · tarihler</div></td>
+              <td class="int-cell"><div class="cmp-ex">Her cümle · bağlaçlar</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek</td>
+              <td class="skim-cell"><div class="cmp-ex">Gazete manşetine bak</div></td>
+              <td class="scan-cell"><div class="cmp-ex">Uçuş saatini bul</div></td>
+              <td class="int-cell"><div class="cmp-ex">Sınav metnini çöz</div></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box ok-box" style="margin-top:8px;margin-bottom:0">
+          <strong>Altın kural:</strong> Önce soruyu oku → strateji seç → sonra metne git. Sınavda metni baştan sona okumak zaman kaybıdır.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context Clues + T/F/NG -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🧩</span><h2>Context Clues — Bilinmeyen Kelimeyi Tahmin Et</h2></div>
+      <div class="card-body">
+        <div class="uses-grid" style="grid-template-columns:1fr">
+          <div class="use-item clue">
+            <div class="use-title">5 ipucu türü</div>
+            <div class="use-ex" style="line-height:1.8">
+              ① <strong>Tanım:</strong> <em>Commute</em>, the journey to work… → işe gidiş<br>
+              ② <strong>Eş anlamlı:</strong> tired, <strong>exhausted</strong>, worn out → yorgun<br>
+              ③ <strong>Zıt anlamlı:</strong> cheap, not <strong>expensive</strong> → pahalı değil<br>
+              ④ <strong>Örnek:</strong> fruits, <strong>for example</strong> apples → elma gibi<br>
+              ⑤ <strong>Genel bağlam:</strong> She woke early, got dressed, left home → rutin
+            </div>
+          </div>
+        </div>
+
+        <div class="rule-box" style="margin-top:6px;margin-bottom:0">
+          <strong>Adım adım:</strong> ① Kelimeyi atla, devam et &nbsp; ② Önce/sonra cümlelere bak &nbsp; ③ Tahmin et &nbsp; ④ Doğrula (gerekirse sözlük)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>✅</span><h2>True / False / Not Given — Strateji</h2></div>
+      <div class="card-body">
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Cevap</th>
+              <th>Ne zaman?</th>
+              <th>Tuzak</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pos">TRUE</td>
+              <td class="col-tr">Metin aynı anlamı <strong>destekliyor</strong></td>
+              <td class="col-tr">Aynı kelime olması şart değil — anlam aynı olmalı</td>
+            </tr>
+            <tr>
+              <td class="col-pro" style="color:var(--rose)">FALSE</td>
+              <td class="col-tr">Metin <strong>çelişiyor</strong> veya tersini söylüyor</td>
+              <td class="col-tr">"Her zaman" vs "sometimes" = FALSE olabilir</td>
+            </tr>
+            <tr>
+              <td class="col-pro" style="color:var(--warn)">NOT GIVEN</td>
+              <td class="col-tr">Metinde <strong>hiç bahsedilmiyor</strong></td>
+              <td class="col-tr">Mantıklı görünse bile metinde yoksa NG!</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="rule-box" style="margin-top:8px;margin-bottom:0;border-left-color:var(--rose);background:var(--rose-bg)">
+          <strong style="color:var(--rose)">⚠️ FALSE ≠ NOT GIVEN:</strong> FALSE = metin açıkça farklı diyor. NOT GIVEN = metin sessiz kalıyor. Türkçe'de "bilmiyorum" ile "hayır" karıştırılır — İngilizce sınavda ayrım net!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signposts -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🪧</span><h2>Reading Signposts — Yol İşaretleri (Bağlaçlar ve Geçiş Kelimeleri)</h2></div>
+      <div class="card-body">
+        <div class="signpost-grid">
+          <div class="sign-item"><span class="sign-word">however / but</span><span class="sign-role">Zıtlık — dikkat, yön değişiyor</span></div>
+          <div class="sign-item"><span class="sign-word">therefore / so</span><span class="sign-role">Sonuç — neden → sonuç</span></div>
+          <div class="sign-item"><span class="sign-word">for example / such as</span><span class="sign-role">Örnek — açıklama geliyor</span></div>
+          <div class="sign-item"><span class="sign-word">in addition / also</span><span class="sign-role">Ekleme — yeni bilgi</span></div>
+          <div class="sign-item"><span class="sign-word">in conclusion / to sum up</span><span class="sign-role">Özet — ana fikir burada</span></div>
+          <div class="sign-item"><span class="sign-word">although / despite</span><span class="sign-role">Karşıtlık — beklenmedik durum</span></div>
+          <div class="sign-item"><span class="sign-word">first / then / finally</span><span class="sign-role">Sıralama — kronoloji</span></div>
+          <div class="sign-item"><span class="sign-word">in fact / actually</span><span class="sign-role">Düzeltme — önceki fikir değişir</span></div>
+          <div class="sign-item"><span class="sign-word">on the other hand</span><span class="sign-role">Alternatif bakış açısı</span></div>
+        </div>
+        <div style="margin-top:8px;font-size:12px;padding:8px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          <strong style="color:var(--accent)">Skimming ipucu:</strong> <span class="hl-sign">However</span> gördüğünde dur — yazar fikrini değiştiriyor. <span class="hl-sign">In conclusion</span> = ana fikir genelde bir sonraki cümlede.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Practice Text -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>📰</span><h2>Örnek Metin — Emma'nın Günlük Rutini (~150 kelime)</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:8px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🔵 Mavi = kelime · 🔴 Kırmızı = signpost · 🟢 Yeşil = comparative/superlative (Ders 20)
+        </div>
+        <div class="read-text">
+          <p>Most people say their mornings are the <span class="hl-comp">busiest</span> part of the day. Emma wakes up at 6:30 and prepares a quick breakfast before she leaves for work. <span class="hl-sign">However</span>, she recently discovered that <span class="hl-vocab">cycling</span> is <span class="hl-comp">faster than</span> taking the bus during <span class="hl-vocab">rush hour</span>. Her <span class="hl-vocab">commute</span> takes about twenty minutes, which is <span class="hl-comp">not as long as</span> her colleague's journey.</p>
+          <p>She works in a small marketing office downtown. <span class="hl-sign">For example</span>, her team often creates social media posts for local restaurants. In the afternoon, Emma usually eats lunch at her desk because the cafeteria is <span class="hl-comp">the most crowded</span> place in the building. After work, she attends a yoga class twice a week.</p>
+          <p><span class="hl-sign">In conclusion</span>, her routine is busy but <span class="hl-vocab">manageable</span>. She believes regular exercise is <span class="hl-comp">more important than</span> extra sleep on weekdays. At home, she spends about an hour reading articles in English before bed — a habit that helps her vocabulary grow <span class="hl-comp">faster than</span> watching videos alone.</p>
+        </div>
+        <div class="vocab-key">
+          <span class="vocab-chip"><strong>commute</strong> = işe gidiş-geliş</span>
+          <span class="vocab-chip"><strong>rush hour</strong> = yoğun saat</span>
+          <span class="vocab-chip"><strong>cycling</strong> = bisiklete binme</span>
+          <span class="vocab-chip"><strong>manageable</strong> = yönetilebilir, idare edilir</span>
+          <span class="vocab-chip"><strong>downtown</strong> = şehir merkezi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Turkish Traps -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Okuma Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Her kelimeyi yavaş okumak</div>
+            <div class="trap-desc">Türkçe okuma alışkanlığı: sesli, kelime kelime. İngilizce'de bu hem yavaşlatır hem anlamı bozar — cümle bütünü önemli.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ "Most… people… say… their…" (5 saniye/cümle)</span><br>
+              <span class="right">✓ Göz gruplar halinde hareket eder: "Most people say / their mornings are the busiest part."</span>
+            </div>
+          </div>
+          <div class="trap-item critical">
+            <div class="trap-title">🚨 Kelime kelime Türkçe'ye çevirmek</div>
+            <div class="trap-desc">Her kelimeyi zihinde çevirmek = cümle sonunda anlam kaybı. İngilizce cümle yapısı farklı; anlamı blok halinde yakala.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ "She believes regular exercise is more important than extra sleep" → kelime kelime çevir, anlam dağılsın</span><br>
+              <span class="right">✓ "Hafta içi egzersiz, ekstra uykudan daha önemli" — ana fikri yakala, her kelimeyi çevirme</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Bilinmeyen kelimede durmak</div>
+            <div class="trap-desc">Her bilmediğin kelimede sözlüğe koşmak okumayı keser. Context clue ile tahmin et, devam et.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ "commute" → sözlük → 2 dk kayıp → metni unuttun</span><br>
+              <span class="right">✓ "Her commute takes twenty minutes" → işe gidiş süresi, devam et</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Soruyu okumadan metne dalmak</div>
+            <div class="trap-desc">Sınavda metni baştan okumak zaman kaybı. Önce soruları oku, ne aradığını bil.</div>
+            <div class="trap-ex"><span class="right">✓ Soruları oku → scanning mi skimming mi? → metne git</span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Doğru alışkanlık: chunk reading</div>
+            <div class="trap-desc">Anlamlı kelime grupları halinde oku. Gözün satır satır değil, ifade ifade ilerlesin.</div>
+            <div class="trap-ex"><span class="right">"in the afternoon" · "twice a week" · "before bed" — bunlar tek birim</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Emma'nın Rutini Metni Üzerine</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--warn-bg);border-radius:6px;border:0.5px solid #f5c896">
+          Önce metni bir kez daha oku. Sonra soruları çöz — stratejini bilinçli seç (skimming / scanning / intensive).
+        </div>
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Skimming — Ana fikir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Metnin genel konusu nedir?<br>
+                <span class="pr-num">2.</span> Yazarın sonuç cümlesi (in conclusion) ne diyor?<br>
+                <span class="pr-num">3.</span> Emma'nın işi hangi alanda?
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> Emma'nın günlük rutini / yoğun ama yönetilebilir bir yaşam<br>
+                  <span class="a-num">2.</span> Her routine is busy but manageable. (Rutini yoğun ama idare edilebilir.)<br>
+                  <span class="a-num">3.</span> Marketing (pazarlama) — social media posts for restaurants
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Scanning — Spesifik bilgi</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Emma saat kaçta kalkıyor?<br>
+                <span class="pr-num">2.</span> İşe gidişi kaç dakika sürüyor?<br>
+                <span class="pr-num">3.</span> Haftada kaç kez yoga yapıyor?
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> 6:30 &nbsp; <span class="a-num">2.</span> about twenty minutes &nbsp; <span class="a-num">3.</span> twice a week
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) True / False / Not Given</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> Emma takes the bus to work every day.<br>
+                <span class="pr-num">2.</span> The cafeteria is the most crowded place in the building.<br>
+                <span class="pr-num">3.</span> Emma prefers watching videos to reading articles.<br>
+                <span class="pr-num">4.</span> Emma's colleague has a longer commute than Emma.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> FALSE (cycling is faster than the bus — otobüs kullanmıyor)<br>
+                  <span class="a-num">2.</span> TRUE (metin açıkça söylüyor)<br>
+                  <span class="a-num">3.</span> FALSE (reading helps vocabulary grow faster than watching videos)<br>
+                  <span class="a-num">4.</span> TRUE (her commute is not as long as her colleague's journey)
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Context clues — Kelime tahmini</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> "Her <strong>commute</strong> takes about twenty minutes" → commute = ?<br>
+                <span class="pr-num">2.</span> "during <strong>rush hour</strong>" → rush hour = ?<br>
+                <span class="pr-num">3.</span> "busy but <strong>manageable</strong>" → manageable = ?<br>
+                <span class="pr-num">4.</span> Hangi signpost zıtlık gösteriyor? <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> işe gidiş-geliş yolculuğu &nbsp; <span class="a-num">2.</span> yoğun trafik saati<br>
+                  <span class="a-num">3.</span> yönetilebilir / idare edilebilir &nbsp; <span class="a-num">4.</span> However
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">⚡</span><span class="take-text"><strong>Skimming</strong> = ana fikir. <strong>Scanning</strong> = spesifik bilgi. <strong>Intensive</strong> = derin analiz.</span></div>
+          <div class="take-item"><span class="take-ico">🧩</span><span class="take-text">Bilinmeyen kelime → <strong>context clue</strong> ile tahmin et, durma.</span></div>
+          <div class="take-item"><span class="take-ico">✅</span><span class="take-text"><strong>T/F/NG:</strong> FALSE = çelişki. NOT GIVEN = metinde yok.</span></div>
+          <div class="take-item"><span class="take-ico">🪧</span><span class="take-text"><strong>However</strong> = zıtlık. <strong>In conclusion</strong> = özet/ana fikir.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Kelime kelime çevirme — <strong>chunk reading</strong> yap.</span></div>
+          <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Önce <strong>soruyu oku</strong>, strateji seç, sonra metne git.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📰</span>
+          <div class="mission-body">
+            <span class="m-title">Kısa İngilizce Makale Oku</span>
+            BBC Learning English, Simple Wikipedia veya bir haber sitesinden <strong>150–200 kelimelik</strong> kısa bir İngilizce makale seç.<br><br>
+            <strong>1.</strong> Önce <strong>skimming</strong> yap — ana fikri 1 cümleyle yaz.<br>
+            <strong>2.</strong> Metinden <strong>5 yeni kelime</strong> seç, Türkçe anlamını yaz.<br>
+            <strong>3.</strong> Her kelime için hangi <strong>context clue</strong> kullandığını not et (tanım / örnek / zıtlık…).<br>
+            <span style="color:var(--ink-3)">Bonus: Makaleden 2 T/F/NG cümlesi yaz ve cevapla.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 21 / 25 &nbsp;·&nbsp; Ünite 5: Gerçek Dünya</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="../4/20.html">‹ Önceki: Ders 20</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="22.html">Sonraki: Ders 22 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

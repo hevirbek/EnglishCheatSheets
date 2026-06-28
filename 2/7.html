@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 7 — Simple Past · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  /* Formation */
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-subj  { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus  { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-v2    { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .fs-did   { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .fs-base  { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+
+  /* Conjugation table */
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .v2-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* -ed spelling rules */
+  .ed-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .ed-rule { padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .ed-rule.warn { background: var(--warn-bg); border-color: #f5c896; }
+  .ed-rule.ok   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .ed-title { font-size: 11px; font-weight: 600; color: var(--ink-2); margin-bottom: 3px; }
+  .ed-rule.warn .ed-title { color: var(--warn); }
+  .ed-rule.ok   .ed-title { color: var(--ok); }
+  .ed-ex { font-family: var(--mono); font-size: 11px; color: var(--ink-3); line-height: 1.7; }
+
+  /* Uses */
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.finished { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.habit    { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.sequence { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.time     { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.finished .use-title { color: var(--accent); }
+  .use-item.habit    .use-title { color: var(--ok); }
+  .use-item.sequence .use-title { color: var(--teal); }
+  .use-item.time     .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  /* Irregular verbs table */
+  .irr-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .irr-table th { padding: 5px 8px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; background: var(--bg-2); color: var(--ink-3); }
+  .irr-table td { padding: 5px 8px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .irr-table tr:last-child td { border-bottom: none; }
+  .irr-table tr:hover td { background: var(--bg-2); }
+  .irr-v1 { font-family: var(--mono); color: var(--accent); }
+  .irr-v2 { font-family: var(--mono); color: var(--ok); font-weight: 600; }
+  .irr-tr { color: var(--ink-3); font-size: 11px; }
+
+  /* Time expressions */
+  .time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .time-chip { padding: 7px 10px; border-radius: 7px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .time-kw { font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 2px; }
+  .time-ex { font-size: 11px; color: var(--ink-2); line-height: 1.5; }
+  .time-tr { font-size: 10px; color: var(--ink-3); margin-top: 2px; }
+
+  /* Trap items */
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  /* Struct row */
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-v2   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-did  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-base { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-q    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-rest { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep  { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  /* Dialogue */
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-past { color: var(--ok); font-weight: 600; }
+
+  /* Footer */
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+
+  /* ===== Ortak eklenti bileşenleri ===== */
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .ed-grid { grid-template-columns: 1fr; }
+    .time-grid { grid-template-columns: 1fr 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 7 · Ünite 2</span>
+      <h1>Geçmişe Yolculuk — Simple Past</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A1–A2</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Türkçe'de geçmiş için tek fiil formu var (-di/-dım).<br>
+      İngilizce'de <strong>V2</strong> veya <strong>-ed</strong> gerekir:<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span style="color:var(--ok)">I played</span> football. (dün oynadım)<br>
+        <span style="color:var(--warn)">✗ I play</span> football yesterday.
+      </span>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Ders 6'dan</span>
+    <span class="recall-item">PC = <strong>am/is/are + V-ing</strong></span>
+    <span class="recall-item">SP vs PC → <strong>rutin vs şu an</strong></span>
+    <span class="recall-item">State verbs → <strong>-ing almaz</strong></span>
+    <span class="recall-item">now vs every day</span>
+  </div>
+
+  <!-- Yapı + Çekim -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Yapı — V2 / -ed</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-subj">Subject<small>özne</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-v2">V2 / verb-ed<small>past form</small></div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I</td>
+              <td class="col-pos">I <span class="v2-hl">played</span></td>
+              <td class="col-neg">I didn't play</td>
+              <td class="col-q">Did I play?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">You</td>
+              <td class="col-pos">You <span class="v2-hl">went</span></td>
+              <td class="col-neg">You didn't go</td>
+              <td class="col-q">Did you go?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He/She/It</td>
+              <td class="col-pos">She <span class="v2-hl">saw</span></td>
+              <td class="col-neg">She didn't see</td>
+              <td class="col-q">Did she see?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">We</td>
+              <td class="col-pos">We <span class="v2-hl">ate</span></td>
+              <td class="col-neg">We didn't eat</td>
+              <td class="col-q">Did we eat?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">They</td>
+              <td class="col-pos">They <span class="v2-hl">studied</span></td>
+              <td class="col-neg">They didn't study</td>
+              <td class="col-q">Did they study?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn);font-size:11px;color:var(--ink-3);line-height:1.6">
+          <strong style="color:var(--warn)">Kritik kural:</strong> Olumsuz ve soruda fiil <strong>hep yalın (V1)</strong> gelir — <span style="font-family:var(--mono)">didn't play</span>, <span style="font-family:var(--mono)">Did you go?</span> Tüm özneler aynı!
+        </div>
+
+        <div style="margin-top:10px">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">Düzenli Fiiller — -ed Yazım Kuralları</div>
+          <div class="ed-grid">
+            <div class="ed-rule ok">
+              <div class="ed-title">✓ Çoğu fiil → +ed</div>
+              <div class="ed-ex">play → play<strong>ed</strong><br>work → work<strong>ed</strong><br>listen → listen<strong>ed</strong></div>
+            </div>
+            <div class="ed-rule warn">
+              <div class="ed-title">⚠️ -e ile bitenler → +d</div>
+              <div class="ed-ex">live → liv<strong>ed</strong><br>like → lik<strong>ed</strong><br>move → mov<strong>ed</strong></div>
+            </div>
+            <div class="ed-rule warn">
+              <div class="ed-title">⚠️ Kısa+vurgulu → son harf çift</div>
+              <div class="ed-ex">stop → stop<strong>ped</strong><br>plan → plan<strong>ned</strong><br>travel → travel<strong>led</strong> (BrE)</div>
+            </div>
+            <div class="ed-rule ok">
+              <div class="ed-title">✓ -y → ied (ünsüzden sonra)</div>
+              <div class="ed-ex">study → stud<strong>ied</strong><br>try → tr<strong>ied</strong><br>carry → carr<strong>ied</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📌</span><h2>Simple Past Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item finished">
+            <div class="use-title">✅ Bitmiş eylemler</div>
+            <div class="use-kw">yesterday · last night · in 2019</div>
+            <div class="use-ex">I finished my homework yesterday.</div>
+            <div class="use-tr">Dün ödevimi bitirdim.</div>
+          </div>
+          <div class="use-item habit">
+            <div class="use-title">🔄 Geçmiş alışkanlıklar</div>
+            <div class="use-kw">when I was young · used to</div>
+            <div class="use-ex">We played outside every day as kids.</div>
+            <div class="use-tr">Çocukken her gün dışarıda oynardık.</div>
+          </div>
+          <div class="use-item sequence">
+            <div class="use-title">🔗 Sıralı olaylar</div>
+            <div class="use-kw">first · then · after that · finally</div>
+            <div class="use-ex">I woke up, had breakfast, and left.</div>
+            <div class="use-tr">Uyandım, kahvaltı yaptım ve çıktım.</div>
+          </div>
+          <div class="use-item time">
+            <div class="use-title">🕐 Belirli geçmiş zaman</div>
+            <div class="use-kw">two days ago · on Monday · at 8 pm</div>
+            <div class="use-ex">She called me at 8 pm last night.</div>
+            <div class="use-tr">Dün gece saat 8'de beni aradı.</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <div class="struct-row">
+            <div class="struct-label">Cümle yapısı — Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-v2">V2 / -ed</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-rest">geri kalan</span>
+            <div class="struct-ex">I visited my grandma. · She cooked dinner.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-did">didn't</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">V1 (yalın fiil)</span>
+            <div class="struct-ex">I didn't go out. · They didn't watch TV.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru</div>
+            <span class="slot slot-q">Did</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-base">V1?</span>
+            <div class="struct-ex">Did you enjoy the party? · Did he call you?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top 20 Irregular Verbs -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚡</span><h2>Top 20 Düzensiz Fiil — Ezberle!</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:8px;padding:5px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef">
+          Bu <strong>20 düzensiz fiil</strong> en sık kullanılanlardır. V1 (yalın) → V2 (geçmiş) formunu ezberle — olumsuz/soruda yine V1 gelir!
+        </div>
+        <table class="irr-table">
+          <thead>
+            <tr>
+              <th>V1 (yalın)</th>
+              <th>V2 (geçmiş)</th>
+              <th>Türkçe</th>
+              <th>V1 (yalın)</th>
+              <th>V2 (geçmiş)</th>
+              <th>Türkçe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="irr-v1">be</td><td class="irr-v2">was / were</td><td class="irr-tr">olmak</td>
+              <td class="irr-v1">go</td><td class="irr-v2">went</td><td class="irr-tr">gitmek</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">have</td><td class="irr-v2">had</td><td class="irr-tr">sahip olmak</td>
+              <td class="irr-v1">do</td><td class="irr-v2">did</td><td class="irr-tr">yapmak</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">say</td><td class="irr-v2">said</td><td class="irr-tr">söylemek</td>
+              <td class="irr-v1">get</td><td class="irr-v2">got</td><td class="irr-tr">almak, olmak</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">make</td><td class="irr-v2">made</td><td class="irr-tr">yapmak, üretmek</td>
+              <td class="irr-v1">know</td><td class="irr-v2">knew</td><td class="irr-tr">bilmek</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">think</td><td class="irr-v2">thought</td><td class="irr-tr">düşünmek</td>
+              <td class="irr-v1">take</td><td class="irr-v2">took</td><td class="irr-tr">almak, götürmek</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">see</td><td class="irr-v2">saw</td><td class="irr-tr">görmek</td>
+              <td class="irr-v1">come</td><td class="irr-v2">came</td><td class="irr-tr">gelmek</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">give</td><td class="irr-v2">gave</td><td class="irr-tr">vermek</td>
+              <td class="irr-v1">find</td><td class="irr-v2">found</td><td class="irr-tr">bulmak</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">tell</td><td class="irr-v2">told</td><td class="irr-tr">anlatmak</td>
+              <td class="irr-v1">feel</td><td class="irr-v2">felt</td><td class="irr-tr">hissetmek</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">leave</td><td class="irr-v2">left</td><td class="irr-tr">ayrılmak</td>
+              <td class="irr-v1">put</td><td class="irr-v2">put</td><td class="irr-tr">koymak</td>
+            </tr>
+            <tr>
+              <td class="irr-v1">eat</td><td class="irr-v2">ate</td><td class="irr-tr">yemek</td>
+              <td class="irr-v1">drink</td><td class="irr-v2">drank</td><td class="irr-tr">içmek</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time Expressions + Traps -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🕐</span><h2>Zaman İfadeleri — Geçmişi İşaret Eder</h2></div>
+      <div class="card-body">
+        <div class="time-grid">
+          <div class="time-chip">
+            <div class="time-kw">yesterday</div>
+            <div class="time-ex">I called you yesterday.</div>
+            <div class="time-tr">Dün seni aradım.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-kw">last week / month / year</div>
+            <div class="time-ex">We met last week.</div>
+            <div class="time-tr">Geçen hafta buluştuk.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-kw">… ago</div>
+            <div class="time-ex">She left two hours ago.</div>
+            <div class="time-tr">İki saat önce gitti.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-kw">in 2019 / in March</div>
+            <div class="time-ex">I started English in 2019.</div>
+            <div class="time-tr">2019'da İngilizceye başladım.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-kw">when I was young</div>
+            <div class="time-ex">When I was young, I lived in Izmir.</div>
+            <div class="time-tr">Gençken İzmir'de yaşıyordum.</div>
+          </div>
+          <div class="time-chip">
+            <div class="time-kw">on Monday / at 7 pm</div>
+            <div class="time-ex">He arrived on Monday at 7 pm.</div>
+            <div class="time-tr">Pazartesi saat 7'de geldi.</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--teal-bg);border-radius:6px;border:0.5px solid #a5f3fc;font-size:11px;color:var(--ink-3);line-height:1.6">
+          <strong style="color:var(--teal)">ago kuralı:</strong> <span style="font-family:var(--mono)">two days ago</span> = 2 gün önce. Sayı + zaman birimi + ago birlikte gelir — <strong>fiilden sonra</strong> konur.<br>
+          <span style="font-family:var(--mono)">I met her <strong>three years ago</strong>.</span> ✓ &nbsp;·&nbsp; <span class="wrong">✗ I met her ago three years.</span> / <span class="wrong">✗ I ago met her.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item">
+            <div class="trap-title">didn't + V2 hatası</div>
+            <div class="trap-desc">Olumsuzda fiil yalın (V1) gelir — geçmiş formu ASLA kullanma!</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I didn't went.</span><br>
+              <span class="right">✓ I didn't <strong>go</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Did + V2 sorusu</div>
+            <div class="trap-desc">Soruda da fiil yalın gelir. Did zaten geçmişi taşır.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ Did you went?</span><br>
+              <span class="right">✓ Did you <strong>go</strong>?</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Geçmiş formu unutmak</div>
+            <div class="trap-desc">Türkçe'de "gittim" tek kelime; İngilizce'de go → went dönüşümü şart.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I go to school yesterday.</span><br>
+              <span class="right">✓ I <strong>went</strong> to school yesterday.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">ago yerleşimi</div>
+            <div class="trap-desc">ago fiilden sonra gelir: "two days ago" — Türkçe "iki gün önce" sırasının tersi.</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ I ago met him.</span><br>
+              <span class="right">✓ I met him <strong>two days ago</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">He/She için -s ekleme</div>
+            <div class="trap-desc">Simple Past'ta 3. tekil kişi farkı yok — played, went, ate hepsi aynı!</div>
+            <div class="trap-ex">
+              <span class="wrong">✗ She goed / She playeds.</span><br>
+              <span class="right">✓ She <strong>went</strong>. · She <strong>played</strong>.</span>
+            </div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Kısa cevap: Did + özne</div>
+            <div class="trap-desc">Did you go? — Yes, I did. / No, I didn't. (Fiil tekrar etmez!)</div>
+            <div class="trap-ex"><span class="right">✓ Did she call? — Yes, she did. / No, she didn't.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gerçek diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Hafta Sonu Hikayesi</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = Simple Past (geçmiş eylemler) &nbsp;·&nbsp; Arkadaşlar hafta sonunu anlatıyor
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hey! How <span class="hl-past">was</span> your weekend?</div>
+              <div class="bubble-tr">Hey! Hafta sonun nasıl geçti?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">It <span class="hl-past">was</span> great! On Saturday I <span class="hl-past">woke up</span> early and <span class="hl-past">went</span> to the market with my mom.</div>
+              <div class="bubble-tr">Harikaydı! Cumartesi erken kalktım ve annemle pazara gittim.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Nice! <span class="hl-past">Did</span> you <span class="hl-past">buy</span> anything special?</div>
+              <div class="bubble-tr">Güzel! Özel bir şey aldın mı?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes! We <span class="hl-past">bought</span> fresh strawberries. Then we <span class="hl-past">cooked</span> lunch together. I <span class="hl-past">didn't eat</span> meat — I <span class="hl-past">made</span> a salad.</div>
+              <div class="bubble-tr">Evet! Taze çilek aldık. Sonra birlikte öğle yemeği pişirdik. Et yemedim — salata yaptım.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sounds delicious! What about Sunday?</div>
+              <div class="bubble-tr">Kulağa lezzetli geliyor! Pazar günü ne yaptın?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-past">stayed</span> home and <span class="hl-past">studied</span> English. My friend Emre <span class="hl-past">called</span> me in the evening. We <span class="hl-past">talked</span> for an hour.</div>
+              <div class="bubble-tr">Evde kaldım ve İngilizce çalıştım. Akşam arkadaşım Emre beni aradı. Bir saat konuştuk.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-past">visited</span> my grandparents on Sunday. We <span class="hl-past">drank</span> tea and <span class="hl-past">watched</span> an old film. It <span class="hl-past">was</span> really nice.</div>
+              <div class="bubble-tr">Pazar günü büyükannemle büyükbabamı ziyaret ettim. Çay içtik ve eski bir film izledik. Gerçekten güzeldi.</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">That <span class="hl-past">sounds</span> lovely! Let's do something fun next weekend — <span class="hl-past">did</span> you <span class="hl-past">hear</span> about the new café downtown?</div>
+              <div class="bubble-tr">Kulağa harika geliyor! Gelecek hafta sonu eğlenceli bir şey yapalım — şehir merkezindeki yeni kafeyi duydun mu?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) -ed biçimini doğru yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> play → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> stop → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> study → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> live → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> try → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> played &nbsp; <span class="a-num">2.</span> stopped &nbsp; <span class="a-num">3.</span> studied &nbsp; <span class="a-num">4.</span> lived &nbsp; <span class="a-num">5.</span> tried
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Düzensiz fiil — V2 yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> go → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> see → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> eat → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> buy → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> write → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> went &nbsp; <span class="a-num">2.</span> saw &nbsp; <span class="a-num">3.</span> ate &nbsp; <span class="a-num">4.</span> bought &nbsp; <span class="a-num">5.</span> wrote
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Olumlu / Olumsuz / Soru — boşlukları doldur</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She <span class="blank"></span> (visit) her aunt yesterday.<br>
+                <span class="pr-num">2.</span> They <span class="blank"></span> (not/watch) TV last night.<br>
+                <span class="pr-num">3.</span> <span class="blank"></span> you <span class="blank"></span> (enjoy) the concert?<br>
+                <span class="pr-num">4.</span> I <span class="blank"></span> (not/go) to work on Monday.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> visited &nbsp; <span class="a-num">2.</span> didn't watch &nbsp; <span class="a-num">3.</span> Did … enjoy &nbsp; <span class="a-num">4.</span> didn't go
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I didn't went home. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> Did you saw the film? → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> She goed to school yesterday. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> He eat pizza two days ago. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> I didn't go home. &nbsp; <span class="a-num">2.</span> Did you see the film? &nbsp; <span class="a-num">3.</span> She went to school yesterday. &nbsp; <span class="a-num">4.</span> He ate pizza two days ago.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text">Olumlu: <strong>özne + V2/-ed</strong>. He/She farkı yok!</span></div>
+          <div class="take-item"><span class="take-ico">⚠️</span><span class="take-text">Olumsuz/soru: <strong>didn't / Did + V1</strong> (yalın fiil).</span></div>
+          <div class="take-item"><span class="take-ico">✏️</span><span class="take-text">play→<strong>played</strong>, stop→<strong>stopped</strong>, study→<strong>studied</strong>, live→<strong>lived</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">⚡</span><span class="take-text">Düzensiz: go→<strong>went</strong>, see→<strong>saw</strong>, eat→<strong>ate</strong> — ezberle!</span></div>
+          <div class="take-item"><span class="take-ico">🕐</span><span class="take-text">yesterday, last week, <strong>… ago</strong>, in 2019, when I was young.</span></div>
+          <div class="take-item"><span class="take-ico">🇹🇷</span><span class="take-text">Türkçe tek form; İngilizce <strong>V2 gerekir</strong>. didn't + V1!</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📓</span>
+          <div class="mission-body">
+            <span class="m-title">Dünkü Günlük (Yesterday's Diary)</span>
+            Dün yaptıklarını <strong>8–10 cümle</strong> Simple Past ile yaz. En az <strong>3 düzensiz fiil</strong> kullan:<br>
+            <strong>"I woke up at 7. I had breakfast. I didn't go to work. I met my friend at a café. We talked for an hour."</strong><br>
+            <span style="color:var(--ink-3)">Bonus: Sesli oku ve "yesterday / last night / two hours ago" ifadelerinden en az birini ekle.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 7 / 25 &nbsp;·&nbsp; Ünite 2: Hayat Akıyor</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="6.html">‹ Önceki: Ders 6</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="8.html">Sonraki: Ders 8 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
