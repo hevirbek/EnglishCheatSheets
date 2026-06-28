@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İngilizce Cheat Sheet Müfredatı — 25 Ders</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+  /* Hero */
+  .hero { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 1.5rem; }
+  .hero .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .hero h1 { font-size: 30px; font-weight: 700; margin-top: 6px; letter-spacing: -0.01em; }
+  .hero p { font-size: 13px; color: var(--ink-3); margin-top: 8px; max-width: 640px; line-height: 1.7; }
+  .hero-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+  .stat { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+  .stat.s1 { background: var(--accent-bg); color: var(--accent); }
+  .stat.s2 { background: var(--ok-bg); color: var(--ok); }
+  .stat.s3 { background: var(--purple-bg); color: var(--purple); }
+  .stat.s4 { background: var(--warn-bg); color: var(--warn); }
+
+  /* Progress */
+  .progress-wrap { margin: 0 0 1.75rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); margin-bottom: 5px; }
+  .progress-track { height: 9px; border-radius: 5px; background: var(--bg-3); overflow: hidden; }
+  .progress-fill { height: 100%; width: 24%; background: linear-gradient(to right, var(--accent), var(--ok)); border-radius: 5px; }
+
+  /* Units */
+  .unit { margin-bottom: 1.5rem; border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; }
+  .unit-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 0.5px solid var(--rule); }
+  .unit-num { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 15px; flex-shrink: 0; }
+  .unit-1 .unit-num { background: var(--accent-bg); color: var(--accent); }
+  .unit-2 .unit-num { background: var(--ok-bg); color: var(--ok); }
+  .unit-3 .unit-num { background: var(--purple-bg); color: var(--purple); }
+  .unit-4 .unit-num { background: var(--warn-bg); color: var(--warn); }
+  .unit-5 .unit-num { background: var(--rose-bg); color: var(--rose); }
+  .unit-title { font-size: 15px; font-weight: 600; }
+  .unit-sub { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+  .unit-range { margin-left: auto; font-size: 11px; color: var(--ink-4); font-family: var(--mono); white-space: nowrap; }
+
+  .lessons { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+  .lesson { display: flex; align-items: center; gap: 11px; padding: 11px 16px; border-bottom: 0.5px solid var(--rule); text-decoration: none; color: inherit; transition: background .12s; }
+  .lessons .lesson:nth-child(odd) { border-right: 0.5px solid var(--rule); }
+  .lesson.available:hover { background: var(--bg-2); }
+  .lesson.locked { opacity: 0.55; cursor: default; }
+  .lesson-no { width: 26px; height: 26px; border-radius: 7px; background: var(--bg-3); color: var(--ink-2); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; font-weight: 600; flex-shrink: 0; }
+  .lesson.available .lesson-no { background: var(--ink); color: #fff; }
+  .lesson-body { flex: 1; min-width: 0; }
+  .lesson-name { font-size: 12.5px; font-weight: 500; color: var(--ink); }
+  .lesson-topic { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+  .lesson-flag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; }
+  .flag-ready { background: var(--ok-bg); color: var(--ok); }
+  .flag-soon { background: var(--bg-3); color: var(--ink-4); }
+
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); font-size: 11px; color: var(--ink-4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page { padding: 0; max-width: 100%; }
+    .unit { break-inside: avoid; }
+  }
+
+  @media (max-width: 680px) {
+    .hero h1 { font-size: 24px; }
+    .lessons { grid-template-columns: 1fr; }
+    .lessons .lesson:nth-child(odd) { border-right: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="kicker">Türkçe Konuşanlar İçin · A1 → B1</div>
+    <h1>İngilizce Cheat Sheet Müfredatı</h1>
+    <p>25 derslik, baskıya uygun, pratik odaklı bir öğrenme yolculuğu. Her ders; kural, tablo, gerçek hayat diyaloğu, Türkçe'ye özel tuzaklar, kendini test pratiği ve günün göreviyle tasarlandı. Yüksek sesle çalış, pratikleri çöz, görevleri uygula.</p>
+    <div class="hero-stats">
+      <span class="stat s1">📚 5 Ünite · 25 Ders</span>
+      <span class="stat s2">✍️ Cevap anahtarlı pratik</span>
+      <span class="stat s3">🖨️ PDF & yazıcı dostu</span>
+      <span class="stat s4">🇹🇷 Türkçe tuzak uyarıları</span>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-wrap">
+    <div class="progress-label"><span>İlerleme</span><span>6 / 25 ders hazır</span></div>
+    <div class="progress-track"><div class="progress-fill"></div></div>
+  </div>
+
+  <!-- Ünite 1 -->
+  <div class="unit unit-1">
+    <div class="unit-head">
+      <div class="unit-num">1</div>
+      <div>
+        <div class="unit-title">Merhaba Dünya</div>
+        <div class="unit-sub">Temeller: sesler, zamirler, basit cümle ve sorular</div>
+      </div>
+      <div class="unit-range">Ders 1–5</div>
+    </div>
+    <div class="lessons">
+      <a class="lesson available" href="1/1.html">
+        <div class="lesson-no">1</div>
+        <div class="lesson-body"><div class="lesson-name">Harfler, Sesler ve Telaffuz Sırları</div><div class="lesson-topic">Alfabe · IPA · minimal pairs</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+      <a class="lesson available" href="1/2.html">
+        <div class="lesson-no">2</div>
+        <div class="lesson-body"><div class="lesson-name">Kendini Tanıt</div><div class="lesson-topic">To be · kişi zamirleri</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+      <a class="lesson available" href="1/3.html">
+        <div class="lesson-no">3</div>
+        <div class="lesson-body"><div class="lesson-name">Sayılar, Renkler ve Günlük Nesneler</div><div class="lesson-topic">this/that · a/an/the</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+      <a class="lesson available" href="1/4.html">
+        <div class="lesson-no">4</div>
+        <div class="lesson-body"><div class="lesson-name">Sorular Kurmak</div><div class="lesson-topic">WH questions</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+      <a class="lesson available" href="1/5.html">
+        <div class="lesson-no">5</div>
+        <div class="lesson-body"><div class="lesson-name">Günlük Rutin</div><div class="lesson-topic">Simple Present</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Ünite 2 -->
+  <div class="unit unit-2">
+    <div class="unit-head">
+      <div class="unit-num">2</div>
+      <div>
+        <div class="unit-title">Hayat Akıyor</div>
+        <div class="unit-sub">Zamanlar: şimdi, geçmiş, gelecek ve modallar</div>
+      </div>
+      <div class="unit-range">Ders 6–10</div>
+    </div>
+    <div class="lessons">
+      <a class="lesson available" href="2/6.html">
+        <div class="lesson-no">6</div>
+        <div class="lesson-body"><div class="lesson-name">Şu An Ne Yapıyorsun?</div><div class="lesson-topic">Present Continuous</div></div>
+        <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+      <span class="lesson locked">
+        <div class="lesson-no">7</div>
+        <div class="lesson-body"><div class="lesson-name">Geçmişe Yolculuk</div><div class="lesson-topic">Simple Past</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">8</div>
+        <div class="lesson-body"><div class="lesson-name">Henüz mi, Zaten mi?</div><div class="lesson-topic">Present Perfect</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">9</div>
+        <div class="lesson-body"><div class="lesson-name">Gelecekten Haberler</div><div class="lesson-topic">Will vs Going to</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">10</div>
+        <div class="lesson-body"><div class="lesson-name">Modal'lar</div><div class="lesson-topic">Can, Must, Should</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Ünite 3 -->
+  <div class="unit unit-3">
+    <div class="unit-head">
+      <div class="unit-num">3</div>
+      <div>
+        <div class="unit-title">Kelimeler Dünyası</div>
+        <div class="unit-sub">Tema bazlı kelime hazinesi ve günlük dil</div>
+      </div>
+      <div class="unit-range">Ders 11–15</div>
+    </div>
+    <div class="lessons">
+      <span class="lesson locked">
+        <div class="lesson-no">11</div>
+        <div class="lesson-body"><div class="lesson-name">Vücudumuz ve Sağlık Dili</div><div class="lesson-topic">there is/are · quantifiers</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">12</div>
+        <div class="lesson-body"><div class="lesson-name">Yiyecek, Mutfak ve Restoran</div><div class="lesson-topic">some/any · countable</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">13</div>
+        <div class="lesson-body"><div class="lesson-name">Seyahat ve Yön Tarifi</div><div class="lesson-topic">prepositions</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">14</div>
+        <div class="lesson-body"><div class="lesson-name">İş ve Çalışma Hayatı</div><div class="lesson-topic">collocations</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">15</div>
+        <div class="lesson-body"><div class="lesson-name">Deyimler ve Phrasal Verbs</div><div class="lesson-topic">idioms</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Ünite 4 -->
+  <div class="unit unit-4">
+    <div class="unit-head">
+      <div class="unit-num">4</div>
+      <div>
+        <div class="unit-title">İnce Ayrımlar</div>
+        <div class="unit-sub">İleri yapılar ve cümle bağlama</div>
+      </div>
+      <div class="unit-range">Ders 16–20</div>
+    </div>
+    <div class="lessons">
+      <span class="lesson locked">
+        <div class="lesson-no">16</div>
+        <div class="lesson-body"><div class="lesson-name">Pasif Yapı</div><div class="lesson-topic">The passive voice</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">17</div>
+        <div class="lesson-body"><div class="lesson-name">Cümle Bağlama</div><div class="lesson-topic">Linking words</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">18</div>
+        <div class="lesson-body"><div class="lesson-name">Koşul Cümleleri</div><div class="lesson-topic">If clauses</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">19</div>
+        <div class="lesson-body"><div class="lesson-name">Dolaylı Anlatım</div><div class="lesson-topic">Reported speech</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">20</div>
+        <div class="lesson-body"><div class="lesson-name">Karşılaştırma</div><div class="lesson-topic">Comparative & superlative</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Ünite 5 -->
+  <div class="unit unit-5">
+    <div class="unit-head">
+      <div class="unit-num">5</div>
+      <div>
+        <div class="unit-title">Gerçek Dünya</div>
+        <div class="unit-sub">Dört beceri: okuma, dinleme, yazma, konuşma</div>
+      </div>
+      <div class="unit-range">Ders 21–25</div>
+    </div>
+    <div class="lessons">
+      <span class="lesson locked">
+        <div class="lesson-no">21</div>
+        <div class="lesson-body"><div class="lesson-name">Okuma Stratejileri</div><div class="lesson-topic">reading skills</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">22</div>
+        <div class="lesson-body"><div class="lesson-name">Dinleme ve Aksan Çeşitliliği</div><div class="lesson-topic">listening</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">23</div>
+        <div class="lesson-body"><div class="lesson-name">Yazma — Paragraf ve Kompozisyon</div><div class="lesson-topic">writing</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">24</div>
+        <div class="lesson-body"><div class="lesson-name">Konuşma Stratejileri ve Hedging</div><div class="lesson-topic">speaking</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+      <span class="lesson locked">
+        <div class="lesson-no">25</div>
+        <div class="lesson-body"><div class="lesson-name">Büyük Final — Mini TED Talk Projesi</div><div class="lesson-topic">capstone</div></div>
+        <span class="lesson-flag flag-soon">Yakında</span>
+      </span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>İngilizce Cheat Sheet Müfredatı · 25 Ders · A1 → B1</span>
+    <span>Türkçe konuşanlar için tasarlandı</span>
+  </div>
+
+</div>
+</body>
+</html>

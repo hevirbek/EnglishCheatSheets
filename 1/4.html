@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders 4 — WH Questions · İngilizce Cheat Sheet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #1a1a1a;
+            --ink-2: #444;
+            --ink-3: #777;
+            --ink-4: #aaa;
+            --bg: #ffffff;
+            --bg-2: #f7f7f5;
+            --bg-3: #f0efe9;
+            --rule: #e0dfd8;
+            --accent: #2a5caa;
+            --accent-bg: #eef3fb;
+            --warn: #b85c00;
+            --warn-bg: #fff4e8;
+            --ok: #1a6b3c;
+            --ok-bg: #edf7f1;
+            --purple: #5b3ea8;
+            --purple-bg: #f2effe;
+            --teal: #0e7490;
+            --teal-bg: #ecfeff;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 13px;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .lesson-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .badge-unit {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .badge-level {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        .badge-time {
+            background: var(--bg-3);
+            color: var(--ink-2);
+        }
+
+        .header-tip {
+            font-size: 12px;
+            color: var(--ink-3);
+            max-width: 270px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .header-tip strong {
+            color: var(--warn);
+        }
+
+        /* Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-full {
+            margin-bottom: 1rem;
+        }
+
+        /* Card */
+        .card {
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-head {
+            background: var(--bg-2);
+            border-bottom: 0.5px solid var(--rule);
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-head h2 {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink-2);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .card-body {
+            padding: 10px 12px;
+        }
+
+        /* WH word cards — big hero grid */
+        .wh-hero {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 0;
+        }
+
+        .wh-card {
+            border-radius: 10px;
+            border: 0.5px solid;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wh-top {
+            padding: 10px 10px 8px;
+            text-align: center;
+        }
+
+        .wh-word {
+            font-family: var(--mono);
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .wh-pron {
+            font-size: 10px;
+            margin-top: 3px;
+            opacity: .7;
+        }
+
+        .wh-bottom {
+            padding: 7px 10px 8px;
+            background: rgba(255, 255, 255, .55);
+            flex: 1;
+        }
+
+        .wh-tr {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 3px;
+        }
+
+        .wh-use {
+            font-size: 11px;
+            color: var(--ink-3);
+            line-height: 1.5;
+        }
+
+        .wh-ex {
+            font-family: var(--mono);
+            font-size: 11px;
+            margin-top: 4px;
+            color: var(--ink-2);
+        }
+
+        /* Color themes per WH word */
+        .wh-who {
+            background: #fff0f6;
+            border-color: #f9a8d4;
+        }
+
+        .wh-who .wh-word {
+            color: #be185d;
+        }
+
+        .wh-who .wh-pron {
+            color: #be185d;
+        }
+
+        .wh-what {
+            background: var(--accent-bg);
+            border-color: #b3c9ef;
+        }
+
+        .wh-what .wh-word {
+            color: var(--accent);
+        }
+
+        .wh-what .wh-pron {
+            color: var(--accent);
+        }
+
+        .wh-where {
+            background: var(--ok-bg);
+            border-color: #a8d4bc;
+        }
+
+        .wh-where .wh-word {
+            color: var(--ok);
+        }
+
+        .wh-where .wh-pron {
+            color: var(--ok);
+        }
+
+        .wh-when {
+            background: var(--purple-bg);
+            border-color: #c9b8ef;
+        }
+
+        .wh-when .wh-word {
+            color: var(--purple);
+        }
+
+        .wh-when .wh-pron {
+            color: var(--purple);
+        }
+
+        .wh-why {
+            background: var(--warn-bg);
+            border-color: #f5c896;
+        }
+
+        .wh-why .wh-word {
+            color: var(--warn);
+        }
+
+        .wh-why .wh-pron {
+            color: var(--warn);
+        }
+
+        .wh-how {
+            background: var(--teal-bg);
+            border-color: #a5f3fc;
+        }
+
+        .wh-how .wh-word {
+            color: var(--teal);
+        }
+
+        .wh-how .wh-pron {
+            color: var(--teal);
+        }
+
+        .wh-which {
+            background: #fef9c3;
+            border-color: #fde68a;
+        }
+
+        .wh-which .wh-word {
+            color: #92400e;
+        }
+
+        .wh-which .wh-pron {
+            color: #92400e;
+        }
+
+        .wh-whose {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+
+        .wh-whose .wh-word {
+            color: #166534;
+        }
+
+        .wh-whose .wh-pron {
+            color: #166534;
+        }
+
+        /* Sentence structure builder */
+        .struct-row {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            background: var(--bg-2);
+            border-radius: 8px;
+            border: 0.5px solid var(--rule);
+        }
+
+        .slot {
+            padding: 4px 10px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-family: var(--mono);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .slot-wh {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border: 0.5px solid #b3c9ef;
+        }
+
+        .slot-aux {
+            background: var(--purple-bg);
+            color: var(--purple);
+            border: 0.5px solid #c9b8ef;
+        }
+
+        .slot-subj {
+            background: var(--ok-bg);
+            color: var(--ok);
+            border: 0.5px solid #a8d4bc;
+        }
+
+        .slot-verb {
+            background: var(--warn-bg);
+            color: var(--warn);
+            border: 0.5px solid #f5c896;
+        }
+
+        .slot-rest {
+            background: var(--bg-3);
+            color: var(--ink-2);
+            border: 0.5px solid var(--rule);
+        }
+
+        .slot-sep {
+            font-size: 14px;
+            color: var(--ink-4);
+        }
+
+        .struct-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--ink-4);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            width: 100%;
+            margin-bottom: 2px;
+        }
+
+        .struct-ex {
+            font-size: 11px;
+            color: var(--ink-3);
+            width: 100%;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        /* How combinations */
+        .how-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+        }
+
+        .how-item {
+            padding: 7px 10px;
+            border-radius: 6px;
+            background: var(--teal-bg);
+            border: 0.5px solid #a5f3fc;
+        }
+
+        .how-combo {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--teal);
+        }
+
+        .how-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            margin-top: 2px;
+        }
+
+        .how-ex {
+            font-size: 11px;
+            color: var(--ink-2);
+            margin-top: 3px;
+            font-style: italic;
+        }
+
+        /* Example Q&A */
+        .qa-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .qa-row {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 0.5px solid var(--rule);
+        }
+
+        .qa-q {
+            padding: 6px 10px;
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .qa-a {
+            padding: 5px 10px 7px;
+            background: var(--bg-2);
+            border-top: 0.5px solid var(--rule);
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .qa-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            min-width: 14px;
+        }
+
+        .qa-q .qa-label {
+            color: var(--accent);
+        }
+
+        .qa-a .qa-label {
+            color: var(--ok);
+        }
+
+        .qa-text {
+            font-size: 13px;
+            color: var(--ink);
+        }
+
+        .qa-text .hl {
+            font-weight: 600;
+        }
+
+        .qa-text .hl-who {
+            color: #be185d;
+        }
+
+        .qa-text .hl-what {
+            color: var(--accent);
+        }
+
+        .qa-text .hl-where {
+            color: var(--ok);
+        }
+
+        .qa-text .hl-when {
+            color: var(--purple);
+        }
+
+        .qa-text .hl-why {
+            color: var(--warn);
+        }
+
+        .qa-text .hl-how {
+            color: var(--teal);
+        }
+
+        .qa-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        /* Intonation */
+        .inton-box {
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 0.5px solid var(--rule);
+            background: var(--bg-2);
+            margin-bottom: 8px;
+        }
+
+        .inton-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink-2);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .inton-arrow {
+            font-size: 18px;
+        }
+
+        .inton-ex {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .inton-note {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        /* Trap items */
+        .trap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .trap-item {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--warn);
+            background: var(--warn-bg);
+        }
+
+        .trap-item.ok-item {
+            border-left-color: var(--ok);
+            background: var(--ok-bg);
+        }
+
+        .trap-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .trap-desc {
+            font-size: 11px;
+            color: var(--ink-3);
+            line-height: 1.6;
+        }
+
+        .trap-ex {
+            font-family: var(--mono);
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .wrong {
+            color: #c0392b;
+        }
+
+        .right {
+            color: var(--ok);
+        }
+
+        /* Dialogue */
+        .dialogue {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .bubble {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .bubble.right {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .av-a {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        .av-b {
+            background: var(--purple-bg);
+            color: var(--purple);
+        }
+
+        .bubble-text {
+            padding: 7px 10px;
+            border-radius: 10px;
+            max-width: 86%;
+        }
+
+        .bubble.left .bubble-text {
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+            border-top-left-radius: 3px;
+        }
+
+        .bubble.right .bubble-text {
+            background: var(--accent-bg);
+            border: 0.5px solid #b3c9ef;
+            border-top-right-radius: 3px;
+        }
+
+        .bubble-en {
+            font-size: 13px;
+            color: var(--ink);
+            margin-bottom: 1px;
+        }
+
+        .bubble-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 0.75rem;
+            border-top: 0.5px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer span {
+            font-size: 11px;
+            color: var(--ink-4);
+        }
+
+        .next-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--bg-3);
+            color: var(--ink-3);
+        }
+
+        /* ===== Ortak eklenti bileşenleri ===== */
+        .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+        .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+        .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+        .recall-item strong { color:var(--ink); }
+        .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+        .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+        .pr-block-body { padding:8px 10px; }
+        .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+        .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+        .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+        details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+        details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+        details.answers > summary::-webkit-details-marker { display:none; }
+        details.answers > summary::before { content:'▸ '; }
+        details.answers[open] > summary::before { content:'▾ '; }
+        .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+        .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+        .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+        .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+        .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+        .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+        .take-text strong { color:var(--ink); }
+        .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+        .mission-badge { font-size:22px; line-height:1; }
+        .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+        .mission-body strong { color:var(--ink); }
+        .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+        .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+        .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+        .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+        .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { font-size: 11px; }
+            .page { padding: 0; max-width: 100%; }
+            .card, .grid-2, .grid-3, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+            .no-print { display: none !important; }
+            .wh-hero { grid-template-columns: repeat(4, 1fr); }
+            details.answers > *:not(summary) { display: block !important; }
+            details.answers > summary::before { content: '✓ '; }
+        }
+
+        @media (max-width: 640px) {
+            .practice-grid { grid-template-columns: 1fr; }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .wh-hero {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .how-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-tip {
+                text-align: left;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <span class="lesson-label">Ders 4 · Ünite 1</span>
+                <h1>Sorular Kurmak — WH Questions</h1>
+                <div class="header-meta">
+                    <span class="badge badge-unit">A1 Başlangıç</span>
+                    <span class="badge badge-level">Gramer + Konuşma</span>
+                    <span class="badge badge-time">⏱ ~2 saat</span>
+                </div>
+            </div>
+            <div class="header-tip">
+                <strong>Türkçe tuzak:</strong> Türkçe'de soru eki (-mi/-mı) eklenir, sıra değişmez.<br>
+                İngilizce'de yardımcı fiil öne geçer:<br>
+                <span style="font-family:'JetBrains Mono',monospace"><strong style="color:#2a5caa">Where</strong>
+                    <strong style="color:#5b3ea8">do</strong> <strong style="color:#1a6b3c">you</strong> live?</span>
+            </div>
+        </div>
+
+        <!-- Hatırlatma -->
+        <div class="recall">
+            <span class="recall-label">🔁 Geçen ders</span>
+            <span class="recall-item"><strong>this/that</strong> = yakın/uzak</span>
+            <span class="recall-item">Renk ismin <strong>önünde</strong></span>
+            <span class="recall-item"><strong>a/an/the</strong> takıları</span>
+            <span class="recall-item">forty (u yok), thirteen vs thirty</span>
+        </div>
+
+        <!-- 8 WH Kelimesi Hero -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>❓</span>
+                    <h2>8 Temel WH Kelimesi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="wh-hero">
+
+                        <div class="wh-card wh-who">
+                            <div class="wh-top">
+                                <div class="wh-word">Who</div>
+                                <div class="wh-pron">/huː/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Kim</div>
+                                <div class="wh-use">İnsanlar için — kimlik, kişi</div>
+                                <div class="wh-ex">Who is she?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-what">
+                            <div class="wh-top">
+                                <div class="wh-word">What</div>
+                                <div class="wh-pron">/wɒt/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Ne / Neler</div>
+                                <div class="wh-use">Şeyler, nesneler, bilgi</div>
+                                <div class="wh-ex">What is this?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-where">
+                            <div class="wh-top">
+                                <div class="wh-word">Where</div>
+                                <div class="wh-pron">/wɛr/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Nerede / Nereye</div>
+                                <div class="wh-use">Yer ve konum</div>
+                                <div class="wh-ex">Where do you live?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-when">
+                            <div class="wh-top">
+                                <div class="wh-word">When</div>
+                                <div class="wh-pron">/wɛn/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Ne zaman</div>
+                                <div class="wh-use">Zaman, tarih, saat</div>
+                                <div class="wh-ex">When is the meeting?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-why">
+                            <div class="wh-top">
+                                <div class="wh-word">Why</div>
+                                <div class="wh-pron">/waɪ/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Neden / Niçin</div>
+                                <div class="wh-use">Sebep ve amaç</div>
+                                <div class="wh-ex">Why are you late?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-how">
+                            <div class="wh-top">
+                                <div class="wh-word">How</div>
+                                <div class="wh-pron">/haʊ/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Nasıl</div>
+                                <div class="wh-use">Yol, yöntem, durum</div>
+                                <div class="wh-ex">How are you?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-which">
+                            <div class="wh-top">
+                                <div class="wh-word">Which</div>
+                                <div class="wh-pron">/wɪtʃ/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Hangi</div>
+                                <div class="wh-use">Sınırlı seçenekler</div>
+                                <div class="wh-ex">Which one do you like?</div>
+                            </div>
+                        </div>
+
+                        <div class="wh-card wh-whose">
+                            <div class="wh-top">
+                                <div class="wh-word">Whose</div>
+                                <div class="wh-pron">/huːz/</div>
+                            </div>
+                            <div class="wh-bottom">
+                                <div class="wh-tr">Kimin</div>
+                                <div class="wh-use">Sahiplik — kime ait</div>
+                                <div class="wh-ex">Whose bag is this?</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cümle yapısı -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>🧱</span>
+                    <h2>Cümle Yapısı — WH Soru Formülü</h2>
+                </div>
+                <div class="card-body">
+
+                    <div class="struct-row">
+                        <div class="struct-label">Present Simple ile (do/does)</div>
+                        <span class="slot slot-wh">WH kelimesi</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-aux">do / does</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-subj">özne</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-verb">fiil</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-rest">geri kalan?</span>
+                        <div class="struct-ex">Where <u>do</u> you live? &nbsp;·&nbsp; What <u>does</u> she eat?
+                            &nbsp;·&nbsp; Why <u>do</u> they study?</div>
+                    </div>
+
+                    <div class="struct-row">
+                        <div class="struct-label">To Be ile (am/is/are)</div>
+                        <span class="slot slot-wh">WH kelimesi</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-aux">am / is / are</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-subj">özne</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-rest">geri kalan?</span>
+                        <div class="struct-ex">Where <u>are</u> you? &nbsp;·&nbsp; Who <u>is</u> he? &nbsp;·&nbsp; When
+                            <u>is</u> the party?</div>
+                    </div>
+
+                    <div class="struct-row">
+                        <div class="struct-label">Past Simple ile (did)</div>
+                        <span class="slot slot-wh">WH kelimesi</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-aux">did</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-subj">özne</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-verb">fiil (base)</span>
+                        <span class="slot-sep">+</span>
+                        <span class="slot slot-rest">geri kalan?</span>
+                        <div class="struct-ex">Where <u>did</u> you go? &nbsp;·&nbsp; What <u>did</u> she say?
+                            &nbsp;·&nbsp; Why <u>did</u> he leave?</div>
+                    </div>
+
+                    <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap">
+                        <div
+                            style="flex:1;min-width:200px;padding:8px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn)">
+                            <div style="font-size:11px;font-weight:600;color:var(--warn);margin-bottom:3px">⚠️ "does"
+                                ile fiil yalın hale gelir</div>
+                            <div style="font-family:var(--mono);font-size:12px;color:var(--ink-3)"><span class="wrong">✗
+                                    What does she eats?</span><br><span class="right">✓ What does she eat?</span></div>
+                        </div>
+                        <div
+                            style="flex:1;min-width:200px;padding:8px 10px;background:var(--ok-bg);border-radius:6px;border-left:3px solid var(--ok)">
+                            <div style="font-size:11px;font-weight:600;color:var(--ok);margin-bottom:3px">✓ "who/what"
+                                özne olduğunda do/does kullanılmaz</div>
+                            <div style="font-family:var(--mono);font-size:12px;color:var(--ink-3)"><span class="right">✓
+                                    Who lives here? (does yok!)<br>✓ What happened?</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- HOW kombinasyonları + Soru-Cevap örnekleri -->
+        <div class="grid-2">
+
+            <div class="card">
+                <div class="card-head"><span>🔀</span>
+                    <h2>How ile Kombinasyonlar</h2>
+                </div>
+                <div class="card-body">
+                    <div class="how-grid">
+                        <div class="how-item">
+                            <div class="how-combo">How much</div>
+                            <div class="how-tr">Ne kadar (para / sayılamaz)</div>
+                            <div class="how-ex">How much is this?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How many</div>
+                            <div class="how-tr">Kaç tane (sayılabilir)</div>
+                            <div class="how-ex">How many people are there?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How old</div>
+                            <div class="how-tr">Kaç yaşında</div>
+                            <div class="how-ex">How old are you?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How long</div>
+                            <div class="how-tr">Ne kadar uzun / süre</div>
+                            <div class="how-ex">How long does it take?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How far</div>
+                            <div class="how-tr">Ne kadar uzakta</div>
+                            <div class="how-ex">How far is the station?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How often</div>
+                            <div class="how-tr">Ne sıklıkla</div>
+                            <div class="how-ex">How often do you exercise?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How tall</div>
+                            <div class="how-tr">Boyu ne kadar</div>
+                            <div class="how-ex">How tall is he?</div>
+                        </div>
+                        <div class="how-item">
+                            <div class="how-combo">How soon</div>
+                            <div class="how-tr">Ne kadar sürede</div>
+                            <div class="how-ex">How soon can you come?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>💬</span>
+                    <h2>Soru &amp; Cevap Örnekleri</h2>
+                </div>
+                <div class="card-body">
+                    <div class="qa-list">
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-who">Who</span> is your best friend?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">My best friend is
+                                    Zeynep.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-what">What</span> do you do for fun?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">I play guitar and
+                                    read books.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-where">Where</span> are you from?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">I'm from Ankara,
+                                    Turkey.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-when">When</span> does the class start?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">It starts at nine
+                                    o'clock.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-why">Why</span> are you studying English?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">Because I want to
+                                    travel.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-how">How</span> do you come to work?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">I come by
+                                    metro.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-how">How much</span> does this cost?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">It's fifty
+                                    lira.</span></div>
+                        </div>
+
+                        <div class="qa-row">
+                            <div class="qa-q"><span class="qa-label">Q</span><span class="qa-text"><span
+                                        class="hl hl-who">Whose</span> phone is this?</span></div>
+                            <div class="qa-a"><span class="qa-label">A</span><span class="qa-text">It's mine. / It's
+                                    Mert's.</span></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Ton + Türkçe tuzaklar -->
+        <div class="grid-2">
+
+            <div class="card">
+                <div class="card-head"><span>↘️</span>
+                    <h2>Tonlama — WH Sorularında Ses Alçalır</h2>
+                </div>
+                <div class="card-body">
+
+                    <div class="inton-box">
+                        <div class="inton-title"><span class="inton-arrow">↘</span> WH soruları — ses ALÇALIR</div>
+                        <div class="inton-ex">Where <u>are</u> you <strong>from</strong>? ↘</div>
+                        <div class="inton-ex">What <u>do</u> you <strong>do</strong>? ↘</div>
+                        <div class="inton-note" style="margin-top:4px">WH sorusunda cevap bilinmez — ses düşer, çünkü
+                            açık uçlu soru.</div>
+                    </div>
+
+                    <div class="inton-box">
+                        <div class="inton-title"><span class="inton-arrow">↗</span> Yes/No soruları — ses YÜKSELIR</div>
+                        <div class="inton-ex">Are you a student? ↗</div>
+                        <div class="inton-ex">Do you like coffee? ↗</div>
+                        <div class="inton-note" style="margin-top:4px">Yes/No sorusu cevap bekler — ses yükselir, yanıt
+                            ister gibi.</div>
+                    </div>
+
+                    <div
+                        style="background:var(--accent-bg);border-radius:8px;padding:10px 12px;border:0.5px solid #b3c9ef;margin-top:2px">
+                        <div style="font-size:11px;font-weight:600;color:var(--accent);margin-bottom:6px">What + isim =
+                            hangi / ne tür</div>
+                        <div style="display:flex;flex-direction:column;gap:4px;font-size:12px">
+                            <div style="display:flex;gap:8px"><span
+                                    style="font-family:var(--mono);color:var(--ink);flex:1">What time is it?</span><span
+                                    style="color:var(--ink-3)">Saat kaç?</span></div>
+                            <div style="display:flex;gap:8px"><span
+                                    style="font-family:var(--mono);color:var(--ink);flex:1">What colour is
+                                    it?</span><span style="color:var(--ink-3)">Rengi ne?</span></div>
+                            <div style="display:flex;gap:8px"><span
+                                    style="font-family:var(--mono);color:var(--ink);flex:1">What kind of
+                                    music?</span><span style="color:var(--ink-3)">Ne tür müzik?</span></div>
+                            <div style="display:flex;gap:8px"><span
+                                    style="font-family:var(--mono);color:var(--ink);flex:1">What size do you
+                                    wear?</span><span style="color:var(--ink-3)">Kaç beden giyiyorsun?</span></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>🇹🇷</span>
+                    <h2>Türkçe Konuşanların Klasik Tuzakları</h2>
+                </div>
+                <div class="card-body">
+                    <div class="trap-list">
+
+                        <div class="trap-item">
+                            <div class="trap-title">Yardımcı fiili unutmak</div>
+                            <div class="trap-desc">Türkçe'de soru eki yeter — İngilizce'de do/does/did zorunlu.</div>
+                            <div class="trap-ex"><span class="wrong">✗ Where you live?</span><br><span class="right">✓
+                                    Where do you live?</span></div>
+                        </div>
+
+                        <div class="trap-item">
+                            <div class="trap-title">Does ile -s ekini çiftlemek</div>
+                            <div class="trap-desc">"Does" zaten 3. tekil kişiyi taşır — fiile tekrar -s ekleme.</div>
+                            <div class="trap-ex"><span class="wrong">✗ What does she eats?</span><br><span
+                                    class="right">✓ What does she eat?</span></div>
+                        </div>
+
+                        <div class="trap-item">
+                            <div class="trap-title">Who/What özne olunca do kullanmak</div>
+                            <div class="trap-desc">WH kelimesi öznenin kendisiyse yardımcı fiil gelmez.</div>
+                            <div class="trap-ex"><span class="wrong">✗ Who does live here?</span><br><span
+                                    class="right">✓ Who lives here?</span></div>
+                        </div>
+
+                        <div class="trap-item">
+                            <div class="trap-title">Which ve What karıştırmak</div>
+                            <div class="trap-desc">"Which" sınırlı seçenekler için, "What" açık uçlu sorular için
+                                kullanılır.</div>
+                            <div class="trap-ex"><span class="wrong">✗ What colour do you prefer, red or
+                                    blue?</span><br><span class="right">✓ Which colour do you prefer, red or
+                                    blue?</span></div>
+                        </div>
+
+                        <div class="trap-item">
+                            <div class="trap-title">Why cevabı "because" ile başlar</div>
+                            <div class="trap-desc">Why sorusuna "because" (çünkü) ile yanıt verilir — "for" değil.</div>
+                            <div class="trap-ex"><span class="wrong">✗ For I am tired.</span><br><span class="right">✓
+                                    Because I am tired.</span></div>
+                        </div>
+
+                        <div class="trap-item ok-item">
+                            <div class="trap-title">✓ Whose = "kimin" — Who's ile karıştırma!</div>
+                            <div class="trap-desc">"Who's" = "Who is" kısaltması. "Whose" = sahiplik sorusu. Aynı
+                                okunur, farklı anlam.</div>
+                            <div class="trap-ex"><span class="right">✓ Whose bag is this? (kimin çantası?)<br>✓ Who's
+                                    there? (Kim var orada?)</span></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Gerçek diyalog -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>🎭</span>
+                    <h2>Gerçek Hayat Diyaloğu — Yeni Komşuyla Tanışma</h2>
+                </div>
+                <div class="card-body">
+                    <div class="dialogue">
+
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Hi! I'm Selin. <span
+                                        style="color:var(--accent);font-weight:500">Where</span> are you from?</div>
+                                <div class="bubble-tr">Merhaba! Ben Selin. Nerelisin?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">I'm from İzmir. <span
+                                        style="color:var(--teal);font-weight:500">How long</span> have you lived here?
+                                </div>
+                                <div class="bubble-tr">İzmir'denim. Burada ne kadar süredir yaşıyorsun?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">About three years. <span
+                                        style="color:#b85c00;font-weight:500">Why</span> did you move here?</div>
+                                <div class="bubble-tr">Yaklaşık üç yıldır. Neden buraya taşındın?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Because of my job. <span
+                                        style="color:#2a5caa;font-weight:500">What</span> do you do?</div>
+                                <div class="bubble-tr">İşim nedeniyle. Sen ne iş yapıyorsun?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">I'm a graphic designer. <span
+                                        style="color:#5b3ea8;font-weight:500">When</span> did you start working here?
+                                </div>
+                                <div class="bubble-tr">Grafik tasarımcıyım. Burada ne zaman çalışmaya başladın?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Last month. <span
+                                        style="color:var(--teal);font-weight:500">How</span> do you usually get to work?
+                                </div>
+                                <div class="bubble-tr">Geçen ay. Genellikle işe nasıl gidiyorsun?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">By metro. It's fast! <span
+                                        style="color:#be185d;font-weight:500">Who</span> is your favourite neighbour so
+                                    far?</div>
+                                <div class="bubble-tr">Metroyla. Hızlı! Şimdiye kadar en sevdiğin komşu kim?</div>
+                            </div>
+                        </div>
+
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Ha! Probably you! <span
+                                        style="color:#92400e;font-weight:500">Which</span> floor do you live on?</div>
+                                <div class="bubble-tr">Haha! Muhtemelen sen! Kaçıncı katta oturuyorsun?</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pratik -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>✍️</span>
+                    <h2>Pratik — Kendini Test Et</h2>
+                </div>
+                <div class="card-body">
+                    <div class="practice-grid">
+                        <div class="pr-block">
+                            <div class="pr-block-head">A) Doğru WH kelimesini seç</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> <span class="blank"></span> is your name? (isim)<br>
+                                    <span class="pr-num">2.</span> <span class="blank"></span> do you live? (yer)<br>
+                                    <span class="pr-num">3.</span> <span class="blank"></span> are you late? (sebep)<br>
+                                    <span class="pr-num">4.</span> <span class="blank"></span> is your teacher? (kişi)<br>
+                                    <span class="pr-num">5.</span> <span class="blank"></span> bag is this? (sahiplik)
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> What &nbsp; <span class="a-num">2.</span> Where &nbsp; <span class="a-num">3.</span> Why &nbsp; <span class="a-num">4.</span> Who &nbsp; <span class="a-num">5.</span> Whose
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">B) do / does / did / are — boşluğu doldur</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> Where <span class="blank"></span> she live? (şimdi)<br>
+                                    <span class="pr-num">2.</span> What <span class="blank"></span> you do? (genel)<br>
+                                    <span class="pr-num">3.</span> Where <span class="blank"></span> you go yesterday?<br>
+                                    <span class="pr-num">4.</span> Why <span class="blank"></span> you tired now?
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> does &nbsp; <span class="a-num">2.</span> do &nbsp; <span class="a-num">3.</span> did &nbsp; <span class="a-num">4.</span> are
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">C) How much / many / old / long / often?</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> <span class="blank"></span> are you? — I'm 25.<br>
+                                    <span class="pr-num">2.</span> <span class="blank"></span> is this? — 50 lira.<br>
+                                    <span class="pr-num">3.</span> <span class="blank"></span> books? — Twenty.<br>
+                                    <span class="pr-num">4.</span> <span class="blank"></span> do you exercise? — Twice a week.
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> How old &nbsp; <span class="a-num">2.</span> How much &nbsp; <span class="a-num">3.</span> How many &nbsp; <span class="a-num">4.</span> How often
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> Where you live? → <span class="blank"></span><br>
+                                    <span class="pr-num">2.</span> What does she eats? → <span class="blank"></span><br>
+                                    <span class="pr-num">3.</span> Who does live here? → <span class="blank"></span>
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> Where do you live? &nbsp; <span class="a-num">2.</span> What does she eat? &nbsp; <span class="a-num">3.</span> Who lives here?
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Özet + Görev -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🎯</span>
+                    <h2>5 Dakikada Özet</h2>
+                </div>
+                <div class="card-body">
+                    <div class="takeaways">
+                        <div class="take-item"><span class="take-ico">🧱</span><span class="take-text">Formül: <strong>WH + yardımcı + özne + fiil?</strong></span></div>
+                        <div class="take-item"><span class="take-ico">🔧</span><span class="take-text"><strong>do/does/did</strong> zorunlu (to be hariç).</span></div>
+                        <div class="take-item"><span class="take-ico">1️⃣</span><span class="take-text"><strong>does + yalın fiil</strong>: does she eat? (eats değil)</span></div>
+                        <div class="take-item"><span class="take-ico">👤</span><span class="take-text">Who/What <strong>özne</strong> ise do kullanılmaz: Who lives?</span></div>
+                        <div class="take-item"><span class="take-ico">↘</span><span class="take-text">WH soruda ses <strong>alçalır</strong>, Yes/No'da yükselir.</span></div>
+                        <div class="take-item"><span class="take-ico">💬</span><span class="take-text">Why → <strong>Because</strong> ile cevaplanır.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head"><span>🏆</span>
+                    <h2>Günün Görevi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mission">
+                        <span class="mission-badge">🕵️</span>
+                        <div class="mission-body">
+                            <span class="m-title">20 Soru Oyunu</span>
+                            Bir kişi/nesne/şehir seç. Bir arkadaşın (ya da hayali biri) onu bulmaya çalışsın. Sen sadece <strong>8 WH kelimesini</strong> kullanarak en az <strong>10 soru</strong> yaz:<br>
+                            <strong>"Where is it? What does it do? How big is it? Who uses it?"</strong><br>
+                            <span style="color:var(--ink-3)">Bonus: Sorularını sesli sor ve doğru tonlamayı (WH = ↘) uygula.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>İngilizce Müfredatı · Ders 4 / 25 &nbsp;·&nbsp; Ünite 1: Merhaba Dünya</span>
+            <div class="nav-links no-print">
+                <a class="nav-link" href="3.html">‹ Önceki: Ders 3</a>
+                <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+                <a class="nav-link next" href="5.html">Sonraki: Ders 5 ›</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

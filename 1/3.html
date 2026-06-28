@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders 3 — Sayılar, Renkler & Günlük Nesneler · İngilizce Cheat Sheet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #1a1a1a;
+            --ink-2: #444;
+            --ink-3: #777;
+            --ink-4: #aaa;
+            --bg: #ffffff;
+            --bg-2: #f7f7f5;
+            --bg-3: #f0efe9;
+            --rule: #e0dfd8;
+            --accent: #2a5caa;
+            --accent-bg: #eef3fb;
+            --warn: #b85c00;
+            --warn-bg: #fff4e8;
+            --ok: #1a6b3c;
+            --ok-bg: #edf7f1;
+            --purple: #5b3ea8;
+            --purple-bg: #f2effe;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 13px;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .lesson-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .badge-unit {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .badge-level {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        .badge-time {
+            background: var(--bg-3);
+            color: var(--ink-2);
+        }
+
+        .header-tip {
+            font-size: 12px;
+            color: var(--ink-3);
+            max-width: 260px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .header-tip strong {
+            color: var(--warn);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-full {
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-head {
+            background: var(--bg-2);
+            border-bottom: 0.5px solid var(--rule);
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-head h2 {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink-2);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .card-body {
+            padding: 10px 12px;
+        }
+
+        /* Numbers */
+        .num-section {
+            margin-bottom: 10px;
+        }
+
+        .num-section-title {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            margin-bottom: 6px;
+        }
+
+        .num-grid {
+            display: grid;
+            gap: 4px;
+        }
+
+        .num-grid-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .num-grid-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .num-cell {
+            text-align: center;
+            padding: 5px 4px;
+            border-radius: 6px;
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+        }
+
+        .num-en {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .num-digit {
+            font-size: 10px;
+            color: var(--accent);
+            margin-top: 1px;
+        }
+
+        .num-cell.special {
+            background: var(--accent-bg);
+            border-color: #b3c9ef;
+        }
+
+        .num-cell.special .num-en {
+            color: var(--accent);
+        }
+
+        /* Ordinals */
+        .ord-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+        }
+
+        .ord-cell {
+            text-align: center;
+            padding: 5px 4px;
+            border-radius: 6px;
+            background: var(--purple-bg);
+            border: 0.5px solid #c9b8ef;
+        }
+
+        .ord-en {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--purple);
+        }
+
+        .ord-digit {
+            font-size: 10px;
+            color: var(--ink-3);
+            margin-top: 1px;
+        }
+
+        /* Colors */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .color-cell {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 0.5px solid var(--rule);
+        }
+
+        .color-swatch {
+            height: 36px;
+        }
+
+        .color-label {
+            padding: 4px 6px;
+            background: var(--bg);
+            border-top: 0.5px solid var(--rule);
+        }
+
+        .color-en {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .color-tr {
+            font-size: 10px;
+            color: var(--ink-3);
+        }
+
+        /* Demonstratives */
+        .demo-diagram {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .demo-side {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .demo-card {
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 0.5px solid;
+            text-align: center;
+        }
+
+        .demo-card.near {
+            background: var(--ok-bg);
+            border-color: #a8d4bc;
+        }
+
+        .demo-card.far {
+            background: var(--warn-bg);
+            border-color: #f5c896;
+        }
+
+        .demo-word {
+            font-family: var(--mono);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .demo-word.near {
+            color: var(--ok);
+        }
+
+        .demo-word.far {
+            color: var(--warn);
+        }
+
+        .demo-sub {
+            font-size: 11px;
+            color: var(--ink-3);
+            margin-top: 2px;
+        }
+
+        .demo-arrow {
+            text-align: center;
+            font-size: 22px;
+            color: var(--ink-4);
+        }
+
+        .demo-person {
+            text-align: center;
+            font-size: 28px;
+            padding: 4px;
+        }
+
+        /* Objects grid */
+        .obj-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .obj-item {
+            padding: 6px 8px;
+            border-radius: 6px;
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .obj-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .obj-en {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--ink);
+            font-family: var(--mono);
+        }
+
+        .obj-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        .obj-ex {
+            font-size: 10px;
+            color: var(--accent);
+            font-style: italic;
+            margin-top: 1px;
+        }
+
+        /* Practice sentences */
+        .practice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .prac-row {
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+            border-left: 3px solid var(--accent);
+        }
+
+        .prac-en {
+            font-size: 13px;
+            color: var(--ink);
+        }
+
+        .prac-en .hl-demo {
+            color: var(--ok);
+            font-weight: 500;
+        }
+
+        .prac-en .hl-color {
+            color: var(--purple);
+            font-weight: 500;
+        }
+
+        .prac-en .hl-num {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .prac-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            margin-top: 1px;
+        }
+
+        /* Trap items */
+        .trap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .trap-item {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--warn);
+            background: var(--warn-bg);
+        }
+
+        .trap-item.ok-item {
+            border-left-color: var(--ok);
+            background: var(--ok-bg);
+        }
+
+        .trap-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .trap-desc {
+            font-size: 11px;
+            color: var(--ink-3);
+            line-height: 1.6;
+        }
+
+        .trap-ex {
+            font-family: var(--mono);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .wrong {
+            color: #c0392b;
+        }
+
+        .right {
+            color: var(--ok);
+        }
+
+        /* Big numbers */
+        .bignum-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .bignum-row {
+            display: flex;
+            gap: 10px;
+            align-items: baseline;
+            padding: 5px 8px;
+            border-radius: 6px;
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+        }
+
+        .bignum-digit {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            min-width: 70px;
+        }
+
+        .bignum-en {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            flex: 1;
+        }
+
+        .bignum-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        .footer {
+            margin-top: 2rem;
+            padding-top: 0.75rem;
+            border-top: 0.5px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer span {
+            font-size: 11px;
+            color: var(--ink-4);
+        }
+
+        .next-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--bg-3);
+            color: var(--ink-3);
+        }
+
+        /* ===== Ortak eklenti bileşenleri ===== */
+        .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+        .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+        .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+        .recall-item strong { color:var(--ink); }
+        .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+        .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+        .pr-block-body { padding:8px 10px; }
+        .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+        .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+        .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+        details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+        details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+        details.answers > summary::-webkit-details-marker { display:none; }
+        details.answers > summary::before { content:'▸ '; }
+        details.answers[open] > summary::before { content:'▾ '; }
+        .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+        .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+        .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+        .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+        .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+        .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+        .take-text strong { color:var(--ink); }
+        .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+        .mission-badge { font-size:22px; line-height:1; }
+        .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+        .mission-body strong { color:var(--ink); }
+        .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+        .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+        .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+        .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+        .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { font-size: 11px; }
+            .page { padding: 0; max-width: 100%; }
+            .card, .grid-2, .grid-3, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+            .no-print { display: none !important; }
+            details.answers > *:not(summary) { display: block !important; }
+            details.answers > summary::before { content: '✓ '; }
+        }
+
+        @media (max-width: 640px) {
+            .practice-grid { grid-template-columns: 1fr; }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .header-tip {
+                text-align: left;
+                max-width: 100%;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .num-grid-5 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .obj-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <span class="lesson-label">Ders 3 · Ünite 1</span>
+                <h1>Sayılar, Renkler &amp; Günlük Nesneler</h1>
+                <div class="header-meta">
+                    <span class="badge badge-unit">A1 Başlangıç</span>
+                    <span class="badge badge-level">Kelime + Gramer</span>
+                    <span class="badge badge-time">⏱ ~2 saat</span>
+                </div>
+            </div>
+            <div class="header-tip">
+                <strong>Türkçe tuzak:</strong> "Bu/şu" ikiye ayrılırken İngilizce'de yakın/uzak ayrımı var:<br>
+                <span style="font-family:'JetBrains Mono',monospace"><strong style="color:#1a6b3c">this/these</strong> =
+                    yakın &nbsp;·&nbsp; <strong style="color:#b85c00">that/those</strong> = uzak</span>
+            </div>
+        </div>
+
+        <!-- Hatırlatma -->
+        <div class="recall">
+            <span class="recall-label">🔁 Geçen ders</span>
+            <span class="recall-item">I am / He <strong>is</strong> / They <strong>are</strong></span>
+            <span class="recall-item">Soruda <strong>to be başa</strong>: Are you...?</span>
+            <span class="recall-item">Kısa cevap: <strong>Yes, I am.</strong></span>
+            <span class="recall-item">a / an = belirsiz tanıtım</span>
+        </div>
+
+        <!-- Sayılar 1-20 + 10'lar -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🔢</span>
+                    <h2>Temel Sayılar — 1 ile 20</h2>
+                </div>
+                <div class="card-body">
+                    <div class="num-section">
+                        <div class="num-grid num-grid-5">
+                            <div class="num-cell">
+                                <div class="num-en">one</div>
+                                <div class="num-digit">1</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">two</div>
+                                <div class="num-digit">2</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">three</div>
+                                <div class="num-digit">3</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">four</div>
+                                <div class="num-digit">4</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">five</div>
+                                <div class="num-digit">5</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">six</div>
+                                <div class="num-digit">6</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">seven</div>
+                                <div class="num-digit">7</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">eight</div>
+                                <div class="num-digit">8</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">nine</div>
+                                <div class="num-digit">9</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">ten</div>
+                                <div class="num-digit">10</div>
+                            </div>
+                            <div class="num-cell special">
+                                <div class="num-en">eleven</div>
+                                <div class="num-digit">11</div>
+                            </div>
+                            <div class="num-cell special">
+                                <div class="num-en">twelve</div>
+                                <div class="num-digit">12</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">thirteen</div>
+                                <div class="num-digit">13</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">fourteen</div>
+                                <div class="num-digit">14</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">fifteen</div>
+                                <div class="num-digit">15</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">sixteen</div>
+                                <div class="num-digit">16</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">seventeen</div>
+                                <div class="num-digit">17</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">eighteen</div>
+                                <div class="num-digit">18</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">nineteen</div>
+                                <div class="num-digit">19</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">twenty</div>
+                                <div class="num-digit">20</div>
+                            </div>
+                        </div>
+                        <div
+                            style="margin-top:6px;font-size:11px;color:var(--ink-3);background:var(--accent-bg);padding:5px 8px;border-radius:6px;border:0.5px solid #b3c9ef">
+                            <strong style="color:var(--accent)">11 ve 12 özeldir</strong> — "-teen" kuralı dışında.
+                            Ezberlenmeli!
+                        </div>
+                    </div>
+                    <div class="num-section" style="margin-top:10px">
+                        <div class="num-section-title">Onlar (Tens)</div>
+                        <div class="num-grid num-grid-4">
+                            <div class="num-cell">
+                                <div class="num-en">twenty</div>
+                                <div class="num-digit">20</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">thirty</div>
+                                <div class="num-digit">30</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">forty</div>
+                                <div class="num-digit">40</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">fifty</div>
+                                <div class="num-digit">50</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">sixty</div>
+                                <div class="num-digit">60</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">seventy</div>
+                                <div class="num-digit">70</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">eighty</div>
+                                <div class="num-digit">80</div>
+                            </div>
+                            <div class="num-cell">
+                                <div class="num-en">ninety</div>
+                                <div class="num-digit">90</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>💯</span>
+                    <h2>Büyük Sayılar &amp; Sıra Sayıları</h2>
+                </div>
+                <div class="card-body">
+                    <div class="num-section">
+                        <div class="num-section-title">Büyük sayılar</div>
+                        <div class="bignum-list">
+                            <div class="bignum-row"><span class="bignum-digit">100</span><span class="bignum-en">a
+                                    hundred</span><span class="bignum-tr">yüz</span></div>
+                            <div class="bignum-row"><span class="bignum-digit">1,000</span><span class="bignum-en">a
+                                    thousand</span><span class="bignum-tr">bin</span></div>
+                            <div class="bignum-row"><span class="bignum-digit">1,000,000</span><span class="bignum-en">a
+                                    million</span><span class="bignum-tr">milyon</span></div>
+                            <div class="bignum-row"><span class="bignum-digit">25</span><span
+                                    class="bignum-en">twenty-five</span><span class="bignum-tr">yirmi beş</span></div>
+                            <div class="bignum-row"><span class="bignum-digit">132</span><span class="bignum-en">a
+                                    hundred and thirty-two</span><span class="bignum-tr">yüz otuz iki</span></div>
+                            <div class="bignum-row"><span class="bignum-digit">2,500</span><span class="bignum-en">two
+                                    thousand five hundred</span><span class="bignum-tr">iki bin beş yüz</span></div>
+                        </div>
+                        <div
+                            style="margin-top:6px;font-size:11px;color:var(--ink-3);background:var(--warn-bg);padding:5px 8px;border-radius:6px;border-left:3px solid var(--warn)">
+                            <strong style="color:var(--warn)">⚠️</strong> 100-999 arası: "and" kullanılır — <span
+                                style="font-family:var(--mono)">a hundred <u>and</u> five</span>
+                        </div>
+                    </div>
+
+                    <div class="num-section" style="margin-top:12px">
+                        <div class="num-section-title">Sıra sayıları (Ordinal numbers)</div>
+                        <div class="ord-grid">
+                            <div class="ord-cell">
+                                <div class="ord-en">1st</div>
+                                <div class="ord-digit">first</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">2nd</div>
+                                <div class="ord-digit">second</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">3rd</div>
+                                <div class="ord-digit">third</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">4th</div>
+                                <div class="ord-digit">fourth</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">5th</div>
+                                <div class="ord-digit">fifth</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">6th</div>
+                                <div class="ord-digit">sixth</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">7th</div>
+                                <div class="ord-digit">seventh</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">8th</div>
+                                <div class="ord-digit">eighth</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">9th</div>
+                                <div class="ord-digit">ninth</div>
+                            </div>
+                            <div class="ord-cell">
+                                <div class="ord-en">10th</div>
+                                <div class="ord-digit">tenth</div>
+                            </div>
+                        </div>
+                        <div style="margin-top:6px;font-size:11px;color:var(--ink-3);line-height:1.7">
+                            Kural: <span style="font-family:var(--mono)">+ -th</span> &nbsp;|&nbsp; İstisnalar: <span
+                                style="font-family:var(--mono);color:var(--purple)">1st, 2nd, 3rd, 5th, 8th, 9th,
+                                12th</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Renkler -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>🎨</span>
+                    <h2>Renkler (Colours / Colors)</h2>
+                </div>
+                <div class="card-body">
+                    <div class="color-grid">
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#e74c3c"></div>
+                            <div class="color-label">
+                                <div class="color-en">red</div>
+                                <div class="color-tr">kırmızı</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#e67e22"></div>
+                            <div class="color-label">
+                                <div class="color-en">orange</div>
+                                <div class="color-tr">turuncu</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#f1c40f"></div>
+                            <div class="color-label">
+                                <div class="color-en">yellow</div>
+                                <div class="color-tr">sarı</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#27ae60"></div>
+                            <div class="color-label">
+                                <div class="color-en">green</div>
+                                <div class="color-tr">yeşil</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#2980b9"></div>
+                            <div class="color-label">
+                                <div class="color-en">blue</div>
+                                <div class="color-tr">mavi</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#8e44ad"></div>
+                            <div class="color-label">
+                                <div class="color-en">purple</div>
+                                <div class="color-tr">mor</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#e91e8c"></div>
+                            <div class="color-label">
+                                <div class="color-en">pink</div>
+                                <div class="color-tr">pembe</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#795548"></div>
+                            <div class="color-label">
+                                <div class="color-en">brown</div>
+                                <div class="color-tr">kahverengi</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#1a1a1a"></div>
+                            <div class="color-label">
+                                <div class="color-en">black</div>
+                                <div class="color-tr">siyah</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#ffffff;border-bottom:0.5px solid var(--rule)">
+                            </div>
+                            <div class="color-label">
+                                <div class="color-en">white</div>
+                                <div class="color-tr">beyaz</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#95a5a6"></div>
+                            <div class="color-label">
+                                <div class="color-en">grey / gray</div>
+                                <div class="color-tr">gri</div>
+                            </div>
+                        </div>
+                        <div class="color-cell">
+                            <div class="color-swatch" style="background:#d4c5a9"></div>
+                            <div class="color-label">
+                                <div class="color-en">beige</div>
+                                <div class="color-tr">bej</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                        <div
+                            style="padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule);font-size:11px;color:var(--ink-3)">
+                            <strong style="color:var(--ink-2)">Açık tonu:</strong> <span
+                                style="font-family:var(--mono)">light blue, light green</span> — önüne <span
+                                style="font-family:var(--mono)">light</span> ekle
+                        </div>
+                        <div
+                            style="padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule);font-size:11px;color:var(--ink-3)">
+                            <strong style="color:var(--ink-2)">Koyu tonu:</strong> <span
+                                style="font-family:var(--mono)">dark blue, dark green</span> — önüne <span
+                                style="font-family:var(--mono)">dark</span> ekle
+                        </div>
+                        <div
+                            style="padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule);font-size:11px;color:var(--ink-3)">
+                            <strong style="color:var(--ink-2)">Kullanım:</strong> Renk her zaman ismin önüne gelir —
+                            <span style="font-family:var(--mono)">a red car, blue eyes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- This / That / These / Those -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>👉</span>
+                    <h2>This / That / These / Those — Gösterme Zamirleri</h2>
+                </div>
+                <div class="card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+                        <!-- Yakın -->
+                        <div>
+                            <div
+                                style="font-size:10px;font-weight:600;color:var(--ok);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
+                                Yakın — Bende / Yanımda</div>
+                            <div style="display:flex;gap:8px">
+                                <div
+                                    style="flex:1;padding:10px;border-radius:8px;background:var(--ok-bg);border:0.5px solid #a8d4bc;text-align:center">
+                                    <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ok)">
+                                        this</div>
+                                    <div style="font-size:11px;color:var(--ink-3);margin-top:2px">tekil</div>
+                                    <div style="font-size:11px;color:var(--ink-2);margin-top:4px;font-style:italic">Bu
+                                        (yakın, tek)</div>
+                                    <div style="font-size:11px;font-family:var(--mono);color:var(--ok);margin-top:4px">
+                                        This is my pen.</div>
+                                </div>
+                                <div
+                                    style="flex:1;padding:10px;border-radius:8px;background:var(--ok-bg);border:0.5px solid #a8d4bc;text-align:center">
+                                    <div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ok)">
+                                        these</div>
+                                    <div style="font-size:11px;color:var(--ink-3);margin-top:2px">çoğul</div>
+                                    <div style="font-size:11px;color:var(--ink-2);margin-top:4px;font-style:italic">
+                                        Bunlar (yakın, çok)</div>
+                                    <div style="font-size:11px;font-family:var(--mono);color:var(--ok);margin-top:4px">
+                                        These are my keys.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Uzak -->
+                        <div>
+                            <div
+                                style="font-size:10px;font-weight:600;color:var(--warn);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
+                                Uzak — Orada / Ötede</div>
+                            <div style="display:flex;gap:8px">
+                                <div
+                                    style="flex:1;padding:10px;border-radius:8px;background:var(--warn-bg);border:0.5px solid #f5c896;text-align:center">
+                                    <div
+                                        style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--warn)">
+                                        that</div>
+                                    <div style="font-size:11px;color:var(--ink-3);margin-top:2px">tekil</div>
+                                    <div style="font-size:11px;color:var(--ink-2);margin-top:4px;font-style:italic">Şu /
+                                        O (uzak, tek)</div>
+                                    <div
+                                        style="font-size:11px;font-family:var(--mono);color:var(--warn);margin-top:4px">
+                                        That is your bag.</div>
+                                </div>
+                                <div
+                                    style="flex:1;padding:10px;border-radius:8px;background:var(--warn-bg);border:0.5px solid #f5c896;text-align:center">
+                                    <div
+                                        style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--warn)">
+                                        those</div>
+                                    <div style="font-size:11px;color:var(--ink-3);margin-top:2px">çoğul</div>
+                                    <div style="font-size:11px;color:var(--ink-2);margin-top:4px;font-style:italic">
+                                        Şunlar / Onlar (uzak)</div>
+                                    <div
+                                        style="font-size:11px;font-family:var(--mono);color:var(--warn);margin-top:4px">
+                                        Those are his shoes.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tablo özet -->
+                    <div
+                        style="background:var(--bg-2);border-radius:8px;padding:8px 12px;border:0.5px solid var(--rule)">
+                        <div style="display:grid;grid-template-columns:80px 1fr 1fr;gap:6px;font-size:12px">
+                            <div style="font-size:10px;font-weight:600;color:var(--ink-4);text-transform:uppercase">
+                            </div>
+                            <div
+                                style="font-size:10px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em">
+                                Tekil (singular)</div>
+                            <div
+                                style="font-size:10px;font-weight:600;color:var(--ink-3);text-transform:uppercase;letter-spacing:.05em">
+                                Çoğul (plural)</div>
+                            <div style="font-size:11px;color:var(--ink-3);align-self:center">Yakın</div>
+                            <div style="font-family:var(--mono);font-weight:600;font-size:14px;color:var(--ok)">this
+                            </div>
+                            <div style="font-family:var(--mono);font-weight:600;font-size:14px;color:var(--ok)">these
+                            </div>
+                            <div style="font-size:11px;color:var(--ink-3);align-self:center">Uzak</div>
+                            <div style="font-family:var(--mono);font-weight:600;font-size:14px;color:var(--warn)">that
+                            </div>
+                            <div style="font-family:var(--mono);font-weight:600;font-size:14px;color:var(--warn)">those
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Günlük nesneler + Tuzaklar -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🏠</span>
+                    <h2>Günlük Nesneler (Everyday Objects)</h2>
+                </div>
+                <div class="card-body">
+                    <div class="obj-grid">
+                        <div class="obj-item">
+                            <div class="obj-icon">📱</div>
+                            <div class="obj-en">phone</div>
+                            <div class="obj-tr">telefon</div>
+                            <div class="obj-ex">This is my phone.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">💻</div>
+                            <div class="obj-en">laptop</div>
+                            <div class="obj-tr">dizüstü bilgisayar</div>
+                            <div class="obj-ex">That laptop is new.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">📚</div>
+                            <div class="obj-en">book</div>
+                            <div class="obj-tr">kitap</div>
+                            <div class="obj-ex">These books are heavy.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🎒</div>
+                            <div class="obj-en">bag</div>
+                            <div class="obj-tr">çanta</div>
+                            <div class="obj-ex">That bag is black.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🔑</div>
+                            <div class="obj-en">key</div>
+                            <div class="obj-tr">anahtar</div>
+                            <div class="obj-ex">Where are my keys?</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🚗</div>
+                            <div class="obj-en">car</div>
+                            <div class="obj-tr">araba</div>
+                            <div class="obj-ex">This car is red.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">☕</div>
+                            <div class="obj-en">cup</div>
+                            <div class="obj-tr">fincan / kupa</div>
+                            <div class="obj-ex">This cup is hot.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🪑</div>
+                            <div class="obj-en">chair</div>
+                            <div class="obj-tr">sandalye</div>
+                            <div class="obj-ex">That chair is old.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🚪</div>
+                            <div class="obj-en">door</div>
+                            <div class="obj-tr">kapı</div>
+                            <div class="obj-ex">The door is open.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🪟</div>
+                            <div class="obj-en">window</div>
+                            <div class="obj-tr">pencere</div>
+                            <div class="obj-ex">Open the window.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">✏️</div>
+                            <div class="obj-en">pen / pencil</div>
+                            <div class="obj-tr">kalem</div>
+                            <div class="obj-ex">This is my pen.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">👜</div>
+                            <div class="obj-en">wallet</div>
+                            <div class="obj-tr">cüzdan</div>
+                            <div class="obj-ex">My wallet is blue.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">⌚</div>
+                            <div class="obj-en">watch</div>
+                            <div class="obj-tr">kol saati</div>
+                            <div class="obj-ex">That watch is nice.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">👓</div>
+                            <div class="obj-en">glasses</div>
+                            <div class="obj-tr">gözlük</div>
+                            <div class="obj-ex">These glasses are mine.</div>
+                        </div>
+                        <div class="obj-item">
+                            <div class="obj-icon">🗺️</div>
+                            <div class="obj-en">map</div>
+                            <div class="obj-tr">harita</div>
+                            <div class="obj-ex">That map is old.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>🇹🇷</span>
+                    <h2>Tuzaklar &amp; Önemli Noktalar</h2>
+                </div>
+                <div class="card-body">
+                    <div class="trap-list">
+                        <div class="trap-item">
+                            <div class="trap-title">"This" çoğul olmaz</div>
+                            <div class="trap-desc">Çoğul için "this" değil "these" kullanılır. Türkçe'de "bu" hem tekil
+                                hem çoğul için geçer — İngilizce'de değil.</div>
+                            <div class="trap-ex"><span class="wrong">✗ This are my books.</span><br><span
+                                    class="right">✓ These are my books.</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">Renk daima ismin önünde</div>
+                            <div class="trap-desc">Türkçe'de sıfat ismin önüne gelebilir, ama İngilizce'de de aynı —
+                                renk her zaman önce gelir.</div>
+                            <div class="trap-ex"><span class="wrong">✗ a car red</span><br><span class="right">✓ a red
+                                    car</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">"forty" — "u" yok!</div>
+                            <div class="trap-desc">"Four" → "Forty" yazılırken "u" düşer. "Fourty" diye bir kelime
+                                yoktur.</div>
+                            <div class="trap-ex"><span class="wrong">✗ fourty</span><br><span class="right">✓
+                                    forty</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">Sıra sayısında 1st / 2nd / 3rd</div>
+                            <div class="trap-desc">İlk üç sıra sayısı kuraldışıdır. Devamında -th gelir ama 5th, 8th,
+                                9th, 12th yine değişir.</div>
+                            <div class="trap-ex"><span class="wrong">✗ 1th, 2th, 3th</span><br><span class="right">✓
+                                    1st, 2nd, 3rd</span></div>
+                        </div>
+                        <div class="trap-item ok-item">
+                            <div class="trap-title">✓ "glasses" daima çoğul</div>
+                            <div class="trap-desc">Gözlük, makas, pantolon gibi çift parçalı nesneler İngilizce'de her
+                                zaman çoğul sayılır.</div>
+                            <div class="trap-ex"><span class="right">✓ These glasses are mine. (glasses are — değil
+                                    is!)</span></div>
+                        </div>
+                        <div class="trap-item ok-item">
+                            <div class="trap-title">✓ "colour" vs "color"</div>
+                            <div class="trap-desc">İkisi de doğru — İngiliz İngilizcesi "colour", Amerikan İngilizcesi
+                                "color" yazar.</div>
+                            <div class="trap-ex"><span class="right">✓ What colour/color is it?</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tanıtım takıları: a / an / the -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>🅰️</span>
+                    <h2>Tanıtım Takıları — a / an / the (Türkçede Yok!)</h2>
+                </div>
+                <div class="card-body">
+                    <div style="font-size:11px;color:var(--ink-3);margin-bottom:8px;line-height:1.6;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn)">
+                        Türkçede "bir / o" takısı çoğu zaman söylenmez. İngilizcede ise tekil sayılabilir isimler <strong style="color:var(--warn)">neredeyse her zaman</strong> bir takı ister. Bu Türk öğrencilerin <strong>1 numaralı hatasıdır</strong>.
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+                        <div style="padding:10px;border-radius:8px;background:var(--accent-bg);border:0.5px solid #b3c9ef">
+                            <div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--accent)">a</div>
+                            <div style="font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6">Sessiz harf <u>sesiyle</u> başlayan tekil isim önünde.</div>
+                            <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-top:4px">a car · a book · a university (yu-)</div>
+                        </div>
+                        <div style="padding:10px;border-radius:8px;background:var(--ok-bg);border:0.5px solid #a8d4bc">
+                            <div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--ok)">an</div>
+                            <div style="font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6">Sesli harf <u>sesiyle</u> başlayan tekil isim önünde.</div>
+                            <div style="font-family:var(--mono);font-size:11px;color:var(--ok);margin-top:4px">an apple · an hour (sessiz h) · an egg</div>
+                        </div>
+                        <div style="padding:10px;border-radius:8px;background:var(--purple-bg);border:0.5px solid #c9b8ef">
+                            <div style="font-family:var(--mono);font-size:18px;font-weight:700;color:var(--purple)">the</div>
+                            <div style="font-size:11px;color:var(--ink-2);margin-top:3px;line-height:1.6">Belirli / bilinen şey. Hem tekil hem çoğul.</div>
+                            <div style="font-family:var(--mono);font-size:11px;color:var(--purple);margin-top:4px">the car · the books · the sun</div>
+                        </div>
+                    </div>
+                    <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+                        <div style="flex:1;min-width:200px;padding:7px 10px;background:var(--ok-bg);border-radius:6px;border-left:3px solid var(--ok);font-size:11px;color:var(--ink-3)">
+                            <strong style="color:var(--ok)">İlk kez = a/an, sonra = the</strong><br>
+                            <span style="font-family:var(--mono)">I have <u>a</u> dog. <u>The</u> dog is white.</span>
+                        </div>
+                        <div style="flex:1;min-width:200px;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn);font-size:11px;color:var(--ink-3)">
+                            <strong style="color:var(--warn)">Ses önemli, harf değil</strong><br>
+                            <span style="font-family:var(--mono)">a <u>u</u>niversity (yu-) · an <u>h</u>our (sessiz h)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pratik cümleler -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>💬</span>
+                    <h2>Pratik Cümleler — Hepsini Birleştir</h2>
+                </div>
+                <div class="card-body">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+                        <div class="prac-row">
+                            <div class="prac-en"><span class="hl-demo">This</span> is a <span
+                                    class="hl-color">red</span> car.</div>
+                            <div class="prac-tr">Bu kırmızı bir araba.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en"><span class="hl-demo">Those</span> are <span
+                                    class="hl-color">blue</span> chairs.</div>
+                            <div class="prac-tr">Şunlar mavi sandalyeler.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en">I have <span class="hl-num">three</span> <span
+                                    class="hl-color">black</span> pens.</div>
+                            <div class="prac-tr">Bende üç tane siyah kalem var.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en">What colour is <span class="hl-demo">that</span> bag?</div>
+                            <div class="prac-tr">Şu çantanın rengi ne?</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en"><span class="hl-demo">These</span> are my <span
+                                    class="hl-num">two</span> keys.</div>
+                            <div class="prac-tr">Bunlar benim iki anahtarım.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en">She is on the <span class="hl-num">third</span> floor.</div>
+                            <div class="prac-tr">O üçüncü kattadır.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en">How many books are <span class="hl-demo">there</span>? <span
+                                    class="hl-num">Twenty</span>.</div>
+                            <div class="prac-tr">Kaç tane kitap var? Yirmi.</div>
+                        </div>
+                        <div class="prac-row">
+                            <div class="prac-en">My phone is <span class="hl-color">grey</span> and <span
+                                    class="hl-color">black</span>.</div>
+                            <div class="prac-tr">Telefonum gri ve siyah.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pratik -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>✍️</span>
+                    <h2>Pratik — Kendini Test Et</h2>
+                </div>
+                <div class="card-body">
+                    <div class="practice-grid">
+                        <div class="pr-block">
+                            <div class="pr-block-head">A) this / that / these / those — doğru olanı seç</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> <span class="blank"></span> is my pen. (yakın, tek)<br>
+                                    <span class="pr-num">2.</span> <span class="blank"></span> are my keys. (yakın, çok)<br>
+                                    <span class="pr-num">3.</span> <span class="blank"></span> is your bag over there. (uzak, tek)<br>
+                                    <span class="pr-num">4.</span> <span class="blank"></span> are his shoes over there. (uzak, çok)
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> This &nbsp; <span class="a-num">2.</span> These &nbsp; <span class="a-num">3.</span> That &nbsp; <span class="a-num">4.</span> Those
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">B) a / an / the — boşluğu doldur</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> I have <span class="blank"></span> apple.<br>
+                                    <span class="pr-num">2.</span> She is <span class="blank"></span> engineer.<br>
+                                    <span class="pr-num">3.</span> It's <span class="blank"></span> red car.<br>
+                                    <span class="pr-num">4.</span> Look at <span class="blank"></span> sun!<br>
+                                    <span class="pr-num">5.</span> I'll see you in <span class="blank"></span> hour.
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> an &nbsp; <span class="a-num">2.</span> an &nbsp; <span class="a-num">3.</span> a &nbsp; <span class="a-num">4.</span> the &nbsp; <span class="a-num">5.</span> an
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">C) Sayıyı İngilizce yaz</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> 13 → <span class="blank"></span><br>
+                                    <span class="pr-num">2.</span> 40 → <span class="blank"></span><br>
+                                    <span class="pr-num">3.</span> 25 → <span class="blank"></span><br>
+                                    <span class="pr-num">4.</span> 132 → <span class="blank"></span><br>
+                                    <span class="pr-num">5.</span> 3. (sıra) → <span class="blank"></span>
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> thirteen &nbsp; <span class="a-num">2.</span> forty &nbsp; <span class="a-num">3.</span> twenty-five &nbsp; <span class="a-num">4.</span> a hundred and thirty-two &nbsp; <span class="a-num">5.</span> third
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> This are my books. → <span class="blank"></span><br>
+                                    <span class="pr-num">2.</span> a car red → <span class="blank"></span><br>
+                                    <span class="pr-num">3.</span> I have fourty pens. → <span class="blank"></span><br>
+                                    <span class="pr-num">4.</span> She is engineer. → <span class="blank"></span>
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> These are my books. &nbsp; <span class="a-num">2.</span> a red car &nbsp; <span class="a-num">3.</span> forty pens &nbsp; <span class="a-num">4.</span> She is an engineer.
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Özet + Görev -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🎯</span>
+                    <h2>5 Dakikada Özet</h2>
+                </div>
+                <div class="card-body">
+                    <div class="takeaways">
+                        <div class="take-item"><span class="take-ico">👉</span><span class="take-text"><strong>this/these</strong> yakın, <strong>that/those</strong> uzak.</span></div>
+                        <div class="take-item"><span class="take-ico">🔢</span><span class="take-text"><strong>11, 12</strong> özel; 13–19 "-teen"; 20–90 "-ty".</span></div>
+                        <div class="take-item"><span class="take-ico">✏️</span><span class="take-text"><strong>forty</strong> (u yok!), <strong>ninth</strong> (e yok!).</span></div>
+                        <div class="take-item"><span class="take-ico">🎨</span><span class="take-text">Renk <strong>ismin önünde</strong>: a red car.</span></div>
+                        <div class="take-item"><span class="take-ico">🅰️</span><span class="take-text"><strong>a/an/the</strong> tekil isimle neredeyse zorunlu.</span></div>
+                        <div class="take-item"><span class="take-ico">👓</span><span class="take-text"><strong>glasses</strong> daima çoğul (are).</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head"><span>🏆</span>
+                    <h2>Günün Görevi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mission">
+                        <span class="mission-badge">🏠</span>
+                        <div class="mission-body">
+                            <span class="m-title">Oda Turu (Room Tour)</span>
+                            Odanda dolaş ve gördüğün <strong>10 nesneyi</strong> sesli betimle. Her cümlede <strong>this/that + renk + a/an</strong> kullan:<br>
+                            Örnek: <strong>"This is a black phone. That is an old chair. These are blue books."</strong><br>
+                            <span style="color:var(--ink-3)">Bonus: Her nesnenin kaç tane olduğunu say — "I have three pens."</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>İngilizce Müfredatı · Ders 3 / 25 &nbsp;·&nbsp; Ünite 1: Merhaba Dünya</span>
+            <div class="nav-links no-print">
+                <a class="nav-link" href="2.html">‹ Önceki: Ders 2</a>
+                <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+                <a class="nav-link next" href="4.html">Sonraki: Ders 4 ›</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 6 — Present Continuous · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --rose: #9f1239;
+    --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+  .header { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap; }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 270px; text-align: right; line-height: 1.7; }
+  .header-tip strong { color: var(--warn); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+
+  .card { border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .card-head { background: var(--bg-2); border-bottom: 0.5px solid var(--rule); padding: 6px 12px; display: flex; align-items: center; gap: 6px; }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-body { padding: 10px 12px; }
+
+  /* Formation */
+  .formation-box {
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px; flex-wrap: wrap;
+    padding: 14px 12px; background: var(--bg-2); border-radius: 10px;
+    border: 0.5px solid var(--rule); margin-bottom: 10px;
+  }
+  .form-slot {
+    padding: 8px 14px; border-radius: 8px;
+    font-family: var(--mono); font-size: 15px; font-weight: 600;
+    text-align: center; line-height: 1.3;
+  }
+  .form-slot small { display: block; font-size: 10px; font-weight: 400; margin-top: 2px; opacity: .75; }
+  .fs-be   { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .fs-plus { font-size: 20px; color: var(--ink-4); padding: 0; background: none; border: none; }
+  .fs-ving { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+
+  /* Conjugation table */
+  .conj-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .conj-table th { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; text-align: left; padding: 5px 10px; border-bottom: 1px solid var(--rule); background: var(--bg-2); }
+  .conj-table td { padding: 6px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: middle; }
+  .conj-table tr:last-child td { border-bottom: none; }
+  .conj-table tr:hover td { background: var(--bg-2); }
+  .col-pro { font-family: var(--mono); font-weight: 500; color: var(--accent); }
+  .col-pos { font-family: var(--mono); font-weight: 600; color: var(--ok); }
+  .col-neg { font-family: var(--mono); color: var(--warn); }
+  .col-q   { font-family: var(--mono); color: var(--purple); }
+  .col-tr  { color: var(--ink-3); font-size: 12px; }
+  .ving-hl { color: var(--ok); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* -ing spelling rules */
+  .ing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+  .ing-rule { padding: 7px 10px; border-radius: 6px; background: var(--bg-2); border: 0.5px solid var(--rule); }
+  .ing-rule.warn { background: var(--warn-bg); border-color: #f5c896; }
+  .ing-rule.ok   { background: var(--ok-bg); border-color: #a8d4bc; }
+  .ing-title { font-size: 11px; font-weight: 600; color: var(--ink-2); margin-bottom: 3px; }
+  .ing-rule.warn .ing-title { color: var(--warn); }
+  .ing-rule.ok   .ing-title { color: var(--ok); }
+  .ing-ex { font-family: var(--mono); font-size: 11px; color: var(--ink-3); line-height: 1.7; }
+
+  /* Uses */
+  .uses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+  .use-item { padding: 8px 10px; border-radius: 7px; border: 0.5px solid; }
+  .use-item.now       { background: var(--accent-bg); border-color: #b3c9ef; }
+  .use-item.temp      { background: var(--ok-bg); border-color: #a8d4bc; }
+  .use-item.changing  { background: var(--teal-bg); border-color: #a5f3fc; }
+  .use-item.annoying  { background: var(--rose-bg); border-color: #fecdd3; }
+  .use-title { font-size: 11px; font-weight: 600; margin-bottom: 3px; }
+  .use-item.now      .use-title { color: var(--accent); }
+  .use-item.temp     .use-title { color: var(--ok); }
+  .use-item.changing .use-title { color: var(--teal); }
+  .use-item.annoying .use-title { color: var(--rose); }
+  .use-kw  { font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin-bottom: 3px; }
+  .use-ex  { font-size: 12px; color: var(--ink); }
+  .use-tr  { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+
+  /* Big comparison table */
+  .cmp-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .cmp-table th { padding: 6px 10px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--rule); text-align: left; }
+  .cmp-table th.sp-head { background: var(--accent-bg); color: var(--accent); }
+  .cmp-table th.pc-head { background: var(--ok-bg); color: var(--ok); }
+  .cmp-table th.cat-head { background: var(--bg-3); color: var(--ink-3); width: 110px; }
+  .cmp-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+  .cmp-table .cat-cell { font-size: 11px; font-weight: 600; color: var(--ink-3); background: var(--bg-2); }
+  .cmp-table .sp-cell { background: #f7faff; }
+  .cmp-table .pc-cell { background: #f4fbf7; }
+  .cmp-ex { font-family: var(--mono); font-size: 12px; color: var(--ink); }
+  .cmp-tr { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  /* State verbs */
+  .state-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
+  .state-cat { border-radius: 7px; overflow: hidden; border: 0.5px solid var(--rule); }
+  .state-cat-head { padding: 5px 8px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+  .state-cat-head.emotion { background: var(--rose-bg); color: var(--rose); }
+  .state-cat-head.sense   { background: var(--teal-bg); color: var(--teal); }
+  .state-cat-head.mental  { background: var(--purple-bg); color: var(--purple); }
+  .state-cat-head.possess { background: var(--warn-bg); color: var(--warn); }
+  .state-cat-head.appear  { background: var(--ok-bg); color: var(--ok); }
+  .state-cat-head.other   { background: var(--bg-3); color: var(--ink-2); }
+  .state-words { padding: 6px 8px; font-family: var(--mono); font-size: 11px; color: var(--ink-2); line-height: 1.9; background: var(--bg); }
+
+  /* Trap items */
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item { padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--warn); background: var(--warn-bg); }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .wrong { color: #c0392b; }
+  .right { color: var(--ok); }
+
+  /* Struct row */
+  .struct-row { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; padding: 8px 10px; background: var(--bg-2); border-radius: 8px; border: 0.5px solid var(--rule); margin-bottom: 7px; }
+  .slot { padding: 4px 10px; border-radius: 16px; font-size: 12px; font-family: var(--mono); font-weight: 500; white-space: nowrap; }
+  .slot-subj { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .slot-be   { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-ving { background: var(--ok-bg); color: var(--ok); border: 0.5px solid #a8d4bc; }
+  .slot-neg  { background: var(--warn-bg); color: var(--warn); border: 0.5px solid #f5c896; }
+  .slot-q    { background: var(--purple-bg); color: var(--purple); border: 0.5px solid #c9b8ef; }
+  .slot-rest { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+  .slot-sep  { font-size: 14px; color: var(--ink-4); }
+  .struct-label { font-size: 10px; font-weight: 600; color: var(--ink-4); text-transform: uppercase; letter-spacing: .05em; width: 100%; margin-bottom: 1px; }
+  .struct-ex { font-size: 11px; color: var(--ink-3); width: 100%; margin-top: 1px; font-style: italic; }
+
+  /* Dialogue */
+  .dialogue { display: flex; flex-direction: column; gap: 7px; }
+  .bubble { display: flex; gap: 8px; align-items: flex-start; }
+  .bubble.right { flex-direction: row-reverse; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; flex-shrink: 0; margin-top: 2px; }
+  .av-a { background: var(--accent-bg); color: var(--accent); }
+  .av-b { background: var(--ok-bg); color: var(--ok); }
+  .bubble-text { padding: 7px 10px; border-radius: 10px; max-width: 86%; }
+  .bubble.left  .bubble-text { background: var(--bg-2); border: 0.5px solid var(--rule); border-top-left-radius: 3px; }
+  .bubble.right .bubble-text { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-top-right-radius: 3px; }
+  .bubble-en { font-size: 13px; color: var(--ink); margin-bottom: 1px; }
+  .bubble-tr { font-size: 11px; color: var(--ink-3); }
+  .hl-pc { color: var(--ok); font-weight: 600; }
+  .hl-sp { color: var(--accent); font-weight: 600; }
+
+  /* Footer */
+  .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 0.5px solid var(--rule); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  /* ===== Ortak eklenti bileşenleri ===== */
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+  @media (max-width: 640px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .ing-grid { grid-template-columns: 1fr; }
+    .state-grid { grid-template-columns: 1fr 1fr; }
+    .practice-grid { grid-template-columns: 1fr; }
+    .header-tip { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 6 · Ünite 2</span>
+      <h1>Şu An Ne Yapıyorsun? — Present Continuous</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A1–A2</span>
+        <span class="badge badge-level">Gramer + Konuşma</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Türkçe tuzak:</strong> Türkçe'de tek "-iyor" eki her ikisini de karşılar.<br>
+      İngilizce'de iki ayrı zaman:<br>
+      <span style="font-family:'JetBrains Mono',monospace">
+        <span style="color:var(--accent)">I drink</span> coffee. (rutin)<br>
+        <span style="color:var(--ok)">I am drinking</span> coffee. (şu an)
+      </span>
+    </div>
+  </div>
+
+  <!-- Hatırlatma -->
+  <div class="recall">
+    <span class="recall-label">🔁 Geçen ders</span>
+    <span class="recall-item">Simple Present = <strong>rutin/genel</strong></span>
+    <span class="recall-item">He/She/It → <strong>fiil + s</strong></span>
+    <span class="recall-item">don't/doesn't + <strong>yalın fiil</strong></span>
+    <span class="recall-item">always, usually, never</span>
+  </div>
+
+  <!-- Yapı + Çekim -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🔧</span><h2>Yapı — be + V-ing</h2></div>
+      <div class="card-body">
+        <div class="formation-box">
+          <div class="form-slot fs-be">am / is / are<small>to be</small></div>
+          <div class="form-slot fs-plus">+</div>
+          <div class="form-slot fs-ving">verb + -ing<small>present participle</small></div>
+        </div>
+
+        <table class="conj-table">
+          <thead>
+            <tr>
+              <th>Zamir</th>
+              <th>Olumlu (+)</th>
+              <th>Olumsuz (−)</th>
+              <th>Soru (?)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-pro">I</td>
+              <td class="col-pos">I'm work<span class="ving-hl">ing</span></td>
+              <td class="col-neg">I'm not working</td>
+              <td class="col-q">Am I working?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">You</td>
+              <td class="col-pos">You're work<span class="ving-hl">ing</span></td>
+              <td class="col-neg">You aren't working</td>
+              <td class="col-q">Are you working?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">He/She/It</td>
+              <td class="col-pos">He's work<span class="ving-hl">ing</span></td>
+              <td class="col-neg">She isn't working</td>
+              <td class="col-q">Is it working?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">We</td>
+              <td class="col-pos">We're work<span class="ving-hl">ing</span></td>
+              <td class="col-neg">We aren't working</td>
+              <td class="col-q">Are we working?</td>
+            </tr>
+            <tr>
+              <td class="col-pro">They</td>
+              <td class="col-pos">They're work<span class="ving-hl">ing</span></td>
+              <td class="col-neg">They aren't working</td>
+              <td class="col-q">Are they working?</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top:10px">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em">-ing Yazım Kuralları</div>
+          <div class="ing-grid">
+            <div class="ing-rule">
+              <div class="ing-title">Çoğu fiil → +ing</div>
+              <div class="ing-ex">work → work<strong>ing</strong><br>play → play<strong>ing</strong><br>read → read<strong>ing</strong></div>
+            </div>
+            <div class="ing-rule warn">
+              <div class="ing-title">⚠️ -e ile bitenler → e düşer</div>
+              <div class="ing-ex">make → mak<strong>ing</strong><br>write → writ<strong>ing</strong><br>come → com<strong>ing</strong></div>
+            </div>
+            <div class="ing-rule warn">
+              <div class="ing-title">⚠️ Kısa+vurgulu → son harf çift</div>
+              <div class="ing-ex">sit → sit<strong>ting</strong><br>run → run<strong>ning</strong><br>swim → swim<strong>ming</strong></div>
+            </div>
+            <div class="ing-rule ok">
+              <div class="ing-title">✓ -ie ile bitenler → y olur</div>
+              <div class="ing-ex">lie → ly<strong>ing</strong><br>die → dy<strong>ing</strong><br>tie → ty<strong>ing</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>📌</span><h2>Present Continuous Ne Zaman Kullanılır?</h2></div>
+      <div class="card-body">
+        <div class="uses-grid">
+          <div class="use-item now">
+            <div class="use-title">⚡ Şu an olup bitenler</div>
+            <div class="use-kw">now · right now · at the moment</div>
+            <div class="use-ex">She is reading a book right now.</div>
+            <div class="use-tr">Şu an kitap okuyor.</div>
+          </div>
+          <div class="use-item temp">
+            <div class="use-title">🔄 Geçici durumlar</div>
+            <div class="use-kw">this week · these days · currently</div>
+            <div class="use-ex">I'm living in Istanbul this year.</div>
+            <div class="use-tr">Bu yıl geçici olarak İstanbul'da yaşıyorum.</div>
+          </div>
+          <div class="use-item changing">
+            <div class="use-title">📈 Değişen durumlar</div>
+            <div class="use-kw">getting · becoming · changing</div>
+            <div class="use-ex">Prices are rising every month.</div>
+            <div class="use-tr">Fiyatlar her ay yükseliyor.</div>
+          </div>
+          <div class="use-item annoying">
+            <div class="use-title">😤 Şikayet (always ile)</div>
+            <div class="use-kw">always · constantly · forever</div>
+            <div class="use-ex">He is always losing his keys!</div>
+            <div class="use-tr">O her zaman anahtarlarını kaybediyor!</div>
+          </div>
+        </div>
+
+        <div style="margin-top: 4px;">
+          <div class="struct-row">
+            <div class="struct-label">Cümle yapısı — Olumlu</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-be">am/is/are</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-ving">V-ing</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-rest">geri kalan</span>
+            <div class="struct-ex">I am watching a film. · She is cooking dinner.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Olumsuz</div>
+            <span class="slot slot-subj">Özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-neg">am/is/are + not</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-ving">V-ing</span>
+            <div class="struct-ex">I'm not sleeping. · They aren't working today.</div>
+          </div>
+          <div class="struct-row">
+            <div class="struct-label">Soru</div>
+            <span class="slot slot-q">Am/Is/Are</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-subj">özne</span>
+            <span class="slot-sep">+</span>
+            <span class="slot slot-ving">V-ing?</span>
+            <div class="struct-ex">Are you studying? · Is he coming?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simple Present vs Present Continuous KARŞILAŞTIRMA -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>⚖️</span><h2>Simple Present vs Present Continuous — Büyük Karşılaştırma</h2></div>
+      <div class="card-body">
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th class="cat-head"></th>
+              <th class="sp-head">Simple Present</th>
+              <th class="pc-head">Present Continuous</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cat-cell">Anlam</td>
+              <td class="sp-cell"><div class="cmp-ex">Alışkanlık, genel gerçek</div><div class="cmp-tr">Her zaman böyle / genelde böyle</div></td>
+              <td class="pc-cell"><div class="cmp-ex">Şu an olan, geçici</div><div class="cmp-tr">Tam şu an / bu dönemde</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Anahtar kelimeler</td>
+              <td class="sp-cell"><div class="cmp-ex">every day · always · usually<br>often · never · on Mondays</div></td>
+              <td class="pc-cell"><div class="cmp-ex">now · right now · at the moment<br>today · this week · currently</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek (I)</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">I drink coffee every morning.</div><div class="cmp-tr">Her sabah kahve içerim. (alışkanlık)</div></td>
+              <td class="pc-cell"><div class="cmp-ex" style="color:var(--ok)">I am drinking coffee right now.</div><div class="cmp-tr">Şu an kahve içiyorum.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek (She)</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">She works in a hospital.</div><div class="cmp-tr">Bir hastanede çalışıyor. (genel)</div></td>
+              <td class="pc-cell"><div class="cmp-ex" style="color:var(--ok)">She is working from home today.</div><div class="cmp-tr">Bugün evden çalışıyor. (geçici)</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Örnek (They)</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">They play football on Sundays.</div><div class="cmp-tr">Pazar günleri futbol oynarlar.</div></td>
+              <td class="pc-cell"><div class="cmp-ex" style="color:var(--ok)">They are playing football now.</div><div class="cmp-tr">Şu an futbol oynuyorlar.</div></td>
+            </tr>
+            <tr>
+              <td class="cat-cell">Soru</td>
+              <td class="sp-cell"><div class="cmp-ex" style="color:var(--accent)">Do you live in Ankara?</div><div class="cmp-tr">Ankara'da mı yaşıyorsun? (genel)</div></td>
+              <td class="pc-cell"><div class="cmp-ex" style="color:var(--ok)">Are you living in Ankara now?</div><div class="cmp-tr">Şu an Ankara'da mı yaşıyorsun? (geçici)</div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- State Verbs + Tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🚫</span><h2>State Verbs — Present Continuous'da Kullanılmaz</h2></div>
+      <div class="card-body">
+        <div style="font-size:12px;color:var(--ink-3);margin-bottom:8px;line-height:1.6;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn)">
+          <strong style="color:var(--warn)">State (durum) fiilleri</strong> eylem değil, kalıcı durumu anlatır — süregelen bir eylem olmadığı için <strong>-ing alamazlar</strong>.
+        </div>
+        <div class="state-grid">
+          <div class="state-cat">
+            <div class="state-cat-head emotion">💗 Duygular</div>
+            <div class="state-words">love · hate<br>like · want<br>need · prefer<br>feel*</div>
+          </div>
+          <div class="state-cat">
+            <div class="state-cat-head sense">👁 Algı</div>
+            <div class="state-words">see · hear<br>smell · taste<br>notice<br>seem</div>
+          </div>
+          <div class="state-cat">
+            <div class="state-cat-head mental">🧠 Zihin</div>
+            <div class="state-words">know · think*<br>believe · remember<br>forget · understand<br>mean</div>
+          </div>
+          <div class="state-cat">
+            <div class="state-cat-head possess">🏠 Sahiplik</div>
+            <div class="state-words">have* · own<br>belong · contain<br>include<br>possess</div>
+          </div>
+          <div class="state-cat">
+            <div class="state-cat-head appear">✨ Görünüm</div>
+            <div class="state-words">look* · appear<br>seem · sound<br>weigh<br>measure</div>
+          </div>
+          <div class="state-cat">
+            <div class="state-cat-head other">➕ Diğer</div>
+            <div class="state-words">be · exist<br>depend · matter<br>cost · fit<br>consist</div>
+          </div>
+        </div>
+        <div style="margin-top:8px;padding:7px 10px;background:var(--accent-bg);border-radius:6px;border:0.5px solid #b3c9ef;font-size:11px;color:var(--ink-3)">
+          <strong style="color:var(--accent)">* İstisna:</strong> Bazı fiiller bağlama göre her iki formda kullanılabilir.<br>
+          <span style="font-family:var(--mono)">I think you're right.</span> (düşünce) vs <span style="font-family:var(--mono)">I'm thinking about it.</span> (düşünüyor = aktif süreç)<br>
+          <span style="font-family:var(--mono)">I have a car.</span> (sahiplik) vs <span style="font-family:var(--mono)">I'm having lunch.</span> (yiyor = eylem)
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span>🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item">
+            <div class="trap-title">"-iyor" → hangisini kullanacağını bilmemek</div>
+            <div class="trap-desc">Türkçe'de "gidiyorum" hem rutin hem anlık eylemi karşılar. İngilizce'de bağlamdan karar verilmeli.</div>
+            <div class="trap-ex">
+              <span class="right">✓ I go to work by metro. (her gün → SP)<br>✓ I'm going to the market now. (şu an → PC)</span>
+            </div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">to be'yi unutmak</div>
+            <div class="trap-desc">Present Continuous her zaman iki parçadan oluşur: am/is/are + V-ing. Biri eksik olamaz.</div>
+            <div class="trap-ex"><span class="wrong">✗ She working now.</span><br><span class="right">✓ She <strong>is</strong> working now.</span></div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">make → "makeing" yazmak</div>
+            <div class="trap-desc">-e ile biten fiillerde e düşer, direkt -ing eklenir.</div>
+            <div class="trap-ex"><span class="wrong">✗ She is makeing dinner.</span><br><span class="right">✓ She is mak<strong>ing</strong> dinner.</span></div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">State fiillere -ing eklemek</div>
+            <div class="trap-desc">"Know, love, want, have (sahiplik)" gibi durum fiilleri -ing alamaz.</div>
+            <div class="trap-ex"><span class="wrong">✗ I am knowing the answer.</span><br><span class="right">✓ I know the answer.</span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ run → running (son harf çiftlenir)</div>
+            <div class="trap-desc">Tek heceli, kısa sesli + tek ünsüz ile biten fiillerde son harf çiftlenir.</div>
+            <div class="trap-ex"><span class="right">✓ run→runn<strong>ing</strong> &nbsp; sit→sitt<strong>ing</strong> &nbsp; swim→swimm<strong>ing</strong></span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">✓ Kısa cevaplarda to be tekrar gelir</div>
+            <div class="trap-desc">Yes/No sorularında kısa cevapta to be kullanılır, -ing gelmez.</div>
+            <div class="trap-ex"><span class="right">✓ Are you working? — Yes, I am. / No, I'm not.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gerçek diyalog -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>💬</span><h2>Gerçek Hayat Diyaloğu — Telefon Konuşması</h2></div>
+      <div class="card-body">
+        <div style="font-size:11px;color:var(--ink-3);margin-bottom:10px;padding:5px 10px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+          🟢 Yeşil = Present Continuous (şu an) &nbsp;·&nbsp; 🔵 Mavi = Simple Present (rutin/genel)
+        </div>
+        <div class="dialogue">
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Hey! What <span class="hl-pc">are</span> you <span class="hl-pc">doing</span>?</div>
+              <div class="bubble-tr">Hey! Ne yapıyorsun şu an?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">I <span class="hl-pc">'m studying</span> for my English exam. It <span class="hl-pc">'s going</span> well!</div>
+              <div class="bubble-tr">İngilizce sınavım için çalışıyorum. İyi gidiyor!</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Nice! You <span class="hl-sp">always study</span> so hard. <span class="hl-sp">Do</span> you <span class="hl-sp">usually study</span> at home?</div>
+              <div class="bubble-tr">Güzel! Her zaman çok çalışırsın. Genellikle evde mi çalışırsın?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Yes, but this week I <span class="hl-pc">'m staying</span> at my sister's place. She <span class="hl-pc">'s working</span> abroad right now.</div>
+              <div class="bubble-tr">Evet, ama bu hafta ablamın evinde kalıyorum. O şu an yurt dışında çalışıyor.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Oh, where <span class="hl-sp">does</span> she <span class="hl-sp">work</span> normally?</div>
+              <div class="bubble-tr">O normalde nerede çalışır?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">She <span class="hl-sp">works</span> for a tech company. But currently she <span class="hl-pc">'s managing</span> a project in Berlin.</div>
+              <div class="bubble-tr">Bir teknoloji şirketinde çalışıyor. Ama şu an Berlin'deki bir projeyi yönetiyor.</div>
+            </div>
+          </div>
+          <div class="bubble left">
+            <div class="avatar av-a">A</div>
+            <div class="bubble-text">
+              <div class="bubble-en">That sounds exciting! Anyway, <span class="hl-sp">do</span> you <span class="hl-sp">want</span> to grab coffee tomorrow?</div>
+              <div class="bubble-tr">Heyecan verici! Her neyse, yarın kahve içmek ister misin?</div>
+            </div>
+          </div>
+          <div class="bubble right">
+            <div class="avatar av-b">B</div>
+            <div class="bubble-text">
+              <div class="bubble-en">Sure! I <span class="hl-sp">finish</span> classes at noon. Text me — I <span class="hl-pc">'m not doing</span> anything in the afternoon.</div>
+              <div class="bubble-tr">Tabii! Öğleden sonra derslerim bitiyor. Mesaj at — öğleden sonra hiçbir şey yapmıyorum.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span>✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) -ing biçimini doğru yaz</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> make → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> run → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> study → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> lie → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> swim → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> making &nbsp; <span class="a-num">2.</span> running &nbsp; <span class="a-num">3.</span> studying &nbsp; <span class="a-num">4.</span> lying &nbsp; <span class="a-num">5.</span> swimming
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) Simple Present mi, Present Continuous mu?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I <span class="blank"></span> (drink) coffee right now.<br>
+                <span class="pr-num">2.</span> She <span class="blank"></span> (work) here every day.<br>
+                <span class="pr-num">3.</span> Look! It <span class="blank"></span> (rain).<br>
+                <span class="pr-num">4.</span> We <span class="blank"></span> (play) football on Sundays.
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> am drinking &nbsp; <span class="a-num">2.</span> works &nbsp; <span class="a-num">3.</span> is raining &nbsp; <span class="a-num">4.</span> play
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) Doğru mu? State verb kontrolü (✓ / ✗)</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> I am knowing the answer. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> She is watching TV. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I am wanting a coffee. → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> They are studying now. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> ✗ → I know the answer. &nbsp; <span class="a-num">2.</span> ✓ &nbsp; <span class="a-num">3.</span> ✗ → I want a coffee. &nbsp; <span class="a-num">4.</span> ✓
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> She working now. → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> She is makeing dinner. → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> I am go to school now. → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> She is working now. &nbsp; <span class="a-num">2.</span> She is making dinner. &nbsp; <span class="a-num">3.</span> I am going to school now.
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span>🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔧</span><span class="take-text">Yapı: <strong>am/is/are + V-ing</strong> (iki parça da şart).</span></div>
+          <div class="take-item"><span class="take-ico">⚡</span><span class="take-text"><strong>Şu an / geçici</strong> eylemler için (now, today).</span></div>
+          <div class="take-item"><span class="take-ico">✏️</span><span class="take-text">make→<strong>making</strong>, run→<strong>running</strong>, lie→<strong>lying</strong>.</span></div>
+          <div class="take-item"><span class="take-ico">🚫</span><span class="take-text"><strong>State verbs</strong> (know, want, love) -ing almaz.</span></div>
+          <div class="take-item"><span class="take-ico">⚖️</span><span class="take-text">SP = rutin, PC = şu an. Türkçe "-iyor" ikisini de karşılar.</span></div>
+          <div class="take-item"><span class="take-ico">😤</span><span class="take-text"><strong>always + V-ing</strong> = şikayet (He is always losing...).</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span>🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">📸</span>
+          <div class="mission-body">
+            <span class="m-title">Anlık Yorumcu (Live Commentary)</span>
+            Pencereden dışarı bak veya bir video aç. Gördüğün her şeyi <strong>"şu an"</strong> diliyle, <strong>8 cümle</strong> canlı anlat:<br>
+            <strong>"A man is walking. Two kids are playing. It is getting dark."</strong><br>
+            <span style="color:var(--ink-3)">Bonus: Sonra aynı sahneyi rutin (Simple Present) ile anlat ve farkı hisset.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 6 / 25 &nbsp;·&nbsp; Ünite 2: Hayat Akıyor</span>
+    <div class="nav-links no-print">
+      <a class="nav-link" href="../1/5.html">‹ Önceki: Ders 5</a>
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="7.html">Sonraki: Ders 7 ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

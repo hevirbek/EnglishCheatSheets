@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ders 1 — Harfler, Sesler ve Telaffuz · İngilizce Cheat Sheet</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a;
+    --ink-2: #444;
+    --ink-3: #777;
+    --ink-4: #aaa;
+    --bg: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #f0efe9;
+    --rule: #e0dfd8;
+    --accent: #2a5caa;
+    --accent-bg: #eef3fb;
+    --warn: #b85c00;
+    --warn-bg: #fff4e8;
+    --ok: #1a6b3c;
+    --ok-bg: #edf7f1;
+    --purple: #5b3ea8;
+    --purple-bg: #f2effe;
+    --teal: #0e7490;
+    --teal-bg: #ecfeff;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .header-left { display: flex; flex-direction: column; gap: 3px; }
+  .lesson-label { font-size: 11px; font-weight: 500; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .header h1 { font-size: 22px; font-weight: 600; color: var(--ink); }
+  .header-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-level { background: var(--accent-bg); color: var(--accent); }
+  .badge-time { background: var(--bg-3); color: var(--ink-2); }
+  .badge-unit { background: var(--ink); color: #fff; }
+  .header-tip { font-size: 12px; color: var(--ink-3); max-width: 280px; text-align: right; line-height: 1.6; }
+  .header-tip strong { color: var(--warn); }
+
+  /* Grid layout */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .grid-full { margin-bottom: 1rem; }
+  .span-2 { grid-column: span 2; }
+
+  /* Section card */
+  .card {
+    border: 0.5px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .card-head {
+    background: var(--bg-2);
+    border-bottom: 0.5px solid var(--rule);
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-head h2 { font-size: 11px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.07em; }
+  .card-head .icon { font-size: 13px; }
+  .card-body { padding: 10px 12px; }
+
+  /* Alphabet row */
+  .alpha-grid {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    gap: 4px;
+  }
+  .alpha-cell {
+    text-align: center;
+    padding: 5px 2px;
+    border-radius: 4px;
+    background: var(--bg-2);
+    border: 0.5px solid var(--rule);
+  }
+  .alpha-cell .letter { font-size: 14px; font-weight: 600; color: var(--ink); font-family: var(--mono); line-height: 1; }
+  .alpha-cell .pron { font-size: 9px; color: var(--accent); margin-top: 2px; }
+
+  /* Vowel / consonant blocks */
+  .vowel-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .vowel-chip {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+  .vowel-chip.v { background: var(--accent-bg); color: var(--accent); border: 0.5px solid #b3c9ef; }
+  .vowel-chip.c { background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+
+  /* IPA / sound table */
+  .sound-table { width: 100%; border-collapse: collapse; }
+  .sound-table th {
+    font-size: 10px; font-weight: 600; color: var(--ink-3);
+    text-transform: uppercase; letter-spacing: 0.06em;
+    text-align: left; padding: 4px 8px;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .sound-table td { padding: 5px 8px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .sound-table tr:last-child td { border-bottom: none; }
+  .ipa { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); }
+  .example-word { font-weight: 500; color: var(--ink); }
+  .example-word em { color: var(--accent); font-style: normal; text-decoration: underline; text-underline-offset: 2px; }
+  .tr-note { font-size: 11px; color: var(--ink-3); }
+
+  /* Danger / warning rows */
+  .warn-row { background: var(--warn-bg); }
+  .warn-row td { border-bottom: 0.5px solid #f5d9b8 !important; }
+  .warn-row .ipa { color: var(--warn); }
+
+  /* Minimal pairs */
+  .pair-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .pair-item {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 6px;
+    background: var(--bg-2); border: 0.5px solid var(--rule);
+  }
+  .pair-word { font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--ink); min-width: 52px; }
+  .pair-ipa { font-size: 11px; color: var(--accent); min-width: 36px; }
+  .pair-tr { font-size: 11px; color: var(--ink-3); }
+  .pair-sep { font-size: 16px; color: var(--rule); align-self: center; }
+
+  /* Turkish traps */
+  .trap-list { display: flex; flex-direction: column; gap: 6px; }
+  .trap-item {
+    padding: 8px 10px; border-radius: 6px;
+    border-left: 3px solid var(--warn);
+    background: var(--warn-bg);
+  }
+  .trap-item.ok-item { border-left-color: var(--ok); background: var(--ok-bg); }
+  .trap-title { font-size: 12px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+  .trap-desc { font-size: 11px; color: var(--ink-3); line-height: 1.6; }
+  .trap-ex { font-family: var(--mono); font-size: 11px; margin-top: 3px; }
+  .trap-ex .wrong { color: #c0392b; }
+  .trap-ex .right { color: var(--ok); }
+
+  /* Intonation arrows */
+  .inton-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .inton-item {
+    flex: 1; min-width: 120px; padding: 8px 10px; border-radius: 6px;
+    background: var(--bg-2); border: 0.5px solid var(--rule);
+    text-align: center;
+  }
+  .inton-arrow { font-size: 22px; margin-bottom: 2px; }
+  .inton-label { font-size: 11px; font-weight: 600; color: var(--ink-2); }
+  .inton-ex { font-size: 11px; color: var(--ink-3); margin-top: 2px; font-style: italic; }
+
+  /* Tips box */
+  .tips-list { display: flex; flex-direction: column; gap: 5px; }
+  .tip-row { display: flex; gap: 8px; align-items: flex-start; }
+  .tip-num { font-size: 11px; font-weight: 600; color: #fff; background: var(--accent); border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 12px; color: var(--ink-2); line-height: 1.6; }
+  .tip-text strong { color: var(--ink); }
+
+  /* Footer */
+  .footer {
+    margin-top: 2rem; padding-top: 0.75rem;
+    border-top: 0.5px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 8px;
+  }
+  .footer span { font-size: 11px; color: var(--ink-4); }
+  .next-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--bg-3); color: var(--ink-3); }
+
+  /* ===== Ortak eklenti bileşenleri (recall / practice / takeaways / mission / nav) ===== */
+  .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+  .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+  .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+  .recall-item strong { color:var(--ink); }
+
+  .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+  .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+  .pr-block-body { padding:8px 10px; }
+  .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+  .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+  .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+  details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+  details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+  details.answers > summary::-webkit-details-marker { display:none; }
+  details.answers > summary::before { content:'▸ '; }
+  details.answers[open] > summary::before { content:'▾ '; }
+  .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+  .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+
+  .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+  .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+  .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+  .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+  .take-text strong { color:var(--ink); }
+
+  .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+  .mission-badge { font-size:22px; line-height:1; }
+  .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+  .mission-body strong { color:var(--ink); }
+  .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+
+  .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+  .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+  .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+  .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { font-size: 11px; }
+    .page { padding: 0; max-width: 100%; }
+    .card, .grid-2, .grid-3, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+    .no-print { display: none !important; }
+    /* Cevap anahtarlarını baskıda otomatik aç */
+    details.answers > *:not(summary) { display: block !important; }
+    details.answers > summary::before { content: '✓ '; }
+  }
+
+  @media (max-width: 620px) {
+    .practice-grid { grid-template-columns: 1fr; }
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .alpha-grid { grid-template-columns: repeat(9, 1fr); }
+    .span-2 { grid-column: span 1; }
+    .header-tip { text-align: left; max-width: 100%; }
+    .pair-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <span class="lesson-label">Ders 1 · Ünite 1</span>
+      <h1>Harfler, Sesler ve Telaffuz Sırları</h1>
+      <div class="header-meta">
+        <span class="badge badge-unit">A1 Başlangıç</span>
+        <span class="badge badge-level">Telaffuz + Alfabe</span>
+        <span class="badge badge-time">⏱ ~2 saat</span>
+      </div>
+    </div>
+    <div class="header-tip">
+      <strong>Altın kural:</strong> İngilizce'de yazıldığı gibi okunmaz.<br>
+      Önce kulağını eğit, sonra gramere geç.
+    </div>
+  </div>
+
+  <!-- Nasıl çalışılır -->
+  <div class="recall">
+    <span class="recall-label">📖 Nasıl çalış</span>
+    <span class="recall-item"><strong>1.</strong> Her bölümü <strong>yüksek sesle</strong> oku</span>
+    <span class="recall-item"><strong>2.</strong> IPA seslerini taklit et</span>
+    <span class="recall-item"><strong>3.</strong> Sonda <strong>Pratik</strong> bölümünü çöz</span>
+    <span class="recall-item"><strong>4.</strong> Günün görevini uygula</span>
+  </div>
+
+  <!-- Alfabe -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span class="icon">🔤</span><h2>İngilizce Alfabesi — 26 Harf</h2></div>
+      <div class="card-body">
+        <div class="alpha-grid">
+          <div class="alpha-cell"><div class="letter">A</div><div class="pron">eɪ</div></div>
+          <div class="alpha-cell"><div class="letter">B</div><div class="pron">biː</div></div>
+          <div class="alpha-cell"><div class="letter">C</div><div class="pron">siː</div></div>
+          <div class="alpha-cell"><div class="letter">D</div><div class="pron">diː</div></div>
+          <div class="alpha-cell"><div class="letter">E</div><div class="pron">iː</div></div>
+          <div class="alpha-cell"><div class="letter">F</div><div class="pron">ɛf</div></div>
+          <div class="alpha-cell"><div class="letter">G</div><div class="pron">dʒiː</div></div>
+          <div class="alpha-cell"><div class="letter">H</div><div class="pron">eɪtʃ</div></div>
+          <div class="alpha-cell"><div class="letter">I</div><div class="pron">aɪ</div></div>
+          <div class="alpha-cell"><div class="letter">J</div><div class="pron">dʒeɪ</div></div>
+          <div class="alpha-cell"><div class="letter">K</div><div class="pron">keɪ</div></div>
+          <div class="alpha-cell"><div class="letter">L</div><div class="pron">ɛl</div></div>
+          <div class="alpha-cell"><div class="letter">M</div><div class="pron">ɛm</div></div>
+          <div class="alpha-cell"><div class="letter">N</div><div class="pron">ɛn</div></div>
+          <div class="alpha-cell"><div class="letter">O</div><div class="pron">oʊ</div></div>
+          <div class="alpha-cell"><div class="letter">P</div><div class="pron">piː</div></div>
+          <div class="alpha-cell"><div class="letter">Q</div><div class="pron">kjuː</div></div>
+          <div class="alpha-cell"><div class="letter">R</div><div class="pron">ɑːr</div></div>
+          <div class="alpha-cell"><div class="letter">S</div><div class="pron">ɛs</div></div>
+          <div class="alpha-cell"><div class="letter">T</div><div class="pron">tiː</div></div>
+          <div class="alpha-cell"><div class="letter">U</div><div class="pron">juː</div></div>
+          <div class="alpha-cell"><div class="letter">V</div><div class="pron">viː</div></div>
+          <div class="alpha-cell"><div class="letter">W</div><div class="pron">ˈdʌbljuː</div></div>
+          <div class="alpha-cell"><div class="letter">X</div><div class="pron">ɛks</div></div>
+          <div class="alpha-cell"><div class="letter">Y</div><div class="pron">waɪ</div></div>
+          <div class="alpha-cell"><div class="letter">Z</div><div class="pron">ziː/zɛd</div></div>
+        </div>
+        <div style="margin-top:10px;">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-3);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">Sesli harfler (Vowels) — 5+1</div>
+          <div class="vowel-row">
+            <span class="vowel-chip v">A</span>
+            <span class="vowel-chip v">E</span>
+            <span class="vowel-chip v">I</span>
+            <span class="vowel-chip v">O</span>
+            <span class="vowel-chip v">U</span>
+            <span class="vowel-chip v" style="opacity:.6">Y*</span>
+            <span style="font-size:11px;color:var(--ink-3);align-self:center;">Geri kalan 20 harf = sessiz (consonant) &nbsp;·&nbsp; *Y bazen sesli gibi davranır: <em style="font-style:normal;font-family:var(--mono)">gym, sky</em></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sesler tablosu + Türkçede olmayan sesler -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span class="icon">🔊</span><h2>Temel İngilizce Sesler (IPA)</h2></div>
+      <div class="card-body">
+        <table class="sound-table">
+          <thead>
+            <tr>
+              <th>Ses</th>
+              <th>Örnek kelime</th>
+              <th>Türkçe ip ucu</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="ipa">æ</span></td><td><span class="example-word">c<em>a</em>t, b<em>a</em>d</span></td><td class="tr-note">Türkçe "a" ile "e" arası</td></tr>
+            <tr><td><span class="ipa">ʌ</span></td><td><span class="example-word">c<em>u</em>p, b<em>u</em>s</span></td><td class="tr-note">Kısa, gevşek "a"</td></tr>
+            <tr><td><span class="ipa">ɪ</span></td><td><span class="example-word">s<em>i</em>t, b<em>i</em>t</span></td><td class="tr-note">Kısa "i" — ağız yarı açık</td></tr>
+            <tr><td><span class="ipa">iː</span></td><td><span class="example-word">s<em>ee</em>, b<em>ea</em>t</span></td><td class="tr-note">Uzun "i" — dudaklar gergin</td></tr>
+            <tr><td><span class="ipa">ʊ</span></td><td><span class="example-word">b<em>oo</em>k, p<em>u</em>t</span></td><td class="tr-note">Kısa "u" — gevşek</td></tr>
+            <tr><td><span class="ipa">uː</span></td><td><span class="example-word">f<em>oo</em>d, bl<em>ue</em></span></td><td class="tr-note">Uzun "u"</td></tr>
+            <tr><td><span class="ipa">ɒ</span></td><td><span class="example-word">d<em>o</em>g, h<em>o</em>t</span></td><td class="tr-note">Yuvarlak, kısa "o"</td></tr>
+            <tr><td><span class="ipa">eɪ</span></td><td><span class="example-word">d<em>ay</em>, m<em>a</em>ke</span></td><td class="tr-note">"e+y" kayması</td></tr>
+            <tr><td><span class="ipa">aɪ</span></td><td><span class="example-word">m<em>y</em>, l<em>i</em>ke</span></td><td class="tr-note">"a+y" kayması</td></tr>
+            <tr><td><span class="ipa">əʊ</span></td><td><span class="example-word">g<em>o</em>, ph<em>o</em>ne</span></td><td class="tr-note">"ö+u" kayması</td></tr>
+            <tr><td><span class="ipa">ə</span></td><td><span class="example-word"><em>a</em>bout, teach<em>e</em>r</span></td><td class="tr-note">Schwa — en yaygın ses!</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="icon">⚠️</span><h2>Türkçede Olmayan Sesler — Dikkat!</h2></div>
+      <div class="card-body">
+        <table class="sound-table">
+          <thead>
+            <tr><th>Ses</th><th>Kelime</th><th>Nasıl çıkarılır?</th></tr>
+          </thead>
+          <tbody>
+            <tr class="warn-row">
+              <td><span class="ipa">θ</span></td>
+              <td><span class="example-word"><em>th</em>ink, <em>th</em>ree</span></td>
+              <td class="tr-note">Dilin ucu dişlerin arasında — "s" değil! <br><em>think ≠ sink</em></td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">ð</span></td>
+              <td><span class="example-word"><em>th</em>is, <em>th</em>e</span></td>
+              <td class="tr-note">Titreşimli θ — "z" değil!<br><em>this ≠ zis</em></td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">w</span></td>
+              <td><span class="example-word"><em>w</em>ater, <em>w</em>in</span></td>
+              <td class="tr-note">Dudaklar yuvarlak başlar — "v" değil!<br><em>wine ≠ vine</em></td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">v</span></td>
+              <td><span class="example-word"><em>v</em>ery, lo<em>v</em>e</span></td>
+              <td class="tr-note">Alt dudak + üst diş — "w" ile karıştırma<br><em>very ≠ wery</em></td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">ŋ</span></td>
+              <td><span class="example-word">si<em>ng</em>, ri<em>ng</em></span></td>
+              <td class="tr-note">Burundan "ng" — "g" sesi çıkma! <br><em>sing ≠ sıng-g</em></td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">h</span></td>
+              <td><span class="example-word"><em>h</em>ome, <em>h</em>appy</span></td>
+              <td class="tr-note">Nefes sesi — Türkçe "h"den daha hafif<br>Sessiz değil!</td>
+            </tr>
+            <tr class="warn-row">
+              <td><span class="ipa">r</span></td>
+              <td><span class="example-word"><em>r</em>ed, ca<em>r</em></span></td>
+              <td class="tr-note">Dil hiçbir yere vurmaz/titremez — Türkçe "r" gibi yuvarlanmaz, yumuşak kalır</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimal pairs + Türkçe tuzaklar -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span class="icon">🎯</span><h2>Minimal Pairs — Bir Ses, Farklı Anlam</h2></div>
+      <div class="card-body">
+        <p style="font-size:11px;color:var(--ink-3);margin-bottom:8px;">Sadece bir ses değişiyor — ama anlam tamamen farklı!</p>
+        <div class="pair-grid">
+          <div class="pair-item"><span class="pair-word">ship</span><span class="pair-ipa">/ʃɪp/</span><span class="pair-tr">gemi</span></div>
+          <div class="pair-item"><span class="pair-word">sheep</span><span class="pair-ipa">/ʃiːp/</span><span class="pair-tr">koyun</span></div>
+
+          <div class="pair-item"><span class="pair-word">bit</span><span class="pair-ipa">/bɪt/</span><span class="pair-tr">parça</span></div>
+          <div class="pair-item"><span class="pair-word">beat</span><span class="pair-ipa">/biːt/</span><span class="pair-tr">vurmak</span></div>
+
+          <div class="pair-item"><span class="pair-word">think</span><span class="pair-ipa">/θɪŋk/</span><span class="pair-tr">düşünmek</span></div>
+          <div class="pair-item"><span class="pair-word">sink</span><span class="pair-ipa">/sɪŋk/</span><span class="pair-tr">lavabo</span></div>
+
+          <div class="pair-item"><span class="pair-word">wine</span><span class="pair-ipa">/waɪn/</span><span class="pair-tr">şarap</span></div>
+          <div class="pair-item"><span class="pair-word">vine</span><span class="pair-ipa">/vaɪn/</span><span class="pair-tr">asma</span></div>
+
+          <div class="pair-item"><span class="pair-word">cat</span><span class="pair-ipa">/kæt/</span><span class="pair-tr">kedi</span></div>
+          <div class="pair-item"><span class="pair-word">cut</span><span class="pair-ipa">/kʌt/</span><span class="pair-tr">kesmek</span></div>
+
+          <div class="pair-item"><span class="pair-word">live</span><span class="pair-ipa">/lɪv/</span><span class="pair-tr">yaşamak</span></div>
+          <div class="pair-item"><span class="pair-word">leave</span><span class="pair-ipa">/liːv/</span><span class="pair-tr">ayrılmak</span></div>
+
+          <div class="pair-item"><span class="pair-word">this</span><span class="pair-ipa">/ðɪs/</span><span class="pair-tr">bu</span></div>
+          <div class="pair-item"><span class="pair-word">these</span><span class="pair-ipa">/ðiːz/</span><span class="pair-tr">bunlar</span></div>
+
+          <div class="pair-item"><span class="pair-word">fan</span><span class="pair-ipa">/fæn/</span><span class="pair-tr">fan, vantilatör</span></div>
+          <div class="pair-item"><span class="pair-word">van</span><span class="pair-ipa">/væn/</span><span class="pair-tr">minibüs</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="icon">🇹🇷</span><h2>Türkçe Konuşanların Klasik Tuzakları</h2></div>
+      <div class="card-body">
+        <div class="trap-list">
+          <div class="trap-item">
+            <div class="trap-title">V ve W karıştırmak</div>
+            <div class="trap-desc">"very" ve "water" farklı seslerle başlar. V = alt dudak + diş. W = yuvarlak dudak.</div>
+            <div class="trap-ex"><span class="wrong">✗ wery good</span> &nbsp;&nbsp; <span class="right">✓ very good</span></div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">TH sesini "d" veya "z" yapmak</div>
+            <div class="trap-desc">"the" = /ðə/ — "ze" ya da "de" değil. Dilin ucu dişlerin arasından geçer.</div>
+            <div class="trap-ex"><span class="wrong">✗ ze book</span> &nbsp;&nbsp; <span class="right">✓ the book</span></div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Kısa ve uzun sesi aynı söylemek</div>
+            <div class="trap-desc">ship/sheep, bit/beat gibi çiftlerde uzunluk anlam değiştirir.</div>
+            <div class="trap-ex"><span class="wrong">✗ I want a ship steak</span> &nbsp;&nbsp; <span class="right">✓ sheep steak</span></div>
+          </div>
+          <div class="trap-item">
+            <div class="trap-title">Sonundaki -ng'yi "ng-g" yapmak</div>
+            <div class="trap-desc">"sing" = /sɪŋ/ — ekstra "g" sesi çıkmaz. Burundan tek ses.</div>
+            <div class="trap-ex"><span class="wrong">✗ sing-g</span> &nbsp;&nbsp; <span class="right">✓ sing /sɪŋ/</span></div>
+          </div>
+          <div class="trap-item ok-item">
+            <div class="trap-title">Schwa /ə/ — Fırsatçı ses!</div>
+            <div class="trap-desc">İngilizcenin en sık sesi. Vurgusuz hecelerde "a/e/o/u" schwa'ya dönüşür: <span style="font-family:var(--mono)">about /əˈbaʊt/</span>, <span style="font-family:var(--mono)">teacher /ˈtiːtʃər/</span></div>
+            <div class="trap-ex"><span class="right">✓ Schwa'yı tanıyan dinlediğini daha iyi anlar.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vurgu + Ton + İpuçları -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span class="icon">↗️</span><h2>Ton ve Vurgu (Intonation)</h2></div>
+      <div class="card-body">
+        <div class="inton-row" style="margin-bottom:10px">
+          <div class="inton-item">
+            <div class="inton-arrow">↗</div>
+            <div class="inton-label">Soru (Yes/No)</div>
+            <div class="inton-ex">"Are you OK?" — ses yükselir</div>
+          </div>
+          <div class="inton-item">
+            <div class="inton-arrow">↘</div>
+            <div class="inton-label">Cümle / WH soru</div>
+            <div class="inton-ex">"Where are you?" — ses alçalır</div>
+          </div>
+          <div class="inton-item">
+            <div class="inton-arrow">↗↘</div>
+            <div class="inton-label">Liste</div>
+            <div class="inton-ex">"I want tea↗, coffee↗, water↘."</div>
+          </div>
+        </div>
+        <div style="background:var(--bg-2);border-radius:6px;padding:8px 10px;border:0.5px solid var(--rule)">
+          <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:4px">Kelime vurgusu (Word stress)</div>
+          <div style="font-size:12px;color:var(--ink-3);line-height:1.7">
+            <span style="font-family:var(--mono);font-weight:500">PREsent</span> (isim: hediye) &nbsp;vs&nbsp; <span style="font-family:var(--mono);font-weight:500">preSENT</span> (fiil: sunmak)<br>
+            <span style="font-family:var(--mono);font-weight:500">REcord</span> (isim: kayıt) &nbsp;vs&nbsp; <span style="font-family:var(--mono);font-weight:500">reCORD</span> (fiil: kaydetmek)<br>
+            <span style="font-family:var(--mono);font-weight:500">OBject</span> (isim: nesne) &nbsp;vs&nbsp; <span style="font-family:var(--mono);font-weight:500">obJECT</span> (fiil: itiraz etmek)<br>
+            <span style="font-size:11px;color:var(--ink-4)">Büyük harf = vurgulu hece · Aynı yazılış, vurgu anlamı değiştirir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><span class="icon">💡</span><h2>Hızlı Telaffuz İpuçları</h2></div>
+      <div class="card-body">
+        <div class="tips-list">
+          <div class="tip-row">
+            <div class="tip-num">1</div>
+            <div class="tip-text"><strong>Sessiz harfleri yutma.</strong> İngilizce'de bazı harfler okunmaz: <span style="font-family:var(--mono)">kn</span>ife, <span style="font-family:var(--mono)">wr</span>ite, <span style="font-family:var(--mono)">ps</span>ychology — başındaki harf sessiz.</div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-num">2</div>
+            <div class="tip-text"><strong>-ed sonekini doğru oku.</strong> walked = /wɔːkt/ (t sesi), played = /pleɪd/ (d sesi), wanted = /ˈwɒntɪd/ (ıd sesi).</div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-num">3</div>
+            <div class="tip-text"><strong>Bağlantılı konuşmada sesler kaynar.</strong> "What are you" → "Whaddaya", "going to" → "gonna". Normal ve doğal!</div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-num">4</div>
+            <div class="tip-text"><strong>Her gün yüksek sesle oku.</strong> Zihinsel pratik telaffuzu geliştirmez — ağız kaslarını çalıştırman gerekiyor.</div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-num">5</div>
+            <div class="tip-text"><strong>IPA sembollerini öğren.</strong> Sözlükteki /fonetik yazı/ sana doğru sesi verir — yazıya güvenme.</div>
+          </div>
+          <div class="tip-row">
+            <div class="tip-num">6</div>
+            <div class="tip-text"><strong>Sessiz harfler tablosu:</strong> <span style="font-family:var(--mono)">b</span> (clim<b>b</b>), <span style="font-family:var(--mono)">k</span> (<b>k</b>now), <span style="font-family:var(--mono)">g</span> (si<b>g</b>n), <span style="font-family:var(--mono)">h</span> (ve<b>h</b>icle), <span style="font-family:var(--mono)">w</span> (<b>w</b>rite).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hızlı referans kutusu -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span class="icon">📋</span><h2>Hızlı Referans — Sesli Harf Kuralları</h2></div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px">
+          <div style="padding:8px 10px;border-radius:6px;background:var(--bg-2);border:0.5px solid var(--rule)">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:3px">Magic E kuralı</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7">Sondaki sessiz <b>e</b> önceki sesliyi uzatır:<br><span style="font-family:var(--mono)">hat → hate &nbsp; pin → pine<br>hop → hope</span></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:6px;background:var(--bg-2);border:0.5px solid var(--rule)">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:3px">Çift sesli = uzun ses</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7">İki sesli yan yana gelince ilki uzun okunur:<br><span style="font-family:var(--mono)">rain, meet, boat, suit</span></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:6px;background:var(--bg-2);border:0.5px solid var(--rule)">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:3px">C harfi iki ses</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7">e, i, y önünde /s/:<br><span style="font-family:var(--mono)">city, cent, cycle</span><br>Diğerlerinde /k/:<br><span style="font-family:var(--mono)">cat, cup, cold</span></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:6px;background:var(--bg-2);border:0.5px solid var(--rule)">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:3px">G harfi iki ses</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7">e, i, y önünde /dʒ/:<br><span style="font-family:var(--mono)">gym, gentle, age</span><br>Diğerlerinde /g/:<br><span style="font-family:var(--mono)">go, got, big</span></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:6px;background:var(--bg-2);border:0.5px solid var(--rule)">
+            <div style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:3px">-tion soneki</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7">Her zaman /ʃən/ okunur:<br><span style="font-family:var(--mono)">nation = /neɪʃən/<br>question = /kwestʃən/</span></div>
+          </div>
+          <div style="padding:8px 10px;border-radius:6px;background:var(--warn-bg);border:0.5px solid #f5d9b8">
+            <div style="font-size:11px;font-weight:600;color:var(--warn);margin-bottom:3px">⚠️ Ough — 6 farklı ses!</div>
+            <div style="font-size:11px;color:var(--ink-3);line-height:1.7"><span style="font-family:var(--mono)">through /uː/<br>though /oʊ/<br>thought /ɔː/<br>tough /ʌf/<br>cough /ɒf/<br>bough /aʊ/</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pratik -->
+  <div class="grid-full">
+    <div class="card">
+      <div class="card-head"><span class="icon">✍️</span><h2>Pratik — Kendini Test Et</h2></div>
+      <div class="card-body">
+        <div class="practice-grid">
+          <div class="pr-block">
+            <div class="pr-block-head">A) Hangi kelimeyi duyuyorsun? (IPA → kelime)</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> /ʃiːp/ → <span class="blank"></span> (ship / sheep)<br>
+                <span class="pr-num">2.</span> /bɪt/ → <span class="blank"></span> (bit / beat)<br>
+                <span class="pr-num">3.</span> /θɪŋk/ → <span class="blank"></span> (think / sink)<br>
+                <span class="pr-num">4.</span> /waɪn/ → <span class="blank"></span> (wine / vine)<br>
+                <span class="pr-num">5.</span> /liːv/ → <span class="blank"></span> (live / leave)
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> sheep &nbsp; <span class="a-num">2.</span> bit &nbsp; <span class="a-num">3.</span> think &nbsp; <span class="a-num">4.</span> wine &nbsp; <span class="a-num">5.</span> leave
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">B) "th" sesi mi /θ/, "s" sesi mi /s/?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> think → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> sing → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> three → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> six → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> thank → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> /θ/ &nbsp; <span class="a-num">2.</span> /s/ &nbsp; <span class="a-num">3.</span> /θ/ &nbsp; <span class="a-num">4.</span> /s/ &nbsp; <span class="a-num">5.</span> /θ/
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">C) "ough" nasıl okunur? Eşleştir</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> through → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> though → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> tough → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> thought → <span class="blank"></span><br>
+                <span style="font-size:11px;color:var(--ink-3)">Seçenekler: /uː/ · /oʊ/ · /ʌf/ · /ɔː/</span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> /uː/ &nbsp; <span class="a-num">2.</span> /oʊ/ &nbsp; <span class="a-num">3.</span> /ʌf/ &nbsp; <span class="a-num">4.</span> /ɔː/
+                </div>
+              </details>
+            </div>
+          </div>
+          <div class="pr-block">
+            <div class="pr-block-head">D) Hangi harf sessiz (okunmaz)?</div>
+            <div class="pr-block-body">
+              <div class="pr-q">
+                <span class="pr-num">1.</span> know → <span class="blank"></span><br>
+                <span class="pr-num">2.</span> write → <span class="blank"></span><br>
+                <span class="pr-num">3.</span> climb → <span class="blank"></span><br>
+                <span class="pr-num">4.</span> sign → <span class="blank"></span><br>
+                <span class="pr-num">5.</span> hour → <span class="blank"></span>
+              </div>
+              <details class="answers">
+                <summary>Cevapları göster</summary>
+                <div class="answers-body">
+                  <span class="a-num">1.</span> k &nbsp; <span class="a-num">2.</span> w &nbsp; <span class="a-num">3.</span> b &nbsp; <span class="a-num">4.</span> g &nbsp; <span class="a-num">5.</span> h
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Özet + Görev -->
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><span class="icon">🎯</span><h2>5 Dakikada Özet</h2></div>
+      <div class="card-body">
+        <div class="takeaways">
+          <div class="take-item"><span class="take-ico">🔤</span><span class="take-text"><strong>Yazıldığı gibi okunmaz.</strong> Sözlükteki /IPA/ yazısına güven.</span></div>
+          <div class="take-item"><span class="take-ico">⚠️</span><span class="take-text"><strong>θ, ð, w, v, ŋ</strong> Türkçede yok — özel çalış.</span></div>
+          <div class="take-item"><span class="take-ico">📏</span><span class="take-text"><strong>Kısa/uzun sesli</strong> anlam değiştirir: ship ≠ sheep.</span></div>
+          <div class="take-item"><span class="take-ico">🔘</span><span class="take-text"><strong>Schwa /ə/</strong> en sık sestir; vurgusuz heceler ona döner.</span></div>
+          <div class="take-item"><span class="take-ico">🔇</span><span class="take-text"><strong>Sessiz harfler</strong> vardır: know, write, hour.</span></div>
+          <div class="take-item"><span class="take-ico">↗↘</span><span class="take-text"><strong>Tonlama:</strong> Yes/No ↗, WH soru ↘.</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><span class="icon">🏆</span><h2>Günün Görevi</h2></div>
+      <div class="card-body">
+        <div class="mission">
+          <span class="mission-badge">🎤</span>
+          <div class="mission-body">
+            <span class="m-title">Tekerleme Meydan Okuması (Tongue Twister)</span>
+            Şu üç cümleyi <strong>her gün 5 kez</strong> yüksek sesle, gittikçe hızlanarak söyle:<br>
+            • <strong>"She sells sea shells by the sea shore."</strong> (/ʃ/ ve /s/ ayrımı)<br>
+            • <strong>"I think this thing is thin."</strong> (/θ/ ve /ð/)<br>
+            • <strong>"Very well, William."</strong> (/v/ ve /w/)<br>
+            <span style="color:var(--ink-3)">Bonus: Telefonla kendini kaydet, dinle ve karşılaştır.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>İngilizce Müfredatı · Ders 1 / 25 &nbsp;·&nbsp; Ünite 1: Merhaba Dünya</span>
+    <div class="nav-links no-print">
+      <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+      <a class="nav-link next" href="2.html">Sonraki: Ders 2 — To Be ›</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

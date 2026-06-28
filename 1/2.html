@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ders 2 — Kendini Tanıt · To Be & Kişi Zamirleri · İngilizce Cheat Sheet</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --ink: #1a1a1a;
+            --ink-2: #444;
+            --ink-3: #777;
+            --ink-4: #aaa;
+            --bg: #ffffff;
+            --bg-2: #f7f7f5;
+            --bg-3: #f0efe9;
+            --rule: #e0dfd8;
+            --accent: #2a5caa;
+            --accent-bg: #eef3fb;
+            --warn: #b85c00;
+            --warn-bg: #fff4e8;
+            --ok: #1a6b3c;
+            --ok-bg: #edf7f1;
+            --purple: #5b3ea8;
+            --purple-bg: #f2effe;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', system-ui, sans-serif;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 13px;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .lesson-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .badge-level {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        .badge-time {
+            background: var(--bg-3);
+            color: var(--ink-2);
+        }
+
+        .badge-unit {
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .header-tip {
+            font-size: 12px;
+            color: var(--ink-3);
+            max-width: 260px;
+            text-align: right;
+            line-height: 1.6;
+        }
+
+        .header-tip strong {
+            color: var(--warn);
+        }
+
+        /* Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-full {
+            margin-bottom: 1rem;
+        }
+
+        /* Card */
+        .card {
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-head {
+            background: var(--bg-2);
+            border-bottom: 0.5px solid var(--rule);
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-head h2 {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--ink-2);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .card-body {
+            padding: 10px 12px;
+        }
+
+        /* Pronoun table */
+        .pronoun-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .pro-cell {
+            border-radius: 8px;
+            border: 0.5px solid var(--rule);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .pro-en {
+            font-size: 18px;
+            font-weight: 600;
+            font-family: var(--mono);
+            padding: 8px 6px 4px;
+            color: var(--accent);
+        }
+
+        .pro-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            padding: 0 6px 3px;
+        }
+
+        .pro-type {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: 3px 6px;
+            background: var(--bg-2);
+            color: var(--ink-4);
+            border-top: 0.5px solid var(--rule);
+        }
+
+        .pro-cell.singular .pro-en {
+            color: var(--accent);
+        }
+
+        .pro-cell.plural .pro-en {
+            color: var(--purple);
+        }
+
+        .pro-cell.singular {
+            background: var(--accent-bg);
+            border-color: #b3c9ef;
+        }
+
+        .pro-cell.plural {
+            background: var(--purple-bg);
+            border-color: #c9b8ef;
+        }
+
+        .pro-cell.neutral {
+            background: var(--bg-2);
+        }
+
+        .pro-legend {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .pro-leg {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        .pro-leg-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+        }
+
+        /* To Be conjugation */
+        .tobe-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tobe-table th {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            text-align: left;
+            padding: 5px 10px;
+            border-bottom: 1px solid var(--rule);
+            background: var(--bg-2);
+        }
+
+        .tobe-table td {
+            padding: 7px 10px;
+            border-bottom: 0.5px solid var(--rule);
+            vertical-align: middle;
+        }
+
+        .tobe-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .tobe-table tr:hover td {
+            background: var(--bg-2);
+        }
+
+        .pronoun-col {
+            font-family: var(--mono);
+            font-weight: 500;
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        .tobe-col {
+            font-family: var(--mono);
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 14px;
+        }
+
+        .short-col {
+            font-family: var(--mono);
+            color: var(--ok);
+            font-size: 13px;
+        }
+
+        .neg-col {
+            font-family: var(--mono);
+            color: var(--warn);
+            font-size: 13px;
+        }
+
+        .tr-col {
+            font-size: 12px;
+            color: var(--ink-3);
+        }
+
+        .tobe-table .section-row td {
+            background: var(--bg-3);
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            padding: 4px 10px;
+        }
+
+        /* Sentence builder */
+        .builder {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            padding: 10px 12px;
+            background: var(--bg-2);
+            border-radius: 8px;
+            border: 0.5px solid var(--rule);
+        }
+
+        .slot {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-family: var(--mono);
+            font-weight: 500;
+        }
+
+        .slot-subj {
+            background: var(--accent-bg);
+            color: var(--accent);
+            border: 0.5px solid #b3c9ef;
+        }
+
+        .slot-tobe {
+            background: var(--ok-bg);
+            color: var(--ok);
+            border: 0.5px solid #a8d4bc;
+        }
+
+        .slot-info {
+            background: var(--bg-3);
+            color: var(--ink-2);
+            border: 0.5px solid var(--rule);
+        }
+
+        .slot-neg {
+            background: var(--warn-bg);
+            color: var(--warn);
+            border: 0.5px solid #f5c896;
+        }
+
+        .slot-q {
+            background: var(--purple-bg);
+            color: var(--purple);
+            border: 0.5px solid #c9b8ef;
+        }
+
+        .builder-arrow {
+            color: var(--ink-4);
+            font-size: 14px;
+        }
+
+        .builder-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            margin-left: 4px;
+        }
+
+        /* Example sentences */
+        .example-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .ex-row {
+            padding: 7px 10px;
+            border-radius: 6px;
+            border-left: 3px solid;
+        }
+
+        .ex-row.positive {
+            border-color: var(--ok);
+            background: var(--ok-bg);
+        }
+
+        .ex-row.negative {
+            border-color: var(--warn);
+            background: var(--warn-bg);
+        }
+
+        .ex-row.question {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+        }
+
+        .ex-en {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .ex-en .hl-subj {
+            color: var(--accent);
+        }
+
+        .ex-en .hl-tobe {
+            color: var(--ok);
+            font-weight: 600;
+        }
+
+        .ex-en .hl-neg {
+            color: var(--warn);
+        }
+
+        .ex-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        /* Trap cards */
+        .trap-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .trap-item {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--warn);
+            background: var(--warn-bg);
+        }
+
+        .trap-item.ok-item {
+            border-left-color: var(--ok);
+            background: var(--ok-bg);
+        }
+
+        .trap-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+
+        .trap-desc {
+            font-size: 11px;
+            color: var(--ink-3);
+            line-height: 1.6;
+        }
+
+        .trap-ex {
+            font-family: var(--mono);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .wrong {
+            color: #c0392b;
+        }
+
+        .right {
+            color: var(--ok);
+        }
+
+        /* Intro dialogue */
+        .dialogue {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bubble {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .bubble.right {
+            flex-direction: row-reverse;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .av-a {
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+
+        .av-b {
+            background: var(--purple-bg);
+            color: var(--purple);
+        }
+
+        .bubble-text {
+            padding: 7px 10px;
+            border-radius: 10px;
+            max-width: 85%;
+        }
+
+        .bubble.left .bubble-text {
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+            border-top-left-radius: 3px;
+        }
+
+        .bubble.right .bubble-text {
+            background: var(--accent-bg);
+            border: 0.5px solid #b3c9ef;
+            border-top-right-radius: 3px;
+        }
+
+        .bubble-en {
+            font-size: 13px;
+            color: var(--ink);
+            margin-bottom: 1px;
+        }
+
+        .bubble-en .hl {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .bubble-en .hl-ok {
+            color: var(--ok);
+            font-weight: 500;
+        }
+
+        .bubble-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        /* Question form table */
+        .q-box {
+            background: var(--purple-bg);
+            border: 0.5px solid #c9b8ef;
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .q-box h3 {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--purple);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            margin-bottom: 8px;
+        }
+
+        .q-row {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .q-en {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+            flex: 1;
+        }
+
+        .q-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            flex: 1;
+        }
+
+        .q-ans {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--ok);
+            margin-top: 2px;
+        }
+
+        /* Key vocab */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 6px;
+        }
+
+        .vocab-item {
+            padding: 7px 10px;
+            border-radius: 6px;
+            background: var(--bg-2);
+            border: 0.5px solid var(--rule);
+        }
+
+        .vocab-en {
+            font-family: var(--mono);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink);
+        }
+
+        .vocab-tr {
+            font-size: 11px;
+            color: var(--ink-3);
+            margin-top: 1px;
+        }
+
+        .vocab-ex {
+            font-size: 11px;
+            color: var(--accent);
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 2rem;
+            padding-top: 0.75rem;
+            border-top: 0.5px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer span {
+            font-size: 11px;
+            color: var(--ink-4);
+        }
+
+        .next-badge {
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--bg-3);
+            color: var(--ink-3);
+        }
+
+        /* ===== Ortak eklenti bileşenleri ===== */
+        .recall { display:flex; gap:8px; flex-wrap:wrap; align-items:center; padding:8px 12px; background:var(--purple-bg); border:0.5px solid #c9b8ef; border-radius:8px; margin-bottom:1rem; }
+        .recall-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--purple); white-space:nowrap; }
+        .recall-item { font-size:11px; color:var(--ink-2); background:var(--bg); border:0.5px solid var(--rule); border-radius:14px; padding:3px 9px; }
+        .recall-item strong { color:var(--ink); }
+        .practice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .pr-block { border:0.5px solid var(--rule); border-radius:8px; overflow:hidden; }
+        .pr-block-head { font-size:11px; font-weight:600; color:var(--ink-2); padding:6px 10px; background:var(--bg-2); border-bottom:0.5px solid var(--rule); }
+        .pr-block-body { padding:8px 10px; }
+        .pr-q { font-size:12px; color:var(--ink); line-height:2; }
+        .pr-q .pr-num { color:var(--accent); font-weight:600; font-family:var(--mono); margin-right:5px; }
+        .blank { display:inline-block; min-width:60px; border-bottom:1.5px dotted var(--ink-4); margin:0 3px; }
+        details.answers { margin-top:8px; border:0.5px solid #a8d4bc; border-radius:8px; background:var(--ok-bg); overflow:hidden; }
+        details.answers > summary { cursor:pointer; list-style:none; padding:6px 10px; font-size:11px; font-weight:600; color:var(--ok); display:flex; align-items:center; gap:6px; }
+        details.answers > summary::-webkit-details-marker { display:none; }
+        details.answers > summary::before { content:'▸ '; }
+        details.answers[open] > summary::before { content:'▾ '; }
+        .answers-body { padding:0 10px 8px; font-size:11px; color:var(--ink-2); line-height:1.9; }
+        .answers-body .a-num { color:var(--ok); font-weight:700; font-family:var(--mono); margin-right:4px; }
+        .takeaways { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:8px; }
+        .take-item { display:flex; gap:8px; padding:8px 10px; background:var(--bg-2); border:0.5px solid var(--rule); border-radius:7px; }
+        .take-ico { font-size:15px; line-height:1.3; flex-shrink:0; }
+        .take-text { font-size:11px; color:var(--ink-2); line-height:1.55; }
+        .take-text strong { color:var(--ink); }
+        .mission { display:flex; gap:10px; align-items:flex-start; padding:10px 12px; background:linear-gradient(120deg,var(--accent-bg),var(--ok-bg)); border:0.5px solid #b3c9ef; border-radius:8px; }
+        .mission-badge { font-size:22px; line-height:1; }
+        .mission-body { font-size:12px; color:var(--ink-2); line-height:1.65; }
+        .mission-body strong { color:var(--ink); }
+        .mission-body .m-title { display:block; font-weight:600; color:var(--accent); margin-bottom:2px; }
+        .nav-links { display:flex; gap:8px; flex-wrap:wrap; }
+        .nav-link { font-size:11px; text-decoration:none; padding:4px 11px; border-radius:14px; border:0.5px solid var(--rule); color:var(--ink-2); background:var(--bg); }
+        .nav-link.next { background:var(--ink); color:#fff; border-color:var(--ink); }
+        .nav-link.home { background:var(--accent-bg); color:var(--accent); border-color:#b3c9ef; }
+
+        @media print {
+            @page { size: A4; margin: 12mm; }
+            html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            body { font-size: 11px; }
+            .page { padding: 0; max-width: 100%; }
+            .card, .grid-2, .grid-3, .practice-grid, .pr-block, .mission, .recall, .takeaways { break-inside: avoid; }
+            .no-print { display: none !important; }
+            details.answers > *:not(summary) { display: block !important; }
+            details.answers > summary::before { content: '✓ '; }
+        }
+
+        @media (max-width: 620px) {
+            .practice-grid { grid-template-columns: 1fr; }
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .pronoun-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .header-tip {
+                text-align: left;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <span class="lesson-label">Ders 2 · Ünite 1</span>
+                <h1>Kendini Tanıt — To Be & Kişi Zamirleri</h1>
+                <div class="header-meta">
+                    <span class="badge badge-unit">A1 Başlangıç</span>
+                    <span class="badge badge-level">Gramer + Konuşma</span>
+                    <span class="badge badge-time">⏱ ~2 saat</span>
+                </div>
+            </div>
+            <div class="header-tip">
+                <strong>Türkçe tuzak:</strong> Türkçe'de "Ben öğrenciyim" derken fiil sonda gelir.<br>İngilizce'de fiil
+                <em>ortada</em> durur: <strong style="font-family:'JetBrains Mono',monospace">I <span
+                        style="color:#1a6b3c">am</span> a student.</strong>
+            </div>
+        </div>
+
+        <!-- Hatırlatma -->
+        <div class="recall">
+            <span class="recall-label">🔁 Geçen ders</span>
+            <span class="recall-item">İngilizce <strong>yazıldığı gibi okunmaz</strong></span>
+            <span class="recall-item"><strong>θ, ð, w, v</strong> sesleri Türkçede yok</span>
+            <span class="recall-item">ship ≠ sheep (<strong>kısa/uzun sesli</strong>)</span>
+            <span class="recall-item">Schwa <strong>/ə/</strong> en sık ses</span>
+        </div>
+
+        <!-- Kişi zamirleri -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>👤</span>
+                    <h2>Kişi Zamirleri (Subject Pronouns)</h2>
+                </div>
+                <div class="card-body">
+                    <div class="pronoun-grid">
+                        <div class="pro-cell singular">
+                            <div class="pro-en">I</div>
+                            <div class="pro-tr">Ben</div>
+                            <div class="pro-type">1. tekil</div>
+                        </div>
+                        <div class="pro-cell singular">
+                            <div class="pro-en">You</div>
+                            <div class="pro-tr">Sen</div>
+                            <div class="pro-type">2. tekil</div>
+                        </div>
+                        <div class="pro-cell singular">
+                            <div class="pro-en">He</div>
+                            <div class="pro-tr">O (erkek)</div>
+                            <div class="pro-type">3. tekil ♂</div>
+                        </div>
+                        <div class="pro-cell singular">
+                            <div class="pro-en">She</div>
+                            <div class="pro-tr">O (kadın)</div>
+                            <div class="pro-type">3. tekil ♀</div>
+                        </div>
+                        <div class="pro-cell neutral">
+                            <div class="pro-en" style="color:var(--ink-2)">It</div>
+                            <div class="pro-tr">O (nesne/hayvan)</div>
+                            <div class="pro-type">3. tekil ◻</div>
+                        </div>
+                        <div class="pro-cell plural">
+                            <div class="pro-en">We</div>
+                            <div class="pro-tr">Biz</div>
+                            <div class="pro-type">1. çoğul</div>
+                        </div>
+                        <div class="pro-cell plural">
+                            <div class="pro-en">You</div>
+                            <div class="pro-tr">Siz / Sizler</div>
+                            <div class="pro-type">2. çoğul</div>
+                        </div>
+                        <div class="pro-cell plural">
+                            <div class="pro-en">They</div>
+                            <div class="pro-tr">Onlar</div>
+                            <div class="pro-type">3. çoğul</div>
+                        </div>
+                    </div>
+                    <div class="pro-legend" style="margin-top:8px">
+                        <div class="pro-leg">
+                            <div class="pro-leg-dot" style="background:var(--accent-bg);border:0.5px solid #b3c9ef">
+                            </div>Tekil
+                        </div>
+                        <div class="pro-leg">
+                            <div class="pro-leg-dot" style="background:var(--purple-bg);border:0.5px solid #c9b8ef">
+                            </div>Çoğul
+                        </div>
+                        <span style="font-size:11px;color:var(--ink-4);margin-left:4px">· "You" hem tekil hem çoğul için
+                            kullanılır — Türkçe'deki "siz" kibar anlamı için de</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- To Be çekimi + örnekler -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🔧</span>
+                    <h2>To Be — Tam Çekim Tablosu</h2>
+                </div>
+                <div class="card-body">
+                    <table class="tobe-table">
+                        <thead>
+                            <tr>
+                                <th>Zamir</th>
+                                <th>To Be</th>
+                                <th>Kısa</th>
+                                <th>Olumsuz kısa</th>
+                                <th>Türkçe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="section-row">
+                                <td colspan="5">Tekil (Singular)</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">I</td>
+                                <td class="tobe-col">am</td>
+                                <td class="short-col">I'm</td>
+                                <td class="neg-col">I'm not</td>
+                                <td class="tr-col">Ben —yım/yim</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">You</td>
+                                <td class="tobe-col">are</td>
+                                <td class="short-col">You're</td>
+                                <td class="neg-col">You aren't</td>
+                                <td class="tr-col">Sen —sın/sin</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">He</td>
+                                <td class="tobe-col">is</td>
+                                <td class="short-col">He's</td>
+                                <td class="neg-col">He isn't</td>
+                                <td class="tr-col">O —dır/dir</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">She</td>
+                                <td class="tobe-col">is</td>
+                                <td class="short-col">She's</td>
+                                <td class="neg-col">She isn't</td>
+                                <td class="tr-col">O —dır/dir</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">It</td>
+                                <td class="tobe-col">is</td>
+                                <td class="short-col">It's</td>
+                                <td class="neg-col">It isn't</td>
+                                <td class="tr-col">O —dır/dir</td>
+                            </tr>
+                            <tr class="section-row">
+                                <td colspan="5">Çoğul (Plural)</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">We</td>
+                                <td class="tobe-col">are</td>
+                                <td class="short-col">We're</td>
+                                <td class="neg-col">We aren't</td>
+                                <td class="tr-col">Biz —yız/yiz</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">You</td>
+                                <td class="tobe-col">are</td>
+                                <td class="short-col">You're</td>
+                                <td class="neg-col">You aren't</td>
+                                <td class="tr-col">Siz —sınız</td>
+                            </tr>
+                            <tr>
+                                <td class="pronoun-col">They</td>
+                                <td class="tobe-col">are</td>
+                                <td class="short-col">They're</td>
+                                <td class="neg-col">They aren't</td>
+                                <td class="tr-col">Onlar —dır/dir</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div
+                        style="margin-top:8px;padding:7px 10px;background:var(--warn-bg);border-radius:6px;border-left:3px solid var(--warn)">
+                        <div style="font-size:11px;font-weight:600;color:var(--warn);margin-bottom:2px">⚠️ "I am not"
+                            kısaltması</div>
+                        <div style="font-size:11px;color:var(--ink-3)"><span
+                                style="font-family:'JetBrains Mono',monospace">I amn't</span> diye bir form
+                            yok!<br>Olumsuz kısa form sadece: <span
+                                style="font-family:'JetBrains Mono',monospace;color:#c0392b">I'm not</span> ✓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>🧱</span>
+                    <h2>Cümle Yapısı — Olumlu / Olumsuz / Soru</h2>
+                </div>
+                <div class="card-body">
+
+                    <div
+                        style="font-size:11px;font-weight:600;color:var(--ok);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">
+                        ✓ Olumlu</div>
+                    <div class="builder" style="margin-bottom:10px">
+                        <span class="slot slot-subj">Zamir</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-tobe">am / is / are</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-info">bilgi</span>
+                        <span class="builder-tr">→ I am a teacher.</span>
+                    </div>
+
+                    <div
+                        style="font-size:11px;font-weight:600;color:var(--warn);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">
+                        ✗ Olumsuz</div>
+                    <div class="builder" style="margin-bottom:10px">
+                        <span class="slot slot-subj">Zamir</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-neg">am/is/are + not</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-info">bilgi</span>
+                        <span class="builder-tr">→ She isn't French.</span>
+                    </div>
+
+                    <div
+                        style="font-size:11px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">
+                        ? Soru</div>
+                    <div class="builder" style="margin-bottom:12px">
+                        <span class="slot slot-q">Am/Is/Are</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-subj">Zamir</span>
+                        <span class="builder-arrow">+</span>
+                        <span class="slot slot-info">bilgi?</span>
+                        <span class="builder-tr">→ Are you a student?</span>
+                    </div>
+
+                    <div class="example-list">
+                        <div class="ex-row positive">
+                            <div class="ex-en"><span class="hl-subj">I</span> <span class="hl-tobe">am</span> 25 years
+                                old.</div>
+                            <div class="ex-tr">Ben 25 yaşındayım.</div>
+                        </div>
+                        <div class="ex-row positive">
+                            <div class="ex-en"><span class="hl-subj">She</span> <span class="hl-tobe">is</span> a doctor
+                                from Istanbul.</div>
+                            <div class="ex-tr">O İstanbul'dan bir doktor.</div>
+                        </div>
+                        <div class="ex-row negative">
+                            <div class="ex-en"><span class="hl-subj">We</span> <span class="hl-neg">aren't</span> late.
+                            </div>
+                            <div class="ex-tr">Biz geç değiliz.</div>
+                        </div>
+                        <div class="ex-row negative">
+                            <div class="ex-en"><span class="hl-subj">It</span> <span class="hl-neg">isn't</span> cold
+                                today.</div>
+                            <div class="ex-tr">Bugün soğuk değil.</div>
+                        </div>
+                        <div class="ex-row question">
+                            <div class="ex-en"><span class="hl-tobe">Are</span> <span class="hl-subj">you</span> from
+                                Ankara?</div>
+                            <div class="ex-tr">Ankara'dan mısın?</div>
+                        </div>
+                        <div class="ex-row question">
+                            <div class="ex-en"><span class="hl-tobe">Is</span> <span class="hl-subj">he</span> your
+                                brother?</div>
+                            <div class="ex-tr">O senin erkek kardeşin mi?</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soru-cevap formu + Türkçe tuzaklar -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>❓</span>
+                    <h2>Soru & Kısa Cevap Kalıpları</h2>
+                </div>
+                <div class="card-body">
+                    <div class="q-box" style="margin-bottom:10px">
+                        <h3>Evet / Hayır cevapları</h3>
+                        <div class="q-row">
+                            <div style="flex:1">
+                                <div class="q-en">Are you a student?</div>
+                                <div class="q-ans">Yes, I am. &nbsp;/&nbsp; No, I'm not.</div>
+                            </div>
+                        </div>
+                        <div class="q-row">
+                            <div style="flex:1">
+                                <div class="q-en">Is she Turkish?</div>
+                                <div class="q-ans">Yes, she is. &nbsp;/&nbsp; No, she isn't.</div>
+                            </div>
+                        </div>
+                        <div class="q-row">
+                            <div style="flex:1">
+                                <div class="q-en">Are they ready?</div>
+                                <div class="q-ans">Yes, they are. &nbsp;/&nbsp; No, they aren't.</div>
+                            </div>
+                        </div>
+                        <div style="margin-top:8px;font-size:11px;color:#5b3ea8;font-weight:500">⚠️ Kısa cevapta
+                            kısaltma kullanılmaz:<br><span
+                                style="font-family:'JetBrains Mono',monospace;color:#c0392b">Yes, I'm.</span> —
+                            yanlış!<br><span style="font-family:'JetBrains Mono',monospace;color:#1a6b3c">Yes, I
+                                am.</span> — doğru ✓</div>
+                    </div>
+
+                    <div
+                        style="font-size:11px;font-weight:600;color:var(--ink-2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em">
+                        Tanışma soruları</div>
+                    <div style="display:flex;flex-direction:column;gap:5px">
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">What
+                                is your name?</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Adın ne?</span>
+                        </div>
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">Where
+                                are you from?</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Nerelisin?</span>
+                        </div>
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">How
+                                old are you?</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Kaç yaşındasın?</span>
+                        </div>
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">What
+                                do you do?</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Ne iş yapıyorsun?</span>
+                        </div>
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">Are
+                                you married?</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Evli misin?</span>
+                        </div>
+                        <div
+                            style="display:flex;gap:8px;padding:5px 8px;background:var(--bg-2);border-radius:6px;border:0.5px solid var(--rule)">
+                            <span
+                                style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);flex:1">Nice
+                                to meet you!</span>
+                            <span style="font-size:11px;color:var(--ink-3);align-self:center">Tanıştığıma memnun
+                                oldum!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>🇹🇷</span>
+                    <h2>Türkçe Konuşanların Klasik Tuzakları</h2>
+                </div>
+                <div class="card-body">
+                    <div class="trap-list">
+                        <div class="trap-item">
+                            <div class="trap-title">Fiili unutmak</div>
+                            <div class="trap-desc">Türkçe'de "Ben öğrenciyim" — fiil eke gömülü. İngilizce'de ayrı fiil
+                                zorunlu.</div>
+                            <div class="trap-ex"><span class="wrong">✗ I a student.</span><br><span class="right">✓ I am
+                                    a student.</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">"He" / "She" karıştırmak</div>
+                            <div class="trap-desc">Türkçe'de "o" hem erkek hem kadın için. İngilizce'de cinsiyet ayrımı
+                                zorunlu.</div>
+                            <div class="trap-ex"><span class="wrong">✗ She is my brother.</span><br><span
+                                    class="right">✓ He is my brother.</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">Soru için fiili yerinden oynatmamak</div>
+                            <div class="trap-desc">Türkçe'de soru eki eklenirken sıra değişmez. İngilizce'de fiil başa
+                                geçer.</div>
+                            <div class="trap-ex"><span class="wrong">✗ You are a teacher?</span><br><span
+                                    class="right">✓ Are you a teacher?</span></div>
+                        </div>
+                        <div class="trap-item">
+                            <div class="trap-title">Kısa cevapta kısaltma yapmak</div>
+                            <div class="trap-desc">Evet/hayır kısa cevaplarında "Yes, I'm." veya "No, he's." denmez.
+                            </div>
+                            <div class="trap-ex"><span class="wrong">✗ Yes, I'm. / No, she's not.</span><br><span
+                                    class="right">✓ Yes, I am. / No, she isn't.</span></div>
+                        </div>
+                        <div class="trap-item ok-item">
+                            <div class="trap-title">✓ "It" cansız şeyler için</div>
+                            <div class="trap-desc">Hayvanlar ve nesneler için "he/she" değil "it" kullanılır. (Evcil
+                                hayvanlar için he/she söylenebilir — ama it güvenli.)</div>
+                            <div class="trap-ex"><span class="right">✓ Where is my phone? It's on the table.</span>
+                            </div>
+                        </div>
+                        <div class="trap-item ok-item">
+                            <div class="trap-title">✓ "a" ve "an" — belirsizlik takısı</div>
+                            <div class="trap-desc">Sesli harfle başlayan kelimeler önünde "an" kullanılır.</div>
+                            <div class="trap-ex"><span class="right">✓ I am a teacher. / She is an engineer.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Örnek diyalog -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>💬</span>
+                    <h2>Gerçek Hayat Diyaloğu — Tanışma Sahnesi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="dialogue">
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Hi! <span class="hl">My name is</span> Ayşe. <span
+                                        class="hl-ok">I'm</span> from Istanbul.</div>
+                                <div class="bubble-tr">Merhaba! Benim adım Ayşe. İstanbul'danım.</div>
+                            </div>
+                        </div>
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">Nice to meet you, Ayşe! <span class="hl-ok">I'm</span> James.
+                                    <span class="hl-ok">I'm</span> a student.</div>
+                                <div class="bubble-tr">Tanıştığıma memnun oldum! Ben James. Öğrenciyim.</div>
+                            </div>
+                        </div>
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en"><span class="hl">Are</span> you from London?</div>
+                                <div class="bubble-tr">Londra'dan mısın?</div>
+                            </div>
+                        </div>
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">No, <span class="hl-ok">I'm</span> not. <span
+                                        class="hl-ok">I'm</span> from Manchester. <span class="hl">It's</span> in the
+                                    north of England.</div>
+                                <div class="bubble-tr">Hayır, değilim. Manchester'danım. İngiltere'nin kuzeyinde.</div>
+                            </div>
+                        </div>
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">How old <span class="hl">are</span> you?</div>
+                                <div class="bubble-tr">Kaç yaşındasın?</div>
+                            </div>
+                        </div>
+                        <div class="bubble right">
+                            <div class="avatar av-b">B</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en"><span class="hl-ok">I'm</span> 22. <span class="hl">Are</span>
+                                    you a student too?</div>
+                                <div class="bubble-tr">22 yaşındayım. Sen de öğrenci misin?</div>
+                            </div>
+                        </div>
+                        <div class="bubble left">
+                            <div class="avatar av-a">A</div>
+                            <div class="bubble-text">
+                                <div class="bubble-en">No, <span class="hl-ok">I'm</span> not. <span
+                                        class="hl-ok">I'm</span> an engineer.</div>
+                                <div class="bubble-tr">Hayır, değilim. Ben mühendisim.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kendini tanıtma şablonu + kelime listesi -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>📝</span>
+                    <h2>Kendini Tanıtma Şablonu</h2>
+                </div>
+                <div class="card-body">
+                    <div
+                        style="background:var(--bg-2);border-radius:8px;padding:12px 14px;border:0.5px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;color:var(--ink)">
+                        Hi! My name is <span
+                            style="background:var(--accent-bg);color:var(--accent);padding:1px 6px;border-radius:4px">[adın]</span>.<br>
+                        I'm <span
+                            style="background:var(--ok-bg);color:var(--ok);padding:1px 6px;border-radius:4px">[yaşın]</span>
+                        years old.<br>
+                        I'm from <span
+                            style="background:var(--purple-bg);color:var(--purple);padding:1px 6px;border-radius:4px">[şehrin]</span>,
+                        Turkey.<br>
+                        I'm a/an <span
+                            style="background:var(--warn-bg);color:var(--warn);padding:1px 6px;border-radius:4px">[mesleğin]</span>.<br>
+                        I'm <span
+                            style="background:var(--bg-3);color:var(--ink-2);padding:1px 6px;border-radius:4px">[single
+                            / married]</span>.<br>
+                        Nice to meet you!
+                    </div>
+                    <div style="margin-top:8px;font-size:11px;color:var(--ink-3);line-height:1.7">
+                        Renkli kutulara kendi bilgilerini yaz ve yüksek sesle tekrarla. <br>Bunu ezberlemek zorunda
+                        değilsin — hissetmek yeterli.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-head"><span>📚</span>
+                    <h2>Meslekler ve Sıfatlar — Temel Kelimeler</h2>
+                </div>
+                <div class="card-body">
+                    <div class="vocab-grid">
+                        <div class="vocab-item">
+                            <div class="vocab-en">teacher</div>
+                            <div class="vocab-tr">öğretmen</div>
+                            <div class="vocab-ex">I'm a teacher.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">engineer</div>
+                            <div class="vocab-tr">mühendis</div>
+                            <div class="vocab-ex">She's an engineer.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">doctor</div>
+                            <div class="vocab-tr">doktor</div>
+                            <div class="vocab-ex">He's a doctor.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">student</div>
+                            <div class="vocab-tr">öğrenci</div>
+                            <div class="vocab-ex">We're students.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">married</div>
+                            <div class="vocab-tr">evli</div>
+                            <div class="vocab-ex">Are you married?</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">single</div>
+                            <div class="vocab-tr">bekar</div>
+                            <div class="vocab-ex">I'm single.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">happy</div>
+                            <div class="vocab-tr">mutlu</div>
+                            <div class="vocab-ex">I'm very happy.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">tired</div>
+                            <div class="vocab-tr">yorgun</div>
+                            <div class="vocab-ex">She's tired.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">ready</div>
+                            <div class="vocab-tr">hazır</div>
+                            <div class="vocab-ex">Are you ready?</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">late</div>
+                            <div class="vocab-tr">geç</div>
+                            <div class="vocab-ex">We're late!</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">Turkish</div>
+                            <div class="vocab-tr">Türk/Türkçe</div>
+                            <div class="vocab-ex">I'm Turkish.</div>
+                        </div>
+                        <div class="vocab-item">
+                            <div class="vocab-en">years old</div>
+                            <div class="vocab-tr">yaşında</div>
+                            <div class="vocab-ex">I'm 30 years old.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pratik -->
+        <div class="grid-full">
+            <div class="card">
+                <div class="card-head"><span>✍️</span>
+                    <h2>Pratik — Kendini Test Et</h2>
+                </div>
+                <div class="card-body">
+                    <div class="practice-grid">
+                        <div class="pr-block">
+                            <div class="pr-block-head">A) am / is / are — doğru olanı yaz</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> I <span class="blank"></span> a teacher.<br>
+                                    <span class="pr-num">2.</span> She <span class="blank"></span> from Izmir.<br>
+                                    <span class="pr-num">3.</span> We <span class="blank"></span> ready.<br>
+                                    <span class="pr-num">4.</span> They <span class="blank"></span> students.<br>
+                                    <span class="pr-num">5.</span> It <span class="blank"></span> cold today.
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> am &nbsp; <span class="a-num">2.</span> is &nbsp; <span class="a-num">3.</span> are &nbsp; <span class="a-num">4.</span> are &nbsp; <span class="a-num">5.</span> is
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">B) Olumsuz yap (kısa form ile)</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> He is late. → <span class="blank"></span><br>
+                                    <span class="pr-num">2.</span> They are happy. → <span class="blank"></span><br>
+                                    <span class="pr-num">3.</span> I am tired. → <span class="blank"></span><br>
+                                    <span class="pr-num">4.</span> She is Turkish. → <span class="blank"></span>
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> He isn't late. &nbsp; <span class="a-num">2.</span> They aren't happy. &nbsp; <span class="a-num">3.</span> I'm not tired. &nbsp; <span class="a-num">4.</span> She isn't Turkish.
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">C) Soru yap</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> You are a student. → <span class="blank"></span>?<br>
+                                    <span class="pr-num">2.</span> She is your sister. → <span class="blank"></span>?<br>
+                                    <span class="pr-num">3.</span> They are ready. → <span class="blank"></span>?
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> Are you a student? &nbsp; <span class="a-num">2.</span> Is she your sister? &nbsp; <span class="a-num">3.</span> Are they ready?
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                        <div class="pr-block">
+                            <div class="pr-block-head">D) Hatayı bul ve düzelt</div>
+                            <div class="pr-block-body">
+                                <div class="pr-q">
+                                    <span class="pr-num">1.</span> I a student. → <span class="blank"></span><br>
+                                    <span class="pr-num">2.</span> She is my brother. → <span class="blank"></span><br>
+                                    <span class="pr-num">3.</span> Yes, I'm. → <span class="blank"></span><br>
+                                    <span class="pr-num">4.</span> You are a teacher? → <span class="blank"></span>
+                                </div>
+                                <details class="answers">
+                                    <summary>Cevapları göster</summary>
+                                    <div class="answers-body">
+                                        <span class="a-num">1.</span> I am a student. &nbsp; <span class="a-num">2.</span> He is my brother. &nbsp; <span class="a-num">3.</span> Yes, I am. &nbsp; <span class="a-num">4.</span> Are you a teacher?
+                                    </div>
+                                </details>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Özet + Görev -->
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-head"><span>🎯</span>
+                    <h2>5 Dakikada Özet</h2>
+                </div>
+                <div class="card-body">
+                    <div class="takeaways">
+                        <div class="take-item"><span class="take-ico">🧩</span><span class="take-text"><strong>I → am</strong>, He/She/It → is, You/We/They → are.</span></div>
+                        <div class="take-item"><span class="take-ico">📍</span><span class="take-text">Fiil <strong>ortada</strong> durur: I <em>am</em> a student.</span></div>
+                        <div class="take-item"><span class="take-ico">❓</span><span class="take-text">Soruda <strong>to be başa</strong> geçer: Are you...?</span></div>
+                        <div class="take-item"><span class="take-ico">🚫</span><span class="take-text"><strong>"amn't" yok;</strong> sadece I'm not.</span></div>
+                        <div class="take-item"><span class="take-ico">✋</span><span class="take-text">Kısa cevapta kısaltma yok: <strong>Yes, I am.</strong></span></div>
+                        <div class="take-item"><span class="take-ico">👫</span><span class="take-text"><strong>He/She</strong> cinsiyet ayrımı zorunlu.</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-head"><span>🏆</span>
+                    <h2>Günün Görevi</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mission">
+                        <span class="mission-badge">🪞</span>
+                        <div class="mission-body">
+                            <span class="m-title">Ayna Karşısında Tanıtım</span>
+                            Aynanın karşısına geç ve kendini <strong>6 cümle</strong> ile tanıt: isim, yaş, şehir, meslek, medeni durum, bir his.<br>
+                            Örnek: <strong>"Hi, I'm Mert. I'm 28 years old. I'm from Bursa. I'm an engineer. I'm single. I'm happy today!"</strong><br>
+                            <span style="color:var(--ink-3)">Bonus: 3 farklı kişiyi (anne, arkadaş, patron) <em>he/she</em> ile tanıt.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>İngilizce Müfredatı · Ders 2 / 25 &nbsp;·&nbsp; Ünite 1: Merhaba Dünya</span>
+            <div class="nav-links no-print">
+                <a class="nav-link" href="1.html">‹ Önceki: Ders 1</a>
+                <a class="nav-link home" href="../index.html">☰ Tüm Dersler</a>
+                <a class="nav-link next" href="3.html">Sonraki: Ders 3 ›</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
