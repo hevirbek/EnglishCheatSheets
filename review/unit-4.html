@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ünite 4 Tekrar — Kelime Kartları & Mini Sınav</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #fff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --warn: #b85c00; --warn-bg: #fff4e8;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  .header { border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.25rem; }
+  .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+  .header h1 { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .header-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; background: var(--accent-bg); color: var(--accent); }
+  .intro { font-size: 12px; color: var(--ink-3); margin-bottom: 1.5rem; line-height: 1.65; max-width: 680px; }
+  .section-head { display: flex; align-items: center; gap: 8px; margin: 1.75rem 0 0.75rem; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .section-head h2 { font-size: 14px; font-weight: 600; }
+  .section-head span { font-size: 11px; color: var(--ink-3); margin-left: auto; }
+  .tip { font-size: 11px; color: var(--ink-3); background: var(--bg-2); border: 0.5px solid var(--rule); border-radius: 8px; padding: 8px 12px; margin-bottom: 1rem; }
+  .tip strong { color: var(--warn); }
+
+  /* Flashcards */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .flashcard {
+    perspective: 800px; height: 100px; cursor: pointer;
+  }
+  .flashcard-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform .35s; transform-style: preserve-3d;
+  }
+  .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+  .fc-front, .fc-back {
+    position: absolute; inset: 0; backface-visibility: hidden;
+    border-radius: 10px; border: 0.5px solid var(--rule);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 10px; text-align: center;
+  }
+  .fc-front { background: var(--accent-bg); border-color: #b3c9ef; }
+  .fc-back { background: var(--ok-bg); border-color: #a8d4bc; transform: rotateY(180deg); }
+  .fc-en { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--accent); }
+  .fc-tr { font-size: 13px; font-weight: 500; color: var(--ok); }
+  .fc-hint { font-size: 10px; color: var(--ink-4); margin-top: 4px; }
+  .fc-lesson { font-size: 9px; color: var(--ink-4); margin-top: 3px; font-family: var(--mono); }
+
+  /* Quiz */
+  .quiz-block { border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+  .quiz-q { padding: 10px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-size: 12.5px; font-weight: 500; }
+  .quiz-q em { font-style: normal; color: var(--accent); font-family: var(--mono); }
+  .quiz-opts { padding: 10px 14px; font-size: 12px; color: var(--ink-2); line-height: 1.8; }
+  .quiz-opts li { margin-left: 1.2rem; }
+  details.answers { margin-top: 1rem; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  details.answers summary { padding: 8px 12px; background: var(--ok-bg); color: var(--ok); font-size: 12px; font-weight: 600; cursor: pointer; list-style: none; }
+  details.answers summary::-webkit-details-marker { display: none; }
+  details.answers summary::before { content: '▸ '; }
+  details.answers[open] summary::before { content: '▾ '; }
+  .ans-body { padding: 12px 14px; font-size: 12px; line-height: 1.75; }
+  .ans-body strong { color: var(--ok); }
+
+  .score-box { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1rem; }
+  .score-item { padding: 8px 14px; border-radius: 8px; font-size: 12px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .score-item b { font-family: var(--mono); }
+
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); }
+  .nav-link { font-size: 11px; text-decoration: none; padding: 4px 11px; border-radius: 14px; border: 0.5px solid var(--rule); color: var(--ink-2); background: var(--bg); }
+  .nav-link.next { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .nav-link.home { background: var(--accent-bg); color: var(--accent); border-color: #b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    .no-print { display: none !important; }
+    .flashcard { height: auto; cursor: default; page-break-inside: avoid; }
+    .flashcard-inner { transform: none !important; display: block; }
+    .fc-front, .fc-back { position: static; transform: none; backface-visibility: visible; margin-bottom: 4px; }
+    .card-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    details.answers > *:not(summary) { display: block !important; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="kicker">Ünite 4 · İnce Ayrımlar · Ders 16–20</div>
+    <h1>Kelime Kartları & Mini Sınav</h1>
+    <div class="header-meta">
+      <span class="badge">B1</span>
+      <span class="badge">25 kelime kartı</span>
+      <span class="badge">10 soruluk sınav</span>
+    </div>
+  </div>
+
+  <p class="intro">Ders 16–20'yi bitirdikten sonra bu sayfayla kendini test et. Kartlara <strong>tıkla</strong> — İngilizce yüzü Türkçe'ye döner. Edilgen çatı, bağlaçlar, koşul cümleleri, dolaylı anlatım ve karşılaştırma yapılarını pekiştir.</p>
+
+  <!-- FLASHCARDS -->
+  <div class="section-head"><h2>🃏 Kelime Kartları</h2><span>25 kart · Ders 16–20</span></div>
+  <p class="tip no-print"><strong>İpucu:</strong> Bilmediğin kartları işaretle, ertesi gün sadece onları tekrar et. Sesli okumayı unutma!</p>
+
+  <div class="card-grid" id="cards">
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">was built</div><div class="fc-hint">tıkla ↻</div></div><div class="fc-back"><div class="fc-tr">inşa edildi (edilgen)</div><div class="fc-lesson">Ders 16</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">is made</div></div><div class="fc-back"><div class="fc-tr">yapılır, üretilir</div><div class="fc-lesson">Ders 16</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">by</div></div><div class="fc-back"><div class="fc-tr">tarafından (-den)</div><div class="fc-lesson">Ders 16</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">been done</div></div><div class="fc-back"><div class="fc-tr">yapılmış (edilgen perfect)</div><div class="fc-lesson">Ders 16</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">passive voice</div></div><div class="fc-back"><div class="fc-tr">edilgen çatı</div><div class="fc-lesson">Ders 16</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">however</div></div><div class="fc-back"><div class="fc-tr">ancak, bununla birlikte</div><div class="fc-lesson">Ders 17</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">therefore</div></div><div class="fc-back"><div class="fc-tr">bu nedenle, dolayısıyla</div><div class="fc-lesson">Ders 17</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">although</div></div><div class="fc-back"><div class="fc-tr">-e rağmen, her ne kadar</div><div class="fc-lesson">Ders 17</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">moreover</div></div><div class="fc-back"><div class="fc-tr">ayrıca, üstelik</div><div class="fc-lesson">Ders 17</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">despite</div></div><div class="fc-back"><div class="fc-tr">-e rağmen (+ isim/fiil)</div><div class="fc-lesson">Ders 17</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">if</div></div><div class="fc-back"><div class="fc-tr">eğer, -se/-sa</div><div class="fc-lesson">Ders 18</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">unless</div></div><div class="fc-back"><div class="fc-tr">-mezse, -mazsa (değilse)</div><div class="fc-lesson">Ders 18</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">would</div></div><div class="fc-back"><div class="fc-tr">-erdi (koşul/2. tip)</div><div class="fc-lesson">Ders 18</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">could</div></div><div class="fc-back"><div class="fc-tr">-ebilirdi (koşul)</div><div class="fc-lesson">Ders 18</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">had</div></div><div class="fc-back"><div class="fc-tr">-seydi (3. tip koşul)</div><div class="fc-lesson">Ders 18</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">said</div></div><div class="fc-back"><div class="fc-tr">dedi (dolaylı anlatım)</div><div class="fc-lesson">Ders 19</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">told</div></div><div class="fc-back"><div class="fc-tr">söyledi (+ kişi)</div><div class="fc-lesson">Ders 19</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">asked</div></div><div class="fc-back"><div class="fc-tr">sordu, istedi</div><div class="fc-lesson">Ders 19</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">that</div></div><div class="fc-back"><div class="fc-tr">-diğini (dolaylı anlatım)</div><div class="fc-lesson">Ders 19</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">whether</div></div><div class="fc-back"><div class="fc-tr">-ip -mediğini</div><div class="fc-lesson">Ders 19</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">better</div></div><div class="fc-back"><div class="fc-tr">daha iyi</div><div class="fc-lesson">Ders 20</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">worse</div></div><div class="fc-back"><div class="fc-tr">daha kötü</div><div class="fc-lesson">Ders 20</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">the most</div></div><div class="fc-back"><div class="fc-tr">en ... (üstünlük)</div><div class="fc-lesson">Ders 20</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">more than</div></div><div class="fc-back"><div class="fc-tr">-den daha fazla</div><div class="fc-lesson">Ders 20</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">as ... as</div></div><div class="fc-back"><div class="fc-tr">kadar ... (-e eşit)</div><div class="fc-lesson">Ders 20</div></div></div></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section-head"><h2>📝 Mini Sınav</h2><span>10 soru · ~15 dk</span></div>
+  <p class="tip">8+ doğru = Ünite 5'e geçmeye hazırsın. 6–7 doğru = zayıf konuları tekrar et. 5 ve altı = Ders 16–20'yi baştan gözden geçir.</p>
+
+  <div class="quiz-block"><div class="quiz-q">1. "Bu köprü 1990'da inşa edildi" — edilgen çatı?</div><ol class="quiz-opts"><li>They built the bridge in 1990.</li><li>The bridge was built in 1990.</li><li>The bridge built in 1990.</li><li>The bridge is building in 1990.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">2. "Yağmur yağıyor, <em>ancak</em> dışarı çıktı" — hangi bağlaç?</div><ol class="quiz-opts"><li>therefore</li><li>moreover</li><li>however</li><li>because</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">3. "If it rains, I ___ stay home." (1. tip koşul)</div><ol class="quiz-opts"><li>will</li><li>would</li><li>had</li><li>stayed</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">4. She said: "I am tired." → Dolaylı anlatım?</div><ol class="quiz-opts"><li>She said that she is tired.</li><li>She said that she was tired.</li><li>She told that she was tired.</li><li>She said she am tired.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">5. "Bu film diğerinden daha iyi" — hangisi?</div><ol class="quiz-opts"><li>This film is gooder than the other.</li><li>This film is better than the other.</li><li>This film is the better than the other.</li><li>This film is more good than the other.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">6. "Unless you hurry, you ___ miss the bus." Boşluğa ne gelir?</div><ol class="quiz-opts"><li>will</li><li>would</li><li>had</li><li>can</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">7. "Bu ürün Türkiye'de yapılır" — edilgen?</div><ol class="quiz-opts"><li>Turkey makes this product.</li><li>This product is made in Turkey.</li><li>This product was made by Turkey.</li><li>This product makes in Turkey.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">8. "He was sick. <em>Therefore</em>, he didn't come." — <em>therefore</em> ne anlama gelir?</div><ol class="quiz-opts"><li>ancak</li><li>bu nedenle</li><li>ayrıca</li><li>rağmen</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">9. "She is ___ student in the class." (en zeki)</div><ol class="quiz-opts"><li>the most intelligent</li><li>more intelligent</li><li>intelligentest</li><li>most intelligent</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">10. "He ___ me he was busy." (<em>told</em> vs <em>said</em>)</div><ol class="quiz-opts"><li>said</li><li>told</li><li>asked</li><li>spoke</li></ol></div>
+
+  <details class="answers">
+    <summary>Cevap Anahtarı</summary>
+    <div class="ans-body">
+      <strong>1.</strong> The bridge was built in 1990. &nbsp;·&nbsp;
+      <strong>2.</strong> however &nbsp;·&nbsp;
+      <strong>3.</strong> will &nbsp;·&nbsp;
+      <strong>4.</strong> She said that she was tired. &nbsp;·&nbsp;
+      <strong>5.</strong> This film is better than the other. &nbsp;·&nbsp;
+      <strong>6.</strong> will &nbsp;·&nbsp;
+      <strong>7.</strong> This product is made in Turkey. &nbsp;·&nbsp;
+      <strong>8.</strong> bu nedenle &nbsp;·&nbsp;
+      <strong>9.</strong> the most intelligent &nbsp;·&nbsp;
+      <strong>10.</strong> told
+    </div>
+  </details>
+
+  <div class="score-box">
+    <div class="score-item">Doğru sayın: <b>___ / 10</b></div>
+    <div class="score-item">Tarih: <b>___ / ___ / ___</b></div>
+  </div>
+
+  <div class="nav-links no-print">
+    <a class="nav-link" href="unit-3.html">‹ Ünite 3 Tekrar</a>
+    <a class="nav-link" href="../4/20.html">‹ Ders 20</a>
+    <a class="nav-link home" href="../index.html">☰ Ana Sayfa</a>
+    <a class="nav-link home" href="../vocabulary/index.html">📖 Kelime Listeleri</a>
+    <a class="nav-link next" href="unit-5.html">Ünite 5 Tekrar ›</a>
+    <a class="nav-link next" href="../5/21.html">Ders 21'e Geç ›</a>
+  </div>
+
+</div>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

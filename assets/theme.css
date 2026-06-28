@@ -1,0 +1,215 @@
+/* Dark mode — html[data-theme] beats inline :root (higher specificity) */
+
+html[data-theme="dark"] {
+  --ink: #e8e8e4;
+  --ink-2: #b8b8b2;
+  --ink-3: #888880;
+  --ink-4: #5a5a55;
+  --bg: #141412;
+  --bg-2: #1e1e1c;
+  --bg-3: #282824;
+  --rule: #3a3a36;
+  --accent: #6a9ee8;
+  --accent-bg: #1a2840;
+  --warn: #e8a050;
+  --warn-bg: #2a2010;
+  --ok: #5cb87a;
+  --ok-bg: #142818;
+  --purple: #a888e8;
+  --purple-bg: #221838;
+  --teal: #50c8d8;
+  --teal-bg: #102830;
+  --rose: #e87090;
+  --rose-bg: #281018;
+  --border-accent: #3a5080;
+  --border-ok: #2a5040;
+  --border-purple: #4a3870;
+  --border-warn: #6a5020;
+  --border-teal: #205860;
+  --border-rose: #603040;
+  color-scheme: dark;
+}
+
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+/* Hardcoded light table tints → dark */
+html[data-theme="dark"] .cmp-table [class*="-cell"],
+html[data-theme="dark"] .cmp-table td[style*="background"] {
+  background: var(--bg-2) !important;
+}
+
+html[data-theme="dark"] .wrong { color: #e87070; }
+html[data-theme="dark"] .right { color: var(--ok); }
+
+/* Badges & nav */
+html[data-theme="dark"] .badge-unit,
+html[data-theme="dark"] .lesson.available .lesson-no {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+html[data-theme="dark"] .lesson.done .lesson-no {
+  background: var(--ok);
+  color: #fff;
+}
+
+html[data-theme="dark"] .nav-link.next {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* Common border overrides (inline styles use fixed hex) */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .formation-box,
+html[data-theme="dark"] .struct-row,
+html[data-theme="dark"] .rule-box,
+html[data-theme="dark"] .quiz-block,
+html[data-theme="dark"] .unit,
+html[data-theme="dark"] .extra-card,
+html[data-theme="dark"] .review-link,
+html[data-theme="dark"] .tip,
+html[data-theme="dark"] .hub-card,
+html[data-theme="dark"] .vocab-item,
+html[data-theme="dark"] .symptom-item,
+html[data-theme="dark"] .time-item,
+html[data-theme="dark"] .color-cell,
+html[data-theme="dark"] .ord-cell,
+html[data-theme="dark"] .pair-item,
+html[data-theme="dark"] .use-item,
+html[data-theme="dark"] .take-item,
+html[data-theme="dark"] .pr-block,
+html[data-theme="dark"] .word-table th,
+html[data-theme="dark"] .word-table td {
+  border-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] .recall,
+html[data-theme="dark"] [class*="slot"],
+html[data-theme="dark"] [class*="form-slot"],
+html[data-theme="dark"] [class*="fs-"],
+html[data-theme="dark"] .demo-card.near,
+html[data-theme="dark"] .demo-card.far {
+  border-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] .bubble.right .bubble-text {
+  border-color: var(--border-accent) !important;
+}
+
+html[data-theme="dark"] .bubble.left .bubble-text {
+  border-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] .recall {
+  border-color: var(--border-purple) !important;
+}
+
+html[data-theme="dark"] .mission {
+  border-color: var(--border-accent) !important;
+}
+
+html[data-theme="dark"] details.answers {
+  border-color: var(--border-ok) !important;
+}
+
+html[data-theme="dark"] .fc-front {
+  border-color: var(--border-accent) !important;
+}
+
+html[data-theme="dark"] .fc-back {
+  border-color: var(--border-ok) !important;
+}
+
+html[data-theme="dark"] .review-link:hover,
+html[data-theme="dark"] .extra-card:hover {
+  border-color: var(--accent) !important;
+}
+
+/* Inline style borders on lesson pages */
+html[data-theme="dark"] [style*="#b3c9ef"] { border-color: var(--border-accent) !important; }
+html[data-theme="dark"] [style*="#a8d4bc"] { border-color: var(--border-ok) !important; }
+html[data-theme="dark"] [style*="#c9b8ef"] { border-color: var(--border-purple) !important; }
+html[data-theme="dark"] [style*="#f5c896"] { border-color: var(--border-warn) !important; }
+html[data-theme="dark"] [style*="#a5f3fc"] { border-color: var(--border-teal) !important; }
+html[data-theme="dark"] [style*="#fecdd3"] { border-color: var(--border-rose) !important; }
+
+/* ── Toolbar ── */
+.ecs-toolbar {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 6px;
+  z-index: 9999;
+}
+
+.ecs-tool-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0.5px solid var(--rule);
+  background: var(--bg);
+  color: var(--ink-2);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  transition: background .15s, transform .15s;
+}
+
+.ecs-tool-btn:hover {
+  background: var(--bg-2);
+  transform: scale(1.06);
+}
+
+html[data-theme="dark"] .ecs-tool-btn {
+  box-shadow: 0 2px 12px rgba(0,0,0,.5);
+}
+
+/* ── Progress & complete ── */
+.ecs-complete {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 14px;
+  border: 0.5px solid var(--rule);
+  background: var(--bg-2);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background .12s, border-color .12s, color .12s;
+  margin-right: auto;
+}
+
+.ecs-complete:hover { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+.ecs-complete.is-done { background: var(--ok-bg); border-color: var(--ok); color: var(--ok); }
+.footer .ecs-complete { margin-right: 0; }
+
+.footer-about {
+  color: var(--ink-4);
+  text-decoration: none;
+  font-size: 11px;
+  transition: color .12s;
+}
+
+.footer-about:hover { color: var(--accent); text-decoration: underline; }
+
+.lesson.done { background: var(--ok-bg); }
+.lesson.done .lesson-no { background: var(--ok); color: #fff; }
+.flag-done { background: var(--ok-bg); color: var(--ok); }
+.progress-fill { transition: width .4s ease; }
+
+@media print {
+  .ecs-toolbar, .ecs-complete { display: none !important; }
+  html[data-theme="dark"] { color-scheme: light; }
+}

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>İngilizce Cheat Sheet Müfredatı — 25 Ders</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -62,7 +63,7 @@
   .progress-wrap { margin: 0 0 1.75rem; }
   .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); margin-bottom: 5px; }
   .progress-track { height: 9px; border-radius: 5px; background: var(--bg-3); overflow: hidden; }
-  .progress-fill { height: 100%; width: 100%; background: linear-gradient(to right, var(--accent), var(--ok)); border-radius: 5px; }
+  .progress-fill { height: 100%; width: 0%; background: linear-gradient(to right, var(--accent), var(--ok)); border-radius: 5px; transition: width .4s ease; }
 
   /* Units */
   .unit { margin-bottom: 1.5rem; border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; }
@@ -89,7 +90,31 @@
   .lesson-topic { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
   .lesson-flag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px; flex-shrink: 0; }
   .flag-ready { background: var(--ok-bg); color: var(--ok); }
+  .flag-done { background: var(--ok-bg); color: var(--ok); }
   .flag-soon { background: var(--bg-3); color: var(--ink-4); }
+  .flag-review { background: var(--purple-bg); color: var(--purple); }
+
+  /* Review row */
+  .unit-review { display: flex; gap: 10px; padding: 10px 16px; background: var(--bg-2); border-top: 0.5px solid var(--rule); flex-wrap: wrap; }
+  .review-link { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 10px; border: 0.5px solid var(--rule); background: var(--bg); text-decoration: none; color: inherit; font-size: 12px; font-weight: 500; transition: background .12s; flex: 1; min-width: 200px; }
+  .review-link:hover { background: var(--purple-bg); border-color: #c9b8ef; }
+  .review-link .ico { font-size: 18px; }
+  .review-link .sub { font-size: 10px; color: var(--ink-3); font-weight: 400; margin-top: 1px; }
+
+  /* Extra sections */
+  .extras { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.75rem 0 0; }
+  .extra-card { border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; transition: background .12s, border-color .12s; }
+  .extra-card:hover { background: var(--bg-2); border-color: var(--accent); }
+  .extra-head { padding: 14px 16px; display: flex; align-items: flex-start; gap: 12px; }
+  .extra-ico { font-size: 28px; line-height: 1; }
+  .extra-title { font-size: 15px; font-weight: 600; }
+  .extra-sub { font-size: 11px; color: var(--ink-3); margin-top: 3px; line-height: 1.55; }
+  .extra-links { padding: 0 16px 14px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .extra-tag { font-size: 10px; padding: 3px 8px; border-radius: 10px; background: var(--bg-3); color: var(--ink-2); font-weight: 500; }
+
+  @media (max-width: 680px) {
+    .extras { grid-template-columns: 1fr; }
+  }
 
   .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); font-size: 11px; color: var(--ink-4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
@@ -106,9 +131,10 @@
     .lessons .lesson:nth-child(odd) { border-right: none; }
   }
 </style>
+<link rel="stylesheet" href="assets/theme.css">
 </head>
 <body>
-<div class="page">
+<div class="page" id="ecs-index">
 
   <!-- Hero -->
   <div class="hero">
@@ -120,13 +146,15 @@
       <span class="stat s2">✍️ Cevap anahtarlı pratik</span>
       <span class="stat s3">🖨️ PDF & yazıcı dostu</span>
       <span class="stat s4">🇹🇷 Türkçe tuzak uyarıları</span>
+      <span class="stat s1">🃏 Ünite sonu kartlar & sınav</span>
     </div>
   </div>
 
   <!-- Progress -->
   <div class="progress-wrap">
-    <div class="progress-label"><span>İlerleme</span><span>25 / 25 ders hazır 🎉</span></div>
+    <div class="progress-label"><span>İlerlemen</span><span class="progress-count">0 / 25 ders tamamlandı</span></div>
     <div class="progress-track"><div class="progress-fill"></div></div>
+    <p style="font-size:10px;color:var(--ink-4);margin-top:5px" class="no-print">Ders sonunda “Tamamladım” işaretle — ilerlemen tarayıcında saklanır.</p>
   </div>
 
   <!-- Ünite 1 -->
@@ -140,30 +168,36 @@
       <div class="unit-range">Ders 1–5</div>
     </div>
     <div class="lessons">
-      <a class="lesson available" href="1/1.html">
+      <a class="lesson available" href="1/1.html" data-lesson="1">
         <div class="lesson-no">1</div>
         <div class="lesson-body"><div class="lesson-name">Harfler, Sesler ve Telaffuz Sırları</div><div class="lesson-topic">Alfabe · IPA · minimal pairs</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="1/2.html">
+      <a class="lesson available" href="1/2.html" data-lesson="2">
         <div class="lesson-no">2</div>
         <div class="lesson-body"><div class="lesson-name">Kendini Tanıt</div><div class="lesson-topic">To be · kişi zamirleri</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="1/3.html">
+      <a class="lesson available" href="1/3.html" data-lesson="3">
         <div class="lesson-no">3</div>
         <div class="lesson-body"><div class="lesson-name">Sayılar, Renkler ve Günlük Nesneler</div><div class="lesson-topic">this/that · a/an/the</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="1/4.html">
+      <a class="lesson available" href="1/4.html" data-lesson="4">
         <div class="lesson-no">4</div>
         <div class="lesson-body"><div class="lesson-name">Sorular Kurmak</div><div class="lesson-topic">WH questions</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="1/5.html">
+      <a class="lesson available" href="1/5.html" data-lesson="5">
         <div class="lesson-no">5</div>
         <div class="lesson-body"><div class="lesson-name">Günlük Rutin</div><div class="lesson-topic">Simple Present</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+    </div>
+    <div class="unit-review">
+      <a class="review-link" href="review/unit-1.html">
+        <span class="ico">🃏</span>
+        <span><div>Ünite 1 Tekrar</div><div class="sub">25 kelime kartı · 10 soruluk mini sınav</div></span>
       </a>
     </div>
   </div>
@@ -179,30 +213,36 @@
       <div class="unit-range">Ders 6–10</div>
     </div>
     <div class="lessons">
-      <a class="lesson available" href="2/6.html">
+      <a class="lesson available" href="2/6.html" data-lesson="6">
         <div class="lesson-no">6</div>
         <div class="lesson-body"><div class="lesson-name">Şu An Ne Yapıyorsun?</div><div class="lesson-topic">Present Continuous</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="2/7.html">
+      <a class="lesson available" href="2/7.html" data-lesson="7">
         <div class="lesson-no">7</div>
         <div class="lesson-body"><div class="lesson-name">Geçmişe Yolculuk</div><div class="lesson-topic">Simple Past</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="2/8.html">
+      <a class="lesson available" href="2/8.html" data-lesson="8">
         <div class="lesson-no">8</div>
         <div class="lesson-body"><div class="lesson-name">Henüz mi, Zaten mi?</div><div class="lesson-topic">Present Perfect</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="2/9.html">
+      <a class="lesson available" href="2/9.html" data-lesson="9">
         <div class="lesson-no">9</div>
         <div class="lesson-body"><div class="lesson-name">Gelecekten Haberler</div><div class="lesson-topic">Will vs Going to</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="2/10.html">
+      <a class="lesson available" href="2/10.html" data-lesson="10">
         <div class="lesson-no">10</div>
         <div class="lesson-body"><div class="lesson-name">Modal'lar</div><div class="lesson-topic">Can, Must, Should</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+    </div>
+    <div class="unit-review">
+      <a class="review-link" href="review/unit-2.html">
+        <span class="ico">🃏</span>
+        <span><div>Ünite 2 Tekrar</div><div class="sub">25 kelime kartı · 10 soruluk mini sınav</div></span>
       </a>
     </div>
   </div>
@@ -218,30 +258,36 @@
       <div class="unit-range">Ders 11–15</div>
     </div>
     <div class="lessons">
-      <a class="lesson available" href="3/11.html">
+      <a class="lesson available" href="3/11.html" data-lesson="11">
         <div class="lesson-no">11</div>
         <div class="lesson-body"><div class="lesson-name">Vücudumuz ve Sağlık Dili</div><div class="lesson-topic">there is/are · quantifiers</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="3/12.html">
+      <a class="lesson available" href="3/12.html" data-lesson="12">
         <div class="lesson-no">12</div>
         <div class="lesson-body"><div class="lesson-name">Yiyecek, Mutfak ve Restoran</div><div class="lesson-topic">some/any · countable</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="3/13.html">
+      <a class="lesson available" href="3/13.html" data-lesson="13">
         <div class="lesson-no">13</div>
         <div class="lesson-body"><div class="lesson-name">Seyahat ve Yön Tarifi</div><div class="lesson-topic">prepositions</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="3/14.html">
+      <a class="lesson available" href="3/14.html" data-lesson="14">
         <div class="lesson-no">14</div>
         <div class="lesson-body"><div class="lesson-name">İş ve Çalışma Hayatı</div><div class="lesson-topic">collocations</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="3/15.html">
+      <a class="lesson available" href="3/15.html" data-lesson="15">
         <div class="lesson-no">15</div>
         <div class="lesson-body"><div class="lesson-name">Deyimler ve Phrasal Verbs</div><div class="lesson-topic">idioms · phrasal verbs</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+    </div>
+    <div class="unit-review">
+      <a class="review-link" href="review/unit-3.html">
+        <span class="ico">🃏</span>
+        <span><div>Ünite 3 Tekrar</div><div class="sub">25 kelime kartı · 10 soruluk mini sınav</div></span>
       </a>
     </div>
   </div>
@@ -257,30 +303,36 @@
       <div class="unit-range">Ders 16–20</div>
     </div>
     <div class="lessons">
-      <a class="lesson available" href="4/16.html">
+      <a class="lesson available" href="4/16.html" data-lesson="16">
         <div class="lesson-no">16</div>
         <div class="lesson-body"><div class="lesson-name">Pasif Yapı</div><div class="lesson-topic">The passive voice</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="4/17.html">
+      <a class="lesson available" href="4/17.html" data-lesson="17">
         <div class="lesson-no">17</div>
         <div class="lesson-body"><div class="lesson-name">Cümle Bağlama</div><div class="lesson-topic">Linking words</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="4/18.html">
+      <a class="lesson available" href="4/18.html" data-lesson="18">
         <div class="lesson-no">18</div>
         <div class="lesson-body"><div class="lesson-name">Koşul Cümleleri</div><div class="lesson-topic">If clauses</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="4/19.html">
+      <a class="lesson available" href="4/19.html" data-lesson="19">
         <div class="lesson-no">19</div>
         <div class="lesson-body"><div class="lesson-name">Dolaylı Anlatım</div><div class="lesson-topic">Reported speech</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="4/20.html">
+      <a class="lesson available" href="4/20.html" data-lesson="20">
         <div class="lesson-no">20</div>
         <div class="lesson-body"><div class="lesson-name">Karşılaştırma</div><div class="lesson-topic">Comparative & superlative</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
+      </a>
+    </div>
+    <div class="unit-review">
+      <a class="review-link" href="review/unit-4.html">
+        <span class="ico">🃏</span>
+        <span><div>Ünite 4 Tekrar</div><div class="sub">25 kelime kartı · 10 soruluk mini sınav</div></span>
       </a>
     </div>
   </div>
@@ -296,32 +348,70 @@
       <div class="unit-range">Ders 21–25</div>
     </div>
     <div class="lessons">
-      <a class="lesson available" href="5/21.html">
+      <a class="lesson available" href="5/21.html" data-lesson="21">
         <div class="lesson-no">21</div>
         <div class="lesson-body"><div class="lesson-name">Okuma Stratejileri</div><div class="lesson-topic">reading skills</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="5/22.html">
+      <a class="lesson available" href="5/22.html" data-lesson="22">
         <div class="lesson-no">22</div>
         <div class="lesson-body"><div class="lesson-name">Dinleme ve Aksan Çeşitliliği</div><div class="lesson-topic">listening</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="5/23.html">
+      <a class="lesson available" href="5/23.html" data-lesson="23">
         <div class="lesson-no">23</div>
         <div class="lesson-body"><div class="lesson-name">Yazma — Paragraf ve Kompozisyon</div><div class="lesson-topic">writing</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="5/24.html">
+      <a class="lesson available" href="5/24.html" data-lesson="24">
         <div class="lesson-no">24</div>
         <div class="lesson-body"><div class="lesson-name">Konuşma Stratejileri ve Hedging</div><div class="lesson-topic">speaking</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
-      <a class="lesson available" href="5/25.html">
+      <a class="lesson available" href="5/25.html" data-lesson="25">
         <div class="lesson-no">25</div>
         <div class="lesson-body"><div class="lesson-name">Büyük Final — Mini TED Talk Projesi</div><div class="lesson-topic">capstone</div></div>
         <span class="lesson-flag flag-ready">Hazır</span>
       </a>
     </div>
+    <div class="unit-review">
+      <a class="review-link" href="review/unit-5.html">
+        <span class="ico">🃏</span>
+        <span><div>Ünite 5 Tekrar</div><div class="sub">25 kelime kartı · 10 soruluk mini sınav</div></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Kelime & Tekrar -->
+  <div class="extras">
+    <a class="extra-card" href="vocabulary/index.html">
+      <div class="extra-head">
+        <span class="extra-ico">📖</span>
+        <div>
+          <div class="extra-title">Kelime Listeleri</div>
+          <div class="extra-sub">Müfredat kelimeleri, CEFR seviye listeleri (A1–B1) ve Oxford, Cambridge, NGSL gibi resmi kaynak rehberi.</div>
+        </div>
+      </div>
+      <div class="extra-links">
+        <span class="extra-tag">185 müfredat kelimesi</span>
+        <span class="extra-tag">A1 · A2 · B1</span>
+        <span class="extra-tag">Resmi kaynaklar</span>
+      </div>
+    </a>
+    <a class="extra-card" href="review/unit-1.html">
+      <div class="extra-head">
+        <span class="extra-ico">🎯</span>
+        <div>
+          <div class="extra-title">Ünite Tekrarları</div>
+          <div class="extra-sub">Her ünite sonunda interaktif kelime kartları ve 10 soruluk mini sınav. Yazdırılabilir, cevap anahtarlı.</div>
+        </div>
+      </div>
+      <div class="extra-links">
+        <span class="extra-tag">5 × 25 kart</span>
+        <span class="extra-tag">5 × 10 soru</span>
+        <span class="extra-tag">Tıkla-çevir</span>
+      </div>
+    </a>
   </div>
 
   <div class="footer">
@@ -330,5 +420,6 @@
   </div>
 
 </div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>

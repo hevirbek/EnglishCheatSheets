@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Müfredat Kelimeleri · İngilizce Cheat Sheet</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #ffffff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --warn: #b85c00; --warn-bg: #fff4e8;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --rose: #9f1239; --rose-bg: #fff1f2;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+  .hero { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
+  .hero .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-top: 6px; }
+  .hero p { font-size: 13px; color: var(--ink-3); margin-top: 8px; max-width: 640px; line-height: 1.7; }
+  .hero-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .stat { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; background: var(--accent-bg); color: var(--accent); }
+
+  .search-wrap { margin-bottom: 1.5rem; }
+  .search-wrap label { display: block; font-size: 11px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .search-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .search-input {
+    flex: 1; min-width: 200px; padding: 9px 14px; border: 0.5px solid var(--rule); border-radius: 8px;
+    font-family: var(--sans); font-size: 13px; background: var(--bg-2); outline: none;
+  }
+  .search-input:focus { border-color: var(--accent); background: var(--bg); box-shadow: 0 0 0 3px var(--accent-bg); }
+  .search-count { font-size: 12px; color: var(--ink-3); font-family: var(--mono); white-space: nowrap; }
+
+  .unit { margin-bottom: 1.5rem; border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; }
+  .unit-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 0.5px solid var(--rule); }
+  .unit-num { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-weight: 600; font-size: 15px; flex-shrink: 0; }
+  .unit-1 .unit-num { background: var(--accent-bg); color: var(--accent); }
+  .unit-2 .unit-num { background: var(--ok-bg); color: var(--ok); }
+  .unit-3 .unit-num { background: var(--purple-bg); color: var(--purple); }
+  .unit-4 .unit-num { background: var(--warn-bg); color: var(--warn); }
+  .unit-5 .unit-num { background: var(--rose-bg); color: var(--rose); }
+  .unit-title { font-size: 15px; font-weight: 600; }
+  .unit-sub { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+  .unit-count { margin-left: auto; font-size: 11px; color: var(--ink-4); font-family: var(--mono); }
+
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .vocab-table th { text-align: left; padding: 8px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-weight: 600; font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
+  .vocab-table td { padding: 7px 14px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .vocab-table tr.hidden { display: none; }
+  .vocab-table tr:nth-child(even) { background: var(--bg-2); }
+  .col-en { font-family: var(--mono); font-weight: 500; color: var(--ink); }
+  .col-tr { color: var(--ink-2); }
+  .col-lesson { font-family: var(--mono); font-size: 11px; color: var(--accent); white-space: nowrap; }
+  .col-theme { font-size: 11px; color: var(--ink-3); }
+
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); font-size: 11px; color: var(--ink-4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    html, body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page { padding: 0; max-width: 100%; }
+    .search-wrap { display: none; }
+    .unit { break-inside: avoid; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="kicker">Kelime Hazinesi · 25 Ders</div>
+    <h1>Müfredat Kelimeleri</h1>
+    <p>25 ders boyunca geçen anahtar kelimeler — 5 üniteye göre düzenlenmiş. Arama kutusuna İngilizce veya Türkçe yazarak filtrele.</p>
+    <div class="hero-stats">
+      <span class="stat" id="total-stat">185 kelime · 5 ünite</span>
+    </div>
+  </div>
+
+  <div class="search-wrap no-print">
+    <label for="search">Kelime ara</label>
+    <div class="search-row">
+      <input type="search" id="search" class="search-input" placeholder="İngilizce veya Türkçe ara… (ör. renk, routine, mavi)" autocomplete="off">
+      <span class="search-count" id="match-count">185 / 185 görünüyor</span>
+    </div>
+  </div>
+
+  <!-- Ünite 1 -->
+  <div class="unit unit-1" data-unit="1">
+    <div class="unit-head">
+      <div class="unit-num">1</div>
+      <div>
+        <div class="unit-title">Merhaba Dünya</div>
+        <div class="unit-sub">Temeller · renkler · WH sorular · günlük rutin</div>
+      </div>
+      <div class="unit-count">37 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>Ders</th><th>Tema</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">hello</td><td class="col-tr">merhaba</td><td class="col-lesson">2</td><td class="col-theme">Tanışma</td></tr>
+        <tr><td class="col-en">name</td><td class="col-tr">isim, ad</td><td class="col-lesson">2</td><td class="col-theme">Tanışma</td></tr>
+        <tr><td class="col-en">from</td><td class="col-tr">-den, -dan (köken)</td><td class="col-lesson">2</td><td class="col-theme">Tanışma</td></tr>
+        <tr><td class="col-en">student</td><td class="col-tr">öğrenci</td><td class="col-lesson">2</td><td class="col-theme">Meslek</td></tr>
+        <tr><td class="col-en">teacher</td><td class="col-tr">öğretmen</td><td class="col-lesson">2</td><td class="col-theme">Meslek</td></tr>
+        <tr><td class="col-en">engineer</td><td class="col-tr">mühendis</td><td class="col-lesson">2</td><td class="col-theme">Meslek</td></tr>
+        <tr><td class="col-en">doctor</td><td class="col-tr">doktor</td><td class="col-lesson">2</td><td class="col-theme">Meslek</td></tr>
+        <tr><td class="col-en">married</td><td class="col-tr">evli</td><td class="col-lesson">2</td><td class="col-theme">Durum</td></tr>
+        <tr><td class="col-en">single</td><td class="col-tr">bekar</td><td class="col-lesson">2</td><td class="col-theme">Durum</td></tr>
+        <tr><td class="col-en">happy</td><td class="col-tr">mutlu</td><td class="col-lesson">2</td><td class="col-theme">Duygu</td></tr>
+        <tr><td class="col-en">tired</td><td class="col-tr">yorgun</td><td class="col-lesson">2</td><td class="col-theme">Duygu</td></tr>
+        <tr><td class="col-en">ready</td><td class="col-tr">hazır</td><td class="col-lesson">2</td><td class="col-theme">Durum</td></tr>
+        <tr><td class="col-en">late</td><td class="col-tr">geç</td><td class="col-lesson">2</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">Turkish</td><td class="col-tr">Türk / Türkçe</td><td class="col-lesson">2</td><td class="col-theme">Milliyet</td></tr>
+        <tr><td class="col-en">years old</td><td class="col-tr">yaşında</td><td class="col-lesson">2</td><td class="col-theme">Tanışma</td></tr>
+        <tr><td class="col-en">red</td><td class="col-tr">kırmızı</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">blue</td><td class="col-tr">mavi</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">green</td><td class="col-tr">yeşil</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">yellow</td><td class="col-tr">sarı</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">black</td><td class="col-tr">siyah</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">white</td><td class="col-tr">beyaz</td><td class="col-lesson">3</td><td class="col-theme">Renkler</td></tr>
+        <tr><td class="col-en">book</td><td class="col-tr">kitap</td><td class="col-lesson">3</td><td class="col-theme">Nesneler</td></tr>
+        <tr><td class="col-en">phone</td><td class="col-tr">telefon</td><td class="col-lesson">3</td><td class="col-theme">Nesneler</td></tr>
+        <tr><td class="col-en">this</td><td class="col-tr">bu (yakın)</td><td class="col-lesson">3</td><td class="col-theme">İşaret</td></tr>
+        <tr><td class="col-en">that</td><td class="col-tr">şu, o (uzak)</td><td class="col-lesson">3</td><td class="col-theme">İşaret</td></tr>
+        <tr><td class="col-en">what</td><td class="col-tr">ne</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">where</td><td class="col-tr">nerede</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">when</td><td class="col-tr">ne zaman</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">who</td><td class="col-tr">kim</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">why</td><td class="col-tr">neden</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">how</td><td class="col-tr">nasıl</td><td class="col-lesson">4</td><td class="col-theme">WH sorular</td></tr>
+        <tr><td class="col-en">wake up</td><td class="col-tr">uyanmak</td><td class="col-lesson">5</td><td class="col-theme">Rutin</td></tr>
+        <tr><td class="col-en">breakfast</td><td class="col-tr">kahvaltı</td><td class="col-lesson">5</td><td class="col-theme">Rutin</td></tr>
+        <tr><td class="col-en">work</td><td class="col-tr">çalışmak, iş</td><td class="col-lesson">5</td><td class="col-theme">Rutin</td></tr>
+        <tr><td class="col-en">always</td><td class="col-tr">her zaman</td><td class="col-lesson">5</td><td class="col-theme">Sıklık</td></tr>
+        <tr><td class="col-en">usually</td><td class="col-tr">genellikle</td><td class="col-lesson">5</td><td class="col-theme">Sıklık</td></tr>
+        <tr><td class="col-en">never</td><td class="col-tr">asla, hiç</td><td class="col-lesson">5</td><td class="col-theme">Sıklık</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Ünite 2 -->
+  <div class="unit unit-2" data-unit="2">
+    <div class="unit-head">
+      <div class="unit-num">2</div>
+      <div>
+        <div class="unit-title">Hayat Akıyor</div>
+        <div class="unit-sub">Zaman kelimeleri · modallar · geçmiş fiiller</div>
+      </div>
+      <div class="unit-count">37 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>Ders</th><th>Tema</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">now</td><td class="col-tr">şimdi</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">right now</td><td class="col-tr">tam şimdi</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">at the moment</td><td class="col-tr">şu anda</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">today</td><td class="col-tr">bugün</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">listen</td><td class="col-tr">dinlemek</td><td class="col-lesson">6</td><td class="col-theme">Şimdiki zaman</td></tr>
+        <tr><td class="col-en">wait</td><td class="col-tr">beklemek</td><td class="col-lesson">6</td><td class="col-theme">Şimdiki zaman</td></tr>
+        <tr><td class="col-en">yesterday</td><td class="col-tr">dün</td><td class="col-lesson">7</td><td class="col-theme">Geçmiş zaman</td></tr>
+        <tr><td class="col-en">last week</td><td class="col-tr">geçen hafta</td><td class="col-lesson">7</td><td class="col-theme">Geçmiş zaman</td></tr>
+        <tr><td class="col-en">ago</td><td class="col-tr">- önce</td><td class="col-lesson">7</td><td class="col-theme">Geçmiş zaman</td></tr>
+        <tr><td class="col-en">went</td><td class="col-tr">gitti (go)</td><td class="col-lesson">7</td><td class="col-theme">Düzensiz fiil</td></tr>
+        <tr><td class="col-en">saw</td><td class="col-tr">gördü (see)</td><td class="col-lesson">7</td><td class="col-theme">Düzensiz fiil</td></tr>
+        <tr><td class="col-en">bought</td><td class="col-tr">satın aldı (buy)</td><td class="col-lesson">7</td><td class="col-theme">Düzensiz fiil</td></tr>
+        <tr><td class="col-en">already</td><td class="col-tr">zaten, çoktan</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">yet</td><td class="col-tr">henüz</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">just</td><td class="col-tr">az önce</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">ever</td><td class="col-tr">hiç (deneyim)</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">never (experience)</td><td class="col-tr">hiç (deneyim)</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">since</td><td class="col-tr">-den beri</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">for (duration)</td><td class="col-tr">boyunca (süre)</td><td class="col-lesson">8</td><td class="col-theme">Present Perfect</td></tr>
+        <tr><td class="col-en">tomorrow</td><td class="col-tr">yarın</td><td class="col-lesson">9</td><td class="col-theme">Gelecek</td></tr>
+        <tr><td class="col-en">next week</td><td class="col-tr">gelecek hafta</td><td class="col-lesson">9</td><td class="col-theme">Gelecek</td></tr>
+        <tr><td class="col-en">will</td><td class="col-tr">-ecek, -acak (gelecek)</td><td class="col-lesson">9</td><td class="col-theme">Gelecek</td></tr>
+        <tr><td class="col-en">going to</td><td class="col-tr">-meyi planlıyorum</td><td class="col-lesson">9</td><td class="col-theme">Gelecek</td></tr>
+        <tr><td class="col-en">plan</td><td class="col-tr">plan, planlamak</td><td class="col-lesson">9</td><td class="col-theme">Gelecek</td></tr>
+        <tr><td class="col-en">can</td><td class="col-tr">-ebilmek</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">could</td><td class="col-tr">-ebilirdi (geçmiş)</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">must</td><td class="col-tr">-meli, -malı (zorunluluk)</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">should</td><td class="col-tr">-meli (tavsiye)</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">have to</td><td class="col-tr">zorunda olmak</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">permission</td><td class="col-tr">izin</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">advice</td><td class="col-tr">tavsiye</td><td class="col-lesson">10</td><td class="col-theme">Modal</td></tr>
+        <tr><td class="col-en">Monday</td><td class="col-tr">Pazartesi</td><td class="col-lesson">6</td><td class="col-theme">Günler</td></tr>
+        <tr><td class="col-en">morning</td><td class="col-tr">sabah</td><td class="col-lesson">5</td><td class="col-theme">Günün bölümü</td></tr>
+        <tr><td class="col-en">evening</td><td class="col-tr">akşam</td><td class="col-lesson">5</td><td class="col-theme">Günün bölümü</td></tr>
+        <tr><td class="col-en">hour</td><td class="col-tr">saat</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">minute</td><td class="col-tr">dakika</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+        <tr><td class="col-en">o'clock</td><td class="col-tr">saat (tam)</td><td class="col-lesson">6</td><td class="col-theme">Zaman</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Ünite 3 -->
+  <div class="unit unit-3" data-unit="3">
+    <div class="unit-head">
+      <div class="unit-num">3</div>
+      <div>
+        <div class="unit-title">Kelimeler Dünyası</div>
+        <div class="unit-sub">Sağlık · yiyecek · seyahat · iş · phrasal verbs</div>
+      </div>
+      <div class="unit-count">48 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>Ders</th><th>Tema</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">head</td><td class="col-tr">baş, kafa</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">face</td><td class="col-tr">yüz</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">eye</td><td class="col-tr">göz</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">hand</td><td class="col-tr">el</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">stomach</td><td class="col-tr">karın, mide</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">heart</td><td class="col-tr">kalp</td><td class="col-lesson">11</td><td class="col-theme">Vücut</td></tr>
+        <tr><td class="col-en">headache</td><td class="col-tr">baş ağrısı</td><td class="col-lesson">11</td><td class="col-theme">Sağlık</td></tr>
+        <tr><td class="col-en">fever</td><td class="col-tr">ateş</td><td class="col-lesson">11</td><td class="col-theme">Sağlık</td></tr>
+        <tr><td class="col-en">medicine</td><td class="col-tr">ilaç</td><td class="col-lesson">11</td><td class="col-theme">Sağlık</td></tr>
+        <tr><td class="col-en">hospital</td><td class="col-tr">hastane</td><td class="col-lesson">11</td><td class="col-theme">Sağlık</td></tr>
+        <tr><td class="col-en">apple</td><td class="col-tr">elma</td><td class="col-lesson">12</td><td class="col-theme">Meyve</td></tr>
+        <tr><td class="col-en">bread</td><td class="col-tr">ekmek</td><td class="col-lesson">12</td><td class="col-theme">Yiyecek</td></tr>
+        <tr><td class="col-en">chicken</td><td class="col-tr">tavuk</td><td class="col-lesson">12</td><td class="col-theme">Protein</td></tr>
+        <tr><td class="col-en">water</td><td class="col-tr">su</td><td class="col-lesson">12</td><td class="col-theme">İçecek</td></tr>
+        <tr><td class="col-en">restaurant</td><td class="col-tr">restoran</td><td class="col-lesson">12</td><td class="col-theme">Mekân</td></tr>
+        <tr><td class="col-en">menu</td><td class="col-tr">menü</td><td class="col-lesson">12</td><td class="col-theme">Restoran</td></tr>
+        <tr><td class="col-en">bill</td><td class="col-tr">hesap</td><td class="col-lesson">12</td><td class="col-theme">Restoran</td></tr>
+        <tr><td class="col-en">delicious</td><td class="col-tr">lezzetli</td><td class="col-lesson">12</td><td class="col-theme">Sıfat</td></tr>
+        <tr><td class="col-en">airport</td><td class="col-tr">havalimanı</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">ticket</td><td class="col-tr">bilet</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">passport</td><td class="col-tr">pasaport</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">luggage</td><td class="col-tr">bagaj</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">hotel</td><td class="col-tr">otel</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">map</td><td class="col-tr">harita</td><td class="col-lesson">13</td><td class="col-theme">Yön</td></tr>
+        <tr><td class="col-en">left</td><td class="col-tr">sol</td><td class="col-lesson">13</td><td class="col-theme">Yön</td></tr>
+        <tr><td class="col-en">right</td><td class="col-tr">sağ</td><td class="col-lesson">13</td><td class="col-theme">Yön</td></tr>
+        <tr><td class="col-en">straight</td><td class="col-tr">düz (git)</td><td class="col-lesson">13</td><td class="col-theme">Yön</td></tr>
+        <tr><td class="col-en">departure</td><td class="col-tr">kalkış</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">office</td><td class="col-tr">ofis</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">colleague</td><td class="col-tr">iş arkadaşı</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">meeting</td><td class="col-tr">toplantı</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">deadline</td><td class="col-tr">son teslim tarihi</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">salary</td><td class="col-tr">maaş</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">interview</td><td class="col-tr">mülakat</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">promotion</td><td class="col-tr">terfi</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">look after</td><td class="col-tr">bakmak, ilgilenmek</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">give up</td><td class="col-tr">vazgeçmek</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">find out</td><td class="col-tr">öğrenmek, keşfetmek</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">turn on</td><td class="col-tr">açmak (cihaz)</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">turn off</td><td class="col-tr">kapatmak (cihaz)</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">run out of</td><td class="col-tr">tükenmek</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">break down</td><td class="col-tr">bozulmak (araba)</td><td class="col-lesson">15</td><td class="col-theme">Phrasal verb</td></tr>
+        <tr><td class="col-en">piece of cake</td><td class="col-tr">çocuk oyuncağı (deyim)</td><td class="col-lesson">15</td><td class="col-theme">Deyim</td></tr>
+        <tr><td class="col-en">under the weather</td><td class="col-tr">keyifsiz, hasta gibi</td><td class="col-lesson">15</td><td class="col-theme">Deyim</td></tr>
+        <tr><td class="col-en">reservation</td><td class="col-tr">rezervasyon</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">platform</td><td class="col-tr">peron</td><td class="col-lesson">13</td><td class="col-theme">Seyahat</td></tr>
+        <tr><td class="col-en">employee</td><td class="col-tr">çalışan</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+        <tr><td class="col-en">CV / résumé</td><td class="col-tr">özgeçmiş</td><td class="col-lesson">14</td><td class="col-theme">İş</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Ünite 4 -->
+  <div class="unit unit-4" data-unit="4">
+    <div class="unit-head">
+      <div class="unit-num">4</div>
+      <div>
+        <div class="unit-title">İnce Ayrımlar</div>
+        <div class="unit-sub">Bağlaçlar · gramer terimleri · karşılaştırma</div>
+      </div>
+      <div class="unit-count">31 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>Ders</th><th>Tema</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">however</td><td class="col-tr">ancak, bununla birlikte</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">therefore</td><td class="col-tr">bu nedenle</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">although</td><td class="col-tr">-e rağmen</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">because</td><td class="col-tr">çünkü</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">so (result)</td><td class="col-tr">bu yüzden</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">moreover</td><td class="col-tr">ayrıca, üstelik</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">in addition</td><td class="col-tr">buna ek olarak</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">on the other hand</td><td class="col-tr">öte yandan</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">for example</td><td class="col-tr">örneğin</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">finally</td><td class="col-tr">son olarak</td><td class="col-lesson">17</td><td class="col-theme">Linking word</td></tr>
+        <tr><td class="col-en">passive voice</td><td class="col-tr">edilgen yapı</td><td class="col-lesson">16</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">subject</td><td class="col-tr">özne</td><td class="col-lesson">16</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">object</td><td class="col-tr">nesne</td><td class="col-lesson">16</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">verb</td><td class="col-tr">fiil</td><td class="col-lesson">16</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">if clause</td><td class="col-tr">koşul cümlesi</td><td class="col-lesson">18</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">condition</td><td class="col-tr">koşul, şart</td><td class="col-lesson">18</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">unless</td><td class="col-tr">-medikçe, -mezse</td><td class="col-lesson">18</td><td class="col-theme">Koşul</td></tr>
+        <tr><td class="col-en">reported speech</td><td class="col-tr">dolaylı anlatım</td><td class="col-lesson">19</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">said</td><td class="col-tr">dedi (say)</td><td class="col-lesson">19</td><td class="col-theme">Dolaylı anlatım</td></tr>
+        <tr><td class="col-en">told</td><td class="col-tr">söyledi (tell)</td><td class="col-lesson">19</td><td class="col-theme">Dolaylı anlatım</td></tr>
+        <tr><td class="col-en">comparative</td><td class="col-tr">karşılaştırma (daha)</td><td class="col-lesson">20</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">superlative</td><td class="col-tr">üstünlük (en)</td><td class="col-lesson">20</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">better</td><td class="col-tr">daha iyi</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">worse</td><td class="col-tr">daha kötü</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">the best</td><td class="col-tr">en iyi</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">the worst</td><td class="col-tr">en kötü</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">than</td><td class="col-tr">-den / -dan (karşılaştırma)</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">as … as</td><td class="col-tr">kadar (eşitlik)</td><td class="col-lesson">20</td><td class="col-theme">Karşılaştırma</td></tr>
+        <tr><td class="col-en">clause</td><td class="col-tr">cümlecik, yan cümle</td><td class="col-lesson">17</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">conjunction</td><td class="col-tr">bağlaç</td><td class="col-lesson">17</td><td class="col-theme">Gramer terimi</td></tr>
+        <tr><td class="col-en">tense</td><td class="col-tr">zaman (gramer)</td><td class="col-lesson">16</td><td class="col-theme">Gramer terimi</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Ünite 5 -->
+  <div class="unit unit-5" data-unit="5">
+    <div class="unit-head">
+      <div class="unit-num">5</div>
+      <div>
+        <div class="unit-title">Gerçek Dünya</div>
+        <div class="unit-sub">Okuma · dinleme · yazma · konuşma becerileri</div>
+      </div>
+      <div class="unit-count">32 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>Ders</th><th>Tema</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">skim</td><td class="col-tr">göz gezdirmek (okuma)</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">scan</td><td class="col-tr">taramak (detay arama)</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">gist</td><td class="col-tr">ana fikir, öz</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">headline</td><td class="col-tr">manşet, başlık</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">paragraph</td><td class="col-tr">paragraf</td><td class="col-lesson">21</td><td class="col-theme">Okuma/Yazma</td></tr>
+        <tr><td class="col-en">context</td><td class="col-tr">bağlam</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">accent</td><td class="col-tr">aksan</td><td class="col-lesson">22</td><td class="col-theme">Dinleme</td></tr>
+        <tr><td class="col-en">native speaker</td><td class="col-tr">ana dili İngilizce olan</td><td class="col-lesson">22</td><td class="col-theme">Dinleme</td></tr>
+        <tr><td class="col-en">subtitle</td><td class="col-tr">alt yazı</td><td class="col-lesson">22</td><td class="col-theme">Dinleme</td></tr>
+        <tr><td class="col-en">podcast</td><td class="col-tr">podcast</td><td class="col-lesson">22</td><td class="col-theme">Dinleme</td></tr>
+        <tr><td class="col-en">transcript</td><td class="col-tr">yazılı metin (ses kaydı)</td><td class="col-lesson">22</td><td class="col-theme">Dinleme</td></tr>
+        <tr><td class="col-en">introduction</td><td class="col-tr">giriş (yazı)</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">conclusion</td><td class="col-tr">sonuç (yazı)</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">thesis statement</td><td class="col-tr">ana fikir cümlesi</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">draft</td><td class="col-tr">taslak</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">proofread</td><td class="col-tr">düzeltme okuması yapmak</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">coherence</td><td class="col-tr">tutarlılık (yazı)</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">fluency</td><td class="col-tr">akıcılık</td><td class="col-lesson">24</td><td class="col-theme">Konuşma</td></tr>
+        <tr><td class="col-en">accuracy</td><td class="col-tr">doğruluk (dil)</td><td class="col-lesson">24</td><td class="col-theme">Konuşma</td></tr>
+        <tr><td class="col-en">hedging</td><td class="col-tr">yumuşatma (I think, maybe)</td><td class="col-lesson">24</td><td class="col-theme">Konuşma</td></tr>
+        <tr><td class="col-en">filler word</td><td class="col-tr">dolgu kelimesi (um, well)</td><td class="col-lesson">24</td><td class="col-theme">Konuşma</td></tr>
+        <tr><td class="col-en">paraphrase</td><td class="col-tr">başka sözcüklerle ifade etmek</td><td class="col-lesson">24</td><td class="col-theme">Konuşma</td></tr>
+        <tr><td class="col-en">presentation</td><td class="col-tr">sunum</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">audience</td><td class="col-tr">dinleyici kitlesi</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">topic</td><td class="col-tr">konu</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">feedback</td><td class="col-tr">geri bildirim</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">confidence</td><td class="col-tr">özgüven</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">body language</td><td class="col-tr">beden dili</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">eye contact</td><td class="col-tr">göz teması</td><td class="col-lesson">25</td><td class="col-theme">Capstone</td></tr>
+        <tr><td class="col-en">inference</td><td class="col-tr">çıkarım yapmak</td><td class="col-lesson">21</td><td class="col-theme">Okuma</td></tr>
+        <tr><td class="col-en">summarize</td><td class="col-tr">özetlemek</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+        <tr><td class="col-en">outline</td><td class="col-tr">taslak plan</td><td class="col-lesson">23</td><td class="col-theme">Yazma</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span><a href="index.html">← Kelime Hub</a> · <a href="../index.html">Ana müfredat</a></span>
+    <span>Müfredat Kelimeleri · 185 kelime</span>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  var rows = document.querySelectorAll('.vocab-table tbody tr');
+  var total = rows.length;
+  var input = document.getElementById('search');
+  var counter = document.getElementById('match-count');
+
+  function filter() {
+    var q = input.value.trim().toLowerCase();
+    var visible = 0;
+    rows.forEach(function (row) {
+      var text = row.textContent.toLowerCase();
+      var show = !q || text.indexOf(q) !== -1;
+      row.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+    counter.textContent = visible + ' / ' + total + ' görünüyor';
+  }
+
+  input.addEventListener('input', filter);
+})();
+</script>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

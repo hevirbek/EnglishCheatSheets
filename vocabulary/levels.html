@@ -1,0 +1,386 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seviye Kelime Listeleri · İngilizce Cheat Sheet</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #ffffff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --teal: #0e7490; --teal-bg: #ecfeff;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+  .hero { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
+  .hero .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-top: 6px; }
+  .hero p { font-size: 13px; color: var(--ink-3); margin-top: 8px; max-width: 640px; line-height: 1.7; }
+  .hero-stats { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+  .stat { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+  .stat.s1 { background: var(--accent-bg); color: var(--accent); }
+  .stat.s2 { background: var(--ok-bg); color: var(--ok); }
+  .stat.s3 { background: var(--purple-bg); color: var(--purple); }
+
+  .legend { font-size: 12px; color: var(--ink-3); background: var(--bg-2); border: 0.5px solid var(--rule); border-radius: 8px; padding: 10px 14px; margin-bottom: 1.5rem; }
+  .legend strong { color: var(--warn, #b85c00); }
+
+  .level { margin-bottom: 1.75rem; border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; }
+  .level-head { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 0.5px solid var(--rule); }
+  .level-badge { padding: 4px 12px; border-radius: 8px; font-family: var(--mono); font-weight: 700; font-size: 14px; }
+  .level-a1 .level-badge { background: var(--accent-bg); color: var(--accent); }
+  .level-a2 .level-badge { background: var(--ok-bg); color: var(--ok); }
+  .level-b1 .level-badge { background: var(--purple-bg); color: var(--purple); }
+  .level-title { font-size: 15px; font-weight: 600; }
+  .level-sub { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+  .level-count { margin-left: auto; font-size: 11px; color: var(--ink-4); font-family: var(--mono); }
+
+  .vocab-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .vocab-table th { text-align: left; padding: 8px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-weight: 600; font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.05em; }
+  .vocab-table td { padding: 6px 14px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .vocab-table tr:last-child td { border-bottom: none; }
+  .vocab-table tr:nth-child(even) { background: var(--bg-2); }
+  .col-en { font-family: var(--mono); font-weight: 500; }
+  .col-tr { color: var(--ink-2); }
+  .col-cur { text-align: center; width: 36px; color: var(--warn, #b85c00); font-size: 13px; }
+
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); font-size: 11px; color: var(--ink-4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4 landscape; margin: 10mm; }
+    .page { padding: 0; max-width: 100%; }
+    .level { break-inside: avoid; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="kicker">CEFR · A1 → B1</div>
+    <h1>Seviye Kelime Listeleri</h1>
+    <p>CEFR standartlarına uygun seçilmiş kelimeler. Müfredatımızda da geçen kelimeler ★ ile işaretlidir — hem seviye hem ders hedefini birlikte takip et.</p>
+    <div class="hero-stats">
+      <span class="stat s1">A1 · ~80 kelime</span>
+      <span class="stat s2">A2 · ~80 kelime</span>
+      <span class="stat s3">B1 · ~80 kelime</span>
+    </div>
+  </div>
+
+  <div class="legend"><strong>★</strong> = Bu kelime <a href="curriculum.html">Müfredat Kelimeleri</a> listesinde de yer alır. Önce yıldızlı kelimelere odaklan.</div>
+
+  <!-- A1 -->
+  <div class="level level-a1">
+    <div class="level-head">
+      <span class="level-badge">A1</span>
+      <div>
+        <div class="level-title">Başlangıç — Temel iletişim</div>
+        <div class="level-sub">Tanışma, sayılar, renkler, günlük rutin, basit sorular</div>
+      </div>
+      <div class="level-count">80 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>★</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">hello</td><td class="col-tr">merhaba</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">goodbye</td><td class="col-tr">hoşça kal</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">please</td><td class="col-tr">lütfen</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">thank you</td><td class="col-tr">teşekkür ederim</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">yes / no</td><td class="col-tr">evet / hayır</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">name</td><td class="col-tr">isim</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">from</td><td class="col-tr">-den, -dan</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">I / you / he / she</td><td class="col-tr">ben / sen / o (erkek) / o (kadın)</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">student</td><td class="col-tr">öğrenci</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">teacher</td><td class="col-tr">öğretmen</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">doctor</td><td class="col-tr">doktor</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">happy</td><td class="col-tr">mutlu</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">tired</td><td class="col-tr">yorgun</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">red</td><td class="col-tr">kırmızı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">blue</td><td class="col-tr">mavi</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">green</td><td class="col-tr">yeşil</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">yellow</td><td class="col-tr">sarı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">black</td><td class="col-tr">siyah</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">white</td><td class="col-tr">beyaz</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">book</td><td class="col-tr">kitap</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">phone</td><td class="col-tr">telefon</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">this / that</td><td class="col-tr">bu / şu, o</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">what</td><td class="col-tr">ne</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">where</td><td class="col-tr">nerede</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">when</td><td class="col-tr">ne zaman</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">who</td><td class="col-tr">kim</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">why</td><td class="col-tr">neden</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">how</td><td class="col-tr">nasıl</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">one … ten</td><td class="col-tr">bir … on</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">family</td><td class="col-tr">aile</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">mother / father</td><td class="col-tr">anne / baba</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">friend</td><td class="col-tr">arkadaş</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">house</td><td class="col-tr">ev</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">city</td><td class="col-tr">şehir</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">country</td><td class="col-tr">ülke</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">food</td><td class="col-tr">yiyecek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">water</td><td class="col-tr">su</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">bread</td><td class="col-tr">ekmek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">apple</td><td class="col-tr">elma</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">big / small</td><td class="col-tr">büyük / küçük</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">good / bad</td><td class="col-tr">iyi / kötü</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">new / old</td><td class="col-tr">yeni / eski</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">hot / cold</td><td class="col-tr">sıcak / soğuk</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">wake up</td><td class="col-tr">uyanmak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">breakfast</td><td class="col-tr">kahvaltı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">work</td><td class="col-tr">çalışmak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">always</td><td class="col-tr">her zaman</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">usually</td><td class="col-tr">genellikle</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">never</td><td class="col-tr">asla</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">morning</td><td class="col-tr">sabah</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">evening</td><td class="col-tr">akşam</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">today</td><td class="col-tr">bugün</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">now</td><td class="col-tr">şimdi</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">go</td><td class="col-tr">gitmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">come</td><td class="col-tr">gelmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">eat</td><td class="col-tr">yemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">drink</td><td class="col-tr">içmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">like</td><td class="col-tr">sevmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">want</td><td class="col-tr">istemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">have</td><td class="col-tr">sahip olmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">be</td><td class="col-tr">olmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">do</td><td class="col-tr">yapmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">make</td><td class="col-tr">yapmak, üretmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">see</td><td class="col-tr">görmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">know</td><td class="col-tr">bilmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">think</td><td class="col-tr">düşünmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">say</td><td class="col-tr">söylemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">tell</td><td class="col-tr">anlatmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">give</td><td class="col-tr">vermek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">take</td><td class="col-tr">almak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">get</td><td class="col-tr">almak, elde etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">find</td><td class="col-tr">bulmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">open / close</td><td class="col-tr">açmak / kapatmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">read / write</td><td class="col-tr">okumak / yazmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">listen</td><td class="col-tr">dinlemek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">speak</td><td class="col-tr">konuşmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">learn</td><td class="col-tr">öğrenmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">live</td><td class="col-tr">yaşamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">love</td><td class="col-tr">sevmek</td><td class="col-cur"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- A2 -->
+  <div class="level level-a2">
+    <div class="level-head">
+      <span class="level-badge">A2</span>
+      <div>
+        <div class="level-title">Temel — Günlük hayat ve geçmiş</div>
+        <div class="level-sub">Zamanlar, seyahat, sağlık, iş, modallar</div>
+      </div>
+      <div class="level-count">80 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>★</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">yesterday</td><td class="col-tr">dün</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">tomorrow</td><td class="col-tr">yarın</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">last week</td><td class="col-tr">geçen hafta</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">next week</td><td class="col-tr">gelecek hafta</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">ago</td><td class="col-tr">- önce</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">already</td><td class="col-tr">zaten</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">yet</td><td class="col-tr">henüz</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">just</td><td class="col-tr">az önce</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">since</td><td class="col-tr">-den beri</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">will</td><td class="col-tr">-ecek (gelecek)</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">going to</td><td class="col-tr">planlıyorum</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">can</td><td class="col-tr">-ebilmek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">must</td><td class="col-tr">-meli (zorunluluk)</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">should</td><td class="col-tr">-meli (tavsiye)</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">have to</td><td class="col-tr">zorunda olmak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">went</td><td class="col-tr">gitti</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">bought</td><td class="col-tr">satın aldı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">saw</td><td class="col-tr">gördü</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">headache</td><td class="col-tr">baş ağrısı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">fever</td><td class="col-tr">ateş</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">medicine</td><td class="col-tr">ilaç</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">hospital</td><td class="col-tr">hastane</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">restaurant</td><td class="col-tr">restoran</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">menu</td><td class="col-tr">menü</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">delicious</td><td class="col-tr">lezzetli</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">airport</td><td class="col-tr">havalimanı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">ticket</td><td class="col-tr">bilet</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">passport</td><td class="col-tr">pasaport</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">hotel</td><td class="col-tr">otel</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">map</td><td class="col-tr">harita</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">left / right</td><td class="col-tr">sol / sağ</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">office</td><td class="col-tr">ofis</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">meeting</td><td class="col-tr">toplantı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">colleague</td><td class="col-tr">iş arkadaşı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">salary</td><td class="col-tr">maaş</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">interview</td><td class="col-tr">mülakat</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">look after</td><td class="col-tr">bakmak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">give up</td><td class="col-tr">vazgeçmek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">find out</td><td class="col-tr">öğrenmek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">turn on / off</td><td class="col-tr">açmak / kapatmak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">weather</td><td class="col-tr">hava durumu</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">rain</td><td class="col-tr">yağmur</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">sunny</td><td class="col-tr">güneşli</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">expensive</td><td class="col-tr">pahalı</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">cheap</td><td class="col-tr">ucuz</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">busy</td><td class="col-tr">meşgul</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">free (time)</td><td class="col-tr">boş (vakit)</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">important</td><td class="col-tr">önemli</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">different</td><td class="col-tr">farklı</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">same</td><td class="col-tr">aynı</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">problem</td><td class="col-tr">sorun</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">solution</td><td class="col-tr">çözüm</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">decide</td><td class="col-tr">karar vermek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">choose</td><td class="col-tr">seçmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">remember</td><td class="col-tr">hatırlamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">forget</td><td class="col-tr">unutmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">try</td><td class="col-tr">denemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">finish</td><td class="col-tr">bitirmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">start</td><td class="col-tr">başlamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">help</td><td class="col-tr">yardım etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">need</td><td class="col-tr">ihtiyaç duymak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">feel</td><td class="col-tr">hissetmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">believe</td><td class="col-tr">inanmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">agree</td><td class="col-tr">katılmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">disagree</td><td class="col-tr">katılmamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">explain</td><td class="col-tr">açıklamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">describe</td><td class="col-tr">tanımlamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">travel</td><td class="col-tr">seyahat etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">visit</td><td class="col-tr">ziyaret etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">arrive</td><td class="col-tr">varmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">leave (depart)</td><td class="col-tr">ayrılmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">borrow</td><td class="col-tr">ödünç almak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">lend</td><td class="col-tr">ödünç vermek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">pay</td><td class="col-tr">ödemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">cost</td><td class="col-tr">mal olmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">save (money)</td><td class="col-tr">biriktirmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">spend</td><td class="col-tr">harcamak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">break</td><td class="col-tr">kırmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">fix</td><td class="col-tr">tamir etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">lose</td><td class="col-tr">kaybetmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">win</td><td class="col-tr">kazanmak</td><td class="col-cur"></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- B1 -->
+  <div class="level level-b1">
+    <div class="level-head">
+      <span class="level-badge">B1</span>
+      <div>
+        <div class="level-title">Orta — Soyut kavramlar ve beceriler</div>
+        <div class="level-sub">Bağlaçlar, gramer terimleri, okuma/yazma/konuşma</div>
+      </div>
+      <div class="level-count">80 kelime</div>
+    </div>
+    <table class="vocab-table">
+      <thead><tr><th>English</th><th>Türkçe</th><th>★</th></tr></thead>
+      <tbody>
+        <tr><td class="col-en">however</td><td class="col-tr">ancak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">therefore</td><td class="col-tr">bu nedenle</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">although</td><td class="col-tr">-e rağmen</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">moreover</td><td class="col-tr">ayrıca</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">on the other hand</td><td class="col-tr">öte yandan</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">for example</td><td class="col-tr">örneğin</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">passive voice</td><td class="col-tr">edilgen yapı</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">reported speech</td><td class="col-tr">dolaylı anlatım</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">comparative</td><td class="col-tr">karşılaştırma</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">superlative</td><td class="col-tr">üstünlük</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">unless</td><td class="col-tr">-medikçe</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">skim / scan</td><td class="col-tr">göz gezdirmek / taramak</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">gist</td><td class="col-tr">ana fikir</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">context</td><td class="col-tr">bağlam</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">accent</td><td class="col-tr">aksan</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">fluency</td><td class="col-tr">akıcılık</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">accuracy</td><td class="col-tr">doğruluk</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">hedging</td><td class="col-tr">yumuşatma</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">paraphrase</td><td class="col-tr">başka sözcüklerle ifade</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">presentation</td><td class="col-tr">sunum</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">feedback</td><td class="col-tr">geri bildirim</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">coherence</td><td class="col-tr">tutarlılık</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">summarize</td><td class="col-tr">özetlemek</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">opinion</td><td class="col-tr">görüş</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">argument</td><td class="col-tr">argüman</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">evidence</td><td class="col-tr">kanıt</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">advantage</td><td class="col-tr">avantaj</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">disadvantage</td><td class="col-tr">dezavantaj</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">benefit</td><td class="col-tr">fayda</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">challenge</td><td class="col-tr">zorluk, meydan okuma</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">opportunity</td><td class="col-tr">fırsat</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">experience</td><td class="col-tr">deneyim</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">achievement</td><td class="col-tr">başarı</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">goal</td><td class="col-tr">hedef</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">progress</td><td class="col-tr">ilerleme</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">improve</td><td class="col-tr">geliştirmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">develop</td><td class="col-tr">geliştirmek, oluşturmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">consider</td><td class="col-tr">düşünmek, değerlendirmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">suggest</td><td class="col-tr">önermek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">recommend</td><td class="col-tr">tavsiye etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">discuss</td><td class="col-tr">tartışmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">compare</td><td class="col-tr">karşılaştırmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">contrast</td><td class="col-tr">zıtlık kurmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">analyze</td><td class="col-tr">analiz etmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">evaluate</td><td class="col-tr">değerlendirmek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">assume</td><td class="col-tr">varsaymak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">conclude</td><td class="col-tr">sonuçlandırmak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">influence</td><td class="col-tr">etkilemek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">impact</td><td class="col-tr">etki</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">environment</td><td class="col-tr">çevre</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">society</td><td class="col-tr">toplum</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">culture</td><td class="col-tr">kültür</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">tradition</td><td class="col-tr">gelenek</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">technology</td><td class="col-tr">teknoloji</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">research</td><td class="col-tr">araştırma</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">resource</td><td class="col-tr">kaynak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">strategy</td><td class="col-tr">strateji</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">approach</td><td class="col-tr">yaklaşım</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">method</td><td class="col-tr">yöntem</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">process</td><td class="col-tr">süreç</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">result</td><td class="col-tr">sonuç</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">cause</td><td class="col-tr">neden</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">effect</td><td class="col-tr">etki, sonuç</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">despite</td><td class="col-tr">-e rağmen</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">whereas</td><td class="col-tr">oysa, -ken</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">nevertheless</td><td class="col-tr">buna rağmen</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">furthermore</td><td class="col-tr">dahası</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">consequently</td><td class="col-tr">sonuç olarak</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">significant</td><td class="col-tr">önemli, anlamlı</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">relevant</td><td class="col-tr">ilgili</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">appropriate</td><td class="col-tr">uygun</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">effective</td><td class="col-tr">etkili</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">efficient</td><td class="col-tr">verimli</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">aware</td><td class="col-tr">farkında</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">responsible</td><td class="col-tr">sorumlu</td><td class="col-cur"></td></tr>
+        <tr><td class="col-en">confident</td><td class="col-tr">kendinden emin</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">inference</td><td class="col-tr">çıkarım</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">outline</td><td class="col-tr">taslak plan</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">proofread</td><td class="col-tr">düzeltme okuması</td><td class="col-cur">★</td></tr>
+        <tr><td class="col-en">audience</td><td class="col-tr">dinleyici kitlesi</td><td class="col-cur">★</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span><a href="index.html">← Kelime Hub</a> · <a href="curriculum.html">Müfredat kelimeleri</a> · <a href="../index.html">Ana müfredat</a></span>
+    <span>Seviye Listeleri · A1 → B1</span>
+  </div>
+
+</div>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

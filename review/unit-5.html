@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ünite 5 Tekrar — Kelime Kartları & Mini Sınav</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #fff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --warn: #b85c00; --warn-bg: #fff4e8;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  .header { border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.25rem; }
+  .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+  .header h1 { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .header-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; background: var(--accent-bg); color: var(--accent); }
+  .intro { font-size: 12px; color: var(--ink-3); margin-bottom: 1.5rem; line-height: 1.65; max-width: 680px; }
+  .section-head { display: flex; align-items: center; gap: 8px; margin: 1.75rem 0 0.75rem; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .section-head h2 { font-size: 14px; font-weight: 600; }
+  .section-head span { font-size: 11px; color: var(--ink-3); margin-left: auto; }
+  .tip { font-size: 11px; color: var(--ink-3); background: var(--bg-2); border: 0.5px solid var(--rule); border-radius: 8px; padding: 8px 12px; margin-bottom: 1rem; }
+  .tip strong { color: var(--warn); }
+
+  /* Flashcards */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .flashcard {
+    perspective: 800px; height: 100px; cursor: pointer;
+  }
+  .flashcard-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform .35s; transform-style: preserve-3d;
+  }
+  .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+  .fc-front, .fc-back {
+    position: absolute; inset: 0; backface-visibility: hidden;
+    border-radius: 10px; border: 0.5px solid var(--rule);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 10px; text-align: center;
+  }
+  .fc-front { background: var(--accent-bg); border-color: #b3c9ef; }
+  .fc-back { background: var(--ok-bg); border-color: #a8d4bc; transform: rotateY(180deg); }
+  .fc-en { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--accent); }
+  .fc-tr { font-size: 13px; font-weight: 500; color: var(--ok); }
+  .fc-hint { font-size: 10px; color: var(--ink-4); margin-top: 4px; }
+  .fc-lesson { font-size: 9px; color: var(--ink-4); margin-top: 3px; font-family: var(--mono); }
+
+  /* Quiz */
+  .quiz-block { border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+  .quiz-q { padding: 10px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-size: 12.5px; font-weight: 500; }
+  .quiz-q em { font-style: normal; color: var(--accent); font-family: var(--mono); }
+  .quiz-opts { padding: 10px 14px; font-size: 12px; color: var(--ink-2); line-height: 1.8; }
+  .quiz-opts li { margin-left: 1.2rem; }
+  details.answers { margin-top: 1rem; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  details.answers summary { padding: 8px 12px; background: var(--ok-bg); color: var(--ok); font-size: 12px; font-weight: 600; cursor: pointer; list-style: none; }
+  details.answers summary::-webkit-details-marker { display: none; }
+  details.answers summary::before { content: '▸ '; }
+  details.answers[open] summary::before { content: '▾ '; }
+  .ans-body { padding: 12px 14px; font-size: 12px; line-height: 1.75; }
+  .ans-body strong { color: var(--ok); }
+
+  .score-box { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1rem; }
+  .score-item { padding: 8px 14px; border-radius: 8px; font-size: 12px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .score-item b { font-family: var(--mono); }
+
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); }
+  .nav-link { font-size: 11px; text-decoration: none; padding: 4px 11px; border-radius: 14px; border: 0.5px solid var(--rule); color: var(--ink-2); background: var(--bg); }
+  .nav-link.next { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .nav-link.home { background: var(--accent-bg); color: var(--accent); border-color: #b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    .no-print { display: none !important; }
+    .flashcard { height: auto; cursor: default; page-break-inside: avoid; }
+    .flashcard-inner { transform: none !important; display: block; }
+    .fc-front, .fc-back { position: static; transform: none; backface-visibility: visible; margin-bottom: 4px; }
+    .card-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    details.answers > *:not(summary) { display: block !important; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="kicker">Ünite 5 · Gerçek Dünya · Ders 21–25</div>
+    <h1>Kelime Kartları & Mini Sınav</h1>
+    <div class="header-meta">
+      <span class="badge">B1–B2</span>
+      <span class="badge">25 kelime kartı</span>
+      <span class="badge">10 soruluk sınav</span>
+    </div>
+  </div>
+
+  <p class="intro">Ders 21–25'i bitirdikten sonra bu sayfayla kendini test et. Kartlara <strong>tıkla</strong> — İngilizce yüzü Türkçe'ye döner. Okuma, dinleme, yazma, konuşma ve TED sunumu becerilerini bir arada pekiştir.</p>
+
+  <!-- FLASHCARDS -->
+  <div class="section-head"><h2>🃏 Kelime Kartları</h2><span>25 kart · Ders 21–25</span></div>
+  <p class="tip no-print"><strong>İpucu:</strong> Bilmediğin kartları işaretle, ertesi gün sadece onları tekrar et. Sesli okumayı unutma!</p>
+
+  <div class="card-grid" id="cards">
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">skim</div><div class="fc-hint">tıkla ↻</div></div><div class="fc-back"><div class="fc-tr">göz gezdirmek (hızlı okuma)</div><div class="fc-lesson">Ders 21</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">scan</div></div><div class="fc-back"><div class="fc-tr">taramak (bilgi aramak)</div><div class="fc-lesson">Ders 21</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">headline</div></div><div class="fc-back"><div class="fc-tr">manşet, başlık</div><div class="fc-lesson">Ders 21</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">gist</div></div><div class="fc-back"><div class="fc-tr">ana fikir, öz</div><div class="fc-lesson">Ders 21</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">passage</div></div><div class="fc-back"><div class="fc-tr">metin parçası, pasaj</div><div class="fc-lesson">Ders 21</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">repeat</div></div><div class="fc-back"><div class="fc-tr">tekrarlamak</div><div class="fc-lesson">Ders 22</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">accent</div></div><div class="fc-back"><div class="fc-tr">aksan</div><div class="fc-lesson">Ders 22</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">pronunciation</div></div><div class="fc-back"><div class="fc-tr">telaffuz</div><div class="fc-lesson">Ders 22</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">catch</div></div><div class="fc-back"><div class="fc-tr">anlamak, yakalamak (söyleneni)</div><div class="fc-lesson">Ders 22</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">native speaker</div></div><div class="fc-back"><div class="fc-tr">ana dili konuşan</div><div class="fc-lesson">Ders 22</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">paragraph</div></div><div class="fc-back"><div class="fc-tr">paragraf</div><div class="fc-lesson">Ders 23</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">topic sentence</div></div><div class="fc-back"><div class="fc-tr">konu cümlesi</div><div class="fc-lesson">Ders 23</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">draft</div></div><div class="fc-back"><div class="fc-tr">taslak</div><div class="fc-lesson">Ders 23</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">conclusion</div></div><div class="fc-back"><div class="fc-tr">sonuç bölümü</div><div class="fc-lesson">Ders 23</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">outline</div></div><div class="fc-back"><div class="fc-tr">taslak plan, ana hat</div><div class="fc-lesson">Ders 23</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">I think</div></div><div class="fc-back"><div class="fc-tr">bence, sanırım</div><div class="fc-lesson">Ders 24</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">probably</div></div><div class="fc-back"><div class="fc-tr">muhtemelen</div><div class="fc-lesson">Ders 24</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">well</div></div><div class="fc-back"><div class="fc-tr">şey, peki (düşünme sözcüğü)</div><div class="fc-lesson">Ders 24</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">in my opinion</div></div><div class="fc-back"><div class="fc-tr">bence, görüşüme göre</div><div class="fc-lesson">Ders 24</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">actually</div></div><div class="fc-back"><div class="fc-tr">aslında, gerçekten</div><div class="fc-lesson">Ders 24</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">hook</div></div><div class="fc-back"><div class="fc-tr">dikkat çekici giriş</div><div class="fc-lesson">Ders 25</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">to sum up</div></div><div class="fc-back"><div class="fc-tr">özetlemek gerekirse</div><div class="fc-lesson">Ders 25</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">audience</div></div><div class="fc-back"><div class="fc-tr">dinleyici kitlesi</div><div class="fc-lesson">Ders 25</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">slide</div></div><div class="fc-back"><div class="fc-tr">slayt</div><div class="fc-lesson">Ders 25</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">takeaway</div></div><div class="fc-back"><div class="fc-tr">çıkarılacak ders, ana mesaj</div><div class="fc-lesson">Ders 25</div></div></div></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section-head"><h2>📝 Mini Sınav</h2><span>10 soru · ~15 dk</span></div>
+  <p class="tip">8+ doğru = becerilerini güçlü pekiştirmişsin. 6–7 doğru = zayıf konuları tekrar et. 5 ve altı = Ders 21–25'i baştan gözden geçir.</p>
+
+  <div class="quiz-block"><div class="quiz-q">1. Metnin genel fikrini hızlıca anlamak için hangi teknik?</div><ol class="quiz-opts"><li>scan</li><li>skim</li><li>repeat</li><li>draft</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">2. Belirli bir bilgiyi (ör. fiyat, tarih) bulmak için hangi teknik?</div><ol class="quiz-opts"><li>skim</li><li>scan</li><li>outline</li><li>hook</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">3. Paragrafın ana fikrini taşıyan cümle:</div><ol class="quiz-opts"><li>conclusion</li><li>topic sentence</li><li>headline</li><li>takeaway</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">4. "Bence bu iyi bir fikir" — hangisi?</div><ol class="quiz-opts"><li>I think this is a good idea.</li><li>I am think this is a good idea.</li><li>This is think good idea.</li><li>Think I this is good idea.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">5. TED konuşmasında dinleyiciyi hemen yakalamak için kullanılan giriş:</div><ol class="quiz-opts"><li>conclusion</li><li>hook</li><li>draft</li><li>passage</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">6. Konuşmayı bitirirken "Özetlemek gerekirse…" — hangisi?</div><ol class="quiz-opts"><li>To sum up</li><li>To skim</li><li>To repeat</li><li>To scan</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">7. Dinleme pratiğinde telaffuzu taklit etmek için ne yaparsın?</div><ol class="quiz-opts"><li>skim the audio</li><li>repeat after the speaker</li><li>write an outline</li><li>turn left</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">8. "Muhtemelen yağmur yağacak" — hangisi?</div><ol class="quiz-opts"><li>It will probably rain.</li><li>It probably will raining.</li><li>Probably it rains.</li><li>It is probably rain.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">9. Yazmaya başlamadan önce fikirleri düzenlemek için:</div><ol class="quiz-opts"><li>write a draft first, no plan</li><li>make an outline</li><li>skim the paragraph</li><li>use a hook</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">10. Sunum sonunda dinleyicinin aklında kalmasını istediğin ana mesaj:</div><ol class="quiz-opts"><li>accent</li><li>takeaway</li><li>headline</li><li>gist</li></ol></div>
+
+  <details class="answers">
+    <summary>Cevap Anahtarı</summary>
+    <div class="ans-body">
+      <strong>1.</strong> skim &nbsp;·&nbsp;
+      <strong>2.</strong> scan &nbsp;·&nbsp;
+      <strong>3.</strong> topic sentence &nbsp;·&nbsp;
+      <strong>4.</strong> I think this is a good idea. &nbsp;·&nbsp;
+      <strong>5.</strong> hook &nbsp;·&nbsp;
+      <strong>6.</strong> To sum up &nbsp;·&nbsp;
+      <strong>7.</strong> repeat after the speaker &nbsp;·&nbsp;
+      <strong>8.</strong> It will probably rain. &nbsp;·&nbsp;
+      <strong>9.</strong> make an outline &nbsp;·&nbsp;
+      <strong>10.</strong> takeaway
+    </div>
+  </details>
+
+  <div class="score-box">
+    <div class="score-item">Doğru sayın: <b>___ / 10</b></div>
+    <div class="score-item">Tarih: <b>___ / ___ / ___</b></div>
+  </div>
+
+  <div class="nav-links no-print">
+    <a class="nav-link" href="unit-4.html">‹ Ünite 4 Tekrar</a>
+    <a class="nav-link" href="../5/25.html">‹ Ders 25</a>
+    <a class="nav-link home" href="../index.html">☰ Ana Sayfa</a>
+    <a class="nav-link home" href="../vocabulary/index.html">📖 Kelime Listeleri</a>
+  </div>
+
+</div>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

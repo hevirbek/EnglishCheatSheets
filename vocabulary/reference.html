@@ -1,0 +1,282 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resmi Kelime Listeleri · İngilizce Cheat Sheet</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #ffffff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --warn: #b85c00; --warn-bg: #fff4e8;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 960px; margin: 0 auto; padding: 2.5rem 1.5rem 3rem; }
+
+  .hero { border-bottom: 2px solid var(--ink); padding-bottom: 1.25rem; margin-bottom: 1.25rem; }
+  .hero .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; }
+  .hero h1 { font-size: 26px; font-weight: 700; margin-top: 6px; }
+  .hero p { font-size: 13px; color: var(--ink-3); margin-top: 8px; max-width: 680px; line-height: 1.7; }
+
+  .notice { background: var(--warn-bg); border: 0.5px solid #f0c090; border-radius: 10px; padding: 12px 16px; font-size: 12px; color: var(--ink-2); margin-bottom: 1.5rem; line-height: 1.65; }
+  .notice strong { color: var(--warn); }
+
+  .overlap-box { background: var(--accent-bg); border: 0.5px solid #b3c9ef; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; margin-bottom: 1.75rem; line-height: 1.65; }
+  .overlap-box strong { color: var(--accent); font-family: var(--mono); }
+
+  .section-head { display: flex; align-items: center; gap: 8px; margin: 1.75rem 0 0.85rem; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .section-head h2 { font-size: 15px; font-weight: 600; }
+
+  .ref-card { border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; margin-bottom: 1.25rem; }
+  .ref-card-head { padding: 12px 16px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+  .ref-card-head h3 { font-size: 14px; font-weight: 600; flex: 1; }
+  .ref-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: var(--accent-bg); color: var(--accent); white-space: nowrap; }
+  .ref-card-body { padding: 14px 16px; }
+  .ref-card-body p { font-size: 12.5px; color: var(--ink-2); line-height: 1.65; margin-bottom: 10px; }
+  .ref-link { display: inline-block; font-size: 12px; font-weight: 500; color: var(--accent); text-decoration: none; margin-bottom: 12px; }
+  .ref-link:hover { text-decoration: underline; }
+
+  .sample-label { font-size: 10px; font-weight: 600; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+  .sample-words { display: flex; flex-wrap: wrap; gap: 5px; }
+  .sample-word { font-family: var(--mono); font-size: 11px; padding: 3px 8px; border-radius: 6px; background: var(--bg-3); color: var(--ink-2); border: 0.5px solid var(--rule); }
+
+  .compare { border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
+  .compare table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .compare th { text-align: left; padding: 9px 12px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-weight: 600; font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; }
+  .compare td { padding: 9px 12px; border-bottom: 0.5px solid var(--rule); vertical-align: top; }
+  .compare tr:last-child td { border-bottom: none; }
+  .compare tr:nth-child(even) { background: var(--bg-2); }
+
+  .tips { border: 0.5px solid var(--rule); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
+  .tips-head { padding: 12px 16px; background: var(--ok-bg); border-bottom: 0.5px solid var(--rule); font-size: 13px; font-weight: 600; color: var(--ok); }
+  .tips-body { padding: 14px 16px; }
+  .tips-list { list-style: none; display: grid; gap: 10px; }
+  .tips-list li { display: flex; gap: 10px; font-size: 12.5px; color: var(--ink-2); line-height: 1.6; }
+  .tips-list li::before { content: '🇹🇷'; flex-shrink: 0; }
+
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); font-size: 11px; color: var(--ink-4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    .page { padding: 0; max-width: 100%; }
+    .ref-card { break-inside: avoid; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="kicker">Resmi & Kurumsal Kaynaklar</div>
+    <h1>Resmi Kelime Listeleri Rehberi</h1>
+    <p>Dünyada en çok kullanılan İngilizce kelime listelerini tanıtır. Telifli içerik kopyalanmaz — her kaynak için açıklama, resmi bağlantı ve yalnızca örnek amaçlı 30 kelime gösterilir.</p>
+  </div>
+
+  <div class="notice">
+    <strong>⚠️ Telif uyarısı:</strong> Oxford 3000, Cambridge Word Lists ve benzeri listeler telif korumalıdır. Bu sayfa listelerin tamamını barındırmaz. Resmi sitelerden erişmeniz önerilir. Aşağıdaki örnek kelimeler yalnızca en yaygın, kamuya açık temel sözcüklerdir.
+  </div>
+
+  <div class="overlap-box">
+    📊 <strong>Müfredatımız</strong> (185 kelime) ile <strong>Oxford 3000</strong> arasında kavramsal olarak yaklaşık <strong>%65 örtüşme</strong> vardır — özellikle A1–A2 temel fiiller, günlük nesneler ve tema kelimelerinde. B1 beceri ve bağlaç kelimeleri müfredatımıza özgüdür; Oxford 5000 ise B2+ genişleme için idealdir.
+  </div>
+
+  <!-- Oxford 3000 -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>Oxford 3000</h3>
+      <span class="ref-badge">Oxford University Press</span>
+    </div>
+    <div class="ref-card-body">
+      <p>İngilizce öğrenenler için seçilmiş 3000 temel kelime. Sözlük girişlerinde ★ ile işaretlenir. A1–B2 arası en sık kullanılan sözcükleri kapsar; müfredat tasarımında en çok referans alınan listedir.</p>
+      <a class="ref-link" href="https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000" target="_blank" rel="noopener">oxfordlearnersdictionaries.com/wordlists/oxford3000-5000 →</a>
+      <div class="sample-label">Örnek 30 kelime (tam liste değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">the</span><span class="sample-word">be</span><span class="sample-word">have</span><span class="sample-word">do</span><span class="sample-word">say</span><span class="sample-word">get</span><span class="sample-word">make</span><span class="sample-word">go</span><span class="sample-word">know</span><span class="sample-word">take</span><span class="sample-word">see</span><span class="sample-word">come</span><span class="sample-word">think</span><span class="sample-word">look</span><span class="sample-word">want</span><span class="sample-word">give</span><span class="sample-word">use</span><span class="sample-word">find</span><span class="sample-word">tell</span><span class="sample-word">ask</span><span class="sample-word">work</span><span class="sample-word">seem</span><span class="sample-word">feel</span><span class="sample-word">try</span><span class="sample-word">leave</span><span class="sample-word">call</span><span class="sample-word">good</span><span class="sample-word">new</span><span class="sample-word">first</span><span class="sample-word">last</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oxford 5000 -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>Oxford 5000</h3>
+      <span class="ref-badge">Oxford · B2+</span>
+    </div>
+    <div class="ref-card-body">
+      <p>Oxford 3000'e ek 2000 kelime. B2 ve üzeri seviyede akademik ve profesyonel metinlerde sık geçen sözcükleri içerir. 3000'i tamamladıktan sonra genişleme listesi olarak kullanılır.</p>
+      <a class="ref-link" href="https://www.oxfordlearnersdictionaries.com/wordlists/oxford3000-5000" target="_blank" rel="noopener">oxfordlearnersdictionaries.com/wordlists/oxford3000-5000 →</a>
+      <div class="sample-label">Örnek 30 kelime (tam liste değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">achieve</span><span class="sample-word">approach</span><span class="sample-word">assess</span><span class="sample-word">assume</span><span class="sample-word">authority</span><span class="sample-word">available</span><span class="sample-word">benefit</span><span class="sample-word">concept</span><span class="sample-word">conduct</span><span class="sample-word">consist</span><span class="sample-word">context</span><span class="sample-word">contract</span><span class="sample-word">create</span><span class="sample-word">data</span><span class="sample-word">define</span><span class="sample-word">derive</span><span class="sample-word">distribute</span><span class="sample-word">economy</span><span class="sample-word">environment</span><span class="sample-word">establish</span><span class="sample-word">estimate</span><span class="sample-word">evidence</span><span class="sample-word">factor</span><span class="sample-word">finance</span><span class="sample-word">formula</span><span class="sample-word">function</span><span class="sample-word">identify</span><span class="sample-word">income</span><span class="sample-word">indicate</span><span class="sample-word">individual</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- NGSL -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>NGSL — New General Service List</h3>
+      <span class="ref-badge">Açık kaynak · ~2800 kelime</span>
+    </div>
+    <div class="ref-card-body">
+      <p>Genel İngilizce metinlerinde en sık geçen ~2800 kelimelik açık kaynak liste. Akademik araştırmalarla oluşturuldu; ücretsiz indirilebilir. Oxford 3000'e alternatif veya tamamlayıcı olarak kullanılabilir.</p>
+      <a class="ref-link" href="https://www.newgeneralservicelist.org/" target="_blank" rel="noopener">newgeneralservicelist.org →</a>
+      <div class="sample-label">Örnek 30 kelime (tam liste değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">a</span><span class="sample-word">about</span><span class="sample-word">all</span><span class="sample-word">and</span><span class="sample-word">as</span><span class="sample-word">at</span><span class="sample-word">be</span><span class="sample-word">but</span><span class="sample-word">by</span><span class="sample-word">can</span><span class="sample-word">day</span><span class="sample-word">do</span><span class="sample-word">even</span><span class="sample-word">find</span><span class="sample-word">for</span><span class="sample-word">from</span><span class="sample-word">get</span><span class="sample-word">go</span><span class="sample-word">have</span><span class="sample-word">he</span><span class="sample-word">her</span><span class="sample-word">him</span><span class="sample-word">his</span><span class="sample-word">how</span><span class="sample-word">I</span><span class="sample-word">if</span><span class="sample-word">in</span><span class="sample-word">into</span><span class="sample-word">it</span><span class="sample-word">its</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cambridge English Profile -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>Cambridge English Profile</h3>
+      <span class="ref-badge">Cambridge · CEFR bazlı</span>
+    </div>
+    <div class="ref-card-body">
+      <p>Cambridge tarafından CEFR seviyelerine (A1–C2) göre sınıflandırılmış kelime ve dilbilgisi profili. Sınav hazırlığı (KET, PET, FCE) yapanlar için referans niteliğindedir.</p>
+      <a class="ref-link" href="https://www.cambridgeenglish.org/learning-english/" target="_blank" rel="noopener">cambridgeenglish.org/learning-english →</a>
+      <div class="sample-label">Örnek 30 kelime (tam liste değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">apple</span><span class="sample-word">arm</span><span class="sample-word">baby</span><span class="sample-word">bad</span><span class="sample-word">bag</span><span class="sample-word">ball</span><span class="sample-word">bank</span><span class="sample-word">bath</span><span class="sample-word">beach</span><span class="sample-word">bear</span><span class="sample-word">bed</span><span class="sample-word">begin</span><span class="sample-word">behind</span><span class="sample-word">believe</span><span class="sample-word">best</span><span class="sample-word">better</span><span class="sample-word">between</span><span class="sample-word">bicycle</span><span class="sample-word">big</span><span class="sample-word">bird</span><span class="sample-word">birthday</span><span class="sample-word">black</span><span class="sample-word">blue</span><span class="sample-word">boat</span><span class="sample-word">body</span><span class="sample-word">book</span><span class="sample-word">both</span><span class="sample-word">box</span><span class="sample-word">boy</span><span class="sample-word">bread</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CEFR -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>CEFR — Common European Framework</h3>
+      <span class="ref-badge">Avrupa Konseyi · A1–C2</span>
+    </div>
+    <div class="ref-card-body">
+      <p>Kelime listesi değil, dil yeterlilik çerçevesidir. A1 (başlangıç) → C2 (ustalık) arası "ne yapabilirsin" tanımlar. Bizim <a href="levels.html">Seviye Listeleri</a> CEFR A1–B1 ile hizalanmıştır.</p>
+      <a class="ref-link" href="https://www.coe.int/en/web/common-european-framework-reference-languages" target="_blank" rel="noopener">coe.int — CEFR →</a>
+      <div class="sample-label">CEFR seviye tanımları (kelime değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">A1 Breakthrough</span><span class="sample-word">A2 Waystage</span><span class="sample-word">B1 Threshold</span><span class="sample-word">B2 Vantage</span><span class="sample-word">C1 Effective</span><span class="sample-word">C2 Mastery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- British Council -->
+  <div class="ref-card">
+    <div class="ref-card-head">
+      <h3>British Council Word Lists</h3>
+      <span class="ref-badge">British Council · Ücretsiz</span>
+    </div>
+    <div class="ref-card-body">
+      <p>British Council'ın LearnEnglish sitesinde seviye ve konuya göre düzenlenmiş kelime kaynakları. Sesli telaffuz, alıştırmalar ve okuma metinleriyle birlikte sunulur. Türkçe konuşanlar için pratik bir tamamlayıcı kaynak.</p>
+      <a class="ref-link" href="https://learnenglish.britishcouncil.org/vocabulary" target="_blank" rel="noopener">learnenglish.britishcouncil.org/vocabulary →</a>
+      <div class="sample-label">Örnek 30 kelime (tam liste değil)</div>
+      <div class="sample-words">
+        <span class="sample-word">hello</span><span class="sample-word">goodbye</span><span class="sample-word">please</span><span class="sample-word">sorry</span><span class="sample-word">excuse me</span><span class="sample-word">thank you</span><span class="sample-word">yes</span><span class="sample-word">no</span><span class="sample-word">maybe</span><span class="sample-word">help</span><span class="sample-word">stop</span><span class="sample-word">wait</span><span class="sample-word">listen</span><span class="sample-word">speak</span><span class="sample-word">read</span><span class="sample-word">write</span><span class="sample-word">learn</span><span class="sample-word">teach</span><span class="sample-word">study</span><span class="sample-word">play</span><span class="sample-word">run</span><span class="sample-word">walk</span><span class="sample-word">sit</span><span class="sample-word">stand</span><span class="sample-word">sleep</span><span class="sample-word">eat</span><span class="sample-word">drink</span><span class="sample-word">buy</span><span class="sample-word">sell</span><span class="sample-word">open</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>Liste Karşılaştırması</h2></div>
+
+  <div class="compare">
+    <table>
+      <thead>
+        <tr>
+          <th>Liste</th>
+          <th>Yayıncı</th>
+          <th>Seviye</th>
+          <th>Kelime sayısı</th>
+          <th>En iyi ne için?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Oxford 3000</strong></td>
+          <td>Oxford University Press</td>
+          <td>A1–B2</td>
+          <td>3.000</td>
+          <td>Genel İngilizce temel kelime hazinesi; sözlük entegrasyonu</td>
+        </tr>
+        <tr>
+          <td><strong>Oxford 5000</strong></td>
+          <td>Oxford University Press</td>
+          <td>B2–C1</td>
+          <td>5.000 (toplam)</td>
+          <td>İleri seviye genişleme; akademik/profesyonel kelimeler</td>
+        </tr>
+        <tr>
+          <td><strong>NGSL</strong></td>
+          <td>NGSL Project (açık kaynak)</td>
+          <td>A2–B2</td>
+          <td>~2.800</td>
+          <td>Ücretsiz alternatif; araştırma destekli frekans listesi</td>
+        </tr>
+        <tr>
+          <td><strong>Cambridge Profile</strong></td>
+          <td>Cambridge Assessment</td>
+          <td>A1–C2</td>
+          <td>Değişken</td>
+          <td>Sınav hazırlığı (KET, PET, FCE); CEFR hizalı kelime profili</td>
+        </tr>
+        <tr>
+          <td><strong>CEFR</strong></td>
+          <td>Avrupa Konseyi</td>
+          <td>A1–C2</td>
+          <td>— (çerçeve)</td>
+          <td>Seviye tanımı; kelime listesi değil yeterlilik standardı</td>
+        </tr>
+        <tr>
+          <td><strong>British Council</strong></td>
+          <td>British Council</td>
+          <td>A1–B2+</td>
+          <td>Değişken</td>
+          <td>Pratik alıştırmalar; sesli telaffuz; konu bazlı kelime</td>
+        </tr>
+        <tr>
+          <td><strong>Bizim müfredat</strong></td>
+          <td>İngilizce Cheat Sheet</td>
+          <td>A1–B1</td>
+          <td>~185</td>
+          <td>25 dersle birebir eşleşen, Türkçe tuzak odaklı seçilmiş kelimeler</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tips">
+    <div class="tips-head">🇹🇷 Türk Öğrenenler İçin İpuçları</div>
+    <div class="tips-body">
+      <ul class="tips-list">
+        <li><strong>Önce müfredat, sonra Oxford:</strong> 185 müfredat kelimesini bitir, ardından Oxford 3000'de ★ işaretli kelimeleri kontrol et — çoğunu zaten bilirsin.</li>
+        <li><strong>Türkçe çeviri tuzağı:</strong> Resmi listelerde kelime tek başına verilir; anlamını cümle içinde öğren. "Actually" ≠ "aslında" gibi tuzaklar için ders notlarına dön.</li>
+        <li><strong>NGSL ücretsiz:</strong> Oxford'a erişimin yoksa NGSL'i indir; Excel/Anki'ye aktararak flashcard yapabilirsin.</li>
+        <li><strong>Cambridge sınav hedefi:</strong> PET (B1) veya FCE (B2) planlıyorsan Cambridge Profile kelimelerini sınav tarihine göre filtrele.</li>
+        <li><strong>British Council ses pratiği:</strong> Kelimeyi BC sitesinde dinle, sonra kendi cümlende kullan — Türkçe aksan kalıplarından kurtulmak için kritik.</li>
+        <li><strong>Liste ezberleme tuzağı:</strong> Günde 500 kelime okumak yerine 10 kelimeyi 5 farklı cümlede kullan. Aktif kullanım pasif okumadan 10 kat etkilidir.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span><a href="index.html">← Kelime Hub</a> · <a href="curriculum.html">Müfredat kelimeleri</a> · <a href="../index.html">Ana müfredat</a></span>
+    <span>Resmi Kelime Listeleri Rehberi</span>
+  </div>
+
+</div>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

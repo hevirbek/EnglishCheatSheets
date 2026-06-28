@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ünite 2 Tekrar — Kelime Kartları & Mini Sınav</title>
+<script>try{if(localStorage.getItem('ecs-theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a1a; --ink-2: #444; --ink-3: #777; --ink-4: #aaa;
+    --bg: #fff; --bg-2: #f7f7f5; --bg-3: #f0efe9; --rule: #e0dfd8;
+    --accent: #2a5caa; --accent-bg: #eef3fb;
+    --ok: #1a6b3c; --ok-bg: #edf7f1;
+    --warn: #b85c00; --warn-bg: #fff4e8;
+    --purple: #5b3ea8; --purple-bg: #f2effe;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 13px; line-height: 1.5; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+  .header { border-bottom: 2px solid var(--ink); padding-bottom: 0.75rem; margin-bottom: 1.25rem; }
+  .kicker { font-size: 11px; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .08em; }
+  .header h1 { font-size: 22px; font-weight: 600; margin-top: 4px; }
+  .header-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .badge { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 500; background: var(--accent-bg); color: var(--accent); }
+  .intro { font-size: 12px; color: var(--ink-3); margin-bottom: 1.5rem; line-height: 1.65; max-width: 680px; }
+  .section-head { display: flex; align-items: center; gap: 8px; margin: 1.75rem 0 0.75rem; padding-bottom: 6px; border-bottom: 1px solid var(--rule); }
+  .section-head h2 { font-size: 14px; font-weight: 600; }
+  .section-head span { font-size: 11px; color: var(--ink-3); margin-left: auto; }
+  .tip { font-size: 11px; color: var(--ink-3); background: var(--bg-2); border: 0.5px solid var(--rule); border-radius: 8px; padding: 8px 12px; margin-bottom: 1rem; }
+  .tip strong { color: var(--warn); }
+
+  /* Flashcards */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1rem; }
+  .flashcard {
+    perspective: 800px; height: 100px; cursor: pointer;
+  }
+  .flashcard-inner {
+    position: relative; width: 100%; height: 100%;
+    transition: transform .35s; transform-style: preserve-3d;
+  }
+  .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+  .fc-front, .fc-back {
+    position: absolute; inset: 0; backface-visibility: hidden;
+    border-radius: 10px; border: 0.5px solid var(--rule);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 10px; text-align: center;
+  }
+  .fc-front { background: var(--accent-bg); border-color: #b3c9ef; }
+  .fc-back { background: var(--ok-bg); border-color: #a8d4bc; transform: rotateY(180deg); }
+  .fc-en { font-family: var(--mono); font-size: 15px; font-weight: 600; color: var(--accent); }
+  .fc-tr { font-size: 13px; font-weight: 500; color: var(--ok); }
+  .fc-hint { font-size: 10px; color: var(--ink-4); margin-top: 4px; }
+  .fc-lesson { font-size: 9px; color: var(--ink-4); margin-top: 3px; font-family: var(--mono); }
+
+  /* Quiz */
+  .quiz-block { border: 0.5px solid var(--rule); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+  .quiz-q { padding: 10px 14px; background: var(--bg-2); border-bottom: 0.5px solid var(--rule); font-size: 12.5px; font-weight: 500; }
+  .quiz-q em { font-style: normal; color: var(--accent); font-family: var(--mono); }
+  .quiz-opts { padding: 10px 14px; font-size: 12px; color: var(--ink-2); line-height: 1.8; }
+  .quiz-opts li { margin-left: 1.2rem; }
+  details.answers { margin-top: 1rem; border: 0.5px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  details.answers summary { padding: 8px 12px; background: var(--ok-bg); color: var(--ok); font-size: 12px; font-weight: 600; cursor: pointer; list-style: none; }
+  details.answers summary::-webkit-details-marker { display: none; }
+  details.answers summary::before { content: '▸ '; }
+  details.answers[open] summary::before { content: '▾ '; }
+  .ans-body { padding: 12px 14px; font-size: 12px; line-height: 1.75; }
+  .ans-body strong { color: var(--ok); }
+
+  .score-box { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1rem; }
+  .score-item { padding: 8px 14px; border-radius: 8px; font-size: 12px; border: 0.5px solid var(--rule); background: var(--bg-2); }
+  .score-item b { font-family: var(--mono); }
+
+  .nav-links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2rem; padding-top: 1rem; border-top: 0.5px solid var(--rule); }
+  .nav-link { font-size: 11px; text-decoration: none; padding: 4px 11px; border-radius: 14px; border: 0.5px solid var(--rule); color: var(--ink-2); background: var(--bg); }
+  .nav-link.next { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .nav-link.home { background: var(--accent-bg); color: var(--accent); border-color: #b3c9ef; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    .no-print { display: none !important; }
+    .flashcard { height: auto; cursor: default; page-break-inside: avoid; }
+    .flashcard-inner { transform: none !important; display: block; }
+    .fc-front, .fc-back { position: static; transform: none; backface-visibility: visible; margin-bottom: 4px; }
+    .card-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    details.answers > *:not(summary) { display: block !important; }
+  }
+</style>
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="kicker">Ünite 2 · Hayat Akıyor · Ders 6–10</div>
+    <h1>Kelime Kartları & Mini Sınav</h1>
+    <div class="header-meta">
+      <span class="badge">A2</span>
+      <span class="badge">25 kelime kartı</span>
+      <span class="badge">10 soruluk sınav</span>
+    </div>
+  </div>
+
+  <p class="intro">Ders 6–10'u bitirdikten sonra bu sayfayla kendini test et. Kartlara <strong>tıkla</strong> — İngilizce yüzü Türkçe'ye döner. Zamanlar (Present Continuous, Past, Present Perfect, Will/Going to) ve modalları bir arada tekrar et.</p>
+
+  <!-- FLASHCARDS -->
+  <div class="section-head"><h2>🃏 Kelime Kartları</h2><span>25 kart · Ders 6–10</span></div>
+  <p class="tip no-print"><strong>İpucu:</strong> Bilmediğin kartları işaretle, ertesi gün sadece onları tekrar et. Sesli okumayı unutma!</p>
+
+  <div class="card-grid" id="cards">
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">now</div><div class="fc-hint">tıkla ↻</div></div><div class="fc-back"><div class="fc-tr">şimdi</div><div class="fc-lesson">Ders 6</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">at the moment</div></div><div class="fc-back"><div class="fc-tr">şu anda</div><div class="fc-lesson">Ders 6</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">is reading</div></div><div class="fc-back"><div class="fc-tr">okuyor (şu an)</div><div class="fc-lesson">Ders 6</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">are studying</div></div><div class="fc-back"><div class="fc-tr">çalışıyorlar (şu an)</div><div class="fc-lesson">Ders 6</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">happening</div></div><div class="fc-back"><div class="fc-tr">oluyor, gerçekleşiyor</div><div class="fc-lesson">Ders 6</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">went</div></div><div class="fc-back"><div class="fc-tr">gitti (geçmiş)</div><div class="fc-lesson">Ders 7</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">saw</div></div><div class="fc-back"><div class="fc-tr">gördü (geçmiş)</div><div class="fc-lesson">Ders 7</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">yesterday</div></div><div class="fc-back"><div class="fc-tr">dün</div><div class="fc-lesson">Ders 7</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">last week</div></div><div class="fc-back"><div class="fc-tr">geçen hafta</div><div class="fc-lesson">Ders 7</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">didn't go</div></div><div class="fc-back"><div class="fc-tr">gitmedi (olumsuz geçmiş)</div><div class="fc-lesson">Ders 7</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">already</div></div><div class="fc-back"><div class="fc-tr">zaten, çoktan</div><div class="fc-lesson">Ders 8</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">yet</div></div><div class="fc-back"><div class="fc-tr">henüz (olumsuz/soru)</div><div class="fc-lesson">Ders 8</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">ever</div></div><div class="fc-back"><div class="fc-tr">hiç (deneyim sorusu)</div><div class="fc-lesson">Ders 8</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">have been</div></div><div class="fc-back"><div class="fc-tr">bulunmuş, gitmiş (deneyim)</div><div class="fc-lesson">Ders 8</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">just</div></div><div class="fc-back"><div class="fc-tr">az önce, yeni</div><div class="fc-lesson">Ders 8</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">will</div></div><div class="fc-back"><div class="fc-tr">-ecek, -acak (gelecek)</div><div class="fc-lesson">Ders 9</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">going to</div></div><div class="fc-back"><div class="fc-tr">-ecek (plan/kanıt)</div><div class="fc-lesson">Ders 9</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">tomorrow</div></div><div class="fc-back"><div class="fc-tr">yarın</div><div class="fc-lesson">Ders 9</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">plan</div></div><div class="fc-back"><div class="fc-tr">plan, planlamak</div><div class="fc-lesson">Ders 9</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">probably</div></div><div class="fc-back"><div class="fc-tr">muhtemelen</div><div class="fc-lesson">Ders 9</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">can</div></div><div class="fc-back"><div class="fc-tr">-ebilmek, yapabilmek</div><div class="fc-lesson">Ders 10</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">must</div></div><div class="fc-back"><div class="fc-tr">-meli, -mak zorunda (güçlü)</div><div class="fc-lesson">Ders 10</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">should</div></div><div class="fc-back"><div class="fc-tr">-meli (tavsiye)</div><div class="fc-lesson">Ders 10</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">have to</div></div><div class="fc-back"><div class="fc-tr">-mak zorunda (dış zorunluluk)</div><div class="fc-lesson">Ders 10</div></div></div></div>
+    <div class="flashcard" onclick="this.classList.toggle('flipped')"><div class="flashcard-inner"><div class="fc-front"><div class="fc-en">can't</div></div><div class="fc-back"><div class="fc-tr">-emez, yapamaz</div><div class="fc-lesson">Ders 10</div></div></div></div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="section-head"><h2>📝 Mini Sınav</h2><span>10 soru · ~15 dk</span></div>
+  <p class="tip">8+ doğru = Ünite 3'e geçmeye hazırsın. 6–7 doğru = zayıf konuları tekrar et. 5 ve altı = Ders 6–10'u baştan gözden geçir.</p>
+
+  <div class="quiz-block"><div class="quiz-q">1. "Şu anda İngilizce çalışıyorum" — doğru cümle?</div><ol class="quiz-opts"><li>I study English now.</li><li>I am studying English now.</li><li>I studying English now.</li><li>I am study English now.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">2. "Dün sinemaya gittik" — doğru cümle?</div><ol class="quiz-opts"><li>We go to the cinema yesterday.</li><li>We went to the cinema yesterday.</li><li>We have gone to the cinema yesterday.</li><li>We going to the cinema yesterday.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">3. "Henüz ödevini bitirmedi" — doğru cümle?</div><ol class="quiz-opts"><li>She hasn't finished her homework yet.</li><li>She didn't finish her homework yet.</li><li>She hasn't finished her homework already.</li><li>She doesn't finish her homework yet.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">4. Karlı hava görüyorsun ve "Kar yağacak" diyorsun. Hangisi?</div><ol class="quiz-opts"><li>It will snow.</li><li>It's going to snow.</li><li>It snows.</li><li>It is snowing tomorrow.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">5. "Doktora gitmelisin" (tavsiye) — doğru cümle?</div><ol class="quiz-opts"><li>You must to see a doctor.</li><li>You should see a doctor.</li><li>You should to see a doctor.</li><li>You have see a doctor.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">6. <em>yesterday</em> ile hangi zaman kullanılır?</div><ol class="quiz-opts"><li>Present Continuous</li><li>Simple Past</li><li>Present Perfect</li><li>Will / Going to</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">7. "Have you ___ been to London?" Boşluğa ne gelir?</div><ol class="quiz-opts"><li>yet</li><li>already</li><li>ever</li><li>just</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">8. "I ___ swim when I was five." (geçmiş yetenek)</div><ol class="quiz-opts"><li>can</li><li>could</li><li>must</li><li>should</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">9. "Okula gitmek zorundasın" (kural/dış zorunluluk) — hangisi?</div><ol class="quiz-opts"><li>You should go to school.</li><li>You have to go to school.</li><li>You can go to school.</li><li>You will go to school.</li></ol></div>
+  <div class="quiz-block"><div class="quiz-q">10. "Look! It ___ ." (şu an yağmur yağıyor)</div><ol class="quiz-opts"><li>rains</li><li>is raining</li><li>rained</li><li>has rained</li></ol></div>
+
+  <details class="answers">
+    <summary>Cevap Anahtarı</summary>
+    <div class="ans-body">
+      <strong>1.</strong> I am studying English now. &nbsp;·&nbsp;
+      <strong>2.</strong> We went to the cinema yesterday. &nbsp;·&nbsp;
+      <strong>3.</strong> She hasn't finished her homework yet. &nbsp;·&nbsp;
+      <strong>4.</strong> It's going to snow. &nbsp;·&nbsp;
+      <strong>5.</strong> You should see a doctor. &nbsp;·&nbsp;
+      <strong>6.</strong> Simple Past &nbsp;·&nbsp;
+      <strong>7.</strong> ever &nbsp;·&nbsp;
+      <strong>8.</strong> could &nbsp;·&nbsp;
+      <strong>9.</strong> You have to go to school. &nbsp;·&nbsp;
+      <strong>10.</strong> is raining
+    </div>
+  </details>
+
+  <div class="score-box">
+    <div class="score-item">Doğru sayın: <b>___ / 10</b></div>
+    <div class="score-item">Tarih: <b>___ / ___ / ___</b></div>
+  </div>
+
+  <div class="nav-links no-print">
+    <a class="nav-link" href="unit-1.html">‹ Ünite 1 Tekrar</a>
+    <a class="nav-link" href="../2/10.html">‹ Ders 10</a>
+    <a class="nav-link home" href="../index.html">☰ Ana Sayfa</a>
+    <a class="nav-link home" href="../vocabulary/index.html">📖 Kelime Listeleri</a>
+    <a class="nav-link next" href="unit-3.html">Ünite 3 Tekrar ›</a>
+    <a class="nav-link next" href="../3/11.html">Ders 11'e Geç ›</a>
+  </div>
+
+</div>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
